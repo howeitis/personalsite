@@ -20,7 +20,7 @@ describe('HeroBento Component', () => {
 
     it('renders the location paragraph as an orange pill', () => {
         render(<HeroBento data={mockData} />);
-        const locationPill = screen.getByText('📍 Washington, D.C.');
+        const locationPill = screen.getByText('Washington, D.C.');
         expect(locationPill).toBeInTheDocument();
         expect(locationPill).toHaveClass('pill-tag', 'bg-terracotta');
     });

@@ -14,6 +14,7 @@ export const Home = ({ data }) => {
             <div className="bento-card" style={{
                 maxWidth: '600px',
                 margin: '4rem auto 0 auto',
+                transform: 'translateX(3rem)', // Slightly off-center to the right
                 textAlign: 'center',
                 padding: '2rem',
                 backgroundImage: 'linear-gradient(rgba(17, 75, 47, 0.85), rgba(17, 75, 47, 0.95)), url("images/sycamore_bg.jpg")',
@@ -34,6 +35,6 @@ export const Home = ({ data }) => {
                     Visit {data.consulting.name} ↗
                 </a>
             </div>
-        </div>
+        </div >
     );
 };

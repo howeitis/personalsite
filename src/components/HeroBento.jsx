@@ -37,7 +37,7 @@ export const HeroBento = ({ data }) => {
                         </p>
                         <div style={{ marginTop: '1.5rem' }}>
                             <span className="pill-tag bg-terracotta" style={{ color: 'white', display: 'inline-block' }}>
-                                📍 {data.about[2]}
+                                {data.about[2]}
                             </span>
                         </div>
                     </motion.div>
