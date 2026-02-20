@@ -33,8 +33,8 @@ export const MoodBoard = () => {
 
     if (isMobile) {
         return (
-            <div style={{ backgroundColor: 'var(--bg-color)', borderTop: '1px solid var(--text-primary)', borderBottom: '1px solid var(--text-primary)', padding: '2rem 1rem', margin: '0 0' }}>
-                <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <div style={{ backgroundColor: 'var(--bg-color)', borderTop: '1px solid var(--text-primary)', borderBottom: '1px solid var(--text-primary)', padding: '1.5rem 0', margin: '0' }}>
+                <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
 
                     {/* Intro Typography (Static for Mobile) */}
                     <div>
@@ -47,24 +47,24 @@ export const MoodBoard = () => {
                     </div>
 
                     {/* Stacked Images (Static for Mobile) */}
-                    <div className="bento-card" style={{ padding: '1rem' }}>
-                        <img src="images/fashion.jpg" alt="Fashion and Music" style={{ width: '100%', borderRadius: '8px' }} />
-                        <div style={{ marginTop: '1rem', textAlign: 'right' }}>
-                            <span className="pill-tag bg-sky">Fashion & Music</span>
+                    <div className="bento-card" style={{ padding: '0.5rem' }}>
+                        <img src="images/fashion.jpg" alt="Fashion and Music" style={{ width: '100%', borderRadius: '4px' }} />
+                        <div style={{ marginTop: '0.75rem', textAlign: 'right' }}>
+                            <span className="pill-tag bg-sky" style={{ zoom: 0.8 }}>Fashion & Music</span>
                         </div>
                     </div>
 
-                    <div className="bento-card bg-terracotta" style={{ padding: '1rem' }}>
-                        <img src="images/food.jpg" alt="Korean Stew" style={{ width: '100%', borderRadius: '8px' }} />
-                        <div style={{ marginTop: '1rem' }}>
-                            <span className="pill-tag bg-mustard">Food</span>
+                    <div className="bento-card bg-terracotta" style={{ padding: '0.5rem' }}>
+                        <img src="images/food.jpg" alt="Korean Stew" style={{ width: '100%', borderRadius: '4px' }} />
+                        <div style={{ marginTop: '0.75rem' }}>
+                            <span className="pill-tag bg-mustard" style={{ zoom: 0.8 }}>Food</span>
                         </div>
                     </div>
 
-                    <div className="bento-card" style={{ padding: '1rem' }}>
-                        <img src="images/cars.jpg" alt="Vintage Porsche" style={{ width: '100%', borderRadius: '8px' }} />
-                        <div style={{ marginTop: '1rem', textAlign: 'right' }}>
-                            <span className="pill-tag bg-br-green" style={{ color: 'white' }}>Tech & Machinery</span>
+                    <div className="bento-card" style={{ padding: '0.5rem' }}>
+                        <img src="images/cars.jpg" alt="Vintage Porsche" style={{ width: '100%', borderRadius: '4px' }} />
+                        <div style={{ marginTop: '0.75rem', textAlign: 'right' }}>
+                            <span className="pill-tag bg-br-green" style={{ color: 'white', zoom: 0.8 }}>Tech & Machinery</span>
                         </div>
                     </div>
 
