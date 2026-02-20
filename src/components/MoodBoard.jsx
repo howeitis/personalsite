@@ -25,7 +25,7 @@ export const MoodBoard = () => {
                 position: 'relative',
                 height: 'clamp(600px, 90vh, 1000px)', // Slightly taller to fit larger images 
                 width: '100%',
-                margin: '2rem 0', // Close to hero and footer
+                margin: '-4rem 0 4rem 0', // Tucks under hero, pushes Sycamore down
                 overflow: 'hidden', // HARD BOUNDARIES
                 borderTop: '1px solid var(--text-primary)',
                 borderBottom: '1px solid var(--text-primary)',
