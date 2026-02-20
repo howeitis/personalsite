@@ -67,7 +67,12 @@ export const Readings = () => {
                 padding: '0 1rem'
             }}>
                 {books.map((book, index) => {
-                    const bgColor = colors[index % colors.length];
+                    // Create a deterministic but pseudo-random hash based on both the string length and character codes
+                    // so the same book always gets the same color, but adjacent books look random.
+                    const charSum = book.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+                    const hashIndex = (book.length + charSum + index * 17) % colors.length;
+
+                    const bgColor = colors[hashIndex];
                     const isDarkBg = bgColor === 'var(--br-green)' || bgColor === 'var(--terracotta)';
                     const textColor = isDarkBg ? 'var(--bg-color)' : 'var(--text-primary)';
 
