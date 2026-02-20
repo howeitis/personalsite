@@ -33,15 +33,15 @@ export const MoodBoard = () => {
 
     if (isMobile) {
         return (
-            <div style={{ backgroundColor: 'var(--bg-color)', borderTop: '1px solid var(--text-primary)', borderBottom: '1px solid var(--text-primary)', padding: '4rem 1rem', margin: '2rem 0' }}>
-                <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+            <div style={{ backgroundColor: 'var(--bg-color)', borderTop: '1px solid var(--text-primary)', borderBottom: '1px solid var(--text-primary)', padding: '2rem 1rem', margin: '0 0' }}>
+                <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
 
                     {/* Intro Typography (Static for Mobile) */}
                     <div>
                         <h2 className="serif-text" style={{ fontSize: 'clamp(3rem, 12vw, 4rem)', lineHeight: 0.9, color: 'var(--text-primary)' }}>
                             Soccer.<br />Tech.<br />Food.<br />Fashion.
                         </h2>
-                        <p style={{ marginTop: '1.5rem', fontSize: '1.2rem', fontWeight: 500, color: 'var(--terracotta)' }}>
+                        <p style={{ marginTop: '0.5rem', marginBottom: '1rem', fontSize: '1.2rem', fontWeight: 500, color: 'var(--terracotta)' }}>
                             I am not just a resume. I'm built by the things I pursue off the clock.
                         </p>
                     </div>
