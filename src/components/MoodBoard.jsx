@@ -1,21 +1,8 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 export const MoodBoard = () => {
     const containerRef = useRef(null);
-    const [isMobile, setIsMobile] = useState(false);
-
-    // Run once on mount to detect mobile
-    useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth <= 768);
-        };
-        // Initial check
-        checkMobile();
-        // Listen for resizes
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
 
     // Parallax scroll logic
     const { scrollYProgress } = useScroll({
@@ -23,65 +10,23 @@ export const MoodBoard = () => {
         offset: ["start end", "end start"]
     });
 
-    // Different speeds for different elements to break the grid
-    // Different speeds for different elements to break the grid
-    const y1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
-    const y2 = useTransform(scrollYProgress, [0, 1], [150, -300]);
-    const y3 = useTransform(scrollYProgress, [0, 1], [-50, 200]);
-    const y4 = useTransform(scrollYProgress, [0, 1], [0, -350]);
-    const yTxt = useTransform(scrollYProgress, [0, 1], [200, -100]);
-
-    if (isMobile) {
-        return (
-            <div style={{ backgroundColor: 'var(--bg-color)', borderTop: '1px solid var(--text-primary)', borderBottom: '1px solid var(--text-primary)', padding: '1.5rem 0', margin: '0' }}>
-                <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-
-                    {/* Intro Typography (Static for Mobile) */}
-                    <div>
-                        <h2 className="serif-text" style={{ fontSize: 'clamp(3rem, 12vw, 4rem)', lineHeight: 0.9, color: 'var(--text-primary)' }}>
-                            Soccer.<br />Tech.<br />Food.<br />Fashion.
-                        </h2>
-                        <p style={{ marginTop: '0.5rem', marginBottom: '1rem', fontSize: '1.2rem', fontWeight: 500, color: 'var(--terracotta)' }}>
-                            I am not just a resume. I'm built by the things I pursue off the clock.
-                        </p>
-                    </div>
-
-                    {/* Stacked Images (Static for Mobile) */}
-                    <div className="bento-card" style={{ padding: '0.5rem' }}>
-                        <img src="images/fashion.jpg" alt="Fashion and Music" style={{ width: '100%', borderRadius: '4px' }} />
-                        <div style={{ marginTop: '0.75rem', textAlign: 'right' }}>
-                            <span className="pill-tag bg-sky" style={{ zoom: 0.8 }}>Fashion & Music</span>
-                        </div>
-                    </div>
-
-                    <div className="bento-card bg-terracotta" style={{ padding: '0.5rem' }}>
-                        <img src="images/food.jpg" alt="Korean Stew" style={{ width: '100%', borderRadius: '4px' }} />
-                        <div style={{ marginTop: '0.75rem' }}>
-                            <span className="pill-tag bg-mustard" style={{ zoom: 0.8 }}>Food</span>
-                        </div>
-                    </div>
-
-                    <div className="bento-card" style={{ padding: '0.5rem' }}>
-                        <img src="images/cars.jpg" alt="Vintage Porsche" style={{ width: '100%', borderRadius: '4px' }} />
-                        <div style={{ marginTop: '0.75rem', textAlign: 'right' }}>
-                            <span className="pill-tag bg-br-green" style={{ color: 'white', zoom: 0.8 }}>Tech & Machinery</span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        );
-    }
+    // We keep parallax shifts relatively small so things don't fly off the screen
+    // on mobile, making the floating layout tight and cohesive.
+    const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+    const y2 = useTransform(scrollYProgress, [0, 1], [50, -150]);
+    const y3 = useTransform(scrollYProgress, [0, 1], [-25, 100]);
+    const y4 = useTransform(scrollYProgress, [0, 1], [0, -150]);
+    const yTxt = useTransform(scrollYProgress, [0, 1], [100, -50]);
 
     return (
         <div
             ref={containerRef}
             style={{
                 position: 'relative',
-                height: '110vh', // Shrunk container height accordingly to match the tighter density
+                height: 'clamp(500px, 85vh, 1000px)', // Dynamic height limits ton of space 
                 width: '100%',
                 margin: '2rem 0', // Close to hero and footer
-                overflow: 'hidden', // HARD BOUNDARIES - parallax items will be cropped instead of overlapping
+                overflow: 'hidden', // HARD BOUNDARIES
                 borderTop: '1px solid var(--text-primary)',
                 borderBottom: '1px solid var(--text-primary)',
                 backgroundColor: 'var(--bg-color)',
@@ -92,12 +37,12 @@ export const MoodBoard = () => {
 
                 {/* Giant Floating Typography */}
                 <motion.div
-                    style={{ y: yTxt, position: 'absolute', top: '25vh', left: '5%', zIndex: 10 }}
+                    style={{ y: yTxt, position: 'absolute', top: '15%', left: '5%', zIndex: 10 }}
                 >
-                    <h2 className="serif-text" style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', lineHeight: 0.9, mixBlendMode: 'difference', color: 'var(--text-primary)' }}>
+                    <h2 className="serif-text" style={{ fontSize: 'clamp(3rem, 15vw, 6rem)', lineHeight: 0.9, mixBlendMode: 'difference', color: 'var(--text-primary)' }}>
                         Soccer.<br />Tech.<br />Food.<br />Fashion.
                     </h2>
-                    <p style={{ marginTop: '2rem', fontSize: '1.25rem', maxWidth: '400px', fontWeight: 500, color: 'var(--terracotta)' }}>
+                    <p style={{ marginTop: '1rem', fontSize: 'clamp(0.9rem, 3vw, 1.25rem)', maxWidth: '400px', fontWeight: 500, color: 'var(--terracotta)' }}>
                         I am not just a resume. I'm built by the things I pursue off the clock.
                     </p>
                 </motion.div>
@@ -107,10 +52,9 @@ export const MoodBoard = () => {
                     style={{
                         y: y2,
                         position: 'absolute',
-                        top: '5vh',
+                        top: '5%',
                         right: '5%',
-                        width: '30vw', // Slightly shrunken
-                        minWidth: '280px',
+                        width: 'clamp(140px, 30vw, 300px)', // Scales smoothly
                         zIndex: 5
                     }}
                     className="bento-card"
@@ -120,7 +64,7 @@ export const MoodBoard = () => {
                         alt="Fashion and Music"
                         style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block' }}
                     />
-                    <span className="pill-tag bg-sky" style={{ position: 'absolute', bottom: '-20px', right: '-20px', zIndex: 10 }}>Fashion & Music</span>
+                    <span className="pill-tag bg-sky" style={{ position: 'absolute', bottom: '-15px', right: '-15px', zIndex: 10, zoom: 0.8 }}>Fashion & Music</span>
                 </motion.div>
 
                 {/* 2. Flora/Anime Bike Image (Floating mid-left) */}
@@ -128,10 +72,9 @@ export const MoodBoard = () => {
                     style={{
                         y: y1,
                         position: 'absolute',
-                        top: '25vh',
+                        top: '40%',
                         left: '5%',
-                        width: '40vw', // Slightly shrunken
-                        minWidth: '320px',
+                        width: 'clamp(160px, 40vw, 400px)',
                         zIndex: 2
                     }}
                     className="bento-card"
@@ -148,20 +91,19 @@ export const MoodBoard = () => {
                     style={{
                         y: y4,
                         position: 'absolute',
-                        top: '45vh',
-                        right: '10%',
-                        width: '35vw', // Shrunk to prevent covering Flora
-                        minWidth: '300px',
+                        top: '60%',
+                        right: '5%',
+                        width: 'clamp(150px, 35vw, 350px)',
                         zIndex: 8
                     }}
-                    className="bento-card bg-terracotta" // Use a colored card back for pop
+                    className="bento-card bg-terracotta"
                 >
                     <img
                         src="images/food.jpg"
                         alt="Korean Stew"
-                        style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block', transform: 'rotate(-2deg)' }}
+                        style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block', transform: 'rotate(-3deg)' }}
                     />
-                    <span className="pill-tag bg-mustard" style={{ position: 'absolute', top: '-15px', left: '-15px', zIndex: 10 }}>Food</span>
+                    <span className="pill-tag bg-mustard" style={{ position: 'absolute', top: '-15px', left: '-15px', zIndex: 10, zoom: 0.8 }}>Food</span>
                 </motion.div>
 
                 {/* 4. Cars / Porsche (Floating way down low, parallaxing UP fast) */}
@@ -169,10 +111,9 @@ export const MoodBoard = () => {
                     style={{
                         y: y3,
                         position: 'absolute',
-                        top: '50vh', // Elevated to sit directly under/beside the middle group
+                        top: '75%',
                         left: '15%',
-                        width: '45vw',
-                        minWidth: '350px',
+                        width: 'clamp(170px, 45vw, 450px)',
                         zIndex: 7
                     }}
                     className="bento-card"
@@ -182,7 +123,7 @@ export const MoodBoard = () => {
                         alt="Vintage Porsche"
                         style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block' }}
                     />
-                    <span className="pill-tag bg-br-green" style={{ color: 'white', position: 'absolute', right: '20px', bottom: '-15px', zIndex: 10 }}>Tech & Machinery</span>
+                    <span className="pill-tag bg-br-green" style={{ color: 'white', position: 'absolute', right: '10px', bottom: '-15px', zIndex: 10, zoom: 0.8 }}>Tech & Machinery</span>
                 </motion.div>
 
             </div>
