@@ -54,7 +54,7 @@ export const MoodBoard = () => {
                         position: 'absolute',
                         top: '5%',
                         right: '0%', // Push to edge
-                        width: 'clamp(210px, 40vw, 350px)', // 50% larger minimums
+                        width: 'clamp(315px, 60vw, 525px)', // Doubled minimums
                         zIndex: 5
                     }}
                     className="bento-card"
@@ -74,7 +74,7 @@ export const MoodBoard = () => {
                         position: 'absolute',
                         top: '35%', // Pulled up
                         left: '0%', // Push to edge
-                        width: 'clamp(240px, 50vw, 450px)',
+                        width: 'clamp(360px, 75vw, 675px)',
                         zIndex: 2
                     }}
                     className="bento-card"
@@ -93,7 +93,7 @@ export const MoodBoard = () => {
                         position: 'absolute',
                         top: '50%', // Pulled up aggressively to overlap Flora
                         right: '5%',
-                        width: 'clamp(225px, 45vw, 400px)',
+                        width: 'clamp(330px, 65vw, 600px)',
                         zIndex: 8
                     }}
                     className="bento-card bg-terracotta"
@@ -112,8 +112,8 @@ export const MoodBoard = () => {
                         y: y3,
                         position: 'absolute',
                         top: '65%', // Pulled way up
-                        left: '10%',
-                        width: 'clamp(255px, 55vw, 500px)',
+                        left: '5%', // Pulled closer to the edge given massive width
+                        width: 'clamp(380px, 80vw, 750px)',
                         zIndex: 7
                     }}
                     className="bento-card"
