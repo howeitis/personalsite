@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  /* V2 Playful Palette */
+  --bg-color: #F4EFE6;
+  /* Warm editorial cream/oat instead of stark white */
+  --text-primary: #1A1C20;
+  --text-secondary: #5A5D6B;
+
+  --br-green: #004225;
+  --terracotta: #E2725B;
+  --mustard: #F4C430;
+  --sky-blue: #87CEEB;
+  --lavender: #E6E6FA;
+
+  --spacing-unit: 1rem;
+  --border-radius: 24px;
+  --border-radius-pill: 999px;
+  --border-radius-blob: 40% 60% 70% 30% / 40% 50% 60% 50%;
+
+  --border-thick: 4px solid var(--text-primary);
+  --box-shadow-brutal: 8px 8px 0px 0px var(--text-primary);
+  --box-shadow-brutal-hover: 12px 12px 0px 0px var(--text-primary);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* Switching to Space Grotesk for a slightly retro/playful modern feel */
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Serif font for stylish headers that breaks the "corporate" mold */
+h1,
+h2,
+h3,
+h4,
+.serif-text {
+  font-family: 'Playfair Display', serif;
+  color: var(--br-green);
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+::selection {
+  background: var(--mustard);
+  color: var(--text-primary);
+}
+
+/* The Bento Grid Core Structure */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+
+.bento-card {
+  background: white;
+  border: var(--border-thick);
+  border-radius: var(--border-radius);
+  padding: 2.5rem;
+  box-shadow: var(--box-shadow-brutal);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.bento-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: var(--box-shadow-brutal-hover);
+}
+
+/* Specific Card Stylings */
+.bg-green {
+  background-color: var(--br-green);
+  color: white;
+}
+
+.bg-green h1,
+.bg-green h2,
+.bg-green h3,
+.bg-green p {
+  color: white;
+}
+
+.bg-mustard {
+  background-color: var(--mustard);
+}
+
+.bg-terracotta {
+  background-color: var(--terracotta);
+  color: white;
+}
+
+.bg-terracotta h1,
+.bg-terracotta h2,
+.bg-terracotta h3,
+.bg-terracotta p {
+  color: white;
+}
+
+.bg-sky {
+  background-color: var(--sky-blue);
+}
+
+.pill-tag {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--text-primary);
+  border-radius: var(--border-radius-pill);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.pill-tag:not([class*="bg-"]) {
+  background: white;
+}
+
+.blob-container {
+  border-radius: var(--border-radius-blob);
+}

@@ -1,0 +1,79 @@
+{
+  "personal": {
+    "name": "Owen Howe",
+    "title": "Professional Summary",
+    "location": "Washington, D.C.",
+    "email": "Owen@Howe.app",
+    "phone": "(703) 677-2949",
+    "linkedin": "LinkedIn",
+    "consultingUrl": "https://www.sycamorecreekconsulting.com/",
+    "about": [
+      "Talent Acquisition leader by day.",
+      "Soccer, tech, food, and music all the time.",
+      "Based in Washington, D.C."
+    ]
+  },
+  "consulting": {
+    "name": "Sycamore Creek Consulting",
+    "tagline": "We find the people who aren't looking.",
+    "description": "Retained search and talent advisory for specialized technical and executive leadership roles.",
+    "url": "https://www.sycamorecreekconsulting.com/"
+  },
+  "experience": [
+    {
+      "id": "nyt",
+      "company": "The New York Times",
+      "title": "Manager, Talent Acquisition",
+      "period": "September 2021 - Present",
+      "location": "Washington, D.C.",
+      "highlights": [
+        "Lead high volume, full-cycle recruitment searches for critical growth teams including Engineering, AI, Product, and the Newsroom in a dynamic, fast-paced environment.",
+        "Direct the early career program for all non-newsroom divisions, annually recruiting over 45 interns, and architecting a successful conversion pipeline that fills all entry-level positions.",
+        "Pioneered recruitment strategies for critical growth initiatives, including the AI Mission and Wirecutter, by designing and executing hiring plans from the ground up with C-Suite & Finance.",
+        "Trusted by senior leadership to develop strategic hiring roadmaps, craft targeted hiring processes, and lead cross-functional hiring teams of recruiters, coordinators, and sourcers.",
+        "Developed data-driven trackers for hiring teams across NYT to allow for hiring insights and scalable solutions, including a migration from Workday to Greenhouse."
+      ]
+    },
+    {
+      "id": "two-six",
+      "company": "Two Six Technologies (Elite Cyber Defense R&D Lab)",
+      "title": "Sr. Talent Management Specialist",
+      "period": "November 2017 - September 2021",
+      "location": "Arlington, Virginia",
+      "secondTitle": "Talent Management Specialist",
+      "secondPeriod": "November 2017 - March 2019",
+      "highlights": [
+        "Led the company's Talent Acquisition team managing 30+ R&D Engineering positions at a time across iCIMS and Greenhouse.",
+        "Drove rapid workforce expansion by leading recruitment efforts that resulted in 150+ new hires in two years, doubling the company's workforce and enabling pursuit of new strategic programs.",
+        "Specialized in recruiting highly technical talent, with over 80% being software/hardware engineers who work R&D programs spanning Cyber, ML, Mobile & Embedded systems, and Data Privacy.",
+        "Implemented sourcing strategies to attract talent ranging from Research Directors to Jr. Engineers.",
+        "Led weekly recruitment strategy meetings with Research Directors and VPs to optimize our plan for future hiring needs and manage current openings.",
+        "Designed, piloted, and scaled an internship program which doubled the internship class size from the previous year and built a proven pipeline to transition interns to full-time employees."
+      ]
+    },
+    {
+      "id": "chungdahm",
+      "company": "Chungdahm Learning",
+      "title": "English Teacher",
+      "period": "August 2016 - August 2017",
+      "location": "Uijeongbu, South Korea",
+      "highlights": [
+        "Taught lessons preparing students for the Test of English as a Foreign Language (TOEFL)."
+      ]
+    }
+  ],
+  "interests": [
+    "Soccer",
+    "Tech",
+    "Food",
+    "Fashion",
+    "Music",
+    "International Relations",
+    "History",
+    "Art",
+    "Travel",
+    "Flora",
+    "Cycling",
+    "Cars"
+  ]
+}
