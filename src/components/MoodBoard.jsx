@@ -23,7 +23,7 @@ export const MoodBoard = () => {
             ref={containerRef}
             style={{
                 position: 'relative',
-                height: 'clamp(500px, 85vh, 1000px)', // Dynamic height limits ton of space 
+                height: 'clamp(600px, 90vh, 1000px)', // Slightly taller to fit larger images 
                 width: '100%',
                 margin: '2rem 0', // Close to hero and footer
                 overflow: 'hidden', // HARD BOUNDARIES
@@ -37,12 +37,12 @@ export const MoodBoard = () => {
 
                 {/* Giant Floating Typography */}
                 <motion.div
-                    style={{ y: yTxt, position: 'absolute', top: '15%', left: '5%', zIndex: 10 }}
+                    style={{ y: yTxt, position: 'absolute', top: '10%', left: '5%', zIndex: 10 }}
                 >
-                    <h2 className="serif-text" style={{ fontSize: 'clamp(3rem, 15vw, 6rem)', lineHeight: 0.9, mixBlendMode: 'difference', color: 'var(--text-primary)' }}>
+                    <h2 className="serif-text" style={{ fontSize: 'clamp(4rem, 18vw, 7rem)', lineHeight: 0.9, mixBlendMode: 'difference', color: 'var(--text-primary)' }}>
                         Soccer.<br />Tech.<br />Food.<br />Fashion.
                     </h2>
-                    <p style={{ marginTop: '1rem', fontSize: 'clamp(0.9rem, 3vw, 1.25rem)', maxWidth: '400px', fontWeight: 500, color: 'var(--terracotta)' }}>
+                    <p style={{ marginTop: '1rem', fontSize: 'clamp(1rem, 4vw, 1.25rem)', maxWidth: '400px', fontWeight: 500, color: 'var(--terracotta)' }}>
                         I am not just a resume. I'm built by the things I pursue off the clock.
                     </p>
                 </motion.div>
@@ -53,8 +53,8 @@ export const MoodBoard = () => {
                         y: y2,
                         position: 'absolute',
                         top: '5%',
-                        right: '5%',
-                        width: 'clamp(140px, 30vw, 300px)', // Scales smoothly
+                        right: '0%', // Push to edge
+                        width: 'clamp(210px, 40vw, 350px)', // 50% larger minimums
                         zIndex: 5
                     }}
                     className="bento-card"
@@ -72,9 +72,9 @@ export const MoodBoard = () => {
                     style={{
                         y: y1,
                         position: 'absolute',
-                        top: '40%',
-                        left: '5%',
-                        width: 'clamp(160px, 40vw, 400px)',
+                        top: '35%', // Pulled up
+                        left: '0%', // Push to edge
+                        width: 'clamp(240px, 50vw, 450px)',
                         zIndex: 2
                     }}
                     className="bento-card"
@@ -91,9 +91,9 @@ export const MoodBoard = () => {
                     style={{
                         y: y4,
                         position: 'absolute',
-                        top: '60%',
+                        top: '50%', // Pulled up aggressively to overlap Flora
                         right: '5%',
-                        width: 'clamp(150px, 35vw, 350px)',
+                        width: 'clamp(225px, 45vw, 400px)',
                         zIndex: 8
                     }}
                     className="bento-card bg-terracotta"
@@ -111,9 +111,9 @@ export const MoodBoard = () => {
                     style={{
                         y: y3,
                         position: 'absolute',
-                        top: '75%',
-                        left: '15%',
-                        width: 'clamp(170px, 45vw, 450px)',
+                        top: '65%', // Pulled way up
+                        left: '10%',
+                        width: 'clamp(255px, 55vw, 500px)',
                         zIndex: 7
                     }}
                     className="bento-card"
