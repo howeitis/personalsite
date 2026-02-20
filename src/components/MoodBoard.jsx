@@ -26,9 +26,7 @@ export const MoodBoard = () => {
                 height: 'clamp(600px, 90vh, 1000px)', // Slightly taller to fit larger images 
                 width: '100%',
                 margin: '-4rem 0 4rem 0', // Tucks under hero, pushes Sycamore down
-                overflow: 'hidden', // HARD BOUNDARIES
                 borderTop: '1px solid var(--text-primary)',
-                borderBottom: '1px solid var(--text-primary)',
                 backgroundColor: 'var(--bg-color)',
                 zIndex: 1 // Ensure it stays behind HeroBento
             }}
