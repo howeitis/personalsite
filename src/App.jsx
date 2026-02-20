@@ -2,6 +2,7 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navigation } from './components/Navigation';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
+import { ScrollToTop } from './components/ScrollToTop';
 import contentData from './data/content.json';
 
 // Pages
@@ -13,6 +14,7 @@ import { Readings } from './pages/Readings';
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="app-container" style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <CustomCursor />
         <Navigation />
