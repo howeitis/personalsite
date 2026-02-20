@@ -21,7 +21,9 @@ export const Home = ({ data }) => {
                 backgroundPosition: 'center',
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'center'
+                alignItems: 'center',
+                position: 'relative',
+                zIndex: 10
             }}>
                 <img src="images/sycamore_logo.jpg" alt="Sycamore Creek Consulting" style={{ width: '100px', marginBottom: '1rem', borderRadius: '50%' }} />
                 <h2 className="serif-text" style={{ fontSize: '1.5rem', color: 'var(--bg-color)', marginBottom: '0.25rem' }}>Interested in hiring leadership?</h2>
