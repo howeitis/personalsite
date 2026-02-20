@@ -29,7 +29,7 @@ describe('HeroBento Component', () => {
         render(<HeroBento data={mockData} />);
         const image = screen.getByAltText(/owen's profile/i);
         expect(image).toBeInTheDocument();
-        expect(image).toHaveAttribute('src', '/images/hero_profile.jpg');
+        expect(image).toHaveAttribute('src', 'images/hero_profile.jpg');
     });
 
     it('renders the Say Hello email button with correct mailto link', () => {

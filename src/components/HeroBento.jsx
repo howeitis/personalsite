@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 
 export const HeroBento = ({ data }) => {
     return (
-        <div className="bento-card bg-green" style={{ gridColumn: 'span 12', padding: '3rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', overflow: 'hidden', position: 'relative', zIndex: 10 }}>
+        <div className="bento-card bg-green" style={{ gridColumn: 'span 12', padding: '3rem', display: 'flex', flexWrap: 'wrap-reverse', gap: '3rem', alignItems: 'center', justifyContent: 'space-between', overflow: 'hidden', position: 'relative', zIndex: 10 }}>
 
-            <div style={{ flex: 1, zIndex: 1, paddingRight: '2rem' }}>
+            <div style={{ flex: 1, minWidth: '300px', zIndex: 1 }}>
                 {/* Playful greeting */}
                 <motion.div
                     initial={{ opacity: 0, rotate: -5 }}
@@ -82,7 +82,7 @@ export const HeroBento = ({ data }) => {
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', zIndex: 1 }}
+                style={{ flex: 1, minWidth: '280px', display: 'flex', justifyContent: 'center', zIndex: 1 }}
             >
                 <img
                     src="images/hero_profile.jpg"

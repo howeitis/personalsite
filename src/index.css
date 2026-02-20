@@ -140,3 +140,33 @@ a {
 .blob-container {
   border-radius: var(--border-radius-blob);
 }
+
+/* ----------------------------- */
+/* Mobile Responsiveness Overrides */
+/* ----------------------------- */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  /* Force the layout to stack gracefully */
+  .bento-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* Explicitly override Javascript/Inline Grid spans */
+  .bento-card {
+    width: 100% !important;
+    grid-column: span 12 !important;
+    padding: 1.5rem !important;
+    /* Shrink inner padding on phones */
+  }
+
+  /* Shrink giant editorial headers slightly */
+  h1,
+  .serif-text {
+    font-size: clamp(2.5rem, 10vw, 4rem) !important;
+  }
+}
