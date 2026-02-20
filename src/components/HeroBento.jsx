@@ -85,7 +85,7 @@ export const HeroBento = ({ data }) => {
                 style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', zIndex: 1 }}
             >
                 <img
-                    src="/images/hero_profile.jpg"
+                    src="images/hero_profile.jpg"
                     alt="Owen's Profile"
                     style={{
                         width: '100%',

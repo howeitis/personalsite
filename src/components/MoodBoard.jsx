@@ -61,7 +61,7 @@ export const MoodBoard = () => {
                     className="bento-card"
                 >
                     <img
-                        src="/images/fashion.jpg"
+                        src="images/fashion.jpg"
                         alt="Fashion and Music"
                         style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block' }}
                     />
@@ -82,7 +82,7 @@ export const MoodBoard = () => {
                     className="bento-card"
                 >
                     <img
-                        src="/images/flora.jpg"
+                        src="images/flora.jpg"
                         alt="Anime bike in forest"
                         style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block' }}
                     />
@@ -102,7 +102,7 @@ export const MoodBoard = () => {
                     className="bento-card bg-terracotta" // Use a colored card back for pop
                 >
                     <img
-                        src="/images/food.jpg"
+                        src="images/food.jpg"
                         alt="Korean Stew"
                         style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block', transform: 'rotate(-2deg)' }}
                     />
@@ -123,7 +123,7 @@ export const MoodBoard = () => {
                     className="bento-card"
                 >
                     <img
-                        src="/images/cars.jpg"
+                        src="images/cars.jpg"
                         alt="Vintage Porsche"
                         style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block' }}
                     />

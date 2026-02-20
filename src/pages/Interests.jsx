@@ -3,18 +3,18 @@ import { motion } from 'framer-motion';
 export const Interests = ({ data }) => {
     // Collect all provided images for the visual collage
     const images = [
-        { src: "/images/art.jpg", alt: "Portrait Art", tag: "Art", bg: "var(--mustard)" },
-        { src: "/images/cars.jpg", alt: "Porsche 911", tag: "Cars", bg: "var(--br-green)" },
-        { src: "/images/cycling.jpg", alt: "Cycling", tag: "Cycling", bg: "var(--sky-blue)" },
-        { src: "/images/fashion.jpg", alt: "Fashion", tag: "Fashion", bg: "var(--lavender)" },
-        { src: "/images/flora.jpg", alt: "Anime Bike in Forest", tag: "Flora", bg: "var(--bg-color)" },
-        { src: "/images/food.jpg", alt: "Korean Stew", tag: "Food", bg: "var(--terracotta)" },
-        { src: "/images/history.jpg", alt: "Korean History", tag: "History", bg: "var(--mustard)" },
-        { src: "/images/international relations.jpg", alt: "Diplomacy", tag: "International Relations", bg: "var(--br-green)" },
-        { src: "/images/music.jpg", alt: "Music Studio", tag: "Music", bg: "var(--lavender)" },
-        { src: "/images/soccer.jpg", alt: "Arsenal Football", tag: "Soccer", bg: "var(--sky-blue)" },
-        { src: "/images/tech.jpg", alt: "Technology", tag: "Technology", bg: "var(--bg-color)" },
-        { src: "/images/travel.jpg", alt: "Travel Photography", tag: "Travel", bg: "var(--terracotta)" }
+        { src: "images/art.jpg", alt: "Portrait Art", tag: "Art", bg: "var(--mustard)" },
+        { src: "images/cars.jpg", alt: "Porsche 911", tag: "Cars", bg: "var(--br-green)" },
+        { src: "images/cycling.jpg", alt: "Cycling", tag: "Cycling", bg: "var(--sky-blue)" },
+        { src: "images/fashion.jpg", alt: "Fashion", tag: "Fashion", bg: "var(--lavender)" },
+        { src: "images/flora.jpg", alt: "Anime Bike in Forest", tag: "Flora", bg: "var(--bg-color)" },
+        { src: "images/food.jpg", alt: "Korean Stew", tag: "Food", bg: "var(--terracotta)" },
+        { src: "images/history.jpg", alt: "Korean History", tag: "History", bg: "var(--mustard)" },
+        { src: "images/international relations.jpg", alt: "Diplomacy", tag: "International Relations", bg: "var(--br-green)" },
+        { src: "images/music.jpg", alt: "Music Studio", tag: "Music", bg: "var(--lavender)" },
+        { src: "images/soccer.jpg", alt: "Arsenal Football", tag: "Soccer", bg: "var(--sky-blue)" },
+        { src: "images/tech.jpg", alt: "Technology", tag: "Technology", bg: "var(--bg-color)" },
+        { src: "images/travel.jpg", alt: "Travel Photography", tag: "Travel", bg: "var(--terracotta)" }
     ];
 
     return (
