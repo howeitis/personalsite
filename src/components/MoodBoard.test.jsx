@@ -26,7 +26,6 @@ describe('MoodBoard Component', () => {
         expect(heading).toHaveTextContent(/Tech/i);
         expect(heading).toHaveTextContent(/Food/i);
         expect(heading).toHaveTextContent(/Fashion/i);
-        expect(screen.getByText(/I am not just a resume. I'm built by the things I pursue off the clock./i)).toBeInTheDocument();
     });
 
     it('renders all four main images with descriptive alt text', () => {

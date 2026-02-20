@@ -10,11 +10,10 @@ export const Home = ({ data }) => {
             {/* The V4 Organic Mood Board Parallax (Replaces the Grid) */}
             <MoodBoard />
 
-            {/* The Subtle Side-Hustle Plug */}
             <div className="bento-card" style={{
                 maxWidth: '600px',
                 margin: '4rem auto 0 auto',
-                transform: 'translateX(3rem)', // Slightly off-center to the right
+                transform: 'translateX(6rem)', // More significant offset to the right
                 textAlign: 'center',
                 padding: '2rem',
                 backgroundImage: 'linear-gradient(rgba(17, 75, 47, 0.85), rgba(17, 75, 47, 0.95)), url("images/sycamore_bg.jpg")',

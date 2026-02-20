@@ -40,9 +40,6 @@ export const MoodBoard = () => {
                     <h2 className="serif-text" style={{ fontSize: 'clamp(4rem, 18vw, 7rem)', lineHeight: 0.9, mixBlendMode: 'difference', color: 'var(--text-primary)' }}>
                         Soccer.<br />Tech.<br />Food.<br />Fashion.
                     </h2>
-                    <p style={{ marginTop: '1rem', fontSize: 'clamp(1rem, 4vw, 1.25rem)', maxWidth: '400px', fontWeight: 500, color: 'var(--text-primary)' }}>
-                        I am not just a resume. I'm built by the things I pursue off the clock.
-                    </p>
                 </motion.div>
 
                 {/* 1. Fashion/ALD Image */}
