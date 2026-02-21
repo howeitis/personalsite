@@ -10,6 +10,7 @@ import { Home } from './pages/Home';
 import { Resume } from './pages/Resume';
 import { Interests } from './pages/Interests';
 import { Readings } from './pages/Readings';
+import { Library } from './pages/Library';
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
             <Route path="/" element={<Home data={contentData} />} />
             <Route path="/resume" element={<Resume data={contentData.experience} />} />
             <Route path="/interests" element={<Interests data={contentData.interests} />} />
-            <Route path="/readings" element={<Readings />} />
+            <Route path="/readings" element={<Readings data={contentData.books} />} />
+            <Route path="/library" element={<Library data={contentData.books} />} />
           </Routes>
         </main>
 
