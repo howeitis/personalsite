@@ -77,36 +77,129 @@
     "Cars"
   ],
   "books": [
-    "James",
-    "Sixteenth Street NW",
-    "The Lies of Locke Lamora",
-    "The Jungle",
-    "On the Decay of the Art of Lyring",
-    "Stories of Your Life",
-    "The Way of Kings",
-    "The Three-Body Problem",
-    "Conquerors",
-    "Mistborn",
-    "The Nature of Oaks",
-    "The Gift of Good Land",
-    "The Unsettling of America",
-    "A Walk in the Woods",
-    "The Anarchy",
-    "The Overstory",
-    "The Jakarta Method",
-    "Homo Deus",
-    "The Outlaw Ocean",
-    "Aertotropolis",
-    "Why We're Polarized",
-    "The Soul of America",
-    "Sapiens",
-    "Around The World in 80 Days",
-    "The Body",
-    "American Nations",
-    "The Autobiography of Macolm X",
-    "The Mixer",
-    "AI Superpowers",
-    "The Perfect Weapon",
-    "Prisoners of Geography"
+    {
+      "title": "James",
+      "author": "Percival Everett"
+    },
+    {
+      "title": "Sixteenth Street NW",
+      "author": "John DeFerrari"
+    },
+    {
+      "title": "The Lies of Locke Lamora",
+      "author": "Scott Lynch"
+    },
+    {
+      "title": "The Jungle",
+      "author": "Upton Sinclair"
+    },
+    {
+      "title": "On the Decay of the Art of Lying",
+      "author": "Mark Twain"
+    },
+    {
+      "title": "Stories of Your Life",
+      "author": "Ted Chiang"
+    },
+    {
+      "title": "The Way of Kings",
+      "author": "Brandon Sanderson"
+    },
+    {
+      "title": "The Three-Body Problem",
+      "author": "Cixin Liu"
+    },
+    {
+      "title": "Conquerors",
+      "author": "Roger Crowley"
+    },
+    {
+      "title": "Mistborn",
+      "author": "Brandon Sanderson"
+    },
+    {
+      "title": "The Nature of Oaks",
+      "author": "Douglas W. Tallamy"
+    },
+    {
+      "title": "The Gift of Good Land",
+      "author": "Wendell Berry"
+    },
+    {
+      "title": "The Unsettling of America",
+      "author": "Wendell Berry"
+    },
+    {
+      "title": "A Walk in the Woods",
+      "author": "Bill Bryson"
+    },
+    {
+      "title": "The Anarchy",
+      "author": "William Dalrymple"
+    },
+    {
+      "title": "The Overstory",
+      "author": "Richard Powers"
+    },
+    {
+      "title": "The Jakarta Method",
+      "author": "Vincent Bevins"
+    },
+    {
+      "title": "Homo Deus",
+      "author": "Yuval Noah Harari"
+    },
+    {
+      "title": "The Outlaw Ocean",
+      "author": "Ian Urbina"
+    },
+    {
+      "title": "Aerotropolis",
+      "author": "John D. Kasarda & Greg Lindsay"
+    },
+    {
+      "title": "Why We're Polarized",
+      "author": "Ezra Klein"
+    },
+    {
+      "title": "The Soul of America",
+      "author": "Jon Meacham"
+    },
+    {
+      "title": "Sapiens",
+      "author": "Yuval Noah Harari"
+    },
+    {
+      "title": "Around The World in 80 Days",
+      "author": "Jules Verne"
+    },
+    {
+      "title": "The Body",
+      "author": "Bill Bryson"
+    },
+    {
+      "title": "American Nations",
+      "author": "Colin Woodard"
+    },
+    {
+      "title": "The Autobiography of Malcolm X",
+      "author": "Malcolm X & Alex Haley"
+    },
+    {
+      "title": "The Mixer",
+      "author": "Michael Cox"
+    },
+    {
+      "title": "AI Superpowers",
+      "author": "Kai-Fu Lee"
+    },
+    {
+      "title": "The Perfect Weapon",
+      "author": "David E. Sanger"
+    },
+    {
+      "title": "Prisoners of Geography",
+      "author": "Tim Marshall"
+    }
   ]
 }

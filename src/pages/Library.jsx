@@ -19,8 +19,8 @@ export const Library = ({ data }) => {
     ];
 
     // Calculate dynamic chunk size to evenly distribute books across shelves
-    // Aim for around 9-11 books per shelf for a balanced look
-    const targetPerShelf = 10;
+    // Aim for around 6-7 books per shelf since we are showing full front covers now
+    const targetPerShelf = 6;
     const numShelves = Math.ceil(books.length / targetPerShelf);
     const chunkSize = Math.ceil(books.length / numShelves);
 
@@ -48,36 +48,38 @@ export const Library = ({ data }) => {
                         display: 'flex',
                         flexWrap: 'wrap',
                         justifyContent: 'center',
-                        gap: '2px', // Books sitting tightly next to each other
+                        gap: '1.5rem', // Wider gap since these are front-facing covers on display
                         alignItems: 'flex-end', // Crucial: sit on the bottom string
                         borderBottom: '16px solid var(--text-primary)', // The thick shelf wood for this specific row
                         marginBottom: '4rem', // Space between vertical shelves
                         minHeight: '350px', // Enough space for the tallest book
                     }}>
                         {chunk.map((book, bookIndex) => {
+                            // Destructure the new object format
+                            const { title, author } = book;
+
                             // Calculate global index to keep deterministic sizing consistent
                             const index = (shelfIndex * chunkSize) + bookIndex;
-                            const charSum = book.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-                            const hashIndex = (book.length + charSum + index * 17) % colors.length;
+                            const charSum = title.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+                            const hashIndex = (title.length + charSum + index * 17) % colors.length;
 
                             const bgColor = colors[hashIndex];
                             const isDarkBg = bgColor === 'var(--br-green)' || bgColor === 'var(--terracotta)';
                             const textColor = isDarkBg ? 'var(--bg-color)' : 'var(--text-primary)';
 
-                            // Deterministic Height from 220px to 340px
-                            const heightValue = 220 + ((charSum * index) % 120);
-                            // Deterministic Width (thickness) from 35px to 55px
-                            const widthValue = 35 + ((book.length * 7) % 20);
+                            // Standard Book Proportions (approx 2:3 ratio) with slight deterministic variance
+                            const heightValue = 240 + ((charSum * index) % 40); // 240px to 280px tall
+                            const widthValue = heightValue * 0.65; // ~standard paperback ratio
 
-                            // Create safe filename for the scraped spine
-                            const safeName = book.replace(/ /g, "_").replace(/'/g, "").toLowerCase();
-                            const primarySrc = `${import.meta.env.BASE_URL}images/spines/${safeName}.jpg`;
+                            // Create safe filename for the scraped cover
+                            const safeName = title.replace(/ /g, "_").replace(/'/g, "").toLowerCase();
+                            const primarySrc = `${import.meta.env.BASE_URL}images/covers/${safeName}.jpg`;
                             const fallbackSrc = spineTextures[index % spineTextures.length];
 
                             return (
                                 <a
                                     key={index}
-                                    href={`https://www.goodreads.com/search?q=${encodeURIComponent(book)}`}
+                                    href={`https://www.goodreads.com/search?q=${encodeURIComponent(title + " " + author)}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     style={{ textDecoration: 'none', display: 'block', flexShrink: 0 }}
@@ -85,7 +87,7 @@ export const Library = ({ data }) => {
                                     <motion.div
                                         initial={{ opacity: 0, y: 50 }}
                                         whileInView={{ opacity: 1, y: 0 }}
-                                        whileHover={{ y: -10, cursor: 'none' }} // Pop up slightly like pulling it out of the shelf
+                                        whileHover={{ y: -10, scale: 1.02, cursor: 'none' }} // Pop up and slightly enlarge
                                         viewport={{ once: true, margin: "-20px" }}
                                         transition={{ type: "spring", stiffness: 300, damping: 20, delay: (index % 15) * 0.05 }}
                                         className="bento-card"
@@ -93,25 +95,28 @@ export const Library = ({ data }) => {
                                             backgroundColor: bgColor,
                                             height: `${heightValue}px`,
                                             width: `${widthValue}px`,
-                                            border: '2px solid var(--text-primary)',
-                                            borderBottom: 'none', // Let it sit perfectly flush on the shelf border
-                                            borderRadius: '4px 4px 0 0', // Rounded top spine
+                                            border: '1px solid rgba(0,0,0,0.2)',
+                                            borderBottom: 'none', // Sit flush
+                                            borderRadius: '2px 6px 6px 2px', // Mimic a book cover (spine on the left, pages on the right)
                                             display: 'flex',
+                                            flexDirection: 'column',
                                             alignItems: 'center',
                                             justifyContent: 'center',
                                             zIndex: 1,
-                                            boxShadow: 'inset -4px 0px 6px rgba(0,0,0,0.1)', // Gives the spine a slight 3D curve depth
+                                            boxShadow: 'inset 6px 0px 8px rgba(0,0,0,0.15), 2px 0 10px rgba(0,0,0,0.2)', // Spine hinge shadow + drop shadow
                                             margin: '0',
                                             position: 'relative',
-                                            overflow: 'hidden' // Keep text inside thickness bounds
+                                            overflow: 'hidden',
+                                            padding: '1rem',
+                                            textAlign: 'center'
                                         }}
                                     >
-                                        {/* Background Texture Art - Try specific scraped spine first */}
+                                        {/* Background Texture Art - Try specific scraped front cover first */}
                                         <img
                                             src={primarySrc}
-                                            alt=""
+                                            alt={`${title} Book Cover`}
                                             onError={(e) => {
-                                                // If specific spine 404s, swap to generic texture and apply blend filters
+                                                // If specific cover 404s, swap to generic texture and apply blend filters
                                                 e.target.src = fallbackSrc;
                                                 e.target.style.opacity = '0.9';
                                                 e.target.style.mixBlendMode = 'multiply';
@@ -125,28 +130,34 @@ export const Library = ({ data }) => {
                                                 width: '100%',
                                                 height: '100%',
                                                 objectFit: 'cover',
-                                                opacity: 1, // Real covers should be fully opaque
-                                                mixBlendMode: 'normal', // Real covers have their own colors
-                                                filter: 'none'
+                                                opacity: 1,
+                                                mixBlendMode: 'normal',
+                                                filter: 'none',
+                                                zIndex: 0
                                             }}
                                         />
 
-                                        {/* Text Label Overlay */}
-                                        <span className="serif-text" style={{
-                                            color: 'white', // Force white text for readability over dense cover art
-                                            textShadow: '0px 2px 4px rgba(0,0,0,0.8), 0px 0px 10px rgba(0,0,0,0.5)', // Heavy shadow to pop off background art
-                                            fontSize: '0.9rem',
-                                            fontWeight: 'bold',
-                                            whiteSpace: 'nowrap',
-                                            writingMode: 'vertical-rl', // Read top to bottom
-                                            textOrientation: 'mixed',
-                                            transform: 'rotate(180deg)', // Ensure it reads top-down correctly
-                                            zIndex: 2,
-                                            position: 'relative',
-                                            padding: '1rem 0'
-                                        }}>
-                                            {book}
-                                        </span>
+                                        {/* Text Label Overlay (Only visible if image fails or blends) */}
+                                        <div style={{ zIndex: 2, position: 'relative', pointerEvents: 'none' }}>
+                                            <h3 className="serif-text" style={{
+                                                color: 'white',
+                                                textShadow: '0px 2px 4px rgba(0,0,0,0.8), 0px 0px 10px rgba(0,0,0,0.5)',
+                                                fontSize: '1.2rem',
+                                                fontWeight: 'bold',
+                                                marginBottom: '0.5rem',
+                                                lineHeight: 1.1
+                                            }}>
+                                                {title}
+                                            </h3>
+                                            <p style={{
+                                                color: 'rgba(255,255,255,0.9)',
+                                                textShadow: '0px 1px 3px rgba(0,0,0,0.8)',
+                                                fontSize: '0.8rem',
+                                                fontWeight: 500
+                                            }}>
+                                                {author}
+                                            </p>
+                                        </div>
                                     </motion.div>
                                 </a>
                             );
