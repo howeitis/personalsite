@@ -18,9 +18,12 @@ export const Library = ({ data }) => {
         `${import.meta.env.BASE_URL}images/spine_3.png`
     ];
 
-    // Chunk the books array into rows to simulate distinct physical shelves
-    // 10-12 books per shelf usually looks good on desktop
-    const chunkSize = 12;
+    // Calculate dynamic chunk size to evenly distribute books across shelves
+    // Aim for around 9-11 books per shelf for a balanced look
+    const targetPerShelf = 10;
+    const numShelves = Math.ceil(books.length / targetPerShelf);
+    const chunkSize = Math.ceil(books.length / numShelves);
+
     const shelfChunks = [];
     for (let i = 0; i < books.length; i += chunkSize) {
         shelfChunks.push(books.slice(i, i + chunkSize));
@@ -66,6 +69,11 @@ export const Library = ({ data }) => {
                             // Deterministic Width (thickness) from 35px to 55px
                             const widthValue = 35 + ((book.length * 7) % 20);
 
+                            // Create safe filename for the scraped spine
+                            const safeName = book.replace(/ /g, "_").replace(/'/g, "").toLowerCase();
+                            const primarySrc = `${import.meta.env.BASE_URL}images/spines/${safeName}.jpg`;
+                            const fallbackSrc = spineTextures[index % spineTextures.length];
+
                             return (
                                 <a
                                     key={index}
@@ -98,11 +106,18 @@ export const Library = ({ data }) => {
                                             overflow: 'hidden' // Keep text inside thickness bounds
                                         }}
                                     >
-                                        {/* Background Texture Art */}
+                                        {/* Background Texture Art - Try specific scraped spine first */}
                                         <img
-                                            src={spineTextures[index % spineTextures.length]}
+                                            src={primarySrc}
                                             alt=""
-                                            onError={(e) => { e.target.style.display = 'none'; }} // Hide broken images, letting background color show
+                                            onError={(e) => {
+                                                // If specific spine 404s, swap to generic texture and apply blend filters
+                                                e.target.src = fallbackSrc;
+                                                e.target.style.opacity = '0.9';
+                                                e.target.style.mixBlendMode = 'multiply';
+                                                e.target.style.filter = 'grayscale(20%) contrast(150%) brightness(0.9)';
+                                                e.target.onerror = (e2) => { e2.target.style.display = 'none'; };
+                                            }}
                                             style={{
                                                 position: 'absolute',
                                                 top: 0,
@@ -110,9 +125,9 @@ export const Library = ({ data }) => {
                                                 width: '100%',
                                                 height: '100%',
                                                 objectFit: 'cover',
-                                                opacity: 0.9,
-                                                mixBlendMode: 'multiply', // Blend with the brand color underneath to tie the shelf together
-                                                filter: 'grayscale(20%) contrast(150%) brightness(0.9)' // Make the generic texture pop more
+                                                opacity: 1, // Real covers should be fully opaque
+                                                mixBlendMode: 'normal', // Real covers have their own colors
+                                                filter: 'none'
                                             }}
                                         />
 
