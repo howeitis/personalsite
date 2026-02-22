@@ -59,12 +59,9 @@ export const MoodBoard = () => {
                     style={{
                         y: y2,
                         position: 'absolute',
-                        top: isMobile ? '2%' : '5%',
-                        right: isMobile ? '-5%' : '0%',
-                        width: isMobile ? '65vw' : 'clamp(315px, 60vw, 525px)',
                         zIndex: 5
                     }}
-                    className="bento-card"
+                    className="bento-card mb-fashion"
                 >
                     <img
                         src="images/fashion.jpg"
@@ -80,12 +77,9 @@ export const MoodBoard = () => {
                     style={{
                         y: y1,
                         position: 'absolute',
-                        top: isMobile ? '18%' : '35%',
-                        left: isMobile ? '-8%' : '0%',
-                        width: isMobile ? '75vw' : 'clamp(360px, 75vw, 675px)',
                         zIndex: 2
                     }}
-                    className="bento-card"
+                    className="bento-card mb-flora"
                 >
                     <img
                         src="images/flora.jpg"
@@ -100,12 +94,9 @@ export const MoodBoard = () => {
                     style={{
                         y: y4,
                         position: 'absolute',
-                        top: isMobile ? '35%' : '50%',
-                        right: isMobile ? '-3%' : '5%',
-                        width: isMobile ? '70vw' : 'clamp(330px, 65vw, 600px)',
                         zIndex: 8
                     }}
-                    className="bento-card bg-terracotta"
+                    className="bento-card bg-terracotta mb-food"
                 >
                     <img
                         src="images/food.jpg"
@@ -121,12 +112,9 @@ export const MoodBoard = () => {
                     style={{
                         y: y3,
                         position: 'absolute',
-                        top: isMobile ? '55%' : '65%',
-                        left: isMobile ? '-3%' : '5%',
-                        width: isMobile ? '80vw' : 'clamp(380px, 80vw, 750px)',
                         zIndex: 7
                     }}
-                    className="bento-card"
+                    className="bento-card mb-cars"
                 >
                     <img
                         src="images/cars.jpg"

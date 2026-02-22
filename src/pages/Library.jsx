@@ -71,9 +71,8 @@ const ShelfView = ({ books }) => {
                             const index = (shelfIndex * booksPerShelf) + bookIndex;
                             const { bgColor, charSum } = getBookColor(title, index);
 
-                            const baseHeight = isMobile ? 180 : 240;
-                            const heightValue = baseHeight + ((charSum * index) % 30);
-                            const widthValue = isMobile ? mobileBookWidth : heightValue * 0.65;
+                            const heightValue = 240 + ((charSum * index) % 40);
+                            const widthValue = heightValue * 0.65;
 
                             const safeName = title.replace(/ /g, "_").replace(/'/g, "").toLowerCase();
                             const primarySrc = `${import.meta.env.BASE_URL}images/covers/${safeName}.jpg`;
@@ -96,8 +95,8 @@ const ShelfView = ({ books }) => {
                                         className="bento-card"
                                         style={{
                                             backgroundColor: bgColor,
-                                            height: `${heightValue}px`,
-                                            width: `${widthValue}px`,
+                                            height: `clamp(160px, 45vw, ${heightValue}px)`,
+                                            width: `clamp(104px, 29.25vw, ${widthValue}px)`,
                                             border: '1px solid rgba(0,0,0,0.15)',
                                             borderLeft: '4px solid rgba(255,255,255,0.2)',
                                             borderBottom: '1px solid rgba(0,0,0,0.2)',
