@@ -12,8 +12,19 @@ const useIsMobile = () => {
     return isMobile;
 };
 
+const useViewportWidth = () => {
+    const [width, setWidth] = useState(window.innerWidth);
+    useEffect(() => {
+        const handler = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handler);
+        return () => window.removeEventListener('resize', handler);
+    }, []);
+    return width;
+};
+
 const ShelfView = ({ books }) => {
     const isMobile = useIsMobile();
+    const viewportWidth = useViewportWidth();
 
     const spineTextures = [
         `${import.meta.env.BASE_URL}images/spine_1.png`,
@@ -21,13 +32,19 @@ const ShelfView = ({ books }) => {
         `${import.meta.env.BASE_URL}images/spine_3.png`
     ];
 
-    const targetPerShelf = isMobile ? 3 : 6;
-    const numShelves = Math.ceil(books.length / targetPerShelf);
-    const chunkSize = Math.ceil(books.length / numShelves);
+    // On mobile, calculate how many books actually fit on one shelf
+    // based on viewport width, book width, gaps, and padding
+    const mobileBookWidth = 130; // base width for mobile books
+    const mobileGap = 12;
+    const shelfPadding = isMobile ? 24 : 64; // padding on each side
+    const availableWidth = viewportWidth - shelfPadding;
+    const booksPerShelf = isMobile
+        ? Math.max(2, Math.floor((availableWidth + mobileGap) / (mobileBookWidth + mobileGap)))
+        : 6;
 
     const shelfChunks = [];
-    for (let i = 0; i < books.length; i += chunkSize) {
-        shelfChunks.push(books.slice(i, i + chunkSize));
+    for (let i = 0; i < books.length; i += booksPerShelf) {
+        shelfChunks.push(books.slice(i, i + booksPerShelf));
     }
 
     return (
@@ -36,14 +53,14 @@ const ShelfView = ({ books }) => {
                 <div key={shelfIndex} style={{
                     position: 'relative',
                     marginBottom: '8rem',
-                    padding: '0 2rem'
+                    padding: isMobile ? '0 0.75rem' : '0 2rem'
                 }}>
                     {/* The Books */}
                     <div style={{
                         display: 'flex',
-                        flexWrap: 'wrap',
+                        flexWrap: 'nowrap',
                         justifyContent: 'center',
-                        gap: isMobile ? '1rem' : '2rem',
+                        gap: isMobile ? `${mobileGap}px` : '2rem',
                         alignItems: 'flex-end',
                         position: 'relative',
                         zIndex: 10,
@@ -51,12 +68,12 @@ const ShelfView = ({ books }) => {
                     }}>
                         {chunk.map((book, bookIndex) => {
                             const { title, author } = book;
-                            const index = (shelfIndex * chunkSize) + bookIndex;
+                            const index = (shelfIndex * booksPerShelf) + bookIndex;
                             const { bgColor, charSum } = getBookColor(title, index);
 
-                            const baseHeight = isMobile ? 200 : 240;
-                            const heightValue = baseHeight + ((charSum * index) % 40);
-                            const widthValue = heightValue * 0.65;
+                            const baseHeight = isMobile ? 180 : 240;
+                            const heightValue = baseHeight + ((charSum * index) % 30);
+                            const widthValue = isMobile ? mobileBookWidth : heightValue * 0.65;
 
                             const safeName = title.replace(/ /g, "_").replace(/'/g, "").toLowerCase();
                             const primarySrc = `${import.meta.env.BASE_URL}images/covers/${safeName}.jpg`;
