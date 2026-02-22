@@ -54,7 +54,7 @@ export const Library = ({ data }) => {
                     The Library.
                 </h1>
                 <p style={{ color: 'rgba(230, 213, 184, 0.8)', fontSize: '1.25rem', maxWidth: '600px', margin: '0 auto', fontWeight: 500 }}>
-                    A collection of my recent reads, resting in the cigar room.
+                    Grab a book off my shelf.
                 </p>
             </div>
 
@@ -120,14 +120,14 @@ export const Library = ({ data }) => {
                                                 width: `${widthValue}px`,
                                                 border: '1px solid rgba(0,0,0,0.6)', // Darker border
                                                 borderLeft: '4px solid rgba(255,255,255,0.1)', // Highlight on the spine edge
-                                                borderBottom: 'none', // Sit flush
+                                                borderBottom: '2px solid rgba(0,0,0,0.8)', // Thick dark bottom to ground it
                                                 borderRadius: '2px 8px 8px 2px', // Mimic a book cover (spine on the left, pages on the right)
                                                 display: 'flex',
                                                 flexDirection: 'column',
                                                 alignItems: 'center',
                                                 justifyContent: 'center',
                                                 zIndex: 1,
-                                                boxShadow: 'inset 8px 0px 10px rgba(0,0,0,0.6), 10px 10px 20px rgba(0,0,0,0.8), -2px 0 10px rgba(0,0,0,0.5)', // Dramatic 3D lighting
+                                                boxShadow: 'inset 8px 0px 10px rgba(0,0,0,0.6), -5px 5px 15px rgba(0,0,0,0.7), 0px 25px 25px -10px rgba(0,0,0,0.95)', // Deep shadow casting down onto the shelf's receding plane
                                                 margin: '0',
                                                 position: 'relative',
                                                 overflow: 'hidden',
