@@ -72,9 +72,8 @@ export const Interests = ({ data }) => {
                                     marginBottom: '1rem'
                                 }}
                             />
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: textColor, padding: '0 0.5rem' }}>
+                            <div style={{ color: textColor, padding: '0 0.5rem' }}>
                                 <span className="serif-text" style={{ fontSize: '1.5rem', fontWeight: 'bold', color: textColor }}>{img.tag}</span>
-                                <span style={{ fontSize: '1.5rem', cursor: 'none' }}>↗</span>
                             </div>
                         </motion.div>
                     );

@@ -33,27 +33,24 @@ export const Library = ({ data }) => {
         <div style={{
             padding: '2rem 0',
             paddingBottom: '4rem',
-            background: `
-                radial-gradient(circle at center, rgba(44,30,22,0.85) 0%, rgba(5,5,5,0.98) 100%),
-                repeating-linear-gradient(to right, #180d08 0px, #180d08 120px, #080402 120px, #080402 126px)
-            `, // Dark, moody cigar room wallpaper with Victorian wood paneling
-            backgroundColor: '#0a0a0a',
+            background: 'linear-gradient(to bottom, #f2eadf 0%, #e0d0ba 100%)', // Warm, sunlit natural wall color
+            backgroundColor: '#f2eadf',
             minHeight: '100vh',
-            color: '#e6d5b8', // Vintage cream/gold text
+            color: '#4a3018', // Warm dark wood text
             overflowX: 'hidden' // Prevent any horizontal scroll from the wide shelf
         }}>
             {/* Page Header */}
             <div className="container" style={{ padding: '4rem 2rem', marginBottom: '4rem', textAlign: 'center' }}>
                 <h1 className="serif-text" style={{
                     fontSize: 'clamp(3rem, 8vw, 6rem)',
-                    color: '#e6d5b8', // Gold/cream accent
+                    color: '#4a3018', // Warm brown wood tone
                     marginBottom: '1rem',
                     lineHeight: 1,
-                    textShadow: '0px 4px 12px rgba(0,0,0,0.8)' // Moody text shadow
+                    textShadow: '0px 2px 4px rgba(0,0,0,0.1)' // Softer natural shadow
                 }}>
                     The Library.
                 </h1>
-                <p style={{ color: 'rgba(230, 213, 184, 0.8)', fontSize: '1.25rem', maxWidth: '600px', margin: '0 auto', fontWeight: 500 }}>
+                <p style={{ color: '#6e5033', fontSize: '1.25rem', maxWidth: '600px', margin: '0 auto', fontWeight: 500 }}>
                     Grab a book off my shelf.
                 </p>
             </div>
@@ -118,16 +115,16 @@ export const Library = ({ data }) => {
                                                 backgroundColor: bgColor,
                                                 height: `${heightValue}px`,
                                                 width: `${widthValue}px`,
-                                                border: '1px solid rgba(0,0,0,0.6)', // Darker border
-                                                borderLeft: '4px solid rgba(255,255,255,0.1)', // Highlight on the spine edge
-                                                borderBottom: '2px solid rgba(0,0,0,0.8)', // Thick dark bottom to ground it
+                                                border: '1px solid rgba(0,0,0,0.15)', // Lighter natural border
+                                                borderLeft: '4px solid rgba(255,255,255,0.2)', // Soft highlight on the spine edge
+                                                borderBottom: '1px solid rgba(0,0,0,0.2)', // Thin, realistic bottom
                                                 borderRadius: '2px 8px 8px 2px', // Mimic a book cover (spine on the left, pages on the right)
                                                 display: 'flex',
                                                 flexDirection: 'column',
                                                 alignItems: 'center',
                                                 justifyContent: 'center',
                                                 zIndex: 1,
-                                                boxShadow: 'inset 8px 0px 10px rgba(0,0,0,0.6), -5px 5px 15px rgba(0,0,0,0.7), 0px 25px 25px -10px rgba(0,0,0,0.95)', // Deep shadow casting down onto the shelf's receding plane
+                                                boxShadow: '0 4px 6px rgba(0,0,0,0.1), 0 10px 15px rgba(0,0,0,0.1)', // Soft, naturally-lit drop shadow
                                                 margin: '0',
                                                 position: 'relative',
                                                 overflow: 'hidden',
@@ -188,77 +185,37 @@ export const Library = ({ data }) => {
                             })}
                         </div>
 
-                        {/* The Physical 3D Wooden Shelf (Victorian Mansion Edition) */}
+                        {/* The Physical Wooden Shelf (Warm, Flat Built-In Style) */}
                         <div style={{
                             position: 'absolute',
-                            bottom: -20, // Sit slightly below the books so the receding top depth goes underneath them
-                            left: '-1rem', // Extend past the books a bit
-                            right: '-1rem',
+                            bottom: 0, // Sit exactly flush with the books
+                            left: '0', // Keep it clean and contained within the padding
+                            right: '0',
                             zIndex: 5,
                             display: 'flex',
                             flexDirection: 'column'
                         }}>
-                            {/* Top Receding Surface (The Depth) */}
+                            {/* The Flat Wooden Face (Solid Oak) */}
                             <div style={{
-                                height: '50px',
-                                background: 'linear-gradient(to bottom, #110804 0%, #3a1f0a 100%)',
-                                transformOrigin: 'bottom center', // Base the rotation on where it touches the fascia
-                                transform: 'perspective(600px) rotateX(60deg)', // Recedes strongly into the wallpaper
-                                borderBottom: '1px solid rgba(255,255,255,0.05)',
-                                marginBottom: '-15px', // Bridge the gap caused by the heavy rotation
-                                zIndex: 5
-                            }} />
-
-                            {/* The Ornate Fascia (Front Edge) */}
-                            <div style={{
-                                height: '35px',
-                                background: 'linear-gradient(to bottom, #5a3515 0%, #3a1f0a 40%, #1c0e04 100%)',
-                                borderTop: '2px solid rgba(255,255,255,0.15)', // Sharp light catching the edge
-                                borderBottom: '6px solid #080301', // Deep recessed shadow underneath the lip
-                                borderRadius: '3px',
-                                boxShadow: '0 30px 60px rgba(0,0,0,0.95), 0 15px 25px rgba(0,0,0,0.8)', // Massive shadow casting into the room
+                                height: '26px',
+                                background: '#c8874a', // Warm oak/caramel wood tone
+                                borderTop: '2px solid #eab281', // Sunlit top edge highlight
+                                borderBottom: '6px solid #8e5520', // Underside lip shadow
+                                borderRadius: '2px',
+                                boxShadow: '0 8px 16px rgba(0,0,0,0.15)', // Soft cast shadow down the wall
                                 zIndex: 6,
                                 position: 'relative'
                             }}>
-                                {/* Decorative Carved Molding Lines */}
+                                {/* Subtle Wood Grain Highlight */}
                                 <div style={{
                                     position: 'absolute',
-                                    top: '12px',
+                                    top: '8px',
                                     left: 0,
                                     right: 0,
-                                    height: '6px',
-                                    borderTop: '1px solid rgba(0,0,0,0.4)',
-                                    borderBottom: '1px solid rgba(255,255,255,0.08)'
+                                    height: '0px',
+                                    borderTop: '1px solid rgba(255,255,255,0.1)'
                                 }} />
                             </div>
-
-                            {/* Left Corbel (Carved Bracket) */}
-                            <div style={{
-                                position: 'absolute',
-                                top: '35px', // Immediately below fascia
-                                left: '8%',
-                                width: '35px',
-                                height: '65px',
-                                background: 'linear-gradient(to right, #110804 0%, #3a1f0a 60%, #110804 100%)',
-                                borderRadius: '0 0 20px 20px',
-                                borderLeft: '1px solid rgba(255,255,255,0.05)',
-                                boxShadow: 'inset -2px 0 8px rgba(0,0,0,0.6), 15px 20px 30px rgba(0,0,0,0.8)',
-                                zIndex: 4
-                            }} />
-
-                            {/* Right Corbel (Carved Bracket) */}
-                            <div style={{
-                                position: 'absolute',
-                                top: '35px',
-                                right: '8%',
-                                width: '35px',
-                                height: '65px',
-                                background: 'linear-gradient(to right, #110804 0%, #3a1f0a 40%, #110804 100%)',
-                                borderRadius: '0 0 20px 20px',
-                                borderRight: '1px solid rgba(255,255,255,0.05)',
-                                boxShadow: 'inset 2px 0 8px rgba(0,0,0,0.6), -15px 20px 30px rgba(0,0,0,0.8)',
-                                zIndex: 4
-                            }} />
                         </div>
                     </div>
                 ))}
