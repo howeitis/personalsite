@@ -30,13 +30,49 @@
 }
 
 body {
-  /* Switching to Space Grotesk for a slightly retro/playful modern feel */
   font-family: 'Space Grotesk', -apple-system, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
   cursor: none;
+}
+
+/* Restore native cursor on touch devices and for users who prefer reduced motion */
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  body {
+    cursor: auto;
+  }
+  .cursor-dot,
+  .cursor-outline {
+    display: none !important;
+  }
+}
+
+/* Skip to main content link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--terracotta);
+  color: white;
+  font-weight: 600;
+  border-radius: var(--border-radius-pill);
+  z-index: 200;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Visible focus indicators for keyboard navigation */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--terracotta);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* Serif font for stylish headers that breaks the "corporate" mold */

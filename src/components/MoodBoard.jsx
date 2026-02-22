@@ -57,6 +57,7 @@ export const MoodBoard = () => {
                     <img
                         src="images/fashion.jpg"
                         alt="Fashion and Music"
+                        loading="lazy"
                         style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block' }}
                     />
                     <span className="pill-tag bg-sky" style={{ position: 'absolute', bottom: '-15px', right: '-15px', zIndex: 10, zoom: 0.8 }}>Fashion & Music</span>
@@ -77,6 +78,7 @@ export const MoodBoard = () => {
                     <img
                         src="images/flora.jpg"
                         alt="Anime bike in forest"
+                        loading="lazy"
                         style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block' }}
                     />
                 </motion.div>
@@ -96,6 +98,7 @@ export const MoodBoard = () => {
                     <img
                         src="images/food.jpg"
                         alt="Korean Stew"
+                        loading="lazy"
                         style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block', transform: 'rotate(-3deg)' }}
                     />
                     <span className="pill-tag bg-mustard" style={{ position: 'absolute', top: '-15px', left: '-15px', zIndex: 10, zoom: 0.8 }}>Food</span>
@@ -116,6 +119,7 @@ export const MoodBoard = () => {
                     <img
                         src="images/cars.jpg"
                         alt="Vintage Porsche"
+                        loading="lazy"
                         style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block' }}
                     />
                     <span className="pill-tag bg-br-green" style={{ color: 'white', position: 'absolute', right: '10px', bottom: '-15px', zIndex: 10, zoom: 0.8 }}>Tech & Machinery</span>
