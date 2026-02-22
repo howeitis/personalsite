@@ -33,7 +33,7 @@ export const Home = ({ data }) => {
 
             <div className="bento-card" style={{
                 maxWidth: '600px',
-                margin: '4rem auto 0 auto',
+                margin: '4rem auto 0 calc(50% - 200px)',
                 textAlign: 'center',
                 padding: '2rem',
                 backgroundImage: 'linear-gradient(rgba(17, 75, 47, 0.85), rgba(17, 75, 47, 0.95)), url("images/sycamore_bg.jpg")',
