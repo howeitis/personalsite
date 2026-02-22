@@ -1,8 +1,19 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+
+const useIsMobile = () => {
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    useEffect(() => {
+        const handler = () => setIsMobile(window.innerWidth <= 768);
+        window.addEventListener('resize', handler);
+        return () => window.removeEventListener('resize', handler);
+    }, []);
+    return isMobile;
+};
 
 export const MoodBoard = () => {
     const containerRef = useRef(null);
+    const isMobile = useIsMobile();
 
     // Parallax scroll logic
     const { scrollYProgress } = useScroll({
@@ -23,11 +34,12 @@ export const MoodBoard = () => {
             ref={containerRef}
             style={{
                 position: 'relative',
-                height: 'clamp(600px, 90vh, 1000px)', // Slightly taller to fit larger images 
+                height: isMobile ? 'clamp(750px, 120vh, 1100px)' : 'clamp(600px, 90vh, 1000px)',
                 width: '100%',
                 margin: '-4rem 0 4rem 0', // Tucks under hero, pushes Sycamore down
                 borderTop: '1px solid var(--text-primary)',
                 backgroundColor: 'var(--bg-color)',
+                overflow: 'hidden',
                 zIndex: 1 // Ensure it stays behind HeroBento
             }}
         >
