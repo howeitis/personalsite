@@ -30,138 +30,173 @@ export const Library = ({ data }) => {
     }
 
     return (
-        <div style={{ padding: '2rem 0', paddingBottom: '2rem' }}>
+        <div style={{
+            padding: '2rem 0',
+            paddingBottom: '4rem',
+            background: 'radial-gradient(circle at center, #2c1e16 0%, #0a0a0a 100%)', // Dark, moody cigar room wallpaper
+            minHeight: '100vh',
+            color: '#e6d5b8' // Vintage cream/gold text
+        }}>
             {/* Page Header */}
-            <div className="bento-card" style={{ padding: '4rem', backgroundColor: 'var(--bg-color)', borderBottom: '1px solid var(--text-primary)', marginBottom: '4rem' }}>
-                <h1 className="serif-text" style={{ fontSize: 'clamp(3rem, 6vw, 5rem)', color: 'var(--text-primary)', marginBottom: '1rem', lineHeight: 1 }}>
-                    The Shelf.
+            <div className="container" style={{ padding: '4rem 2rem', marginBottom: '4rem', textAlign: 'center' }}>
+                <h1 className="serif-text" style={{
+                    fontSize: 'clamp(3rem, 8vw, 6rem)',
+                    color: '#e6d5b8', // Gold/cream accent
+                    marginBottom: '1rem',
+                    lineHeight: 1,
+                    textShadow: '0px 4px 12px rgba(0,0,0,0.8)' // Moody text shadow
+                }}>
+                    The Library.
                 </h1>
-                <p style={{ color: 'var(--text-primary)', fontSize: '1.25rem', maxWidth: '600px', fontWeight: 500 }}>
-                    A collection of my recent reads. Rendered as physical spines on a shelf.
+                <p style={{ color: 'rgba(230, 213, 184, 0.8)', fontSize: '1.25rem', maxWidth: '600px', margin: '0 auto', fontWeight: 500 }}>
+                    A collection of my recent reads, resting in the cigar room.
                 </p>
             </div>
 
             {/* Bookshelves Container */}
-            <div style={{ padding: '0 2rem' }}>
+            <div style={{ padding: '0 2vw' }}>
                 {shelfChunks.map((chunk, shelfIndex) => (
                     <div key={shelfIndex} style={{
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        justifyContent: 'center',
-                        gap: '1.5rem', // Wider gap since these are front-facing covers on display
-                        alignItems: 'flex-end', // Crucial: sit on the bottom string
-                        borderBottom: '16px solid var(--text-primary)', // The thick shelf wood for this specific row
-                        marginBottom: '4rem', // Space between vertical shelves
-                        minHeight: '350px', // Enough space for the tallest book
+                        position: 'relative',
+                        marginBottom: '6rem', // Space between physical shelves
+                        padding: '0 2rem'
                     }}>
-                        {chunk.map((book, bookIndex) => {
-                            // Destructure the new object format
-                            const { title, author } = book;
+                        {/* The Books (Sitting on the shelf) */}
+                        <div style={{
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            justifyContent: 'center',
+                            gap: '2rem', // Wider gap since these are front-facing covers on display
+                            alignItems: 'flex-end', // Crucial: sit perfectly on the bottom shelf
+                            position: 'relative',
+                            zIndex: 10,
+                            paddingBottom: '2px' // Sit flush with the shelf lip
+                        }}>
+                            {chunk.map((book, bookIndex) => {
+                                // Destructure the new object format
+                                const { title, author } = book;
 
-                            // Calculate global index to keep deterministic sizing consistent
-                            const index = (shelfIndex * chunkSize) + bookIndex;
-                            const charSum = title.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-                            const hashIndex = (title.length + charSum + index * 17) % colors.length;
+                                // Calculate global index to keep deterministic sizing consistent
+                                const index = (shelfIndex * chunkSize) + bookIndex;
+                                const charSum = title.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+                                const hashIndex = (title.length + charSum + index * 17) % colors.length;
 
-                            const bgColor = colors[hashIndex];
-                            const isDarkBg = bgColor === 'var(--br-green)' || bgColor === 'var(--terracotta)';
-                            const textColor = isDarkBg ? 'var(--bg-color)' : 'var(--text-primary)';
+                                const bgColor = colors[hashIndex];
+                                const isDarkBg = bgColor === 'var(--br-green)' || bgColor === 'var(--terracotta)';
+                                const textColor = isDarkBg ? 'var(--bg-color)' : 'var(--text-primary)';
 
-                            // Standard Book Proportions (approx 2:3 ratio) with slight deterministic variance
-                            const heightValue = 240 + ((charSum * index) % 40); // 240px to 280px tall
-                            const widthValue = heightValue * 0.65; // ~standard paperback ratio
+                                // Standard Book Proportions (approx 2:3 ratio) with slight deterministic variance
+                                const heightValue = 240 + ((charSum * index) % 40); // 240px to 280px tall
+                                const widthValue = heightValue * 0.65; // ~standard paperback ratio
 
-                            // Create safe filename for the scraped cover
-                            const safeName = title.replace(/ /g, "_").replace(/'/g, "").toLowerCase();
-                            const primarySrc = `${import.meta.env.BASE_URL}images/covers/${safeName}.jpg`;
-                            const fallbackSrc = spineTextures[index % spineTextures.length];
+                                // Create safe filename for the scraped cover
+                                const safeName = title.replace(/ /g, "_").replace(/'/g, "").toLowerCase();
+                                const primarySrc = `${import.meta.env.BASE_URL}images/covers/${safeName}.jpg`;
+                                const fallbackSrc = spineTextures[index % spineTextures.length];
 
-                            return (
-                                <a
-                                    key={index}
-                                    href={`https://www.goodreads.com/search?q=${encodeURIComponent(title + " " + author)}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    style={{ textDecoration: 'none', display: 'block', flexShrink: 0 }}
-                                >
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 50 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        whileHover={{ y: -10, scale: 1.02, cursor: 'none' }} // Pop up and slightly enlarge
-                                        viewport={{ once: true, margin: "-20px" }}
-                                        transition={{ type: "spring", stiffness: 300, damping: 20, delay: (index % 15) * 0.05 }}
-                                        className="bento-card"
-                                        style={{
-                                            backgroundColor: bgColor,
-                                            height: `${heightValue}px`,
-                                            width: `${widthValue}px`,
-                                            border: '1px solid rgba(0,0,0,0.2)',
-                                            borderBottom: 'none', // Sit flush
-                                            borderRadius: '2px 6px 6px 2px', // Mimic a book cover (spine on the left, pages on the right)
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            zIndex: 1,
-                                            boxShadow: 'inset 6px 0px 8px rgba(0,0,0,0.15), 2px 0 10px rgba(0,0,0,0.2)', // Spine hinge shadow + drop shadow
-                                            margin: '0',
-                                            position: 'relative',
-                                            overflow: 'hidden',
-                                            padding: '1rem',
-                                            textAlign: 'center'
-                                        }}
+                                return (
+                                    <a
+                                        key={index}
+                                        href={`https://www.goodreads.com/search?q=${encodeURIComponent(title + " " + author)}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{ textDecoration: 'none', display: 'block', flexShrink: 0 }}
                                     >
-                                        {/* Background Texture Art - Try specific scraped front cover first */}
-                                        <img
-                                            src={primarySrc}
-                                            alt={`${title} Book Cover`}
-                                            onError={(e) => {
-                                                // If specific cover 404s, swap to generic texture and apply blend filters
-                                                e.target.src = fallbackSrc;
-                                                e.target.style.opacity = '0.9';
-                                                e.target.style.mixBlendMode = 'multiply';
-                                                e.target.style.filter = 'grayscale(20%) contrast(150%) brightness(0.9)';
-                                                e.target.onerror = (e2) => { e2.target.style.display = 'none'; };
-                                            }}
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 50 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            whileHover={{ y: -10, scale: 1.02, cursor: 'none' }} // Pop up and slightly enlarge
+                                            viewport={{ once: true, margin: "-20px" }}
+                                            transition={{ type: "spring", stiffness: 300, damping: 20, delay: (index % 15) * 0.05 }}
+                                            className="bento-card"
                                             style={{
-                                                position: 'absolute',
-                                                top: 0,
-                                                left: 0,
-                                                width: '100%',
-                                                height: '100%',
-                                                objectFit: 'cover',
-                                                opacity: 1,
-                                                mixBlendMode: 'normal',
-                                                filter: 'none',
-                                                zIndex: 0
+                                                backgroundColor: bgColor,
+                                                height: `${heightValue}px`,
+                                                width: `${widthValue}px`,
+                                                border: '1px solid rgba(0,0,0,0.6)', // Darker border
+                                                borderLeft: '4px solid rgba(255,255,255,0.1)', // Highlight on the spine edge
+                                                borderBottom: 'none', // Sit flush
+                                                borderRadius: '2px 8px 8px 2px', // Mimic a book cover (spine on the left, pages on the right)
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                zIndex: 1,
+                                                boxShadow: 'inset 8px 0px 10px rgba(0,0,0,0.6), 10px 10px 20px rgba(0,0,0,0.8), -2px 0 10px rgba(0,0,0,0.5)', // Dramatic 3D lighting
+                                                margin: '0',
+                                                position: 'relative',
+                                                overflow: 'hidden',
+                                                padding: '1rem',
+                                                textAlign: 'center'
                                             }}
-                                        />
+                                        >
+                                            {/* Background Texture Art - Try specific scraped front cover first */}
+                                            <img
+                                                src={primarySrc}
+                                                alt={`${title} Book Cover`}
+                                                onError={(e) => {
+                                                    // If specific cover 404s, swap to generic texture and apply blend filters
+                                                    e.target.src = fallbackSrc;
+                                                    e.target.style.opacity = '0.9';
+                                                    e.target.style.mixBlendMode = 'multiply';
+                                                    e.target.style.filter = 'grayscale(20%) contrast(150%) brightness(0.9)';
+                                                    e.target.onerror = (e2) => { e2.target.style.display = 'none'; };
+                                                }}
+                                                style={{
+                                                    position: 'absolute',
+                                                    top: 0,
+                                                    left: 0,
+                                                    width: '100%',
+                                                    height: '100%',
+                                                    objectFit: 'cover',
+                                                    opacity: 1,
+                                                    mixBlendMode: 'normal',
+                                                    filter: 'none',
+                                                    zIndex: 0
+                                                }}
+                                            />
 
-                                        {/* Text Label Overlay (Only visible if image fails or blends) */}
-                                        <div style={{ zIndex: 2, position: 'relative', pointerEvents: 'none' }}>
-                                            <h3 className="serif-text" style={{
-                                                color: 'white',
-                                                textShadow: '0px 2px 4px rgba(0,0,0,0.8), 0px 0px 10px rgba(0,0,0,0.5)',
-                                                fontSize: '1.2rem',
-                                                fontWeight: 'bold',
-                                                marginBottom: '0.5rem',
-                                                lineHeight: 1.1
-                                            }}>
-                                                {title}
-                                            </h3>
-                                            <p style={{
-                                                color: 'rgba(255,255,255,0.9)',
-                                                textShadow: '0px 1px 3px rgba(0,0,0,0.8)',
-                                                fontSize: '0.8rem',
-                                                fontWeight: 500
-                                            }}>
-                                                {author}
-                                            </p>
-                                        </div>
-                                    </motion.div>
-                                </a>
-                            );
-                        })}
+                                            {/* Text Label Overlay (Only visible if image fails or blends) */}
+                                            <div style={{ zIndex: 2, position: 'relative', pointerEvents: 'none' }}>
+                                                <h3 className="serif-text" style={{
+                                                    color: 'white',
+                                                    textShadow: '0px 2px 4px rgba(0,0,0,0.8), 0px 0px 10px rgba(0,0,0,0.5)',
+                                                    fontSize: '1.2rem',
+                                                    fontWeight: 'bold',
+                                                    marginBottom: '0.5rem',
+                                                    lineHeight: 1.1
+                                                }}>
+                                                    {title}
+                                                </h3>
+                                                <p style={{
+                                                    color: 'rgba(255,255,255,0.9)',
+                                                    textShadow: '0px 1px 3px rgba(0,0,0,0.8)',
+                                                    fontSize: '0.8rem',
+                                                    fontWeight: 500
+                                                }}>
+                                                    {author}
+                                                </p>
+                                            </div>
+                                        </motion.div>
+                                    </a>
+                                );
+                            })}
+                        </div>
+
+                        {/* The Physical 3D Wooden Shelf */}
+                        <div style={{
+                            position: 'absolute',
+                            bottom: 0,
+                            left: 0,
+                            right: 0,
+                            height: '24px', // Thickness of the wood
+                            background: 'linear-gradient(to bottom, #4a2c11 0%, #2a1607 100%)', // Mahogany wood
+                            borderTop: '2px solid rgba(255,255,255,0.1)', // Light catching the top edge
+                            borderBottom: '4px solid #140a03', // Deep shadow underneath
+                            borderRadius: '4px',
+                            boxShadow: '0 20px 40px rgba(0,0,0,0.9), 0 10px 20px rgba(0,0,0,0.6)', // Massive drop shadow onto the wallpaper
+                            zIndex: 5
+                        }} />
                     </div>
                 ))}
             </div>
