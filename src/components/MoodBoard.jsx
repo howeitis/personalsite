@@ -21,22 +21,21 @@ export const MoodBoard = () => {
         offset: ["start end", "end start"]
     });
 
-    // We keep parallax shifts relatively small so things don't fly off the screen
-    // on mobile, making the floating layout tight and cohesive.
-    const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-    const y2 = useTransform(scrollYProgress, [0, 1], [50, -150]);
-    const y3 = useTransform(scrollYProgress, [0, 1], [-25, 100]);
-    const y4 = useTransform(scrollYProgress, [0, 1], [0, -150]);
-    const yTxt = useTransform(scrollYProgress, [0, 1], [100, -50]);
+    // Tighter parallax on mobile so cards stay overlapping and dense
+    const y1 = useTransform(scrollYProgress, [0, 1], isMobile ? [0, -40] : [0, -100]);
+    const y2 = useTransform(scrollYProgress, [0, 1], isMobile ? [20, -60] : [50, -150]);
+    const y3 = useTransform(scrollYProgress, [0, 1], isMobile ? [-10, 30] : [-25, 100]);
+    const y4 = useTransform(scrollYProgress, [0, 1], isMobile ? [0, -50] : [0, -150]);
+    const yTxt = useTransform(scrollYProgress, [0, 1], isMobile ? [40, -20] : [100, -50]);
 
     return (
         <div
             ref={containerRef}
             style={{
                 position: 'relative',
-                height: isMobile ? 'clamp(650px, 100vh, 900px)' : 'clamp(600px, 90vh, 1000px)',
+                height: isMobile ? 'clamp(500px, 75vh, 650px)' : 'clamp(600px, 90vh, 1000px)',
                 width: '100%',
-                margin: '-4rem 0 4rem 0', // Tucks under hero, pushes Sycamore down
+                margin: isMobile ? '-4rem 0 1rem 0' : '-4rem 0 4rem 0',
                 borderTop: '1px solid var(--text-primary)',
                 backgroundColor: 'var(--bg-color)',
                 overflow: isMobile ? 'hidden' : 'visible',

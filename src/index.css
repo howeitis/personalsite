@@ -263,28 +263,28 @@ a {
     border-width: 2px !important;
   }
 
-  /* MoodBoard mobile overlap — tighter positions + smaller widths for collage feel */
+  /* MoodBoard mobile overlap — compressed stack with generous overlap */
   .mb-fashion {
-    top: 2% !important;
+    top: 0% !important;
     right: -5% !important;
     width: 65vw !important;
   }
 
   .mb-flora {
-    top: 15% !important;
+    top: 12% !important;
     left: -8% !important;
-    width: 75vw !important;
+    width: 72vw !important;
   }
 
   .mb-food {
-    top: 30% !important;
+    top: 28% !important;
     right: -3% !important;
-    width: 70vw !important;
+    width: 68vw !important;
   }
 
   .mb-cars {
-    top: 48% !important;
+    top: 42% !important;
     left: -3% !important;
-    width: 80vw !important;
+    width: 75vw !important;
   }
 }
