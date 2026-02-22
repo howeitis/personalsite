@@ -39,10 +39,12 @@ body {
 }
 
 /* Restore native cursor on touch devices and for users who prefer reduced motion */
-@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+@media (pointer: coarse),
+(prefers-reduced-motion: reduce) {
   body {
     cursor: auto;
   }
+
   .cursor-dot,
   .cursor-outline {
     display: none !important;
@@ -182,6 +184,31 @@ a {
   display: none !important;
 }
 
+/* MoodBoard Baseline (Desktop) Positional Classes */
+.mb-fashion {
+  top: 5%;
+  right: 0%;
+  width: clamp(315px, 60vw, 525px);
+}
+
+.mb-flora {
+  top: 35%;
+  left: 0%;
+  width: clamp(360px, 75vw, 675px);
+}
+
+.mb-food {
+  top: 50%;
+  right: 5%;
+  width: clamp(330px, 65vw, 600px);
+}
+
+.mb-cars {
+  top: 65%;
+  left: 5%;
+  width: clamp(380px, 80vw, 750px);
+}
+
 /* ----------------------------- */
 /* Mobile Responsiveness Overrides */
 /* ----------------------------- */
@@ -207,7 +234,7 @@ a {
   }
 
   /* Explicitly override Javascript/Inline Grid spans — scoped to grid children only */
-  .bento-grid > .bento-card {
+  .bento-grid>.bento-card {
     width: 100% !important;
     grid-column: span 12 !important;
     padding: 1.5rem !important;
@@ -223,5 +250,30 @@ a {
   h1,
   .serif-text {
     font-size: clamp(2.5rem, 10vw, 4rem) !important;
+  }
+
+  /* MoodBoard specific mobile overlap overrides */
+  .mb-fashion {
+    top: 5% !important;
+    right: 0% !important;
+    width: 85vw !important;
+  }
+
+  .mb-flora {
+    top: 25% !important;
+    left: -5% !important;
+    width: 90vw !important;
+  }
+
+  .mb-food {
+    top: 45% !important;
+    right: -5% !important;
+    width: 85vw !important;
+  }
+
+  .mb-cars {
+    top: 65% !important;
+    left: 0% !important;
+    width: 95vw !important;
   }
 }

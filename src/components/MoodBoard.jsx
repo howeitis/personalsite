@@ -47,12 +47,9 @@ export const MoodBoard = () => {
                     style={{
                         y: y2,
                         position: 'absolute',
-                        top: '5%',
-                        right: '0%', // Push to edge
-                        width: 'clamp(315px, 60vw, 525px)', // Doubled minimums
                         zIndex: 5
                     }}
-                    className="bento-card"
+                    className="bento-card mb-fashion"
                 >
                     <img
                         src="images/fashion.jpg"
@@ -68,12 +65,9 @@ export const MoodBoard = () => {
                     style={{
                         y: y1,
                         position: 'absolute',
-                        top: '35%', // Pulled up
-                        left: '0%', // Push to edge
-                        width: 'clamp(360px, 75vw, 675px)',
                         zIndex: 2
                     }}
-                    className="bento-card"
+                    className="bento-card mb-flora"
                 >
                     <img
                         src="images/flora.jpg"
@@ -88,12 +82,9 @@ export const MoodBoard = () => {
                     style={{
                         y: y4,
                         position: 'absolute',
-                        top: '50%', // Pulled up aggressively to overlap Flora
-                        right: '5%',
-                        width: 'clamp(330px, 65vw, 600px)',
                         zIndex: 8
                     }}
-                    className="bento-card bg-terracotta"
+                    className="bento-card bg-terracotta mb-food"
                 >
                     <img
                         src="images/food.jpg"
@@ -109,12 +100,9 @@ export const MoodBoard = () => {
                     style={{
                         y: y3,
                         position: 'absolute',
-                        top: '65%', // Pulled way up
-                        left: '5%', // Pulled closer to the edge given massive width
-                        width: 'clamp(380px, 80vw, 750px)',
                         zIndex: 7
                     }}
-                    className="bento-card"
+                    className="bento-card mb-cars"
                 >
                     <img
                         src="images/cars.jpg"
