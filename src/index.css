@@ -206,11 +206,17 @@ a {
     gap: 1.5rem;
   }
 
-  /* Explicitly override Javascript/Inline Grid spans */
-  .bento-card {
+  /* Explicitly override Javascript/Inline Grid spans — scoped to grid children only */
+  .bento-grid > .bento-card {
     width: 100% !important;
     grid-column: span 12 !important;
     padding: 1.5rem !important;
+  }
+
+  /* Prevent the home Sycamore card from getting overblown */
+  .sycamore-home-card {
+    width: auto !important;
+    padding: 1.25rem 1rem !important;
   }
 
   /* Shrink giant editorial headers slightly */
