@@ -79,7 +79,7 @@ export const Library = ({ data }) => {
                             flexWrap: 'wrap',
                             justifyContent: 'center',
                             gap: '2rem', // Wider gap since these are front-facing covers on display
-                            alignItems: 'center', // Center them so they sit on top of the 16px bottom padding
+                            alignItems: 'flex-end', // Ensure all books, regardless of height, rest on the bottom padding
                             position: 'relative',
                             zIndex: 10,
                             paddingBottom: '16px' // Push books up so they sit on the shelf's top surface plane
