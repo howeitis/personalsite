@@ -52,7 +52,7 @@ const ShelfView = ({ books }) => {
             {shelfChunks.map((chunk, shelfIndex) => (
                 <div key={shelfIndex} style={{
                     position: 'relative',
-                    marginBottom: '8rem',
+                    marginBottom: isMobile ? '4rem' : '8rem',
                     padding: isMobile ? '0 0.5rem' : '0 2rem'
                 }}>
                     {/* The Books */}

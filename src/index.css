@@ -252,6 +252,17 @@ a {
     font-size: clamp(2.5rem, 10vw, 4rem) !important;
   }
 
+  /* MoodBoard mobile — strip bento-card bulk so images dominate the collage */
+  .mb-fashion,
+  .mb-flora,
+  .mb-food,
+  .mb-cars {
+    padding: 0 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    border-width: 2px !important;
+  }
+
   /* MoodBoard mobile overlap — tighter positions + smaller widths for collage feel */
   .mb-fashion {
     top: 2% !important;
@@ -260,19 +271,19 @@ a {
   }
 
   .mb-flora {
-    top: 18% !important;
+    top: 15% !important;
     left: -8% !important;
     width: 75vw !important;
   }
 
   .mb-food {
-    top: 35% !important;
+    top: 30% !important;
     right: -3% !important;
     width: 70vw !important;
   }
 
   .mb-cars {
-    top: 55% !important;
+    top: 48% !important;
     left: -3% !important;
     width: 80vw !important;
   }
