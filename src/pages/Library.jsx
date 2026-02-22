@@ -36,7 +36,7 @@ const ShelfView = ({ books }) => {
     // based on viewport width, book width, gaps, and padding
     const mobileBookWidth = 130; // base width for mobile books
     const mobileGap = 12;
-    const shelfPadding = isMobile ? 16 : 64; // total horizontal padding (both sides)
+    const shelfPadding = isMobile ? 0 : 64; // total horizontal padding (both sides)
     const availableWidth = viewportWidth - shelfPadding;
     const booksPerShelf = isMobile
         ? Math.max(2, Math.floor((availableWidth + mobileGap) / (mobileBookWidth + mobileGap)))
@@ -53,14 +53,14 @@ const ShelfView = ({ books }) => {
                 <div key={shelfIndex} style={{
                     position: 'relative',
                     marginBottom: isMobile ? '2rem' : '8rem',
-                    padding: isMobile ? '0 0.5rem' : '0 2rem'
+                    padding: isMobile ? '0' : '0 2rem'
                 }}>
                     {/* The Books */}
                     <div style={{
                         display: 'flex',
                         flexWrap: 'nowrap',
-                        justifyContent: 'center',
-                        gap: isMobile ? `${mobileGap}px` : '2rem',
+                        justifyContent: isMobile ? 'space-evenly' : 'center',
+                        gap: isMobile ? '0px' : '2rem',
                         alignItems: 'flex-end',
                         position: 'relative',
                         zIndex: 10,

@@ -33,7 +33,7 @@ export const MoodBoard = () => {
             ref={containerRef}
             style={{
                 position: 'relative',
-                height: isMobile ? 'clamp(500px, 75vh, 650px)' : 'clamp(600px, 90vh, 1000px)',
+                height: isMobile ? 'clamp(520px, 80vh, 700px)' : 'clamp(600px, 90vh, 1000px)',
                 width: '100%',
                 margin: isMobile ? '-4rem 0 1rem 0' : '-4rem 0 4rem 0',
                 borderTop: '1px solid var(--text-primary)',

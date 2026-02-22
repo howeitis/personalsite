@@ -263,7 +263,7 @@ a {
     border-width: 2px !important;
   }
 
-  /* MoodBoard mobile overlap — compressed stack with generous overlap */
+  /* MoodBoard mobile overlap — dense collage, each card still visible */
   .mb-fashion {
     top: 0% !important;
     right: -5% !important;
@@ -271,19 +271,19 @@ a {
   }
 
   .mb-flora {
-    top: 12% !important;
+    top: 14% !important;
     left: -8% !important;
     width: 72vw !important;
   }
 
   .mb-food {
-    top: 28% !important;
+    top: 32% !important;
     right: -3% !important;
     width: 68vw !important;
   }
 
   .mb-cars {
-    top: 42% !important;
+    top: 50% !important;
     left: -3% !important;
     width: 75vw !important;
   }
