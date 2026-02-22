@@ -34,7 +34,7 @@ export const MoodBoard = () => {
             ref={containerRef}
             style={{
                 position: 'relative',
-                height: isMobile ? 'clamp(750px, 120vh, 1100px)' : 'clamp(600px, 90vh, 1000px)',
+                height: isMobile ? 'clamp(650px, 100vh, 900px)' : 'clamp(600px, 90vh, 1000px)',
                 width: '100%',
                 margin: '-4rem 0 4rem 0', // Tucks under hero, pushes Sycamore down
                 borderTop: '1px solid var(--text-primary)',
