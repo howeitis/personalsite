@@ -33,7 +33,17 @@ export const Library = ({ data }) => {
         <div style={{
             padding: '2rem 0',
             paddingBottom: '4rem',
-            background: 'linear-gradient(to bottom, #f2eadf 0%, #e0d0ba 100%)', // Warm, sunlit natural wall color
+            // Vertical Wood Paneling/Beadboard Wall
+            background: `
+                repeating-linear-gradient(
+                    to right,
+                    rgba(0,0,0,0.03) 0px,
+                    rgba(0,0,0,0.03) 2px,
+                    transparent 2px,
+                    transparent 40px
+                ),
+                linear-gradient(to bottom, #f2eadf 0%, #e0d0ba 100%)
+            `,
             backgroundColor: '#f2eadf',
             minHeight: '100vh',
             color: '#4a3018', // Warm dark wood text
@@ -69,10 +79,10 @@ export const Library = ({ data }) => {
                             flexWrap: 'wrap',
                             justifyContent: 'center',
                             gap: '2rem', // Wider gap since these are front-facing covers on display
-                            alignItems: 'flex-end', // Crucial: sit perfectly on the bottom shelf
+                            alignItems: 'center', // Center them so they sit on top of the 16px bottom padding
                             position: 'relative',
                             zIndex: 10,
-                            paddingBottom: '0' // Sit perfectly flush to cast shadow down onto the shelf's receding top surface
+                            paddingBottom: '16px' // Push books up so they sit on the shelf's top surface plane
                         }}>
                             {chunk.map((book, bookIndex) => {
                                 // Destructure the new object format
@@ -164,36 +174,27 @@ export const Library = ({ data }) => {
                             })}
                         </div>
 
-                        {/* The Physical Wooden Shelf (Warm, Flat Built-In Style) */}
+                        {/* The Physical Wooden Shelf (Warm, Flat Built-In Style with Top Ledge) */}
                         <div style={{
                             position: 'absolute',
-                            bottom: 0, // Sit exactly flush with the books
-                            left: '0', // Keep it clean and contained within the padding
+                            bottom: 0,
+                            left: '0',
                             right: '0',
                             zIndex: 5,
                             display: 'flex',
                             flexDirection: 'column'
                         }}>
-                            {/* The Flat Wooden Face (Solid Oak) */}
+                            {/* The Flat Wooden Face (Solid Oak) & Top Surface */}
                             <div style={{
                                 height: '26px',
                                 background: '#c8874a', // Warm oak/caramel wood tone
-                                borderTop: '2px solid #eab281', // Sunlit top edge highlight
+                                borderTop: '16px solid #b97a40', // Deeper top shelf plane that the books sit on
                                 borderBottom: '6px solid #8e5520', // Underside lip shadow
                                 borderRadius: '2px',
-                                boxShadow: '0 8px 16px rgba(0,0,0,0.15)', // Soft cast shadow down the wall
+                                boxShadow: '0 8px 16px rgba(0,0,0,0.15), inset 0px 4px 6px rgba(255,255,255,0.1)', // Cast shadow & inner highlight on the edge
                                 zIndex: 6,
                                 position: 'relative'
                             }}>
-                                {/* Subtle Wood Grain Highlight */}
-                                <div style={{
-                                    position: 'absolute',
-                                    top: '8px',
-                                    left: 0,
-                                    right: 0,
-                                    height: '0px',
-                                    borderTop: '1px solid rgba(255,255,255,0.1)'
-                                }} />
                             </div>
                         </div>
                     </div>
