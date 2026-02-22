@@ -35,7 +35,7 @@ export const MoodBoard = () => {
                 position: 'relative',
                 height: isMobile ? 'clamp(520px, 80vh, 700px)' : 'clamp(600px, 90vh, 1000px)',
                 width: '100%',
-                margin: isMobile ? '-2rem 0 0 0' : '-4rem 0 4rem 0',
+                margin: isMobile ? '-1rem 0 0 0' : '-4rem 0 4rem 0',
                 borderTop: '1px solid var(--text-primary)',
                 backgroundColor: 'var(--bg-color)',
                 overflow: isMobile ? 'hidden' : 'visible',

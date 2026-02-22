@@ -12,12 +12,13 @@ export const ExperienceBento = ({ data }) => {
                 const isWide = index % 2 === 0;
                 const colSpan = isWide ? 'span 8' : 'span 4';
 
-                // Rotate background colors playfully
-                const bgColors = ['var(--bg-color)', 'var(--mustard)', 'var(--sky-blue)'];
+                // Rotate background colors — terracotta last to break up before green W&M + Sycamore cards
+                const bgColors = ['var(--bg-color)', 'var(--mustard)', 'var(--terracotta)'];
                 const bgColor = bgColors[index % bgColors.length];
 
-                // Ensure text is legible on sky-blue and mustard
-                const titleColor = (bgColor === 'var(--sky-blue)' || bgColor === 'var(--mustard)') ? 'var(--text-primary)' : 'var(--br-green)';
+                // Ensure text is legible on each background
+                const titleColor = bgColor === 'var(--terracotta)' ? 'white' : (bgColor === 'var(--mustard)' ? 'var(--text-primary)' : 'var(--br-green)');
+                const textColor = bgColor === 'var(--terracotta)' ? 'rgba(255,255,255,0.9)' : undefined;
 
                 return (
                     <motion.div
@@ -38,8 +39,8 @@ export const ExperienceBento = ({ data }) => {
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
                             <div>
                                 <h3 className="serif-text" style={{ fontSize: '1.8rem', color: titleColor, marginBottom: '0.25rem' }}>{job.company}</h3>
-                                <p style={{ fontWeight: 600, color: 'var(--terracotta)' }}>{job.title}</p>
-                                {job.secondTitle && <p style={{ fontWeight: 600, color: 'var(--terracotta)', opacity: 0.8 }}>{job.secondTitle}</p>}
+                                <p style={{ fontWeight: 600, color: textColor || 'var(--terracotta)' }}>{job.title}</p>
+                                {job.secondTitle && <p style={{ fontWeight: 600, color: textColor || 'var(--terracotta)', opacity: 0.8 }}>{job.secondTitle}</p>}
                             </div>
                             <div style={{ textAlign: 'right' }}>
                                 <span className="pill-tag" style={{ border: '2px solid rgba(0,0,0,0.1)', background: 'transparent', marginBottom: '0.5rem' }}>{job.period}</span>
@@ -50,8 +51,8 @@ export const ExperienceBento = ({ data }) => {
                         <ul style={{ listStyle: 'none', flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                             {/* Only show top 3 highlights to keep the bento box clean, or all if we have space */}
                             {(isWide ? job.highlights.slice(0, 4) : job.highlights.slice(0, 2)).map((highlight, idx) => (
-                                <li key={idx} style={{ position: 'relative', paddingLeft: '1.5rem', fontSize: '0.95rem' }}>
-                                    <span style={{ position: 'absolute', left: 0, top: '10px', width: '8px', height: '8px', backgroundColor: 'var(--mustard)', borderRadius: '2px', transform: 'rotate(45deg)' }}></span>
+                                <li key={idx} style={{ position: 'relative', paddingLeft: '1.5rem', fontSize: '0.95rem', color: textColor || 'inherit' }}>
+                                    <span style={{ position: 'absolute', left: 0, top: '10px', width: '8px', height: '8px', backgroundColor: bgColor === 'var(--terracotta)' ? 'var(--mustard)' : 'var(--mustard)', borderRadius: '2px', transform: 'rotate(45deg)' }}></span>
                                     {highlight}
                                 </li>
                             ))}

@@ -34,7 +34,7 @@ export const Resume = ({ data, consulting }) => {
                     }}
                 >
                     <div>
-                        <h3 className="serif-text" style={{ fontSize: '1.5rem', color: 'var(--mustard)', margin: 0 }}>
+                        <h3 className="serif-text" style={{ fontSize: '1.5rem', color: '#7EC8B5', margin: 0 }}>
                             {consulting.name}
                         </h3>
                         <p style={{ color: 'var(--bg-color)', fontSize: '0.95rem', opacity: 0.9, marginTop: '0.25rem' }}>
@@ -42,8 +42,8 @@ export const Resume = ({ data, consulting }) => {
                         </p>
                     </div>
                     <span className="pill-tag" style={{
-                        border: '2px solid var(--mustard)',
-                        color: 'var(--mustard)',
+                        border: '2px solid #7EC8B5',
+                        color: '#7EC8B5',
                         background: 'transparent',
                         display: 'inline-flex',
                         alignItems: 'center',
