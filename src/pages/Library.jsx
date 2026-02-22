@@ -158,27 +158,6 @@ export const Library = ({ data }) => {
                                                 }}
                                             />
 
-                                            {/* Text Label Overlay (Only visible if image fails or blends) */}
-                                            <div style={{ zIndex: 2, position: 'relative', pointerEvents: 'none' }}>
-                                                <h3 className="serif-text" style={{
-                                                    color: 'white',
-                                                    textShadow: '0px 2px 4px rgba(0,0,0,0.8), 0px 0px 10px rgba(0,0,0,0.5)',
-                                                    fontSize: '1.2rem',
-                                                    fontWeight: 'bold',
-                                                    marginBottom: '0.5rem',
-                                                    lineHeight: 1.1
-                                                }}>
-                                                    {title}
-                                                </h3>
-                                                <p style={{
-                                                    color: 'rgba(255,255,255,0.9)',
-                                                    textShadow: '0px 1px 3px rgba(0,0,0,0.8)',
-                                                    fontSize: '0.8rem',
-                                                    fontWeight: 500
-                                                }}>
-                                                    {author}
-                                                </p>
-                                            </div>
                                         </motion.div>
                                     </a>
                                 );
