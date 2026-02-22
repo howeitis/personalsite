@@ -1,8 +1,19 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+
+const useIsMobile = () => {
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    useEffect(() => {
+        const handler = () => setIsMobile(window.innerWidth <= 768);
+        window.addEventListener('resize', handler);
+        return () => window.removeEventListener('resize', handler);
+    }, []);
+    return isMobile;
+};
 
 export const MoodBoard = () => {
     const containerRef = useRef(null);
+    const isMobile = useIsMobile();
 
     // Parallax scroll logic
     const { scrollYProgress } = useScroll({
@@ -23,11 +34,12 @@ export const MoodBoard = () => {
             ref={containerRef}
             style={{
                 position: 'relative',
-                height: 'clamp(600px, 90vh, 1000px)', // Slightly taller to fit larger images 
+                height: isMobile ? 'clamp(750px, 120vh, 1100px)' : 'clamp(600px, 90vh, 1000px)',
                 width: '100%',
                 margin: '-4rem 0 4rem 0', // Tucks under hero, pushes Sycamore down
                 borderTop: '1px solid var(--text-primary)',
                 backgroundColor: 'var(--bg-color)',
+                overflow: 'hidden',
                 zIndex: 1 // Ensure it stays behind HeroBento
             }}
         >
@@ -47,9 +59,9 @@ export const MoodBoard = () => {
                     style={{
                         y: y2,
                         position: 'absolute',
-                        top: '5%',
-                        right: '0%', // Push to edge
-                        width: 'clamp(315px, 60vw, 525px)', // Doubled minimums
+                        top: isMobile ? '2%' : '5%',
+                        right: isMobile ? '-5%' : '0%',
+                        width: isMobile ? '65vw' : 'clamp(315px, 60vw, 525px)',
                         zIndex: 5
                     }}
                     className="bento-card"
@@ -68,9 +80,9 @@ export const MoodBoard = () => {
                     style={{
                         y: y1,
                         position: 'absolute',
-                        top: '35%', // Pulled up
-                        left: '0%', // Push to edge
-                        width: 'clamp(360px, 75vw, 675px)',
+                        top: isMobile ? '18%' : '35%',
+                        left: isMobile ? '-8%' : '0%',
+                        width: isMobile ? '75vw' : 'clamp(360px, 75vw, 675px)',
                         zIndex: 2
                     }}
                     className="bento-card"
@@ -88,9 +100,9 @@ export const MoodBoard = () => {
                     style={{
                         y: y4,
                         position: 'absolute',
-                        top: '50%', // Pulled up aggressively to overlap Flora
-                        right: '5%',
-                        width: 'clamp(330px, 65vw, 600px)',
+                        top: isMobile ? '35%' : '50%',
+                        right: isMobile ? '-3%' : '5%',
+                        width: isMobile ? '70vw' : 'clamp(330px, 65vw, 600px)',
                         zIndex: 8
                     }}
                     className="bento-card bg-terracotta"
@@ -109,9 +121,9 @@ export const MoodBoard = () => {
                     style={{
                         y: y3,
                         position: 'absolute',
-                        top: '65%', // Pulled way up
-                        left: '5%', // Pulled closer to the edge given massive width
-                        width: 'clamp(380px, 80vw, 750px)',
+                        top: isMobile ? '55%' : '65%',
+                        left: isMobile ? '-3%' : '5%',
+                        width: isMobile ? '80vw' : 'clamp(380px, 80vw, 750px)',
                         zIndex: 7
                     }}
                     className="bento-card"

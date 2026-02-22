@@ -36,7 +36,7 @@ const ShelfView = ({ books }) => {
     // based on viewport width, book width, gaps, and padding
     const mobileBookWidth = 130; // base width for mobile books
     const mobileGap = 12;
-    const shelfPadding = isMobile ? 24 : 64; // padding on each side
+    const shelfPadding = isMobile ? 16 : 64; // total horizontal padding (both sides)
     const availableWidth = viewportWidth - shelfPadding;
     const booksPerShelf = isMobile
         ? Math.max(2, Math.floor((availableWidth + mobileGap) / (mobileBookWidth + mobileGap)))
@@ -48,12 +48,12 @@ const ShelfView = ({ books }) => {
     }
 
     return (
-        <div style={{ padding: '0 2vw' }}>
+        <div style={{ padding: isMobile ? '0' : '0 2vw' }}>
             {shelfChunks.map((chunk, shelfIndex) => (
                 <div key={shelfIndex} style={{
                     position: 'relative',
                     marginBottom: '8rem',
-                    padding: isMobile ? '0 0.75rem' : '0 2rem'
+                    padding: isMobile ? '0 0.5rem' : '0 2rem'
                 }}>
                     {/* The Books */}
                     <div style={{
