@@ -177,12 +177,26 @@ a {
   border-radius: var(--border-radius-blob);
 }
 
+/* Navigation: hamburger hidden on desktop, links hidden on mobile */
+.nav-hamburger {
+  display: none !important;
+}
+
 /* ----------------------------- */
 /* Mobile Responsiveness Overrides */
 /* ----------------------------- */
 @media (max-width: 768px) {
   .container {
     padding: 0 1rem;
+  }
+
+  /* Navigation: show hamburger, hide desktop links */
+  .nav-desktop {
+    display: none !important;
+  }
+
+  .nav-hamburger {
+    display: block !important;
   }
 
   /* Force the layout to stack gracefully */
@@ -197,7 +211,6 @@ a {
     width: 100% !important;
     grid-column: span 12 !important;
     padding: 1.5rem !important;
-    /* Shrink inner padding on phones */
   }
 
   /* Shrink giant editorial headers slightly */
