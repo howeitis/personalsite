@@ -35,10 +35,11 @@ export const Readings = ({ data }) => {
                 padding: '0 1rem'
             }}>
                 {books.map((book, index) => {
+                    const { title, author } = book;
                     // Create a deterministic but pseudo-random hash based on both the string length and character codes
                     // so the same book always gets the same color, but adjacent books look random.
-                    const charSum = book.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-                    const hashIndex = (book.length + charSum + index * 17) % colors.length;
+                    const charSum = title.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+                    const hashIndex = (title.length + charSum + index * 17) % colors.length;
 
                     const bgColor = colors[hashIndex];
                     const isDarkBg = bgColor === 'var(--br-green)' || bgColor === 'var(--terracotta)';
@@ -71,18 +72,28 @@ export const Readings = ({ data }) => {
                                 boxShadow: '4px 4px 0px 0px var(--text-primary)' // Tighter shadow
                             }}
                         >
-                            <span className="serif-text" style={{
-                                color: textColor,
-                                fontSize: '1.25rem',
-                                fontWeight: 'bold',
-                                lineHeight: 1.2
-                            }}>
-                                {book}
-                            </span>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                                <span className="serif-text" style={{
+                                    color: textColor,
+                                    fontSize: '1.25rem',
+                                    fontWeight: 'bold',
+                                    lineHeight: 1.2
+                                }}>
+                                    {title}
+                                </span>
+                                <span style={{
+                                    color: textColor,
+                                    fontSize: '0.85rem',
+                                    opacity: 0.8,
+                                    fontWeight: 500
+                                }}>
+                                    {author}
+                                </span>
+                            </div>
                         </motion.div>
                     );
                 })}
             </div>
-        </div>
+        </div >
     );
 };
