@@ -26,7 +26,7 @@ function App() {
           <ErrorBoundary>
             <Routes>
               <Route path="/" element={<Home data={contentData} />} />
-              <Route path="/resume" element={<Resume data={contentData.experience} />} />
+              <Route path="/resume" element={<Resume data={contentData.experience} consulting={contentData.consulting} />} />
               <Route path="/interests" element={<Interests data={contentData.interests} />} />
               <Route path="/library" element={<Library data={contentData.books} />} />
               <Route path="*" element={<NotFound />} />

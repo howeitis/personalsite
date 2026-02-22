@@ -1,15 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { getBookColor } from '../utils/colorHash';
 
+const useIsMobile = () => {
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    useEffect(() => {
+        const handler = () => setIsMobile(window.innerWidth <= 768);
+        window.addEventListener('resize', handler);
+        return () => window.removeEventListener('resize', handler);
+    }, []);
+    return isMobile;
+};
+
 const ShelfView = ({ books }) => {
+    const isMobile = useIsMobile();
+
     const spineTextures = [
         `${import.meta.env.BASE_URL}images/spine_1.png`,
         `${import.meta.env.BASE_URL}images/spine_2.png`,
         `${import.meta.env.BASE_URL}images/spine_3.png`
     ];
 
-    const targetPerShelf = 6;
+    const targetPerShelf = isMobile ? 3 : 6;
     const numShelves = Math.ceil(books.length / targetPerShelf);
     const chunkSize = Math.ceil(books.length / numShelves);
 
@@ -31,7 +43,7 @@ const ShelfView = ({ books }) => {
                         display: 'flex',
                         flexWrap: 'wrap',
                         justifyContent: 'center',
-                        gap: '2rem',
+                        gap: isMobile ? '1rem' : '2rem',
                         alignItems: 'flex-end',
                         position: 'relative',
                         zIndex: 10,
@@ -42,7 +54,8 @@ const ShelfView = ({ books }) => {
                             const index = (shelfIndex * chunkSize) + bookIndex;
                             const { bgColor, charSum } = getBookColor(title, index);
 
-                            const heightValue = 240 + ((charSum * index) % 40);
+                            const baseHeight = isMobile ? 200 : 240;
+                            const heightValue = baseHeight + ((charSum * index) % 40);
                             const widthValue = heightValue * 0.65;
 
                             const safeName = title.replace(/ /g, "_").replace(/'/g, "").toLowerCase();
