@@ -21,7 +21,9 @@ export const Resume = ({ data, consulting }) => {
                     style={{
                         gridColumn: 'span 12',
                         padding: '1.5rem 2.5rem',
-                        backgroundColor: 'var(--br-green)',
+                        backgroundImage: 'linear-gradient(rgba(17, 75, 47, 0.85), rgba(17, 75, 47, 0.92)), url("images/sycamore_bg.jpg")',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',

@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 
 const links = [
     { name: 'Home', path: '/' },
@@ -11,9 +11,48 @@ const links = [
 
 export const Navigation = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [hidden, setHidden] = useState(false);
+    const lastScrollY = useRef(0);
+    const navY = useSpring(0, { stiffness: 300, damping: 30 });
+
+    useEffect(() => {
+        const threshold = 10;
+        const handleScroll = () => {
+            const currentY = window.scrollY;
+            const delta = currentY - lastScrollY.current;
+
+            if (delta > threshold && currentY > 80) {
+                // Scrolling down past threshold — hide
+                setHidden(true);
+                setIsOpen(false); // close drawer if open
+            } else if (delta < -threshold) {
+                // Scrolling up — show
+                setHidden(false);
+            }
+
+            lastScrollY.current = currentY;
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    useEffect(() => {
+        navY.set(hidden ? -100 : 0);
+    }, [hidden, navY]);
 
     return (
-        <nav style={{ padding: '1.5rem 0', borderBottom: '1px solid rgba(0,0,0,0.1)', backgroundColor: 'var(--bg-color)', position: 'sticky', top: 0, zIndex: 100 }}>
+        <motion.nav
+            style={{
+                padding: '1.5rem 0',
+                borderBottom: '1px solid rgba(0,0,0,0.1)',
+                backgroundColor: 'var(--bg-color)',
+                position: 'sticky',
+                top: 0,
+                zIndex: 100,
+                y: navY
+            }}
+        >
             <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <NavLink to="/" style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--br-green)' }} className="serif-text">
                     owenhowe.
@@ -115,6 +154,6 @@ export const Navigation = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </nav>
+        </motion.nav>
     );
 };
