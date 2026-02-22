@@ -39,7 +39,7 @@ export const MoodBoard = () => {
                 margin: '-4rem 0 4rem 0', // Tucks under hero, pushes Sycamore down
                 borderTop: '1px solid var(--text-primary)',
                 backgroundColor: 'var(--bg-color)',
-                overflow: 'hidden',
+                overflow: isMobile ? 'hidden' : 'visible',
                 zIndex: 1 // Ensure it stays behind HeroBento
             }}
         >
