@@ -13,7 +13,7 @@ This project deliberately avoids heavy UI component libraries (like Tailwind or 
 
 - **Framework**: React 18 + Vite
 - **Styling**: Vanilla CSS (`src/index.css`) & Inline React Styles
-- **Animations**: Framer Motion (`motion.div`, `whileHover`, `spring` physics)
+- **Animations**: Framer Motion (`motion.div`, `whileHover`, `spring` physics, and `AnimatePresence` for mobile drawer navigation)
 - **Deployment**: Vercel (CI/CD connected to the `main` branch)
 
 ---
@@ -26,7 +26,7 @@ The codebase is organized to separate reusable logical components from full-page
 personal-website/
 ├── public/                 # Static assets (images, fonts, book covers)
 ├── src/
-│   ├── components/         # Reusable UI elements (Navigation, Bento Cards, Footer)
+│   ├── components/         # Reusable UI elements (Navigation includes Hamburger Menu, Bento Cards, Footer)
 │   ├── data/
 │   │   └── content.json    # 🎯 CENTRAL CONTENT STORE (Edit this to update the site!)
 │   ├── pages/              # Full page container routes (Home, Interests, Readings, Library)
@@ -34,6 +34,7 @@ personal-website/
 │   └── index.css           # Global design tokens, CSS variables, and root styles
 └── package.json            # Project dependencies and npm scripts
 ```
+
 
 ---
 
