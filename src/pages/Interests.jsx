@@ -26,8 +26,7 @@ export const Interests = ({ data }) => {
                     The Full Picture.
                 </h1>
                 <p style={{ color: 'var(--text-primary)', fontSize: '1.25rem', maxWidth: '600px', fontWeight: 500 }}>
-                    A visual deep-dive into the things that keep me busy when I'm not building teams.
-                    From vintage machinery to the perfect bowl of stew, this is what occupies the rest of my time.
+                    Take a look at what I'm into.
                 </p>
             </div>
 

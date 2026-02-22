@@ -25,7 +25,7 @@ export const Home = ({ data }) => {
 
             <div className="bento-card sycamore-home-card" style={{
                 maxWidth: isMobile ? '220px' : '600px',
-                margin: isMobile ? '-3rem auto 0' : '4rem auto 0 calc(50% - 200px)',
+                margin: isMobile ? '-5rem auto 0' : '4rem auto 0 calc(50% - 200px)',
                 textAlign: 'center',
                 padding: isMobile ? '1.25rem 1.25rem' : '2rem',
                 backgroundImage: 'linear-gradient(rgba(17, 75, 47, 0.85), rgba(17, 75, 47, 0.95)), url("images/sycamore_bg.jpg")',

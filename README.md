@@ -1,23 +1,23 @@
 # Owen Howe - Personal Platform
 
-A meticulously designed, interactive personal portfolio website showcasing professional experience, intellectual interests, and a curated vintage library. Built with React 19, Framer Motion, and bespoke CSS — optimized for both desktop and mobile with a brutalist editorial design system.
+A personal portfolio site with a brutalist editorial design system. Built with React 19, Framer Motion, and hand-crafted CSS. Deployed on Vercel.
 
 ### Live Site
-[owenhowe.com](https://owenhowe.com/)
+[howe.app](https://howe.app)
 
 ---
 
 ## Architecture & Tech Stack
 
-This project deliberately avoids heavy UI component libraries (like Tailwind or Material UI) in favor of hand-crafted vanilla CSS to achieve specific visual aesthetics — the brutalist borders, editorial typography, parallax moodboard, and wooden bookshelf.
+This project uses vanilla CSS over component libraries (Tailwind, Material UI, etc.) to achieve specific visual aesthetics — brutalist borders, editorial serif typography, parallax moodboard, and wooden bookshelf.
 
 - **Framework**: React 19 + Vite 7
-- **Routing**: React Router v7 (SPA with client-side navigation)
+- **Routing**: React Router v7 (SPA, client-side navigation)
 - **Styling**: Vanilla CSS (`src/index.css`) with CSS custom properties + inline React styles
 - **Animations**: Framer Motion (`motion.div`, `useScroll`, `useTransform`, `useSpring`, `AnimatePresence`)
 - **Icons**: Lucide React
 - **Testing**: Vitest + React Testing Library
-- **Deployment**: Vercel (CI/CD connected to the `main` branch)
+- **Deployment**: Vercel (auto-deploys on push to `main`)
 
 ---
 
@@ -26,102 +26,140 @@ This project deliberately avoids heavy UI component libraries (like Tailwind or 
 ```text
 personal-website/
 ├── public/
-│   └── images/              # Static assets (interest photos, book covers, logos)
+│   └── images/              # Static assets (photos, book covers, logos)
 │       ├── covers/          # Book cover images (auto-matched by title)
-│       └── spines/          # Fallback spine textures for books without covers
+│       └── spine_*.png      # Fallback spine textures for books without covers
 ├── src/
 │   ├── components/
-│   │   ├── Navigation.jsx   # Sticky nav with hamburger menu (mobile) + auto-hide on scroll
+│   │   ├── Navigation.jsx   # Sticky nav: hamburger (mobile) + inline links (desktop), auto-hides on scroll
 │   │   ├── HeroBento.jsx    # Homepage hero bento grid
-│   │   ├── MoodBoard.jsx    # Parallax interest collage with CSS-based responsive positioning
-│   │   ├── ExperienceBento.jsx  # Resume career timeline grid
-│   │   ├── CustomCursor.jsx # Custom cursor (desktop only, uses useMotionValue)
-│   │   ├── ErrorBoundary.jsx    # React error boundary with fallback UI
+│   │   ├── MoodBoard.jsx    # Parallax interest collage with CSS positioning + Framer Motion
+│   │   ├── ExperienceBento.jsx  # Resume career timeline
+│   │   ├── CustomCursor.jsx # Custom cursor (desktop only, useMotionValue for perf)
+│   │   ├── ErrorBoundary.jsx
 │   │   ├── Footer.jsx
 │   │   └── ScrollToTop.jsx
 │   ├── data/
-│   │   └── content.json     # CENTRAL CONTENT STORE (edit this to update the site)
+│   │   └── content.json     # ALL site content lives here (edit this to update the site)
 │   ├── pages/
 │   │   ├── Home.jsx         # Hero + MoodBoard + Sycamore Creek card
-│   │   ├── Interests.jsx    # Interest cards with auto-matched images
-│   │   ├── Library.jsx      # Bookshelf (shelf view) + card view toggle
+│   │   ├── Interests.jsx    # "The Full Picture" — masonry image collage
+│   │   ├── Library.jsx      # Bookshelf (shelf/card toggle), viewport-aware layout
 │   │   ├── Resume.jsx       # Career timeline + Sycamore Creek banner
-│   │   └── NotFound.jsx     # 404 page
+│   │   └── NotFound.jsx
 │   ├── utils/
-│   │   └── colorHash.js     # Shared deterministic color utility for books
-│   ├── App.jsx              # Router setup, error boundary, lazy loading
-│   └── index.css            # Design tokens, CSS variables, responsive overrides
-├── index.html               # Entry point with OG metadata
+│   │   └── colorHash.js     # Deterministic color hashing for books
+│   ├── App.jsx              # Router, error boundary, lazy loading
+│   └── index.css            # Design tokens, CSS variables, all responsive overrides
+├── index.html
 └── package.json
 ```
 
 ---
 
-## Key Design Decisions
+## Key Design Patterns
 
-### Responsive System
-- **Breakpoint**: 768px (single breakpoint, mobile-first overrides in `index.css`)
-- **Navigation**: Desktop shows inline links; mobile shows a hamburger menu with an animated drawer (`AnimatePresence`). Nav auto-hides on scroll down and reappears on scroll up.
-- **MoodBoard**: Desktop uses absolute positioning with `clamp()` widths for fluid overlap. Mobile uses CSS class overrides (`mb-fashion`, `mb-flora`, `mb-food`, `mb-cars`) with tighter positions and smaller widths for a dense collage feel.
-- **Library Shelf**: Dynamically calculates books-per-shelf based on actual viewport width. Uses `flexWrap: nowrap` to guarantee books never float below their shelf.
-- **Sycamore Creek Card**: Full layout with heading on desktop; compact logo + CTA on mobile.
+### Responsive Strategy (768px breakpoint)
 
-### Performance
-- Custom cursor uses `useMotionValue` + `useSpring` instead of React state to avoid ~60 re-renders/second
-- Lazy loading on all images
-- Error boundary wraps routes with a styled fallback
-- `overflow-x: hidden` on body and key containers to prevent horizontal scroll
+All responsive behavior uses a single breakpoint (`768px`) with two mechanisms:
+
+1. **CSS media queries** in `src/index.css` — layout, grid, moodboard positioning, nav visibility
+2. **`useIsMobile()` hook** in React components — conditional rendering, inline style values, parallax ranges
+
+| Component | Desktop | Mobile |
+|---|---|---|
+| **Navigation** | Inline links, visible always | Hamburger menu, auto-hides on scroll down |
+| **MoodBoard** | Large `clamp()` widths, full parallax, `overflow: visible` | Stripped padding/borders, tight positions, dampened parallax, `overflow: hidden` |
+| **Library** | 6 books/shelf, `2rem` gaps, centered | Viewport-calculated books/shelf, `space-evenly`, full-bleed shelves |
+| **Sycamore Card** | Full card with heading + subtext + CTA | Compact: logo + CTA only, overlaps moodboard bottom |
+
+### MoodBoard Positioning
+
+Desktop positions are defined in base CSS classes (`.mb-fashion`, `.mb-flora`, `.mb-food`, `.mb-cars`).
+Mobile overrides live in the `@media (max-width: 768px)` block of `index.css` with `!important` to override inline styles from Framer Motion.
+
+**Mobile-specific tweaks:**
+- `padding: 0` — removes the `.bento-card` base padding so images fill the frame
+- `border-radius: 8px`, `border-width: 2px` — lighter card chrome
+- Parallax ranges reduced ~60% via conditional `useTransform` values in `MoodBoard.jsx`
+- Container height: `clamp(520px, 80vh, 700px)` vs desktop `clamp(600px, 90vh, 1000px)`
+
+### Library Bookshelf
+
+Books-per-shelf is dynamically computed based on viewport width:
+
+```js
+const booksPerShelf = isMobile
+    ? Math.max(2, Math.floor((viewportWidth + gap) / (bookWidth + gap)))
+    : 6;
+```
+
+Mobile shelves use `justify-content: space-evenly` with zero padding for full-bleed layout. Desktop uses `justify-content: center` with `2rem` padding.
+
+Book sizing uses `clamp()` for fluid scaling: `height: clamp(160px, 45vw, ${computed}px)`.
 
 ---
 
-## Content Management Guide
+## Content Management
 
-All text, lists, and links are pulled dynamically from `src/data/content.json`. You do not need to know React to update content.
+All text, lists, and links are in `src/data/content.json`. No React knowledge needed to update content.
 
-### Updating the Homepage / Experience
-Locate the `personal` or `experience` objects in `content.json`. The homepage uses a CSS Grid ("Bento Box") layout — reordering items in JSON changes their grid position.
+### Update Homepage / Experience
+Edit the `personal` or `experience` objects in `content.json`. The homepage bento grid renders items in JSON order.
 
-### Updating Interests
-The `/interests` page maps over the `interests` array in `content.json`.
-1. Add a new object with a `title` (e.g., `"Fly Fishing"`).
-2. Save the matching image to `public/images/fly_fishing.jpg`. The code converts the title to snake_case to find the image. If no image is found, a deterministic color block fallback is used.
+### Update Interests
+1. Add an object with a `title` to the `interests` array in `content.json`
+2. Save the image to `public/images/{snake_case_title}.jpg` — the code converts titles to snake_case to find images
 
-### Updating the Library
-The `/library` page displays books as a wooden bookshelf (default) or card view (toggle). Books get deterministic heights, widths, and colors based on a hash of their title.
-1. Add the book to the `books` array in `content.json` (`title` and `author`).
-2. **Optional custom cover**: Save a `.jpg` to `public/images/covers/`. The filename must match the formatted title — e.g., "The Way of Kings" becomes `the_way_of_kings.jpg`. If no cover is found, a textured vintage spine is generated.
+### Update the Library
+1. Add `{ "title": "...", "author": "..." }` to the `books` array in `content.json`
+2. **Optional cover**: Save as `public/images/covers/{snake_case_title}.jpg`. If no cover exists, a textured vintage spine is generated as fallback.
 
-### Updating Consulting Info
-The Sycamore Creek card (homepage) and banner (resume) pull from the `consulting` object in `content.json` (`name`, `tagline`, `url`).
+### Update Consulting Info
+The Sycamore Creek card (homepage) and banner (resume) pull from `consulting` in `content.json` — fields: `name`, `tagline`, `url`.
 
 ---
 
-## Getting Started (Local Development)
+## Local Development
 
-Requires [Node.js](https://nodejs.org/) (v18+).
+Requires [Node.js](https://nodejs.org/) v18+.
 
 ```bash
 git clone https://github.com/howeitis/personalsite.git
 cd personalsite
 npm install
-npm run dev
-```
-
-Open `http://localhost:5173` in your browser.
-
-### Testing
-```bash
-npm test
+npm run dev        # http://localhost:5173
+npm test           # Vitest
+npm run build      # Production build
 ```
 
 ---
 
 ## Deployment
 
-This project deploys automatically via **Vercel**. Any push or merge to `main` triggers a build and deploy to production.
+Auto-deploys via **Vercel** on every push to `main`.
 
 ```bash
-git add .
-git commit -m "feat: description of change"
+git add <files>
+git commit -m "feat: description"
 git push origin main
 ```
+
+No PR required — `main` pushes go straight to production at [howe.app](https://howe.app).
+
+---
+
+## Version History
+
+| Version | Summary |
+|---|---|
+| v48 | Dead code removal, Library/Readings merge with shelf/card toggle |
+| v49 | Hamburger nav (mobile), auto-hide on scroll, Sycamore Creek cards |
+| v50 | Compact Sycamore card, book cover clipping fix, resume tree background |
+| v51 | Sycamore vertical layout, bookshelf floating-books fix (`flexWrap: nowrap`) |
+| v52 | Mobile moodboard overlap (CSS class positioning), library centering |
+| v53 | Desktop overflow fix (`overflow: visible` on desktop, `hidden` on mobile) |
+| v54 | Strip moodboard card padding on mobile, dampen parallax, library shelf gap reduction |
+| v55 | Compress moodboard container height, tighter card positions, dampened parallax ranges |
+| v56 | Full-bleed library shelves on mobile, Sycamore overlap, space-evenly book distribution |
+| v57 | Moodboard hero tuck / Sycamore overlap tuning, Interests copy update, docs overhaul |
