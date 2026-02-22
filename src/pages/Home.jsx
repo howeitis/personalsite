@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { HeroBento } from '../components/HeroBento';
 import { MoodBoard } from '../components/MoodBoard';
 
@@ -7,13 +8,32 @@ export const Home = ({ data }) => {
             {/* The Get To Know Me Intro */}
             <HeroBento data={data.personal} />
 
-            {/* The V4 Organic Mood Board Parallax (Replaces the Grid) */}
+            {/* Narrative bridge */}
+            <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="serif-text"
+                style={{
+                    fontSize: 'clamp(1.25rem, 3vw, 1.75rem)',
+                    textAlign: 'center',
+                    color: 'var(--text-secondary)',
+                    fontStyle: 'italic',
+                    padding: '3rem 2rem 0 2rem',
+                    maxWidth: '700px',
+                    margin: '0 auto'
+                }}
+            >
+                Outside the office, these are the things that keep me going.
+            </motion.p>
+
+            {/* The V4 Organic Mood Board Parallax */}
             <MoodBoard />
 
             <div className="bento-card" style={{
                 maxWidth: '600px',
                 margin: '4rem auto 0 auto',
-                transform: 'translateX(6rem)', // More significant offset to the right
                 textAlign: 'center',
                 padding: '2rem',
                 backgroundImage: 'linear-gradient(rgba(17, 75, 47, 0.85), rgba(17, 75, 47, 0.95)), url("images/sycamore_bg.jpg")',

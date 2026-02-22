@@ -1,20 +1,26 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 export const CustomCursor = () => {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const [isHovering, setIsHovering] = useState(false);
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+
+    // Smooth spring-following for the ring
+    const ringX = useSpring(mouseX, { stiffness: 500, damping: 28, mass: 0.5 });
+    const ringY = useSpring(mouseY, { stiffness: 500, damping: 28, mass: 0.5 });
+    const ringSize = useSpring(32, { stiffness: 400, damping: 25, mass: 0.5 });
 
     useEffect(() => {
         const updateMousePosition = (e) => {
-            setMousePosition({ x: e.clientX, y: e.clientY });
+            mouseX.set(e.clientX);
+            mouseY.set(e.clientY);
         };
 
         const handleMouseOver = (e) => {
             if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a') || e.target.closest('button')) {
-                setIsHovering(true);
+                ringSize.set(64);
             } else {
-                setIsHovering(false);
+                ringSize.set(32);
             }
         };
 
@@ -25,42 +31,11 @@ export const CustomCursor = () => {
             window.removeEventListener('mousemove', updateMousePosition);
             window.removeEventListener('mouseover', handleMouseOver);
         };
-    }, []);
-
-    const variants = {
-        default: {
-            x: mousePosition.x - 16,
-            y: mousePosition.y - 16,
-            height: 32,
-            width: 32,
-            backgroundColor: 'transparent',
-            border: '2px solid var(--terracotta)',
-            transition: {
-                type: 'spring',
-                stiffness: 500,
-                damping: 28,
-                mass: 0.5
-            }
-        },
-        hover: {
-            x: mousePosition.x - 32,
-            y: mousePosition.y - 32,
-            height: 64,
-            width: 64,
-            backgroundColor: 'rgba(226, 114, 91, 0.1)',
-            border: '2px solid var(--terracotta)',
-            mixBlendMode: 'difference',
-            transition: {
-                type: 'spring',
-                stiffness: 400,
-                damping: 25,
-                mass: 0.5
-            }
-        }
-    };
+    }, [mouseX, mouseY, ringSize]);
 
     return (
         <>
+            {/* Dot - follows mouse directly */}
             <motion.div
                 className="cursor-dot"
                 style={{
@@ -73,21 +48,29 @@ export const CustomCursor = () => {
                     borderRadius: '50%',
                     pointerEvents: 'none',
                     zIndex: 9999,
-                    x: mousePosition.x - 4,
-                    y: mousePosition.y - 4,
+                    x: mouseX,
+                    y: mouseY,
+                    translateX: '-50%',
+                    translateY: '-50%',
                 }}
             />
+            {/* Ring - spring-follows with expansion on hover */}
             <motion.div
                 className="cursor-outline"
-                variants={variants}
-                animate={isHovering ? 'hover' : 'default'}
                 style={{
                     position: 'fixed',
                     top: 0,
                     left: 0,
+                    width: ringSize,
+                    height: ringSize,
+                    border: '2px solid var(--terracotta)',
                     borderRadius: '50%',
                     pointerEvents: 'none',
                     zIndex: 9998,
+                    x: ringX,
+                    y: ringY,
+                    translateX: '-50%',
+                    translateY: '-50%',
                 }}
             />
         </>
