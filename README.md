@@ -26,9 +26,11 @@ This project uses vanilla CSS over component libraries (Tailwind, Material UI, e
 ```text
 personal-website/
 ├── public/
-│   └── images/              # Static assets (photos, book covers, logos)
-│       ├── covers/          # Book cover images (auto-matched by title)
-│       └── spine_*.png      # Fallback spine textures for books without covers
+│   ├── images/              # Static assets (photos, book covers, logos)
+│   │   ├── covers/          # Book cover images (auto-matched by title)
+│   │   └── spine_*.png      # Fallback spine textures for books without covers
+│   ├── robots.txt           # Search engine crawler directives
+│   └── sitemap.xml          # Sitemap for SEO (4 routes)
 ├── src/
 │   ├── components/
 │   │   ├── Navigation.jsx   # Sticky nav: hamburger (mobile) + inline links (desktop), auto-hides on scroll
@@ -37,21 +39,24 @@ personal-website/
 │   │   ├── ExperienceBento.jsx  # Resume career timeline with color-rotated cards
 │   │   ├── CustomCursor.jsx # Custom cursor (desktop only, useMotionValue for perf)
 │   │   ├── ErrorBoundary.jsx
-│   │   ├── Footer.jsx
+│   │   ├── Footer.jsx       # Brand mark + email/LinkedIn links + build credit
 │   │   └── ScrollToTop.jsx
 │   ├── data/
 │   │   └── content.json     # ALL site content lives here (edit this to update the site)
+│   ├── hooks/
+│   │   └── useResponsive.js # Shared debounced useIsMobile() + useViewportWidth() hooks
 │   ├── pages/
 │   │   ├── Home.jsx         # Hero + MoodBoard + Sycamore Creek card (overlaps moodboard on mobile)
-│   │   ├── Interests.jsx    # "The Full Picture" — masonry image collage
-│   │   ├── Library.jsx      # Bookshelf (shelf/card toggle), viewport-aware full-bleed layout
+│   │   ├── Interests.jsx    # "The Full Picture" — masonry collage with optional descriptions
+│   │   ├── Library.jsx      # Bookshelf (shelf/card toggle), "Currently Reading" tag, aria-labels
 │   │   ├── Resume.jsx       # Career timeline + Sycamore Creek banner (teal accents)
 │   │   └── NotFound.jsx
 │   ├── utils/
 │   │   └── colorHash.js     # Deterministic color hashing for books
 │   ├── App.jsx              # Router, error boundary, lazy loading
-│   └── index.css            # Design tokens, CSS variables, all responsive overrides
-├── index.html
+│   ├── index.css            # Design tokens, CSS variables, all responsive overrides
+│   └── setupTests.js        # Test setup: IntersectionObserver + matchMedia mocks
+├── index.html               # SEO meta tags, JSON-LD Person schema, canonical URL
 └── package.json
 ```
 
@@ -111,10 +116,12 @@ Edit the `personal` or `experience` objects in `content.json`. The homepage bent
 ### Update Interests
 1. Add an object with a `title` to the `interests` array in `content.json`
 2. Save the image to `public/images/{snake_case_title}.jpg` — the code converts titles to snake_case to find images
+3. **Optional descriptions**: To add a description below an interest tag, add a `description` field to the image object in `src/pages/Interests.jsx`. Example: `{ src: "images/soccer.jpg", ..., description: "Arsenal fan since day one." }`
 
 ### Update the Library
 1. Add `{ "title": "...", "author": "..." }` to the `books` array in `content.json`
 2. **Optional cover**: Save as `public/images/covers/{snake_case_title}.jpg`. If no cover exists, a textured vintage spine is generated as fallback.
+3. **Currently Reading**: Set `"currentlyReading": true` on a book to show a "Reading Now" badge in shelf view.
 
 ### Update Consulting Info
 The Sycamore Creek card (homepage) and banner (resume) pull from `consulting` in `content.json` — fields: `name`, `tagline`, `url`.
@@ -133,7 +140,7 @@ git clone https://github.com/howeitis/personalsite.git
 cd personalsite
 npm install
 npm run dev        # http://localhost:5173
-npm test           # Vitest (16 tests across 4 files)
+npm test           # Vitest (53 tests across 10 files)
 npm run build      # Production build
 ```
 
@@ -170,3 +177,4 @@ No PR required — `main` pushes go straight to production at [howe.app](https:/
 | v58 | Resume: Sycamore teal accents, Chungdahm terracotta card, moodboard margin tuning |
 | v59 | Sycamore card right-offset on mobile to mirror desktop positioning |
 | v60 | Soccer replaces fashion in moodboard, text updated to "Soccer/Tech/Food/Flora", captions removed, typography hidden on mobile, code cleanup + test updates |
+| v61 | SEO infrastructure (robots.txt, sitemap.xml, JSON-LD Person schema, canonical URL, og:url fix), shared debounced hooks (useIsMobile/useViewportWidth), test coverage expanded to 53 tests across 10 files, img width/height for CLS prevention, accessibility (aria-labels, prefers-reduced-motion, contrast audit), "Currently Reading" tag for Library, Interests description-ready, footer credit line |

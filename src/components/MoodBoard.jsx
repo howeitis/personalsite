@@ -1,15 +1,6 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-
-const useIsMobile = () => {
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-    useEffect(() => {
-        const handler = () => setIsMobile(window.innerWidth <= 768);
-        window.addEventListener('resize', handler);
-        return () => window.removeEventListener('resize', handler);
-    }, []);
-    return isMobile;
-};
+import { useIsMobile } from '../hooks/useResponsive';
 
 export const MoodBoard = () => {
     const containerRef = useRef(null);
@@ -67,6 +58,8 @@ export const MoodBoard = () => {
                     <img
                         src="images/soccer.jpg"
                         alt="Soccer"
+                        width={525}
+                        height={350}
                         loading="lazy"
                         style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block' }}
                     />
@@ -84,6 +77,8 @@ export const MoodBoard = () => {
                     <img
                         src="images/flora.jpg"
                         alt="Anime bike in forest"
+                        width={675}
+                        height={450}
                         loading="lazy"
                         style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block' }}
                     />
@@ -101,6 +96,8 @@ export const MoodBoard = () => {
                     <img
                         src="images/food.jpg"
                         alt="Korean Stew"
+                        width={600}
+                        height={400}
                         loading="lazy"
                         style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block', transform: 'rotate(-3deg)' }}
                     />
@@ -118,6 +115,8 @@ export const MoodBoard = () => {
                     <img
                         src="images/cars.jpg"
                         alt="Vintage Porsche"
+                        width={750}
+                        height={500}
                         loading="lazy"
                         style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block' }}
                     />

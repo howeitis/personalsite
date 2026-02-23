@@ -87,6 +87,8 @@ export const HeroBento = ({ data }) => {
                 <img
                     src="images/hero_profile.jpg"
                     alt="Owen's Profile"
+                    width={600}
+                    height={600}
                     style={{
                         width: '100%',
                         maxWidth: '600px',

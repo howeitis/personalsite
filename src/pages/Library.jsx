@@ -1,26 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { getBookColor } from '../utils/colorHash';
-
-const useIsMobile = () => {
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-    useEffect(() => {
-        const handler = () => setIsMobile(window.innerWidth <= 768);
-        window.addEventListener('resize', handler);
-        return () => window.removeEventListener('resize', handler);
-    }, []);
-    return isMobile;
-};
-
-const useViewportWidth = () => {
-    const [width, setWidth] = useState(window.innerWidth);
-    useEffect(() => {
-        const handler = () => setWidth(window.innerWidth);
-        window.addEventListener('resize', handler);
-        return () => window.removeEventListener('resize', handler);
-    }, []);
-    return width;
-};
+import { useIsMobile, useViewportWidth } from '../hooks/useResponsive';
 
 const ShelfView = ({ books }) => {
     const isMobile = useIsMobile();
@@ -78,14 +59,37 @@ const ShelfView = ({ books }) => {
                             const primarySrc = `${import.meta.env.BASE_URL}images/covers/${safeName}.jpg`;
                             const fallbackSrc = spineTextures[index % spineTextures.length];
 
+                            const isCurrentlyReading = book.currentlyReading;
+
                             return (
                                 <a
                                     key={index}
                                     href={`https://www.goodreads.com/search?q=${encodeURIComponent(title + " " + author)}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    style={{ textDecoration: 'none', display: 'block', flexShrink: 0 }}
+                                    aria-label={`${title} by ${author} on Goodreads`}
+                                    style={{ textDecoration: 'none', display: 'block', flexShrink: 0, position: 'relative' }}
                                 >
+                                    {isCurrentlyReading && (
+                                        <span style={{
+                                            position: 'absolute',
+                                            top: '-10px',
+                                            left: '50%',
+                                            transform: 'translateX(-50%)',
+                                            backgroundColor: 'var(--terracotta)',
+                                            color: 'white',
+                                            fontSize: '0.6rem',
+                                            fontWeight: 700,
+                                            padding: '2px 8px',
+                                            borderRadius: '999px',
+                                            whiteSpace: 'nowrap',
+                                            zIndex: 20,
+                                            letterSpacing: '0.05em',
+                                            textTransform: 'uppercase'
+                                        }}>
+                                            Reading Now
+                                        </span>
+                                    )}
                                     <motion.div
                                         initial={{ opacity: 0, y: 50 }}
                                         whileInView={{ opacity: 1, y: 0 }}
@@ -229,6 +233,7 @@ const CardView = ({ books }) => {
                         href={`https://www.goodreads.com/search?q=${encodeURIComponent(title + " " + author)}`}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={`${title} by ${author} on Goodreads`}
                         initial={{ opacity: 0, scale: 0.9, rotate: 0 }}
                         whileInView={{ opacity: 1, scale: 1, rotate: rotation }}
                         whileHover={{ scale: 1.05, rotate: 0, zIndex: 10, cursor: 'none' }}

@@ -1,16 +1,6 @@
-import { useState, useEffect } from 'react';
 import { HeroBento } from '../components/HeroBento';
 import { MoodBoard } from '../components/MoodBoard';
-
-const useIsMobile = () => {
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-    useEffect(() => {
-        const handler = () => setIsMobile(window.innerWidth <= 768);
-        window.addEventListener('resize', handler);
-        return () => window.removeEventListener('resize', handler);
-    }, []);
-    return isMobile;
-};
+import { useIsMobile } from '../hooks/useResponsive';
 
 export const Home = ({ data }) => {
     const isMobile = useIsMobile();
@@ -38,7 +28,7 @@ export const Home = ({ data }) => {
                 position: 'relative',
                 zIndex: 10
             }}>
-                <img src="images/sycamore_logo.jpg" alt="Sycamore Creek Consulting" style={{
+                <img src="images/sycamore_logo.jpg" alt="Sycamore Creek Consulting" width={100} height={100} style={{
                     width: isMobile ? '60px' : '100px',
                     marginBottom: isMobile ? '0' : '1rem',
                     borderRadius: '50%',

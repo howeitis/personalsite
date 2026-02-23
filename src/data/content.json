@@ -4,7 +4,6 @@
     "title": "Professional Summary",
     "location": "Washington, D.C.",
     "email": "Owen@Howe.app",
-    "phone": "(703) 677-2949",
     "linkedin": "LinkedIn",
     "consultingUrl": "https://www.sycamorecreekconsulting.com/",
     "about": [
@@ -103,7 +102,8 @@
     },
     {
       "title": "The Way of Kings",
-      "author": "Brandon Sanderson"
+      "author": "Brandon Sanderson",
+      "currentlyReading": true
     },
     {
       "title": "The Three-Body Problem",

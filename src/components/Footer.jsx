@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Chrome } from 'lucide-react';
 
 export const Footer = () => {
     return (
@@ -12,6 +11,7 @@ export const Footer = () => {
                 <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
                     <motion.a
                         href="mailto:owen@howe.app"
+                        aria-label="Send email to Owen"
                         whileHover={{ y: -3, color: 'var(--terracotta)' }}
                         style={{ color: 'var(--text-primary)', transition: 'color 0.3s', cursor: 'none', fontWeight: 500 }}
                     >
@@ -21,12 +21,18 @@ export const Footer = () => {
                         href="https://www.linkedin.com/in/owen-howe-wm2016/"
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="Owen Howe on LinkedIn"
                         whileHover={{ y: -3, color: 'var(--terracotta)' }}
                         style={{ color: 'var(--text-primary)', transition: 'color 0.3s', cursor: 'none', fontWeight: 500 }}
                     >
                         LinkedIn
                     </motion.a>
                 </div>
+            </div>
+            <div className="container" style={{ marginTop: '1rem' }}>
+                <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', opacity: 0.7 }}>
+                    Built with Claude Code & Gemini from scratch.
+                </p>
             </div>
         </footer>
     );

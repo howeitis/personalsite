@@ -2,19 +2,20 @@ import { motion } from 'framer-motion';
 
 export const Interests = ({ data }) => {
     // Collect all provided images for the visual collage
+    // Image data with optional descriptions — add a "description" field to show text below the tag
     const images = [
-        { src: "images/art.jpg", alt: "Portrait Art", tag: "Art", bg: "var(--mustard)" },
-        { src: "images/cars.jpg", alt: "Porsche 911", tag: "Cars", bg: "var(--br-green)" },
-        { src: "images/cycling.jpg", alt: "Cycling", tag: "Cycling", bg: "var(--sky-blue)" },
-        { src: "images/fashion.jpg", alt: "Fashion", tag: "Fashion", bg: "var(--lavender)" },
-        { src: "images/flora.jpg", alt: "Anime Bike in Forest", tag: "Flora", bg: "var(--bg-color)" },
-        { src: "images/food.jpg", alt: "Korean Stew", tag: "Food", bg: "var(--terracotta)" },
-        { src: "images/history.jpg", alt: "Korean History", tag: "History", bg: "var(--mustard)" },
-        { src: "images/international relations.jpg", alt: "Diplomacy", tag: "International Relations", bg: "var(--br-green)" },
-        { src: "images/music.jpg", alt: "Music Studio", tag: "Music", bg: "var(--lavender)" },
-        { src: "images/soccer.jpg", alt: "Arsenal Football", tag: "Soccer", bg: "var(--sky-blue)" },
-        { src: "images/tech.jpg", alt: "Technology", tag: "Technology", bg: "var(--bg-color)" },
-        { src: "images/travel.jpg", alt: "Travel Photography", tag: "Travel", bg: "var(--terracotta)" }
+        { src: "images/art.jpg", alt: "Portrait Art", tag: "Art", bg: "var(--mustard)", width: 600, height: 400 },
+        { src: "images/cars.jpg", alt: "Porsche 911", tag: "Cars", bg: "var(--br-green)", width: 600, height: 400 },
+        { src: "images/cycling.jpg", alt: "Cycling", tag: "Cycling", bg: "var(--sky-blue)", width: 600, height: 400 },
+        { src: "images/fashion.jpg", alt: "Fashion", tag: "Fashion", bg: "var(--lavender)", width: 600, height: 400 },
+        { src: "images/flora.jpg", alt: "Anime Bike in Forest", tag: "Flora", bg: "var(--bg-color)", width: 600, height: 400 },
+        { src: "images/food.jpg", alt: "Korean Stew", tag: "Food", bg: "var(--terracotta)", width: 600, height: 400 },
+        { src: "images/history.jpg", alt: "Korean History", tag: "History", bg: "var(--mustard)", width: 600, height: 400 },
+        { src: "images/international relations.jpg", alt: "Diplomacy", tag: "International Relations", bg: "var(--br-green)", width: 600, height: 400 },
+        { src: "images/music.jpg", alt: "Music Studio", tag: "Music", bg: "var(--lavender)", width: 600, height: 400 },
+        { src: "images/soccer.jpg", alt: "Arsenal Football", tag: "Soccer", bg: "var(--sky-blue)", width: 600, height: 400 },
+        { src: "images/tech.jpg", alt: "Technology", tag: "Technology", bg: "var(--bg-color)", width: 600, height: 400 },
+        { src: "images/travel.jpg", alt: "Travel Photography", tag: "Travel", bg: "var(--terracotta)", width: 600, height: 400 }
     ];
 
     return (
@@ -62,6 +63,8 @@ export const Interests = ({ data }) => {
                             <img
                                 src={img.src}
                                 alt={img.alt}
+                                width={img.width}
+                                height={img.height}
                                 loading="lazy"
                                 style={{
                                     width: '100%',
@@ -74,6 +77,11 @@ export const Interests = ({ data }) => {
                             />
                             <div style={{ color: textColor, padding: '0 0.5rem' }}>
                                 <span className="serif-text" style={{ fontSize: '1.5rem', fontWeight: 'bold', color: textColor }}>{img.tag}</span>
+                                {img.description && (
+                                    <p style={{ fontSize: '0.9rem', marginTop: '0.5rem', opacity: 0.85, lineHeight: 1.4, color: textColor }}>
+                                        {img.description}
+                                    </p>
+                                )}
                             </div>
                         </motion.div>
                     );
