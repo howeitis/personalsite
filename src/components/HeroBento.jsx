@@ -91,6 +91,7 @@ export const HeroBento = ({ data }) => {
                     height={600}
                     style={{
                         width: '100%',
+                        height: 'auto',
                         maxWidth: '600px',
                         borderRadius: '12px',
                         border: 'var(--border-thick)',

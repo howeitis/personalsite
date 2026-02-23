@@ -30,6 +30,7 @@ export const Home = ({ data }) => {
             }}>
                 <img src="images/sycamore_logo.jpg" alt="Sycamore Creek Consulting" width={100} height={100} style={{
                     width: isMobile ? '60px' : '100px',
+                    height: 'auto',
                     marginBottom: isMobile ? '0' : '1rem',
                     borderRadius: '50%',
                     flexShrink: 0
