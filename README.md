@@ -33,8 +33,8 @@ personal-website/
 │   ├── components/
 │   │   ├── Navigation.jsx   # Sticky nav: hamburger (mobile) + inline links (desktop), auto-hides on scroll
 │   │   ├── HeroBento.jsx    # Homepage hero bento grid
-│   │   ├── MoodBoard.jsx    # Parallax interest collage with CSS positioning + Framer Motion
-│   │   ├── ExperienceBento.jsx  # Resume career timeline
+│   │   ├── MoodBoard.jsx    # Parallax interest collage (desktop: typography + 4 images; mobile: images only)
+│   │   ├── ExperienceBento.jsx  # Resume career timeline with color-rotated cards
 │   │   ├── CustomCursor.jsx # Custom cursor (desktop only, useMotionValue for perf)
 │   │   ├── ErrorBoundary.jsx
 │   │   ├── Footer.jsx
@@ -42,10 +42,10 @@ personal-website/
 │   ├── data/
 │   │   └── content.json     # ALL site content lives here (edit this to update the site)
 │   ├── pages/
-│   │   ├── Home.jsx         # Hero + MoodBoard + Sycamore Creek card
+│   │   ├── Home.jsx         # Hero + MoodBoard + Sycamore Creek card (overlaps moodboard on mobile)
 │   │   ├── Interests.jsx    # "The Full Picture" — masonry image collage
-│   │   ├── Library.jsx      # Bookshelf (shelf/card toggle), viewport-aware layout
-│   │   ├── Resume.jsx       # Career timeline + Sycamore Creek banner
+│   │   ├── Library.jsx      # Bookshelf (shelf/card toggle), viewport-aware full-bleed layout
+│   │   ├── Resume.jsx       # Career timeline + Sycamore Creek banner (teal accents)
 │   │   └── NotFound.jsx
 │   ├── utils/
 │   │   └── colorHash.js     # Deterministic color hashing for books
@@ -69,20 +69,23 @@ All responsive behavior uses a single breakpoint (`768px`) with two mechanisms:
 | Component | Desktop | Mobile |
 |---|---|---|
 | **Navigation** | Inline links, visible always | Hamburger menu, auto-hides on scroll down |
-| **MoodBoard** | Large `clamp()` widths, full parallax, `overflow: visible` | Stripped padding/borders, tight positions, dampened parallax, `overflow: hidden` |
+| **MoodBoard** | Typography overlay + 4 images, full parallax, `overflow: visible` | Images only (no text), stripped padding/borders, dampened parallax, `overflow: hidden` |
 | **Library** | 6 books/shelf, `2rem` gaps, centered | Viewport-calculated books/shelf, `space-evenly`, full-bleed shelves |
-| **Sycamore Card** | Full card with heading + subtext + CTA | Compact: logo + CTA only, overlaps moodboard bottom |
+| **Sycamore Card** | Full card with heading + subtext + CTA, offset left | Compact logo + CTA, offset right, overlaps moodboard bottom via negative margin |
 
-### MoodBoard Positioning
+### MoodBoard
 
-Desktop positions are defined in base CSS classes (`.mb-fashion`, `.mb-flora`, `.mb-food`, `.mb-cars`).
-Mobile overrides live in the `@media (max-width: 768px)` block of `index.css` with `!important` to override inline styles from Framer Motion.
+The moodboard is a parallax image collage using absolute positioning. Four images (soccer, flora, food, cars) float with Framer Motion `useTransform` parallax. On desktop, large "Soccer. Tech. Food. Flora." typography overlays the images with `mix-blend-mode: difference`.
 
-**Mobile-specific tweaks:**
-- `padding: 0` — removes the `.bento-card` base padding so images fill the frame
-- `border-radius: 8px`, `border-width: 2px` — lighter card chrome
-- Parallax ranges reduced ~60% via conditional `useTransform` values in `MoodBoard.jsx`
-- Container height: `clamp(520px, 80vh, 700px)` vs desktop `clamp(600px, 90vh, 1000px)`
+**Desktop**: Positions via CSS classes (`.mb-fashion`, `.mb-flora`, `.mb-food`, `.mb-cars`) with `clamp()` widths.
+
+**Mobile**: CSS media query overrides strip `.bento-card` padding/borders for edge-to-edge images. Parallax ranges are reduced ~60% via conditional `useTransform`. Typography is hidden entirely (`{!isMobile && ...}`). Container uses `overflow: hidden` to clip cards within bounds.
+
+**CSS class note**: `.mb-fashion` is a legacy class name — it now positions the soccer image. The class names map to grid positions, not content.
+
+### Resume Career Cards
+
+Experience cards use a rotating color scheme: `['var(--bg-color)', 'var(--mustard)', 'var(--terracotta)']`. Text colors are computed per-card for contrast (white on terracotta, dark on mustard/cream). The Sycamore Creek banner uses teal (`#7EC8B5`) accents against a dark green background to differentiate it from the W&M education card.
 
 ### Library Bookshelf
 
@@ -94,9 +97,7 @@ const booksPerShelf = isMobile
     : 6;
 ```
 
-Mobile shelves use `justify-content: space-evenly` with zero padding for full-bleed layout. Desktop uses `justify-content: center` with `2rem` padding.
-
-Book sizing uses `clamp()` for fluid scaling: `height: clamp(160px, 45vw, ${computed}px)`.
+Mobile shelves use `justify-content: space-evenly` with zero padding for full-bleed layout. Desktop uses `justify-content: center` with `2rem` padding. Book sizing uses `clamp()` for fluid scaling.
 
 ---
 
@@ -118,6 +119,9 @@ Edit the `personal` or `experience` objects in `content.json`. The homepage bent
 ### Update Consulting Info
 The Sycamore Creek card (homepage) and banner (resume) pull from `consulting` in `content.json` — fields: `name`, `tagline`, `url`.
 
+### Update MoodBoard Images
+Images are hardcoded in `src/components/MoodBoard.jsx`. To swap an image, change the `src` attribute on the relevant `<img>` tag. Image files live in `public/images/`.
+
 ---
 
 ## Local Development
@@ -129,7 +133,7 @@ git clone https://github.com/howeitis/personalsite.git
 cd personalsite
 npm install
 npm run dev        # http://localhost:5173
-npm test           # Vitest
+npm test           # Vitest (16 tests across 4 files)
 npm run build      # Production build
 ```
 
@@ -163,3 +167,6 @@ No PR required — `main` pushes go straight to production at [howe.app](https:/
 | v55 | Compress moodboard container height, tighter card positions, dampened parallax ranges |
 | v56 | Full-bleed library shelves on mobile, Sycamore overlap, space-evenly book distribution |
 | v57 | Moodboard hero tuck / Sycamore overlap tuning, Interests copy update, docs overhaul |
+| v58 | Resume: Sycamore teal accents, Chungdahm terracotta card, moodboard margin tuning |
+| v59 | Sycamore card right-offset on mobile to mirror desktop positioning |
+| v60 | Soccer replaces fashion in moodboard, text updated to "Soccer/Tech/Food/Flora", captions removed, typography hidden on mobile, code cleanup + test updates |
