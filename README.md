@@ -77,7 +77,7 @@ All responsive behavior uses a single breakpoint (`768px`) with two mechanisms:
 
 | Component | Desktop | Mobile |
 |---|---|---|
-| **Navigation** | Inline links, visible always | Hamburger menu, auto-hides on scroll down |
+| **Navigation** | Inline links right-aligned, "Owen Howe" brand on home / "OH" on subpages, dark mode toggle far-right | Hamburger + dark mode toggle, auto-hides on scroll down, "OH" brand |
 | **MoodBoard** | Typography overlay + 4 images, full parallax, `overflow: visible` | Images only (no text), stripped padding/borders, dampened parallax, `overflow: hidden` |
 | **Library** | 6 books/shelf, `2rem` gaps, centered | Viewport-calculated books/shelf, `space-evenly`, full-bleed shelves |
 | **Sycamore Card** | Full card with heading + subtext + CTA, offset left | Compact logo + CTA, offset right, overlaps moodboard bottom via negative margin |
@@ -203,3 +203,4 @@ No PR required — `main` pushes go straight to production at [howe.app](https:/
 | v64 | `/now` page: bento grid with media images (Stadio, Ebo Taylor, Arsenal logo, orchid photo), Spotify/Goodreads/Arsenal/NYT Cooking/Athletic/Smithsonian hyperlinks, updated listening content |
 | v65 | Social card: 1200×630 og-image with logo, name, and tagline. Sitemap lastmod dates. `/now` page: side-by-side image layouts for Listening, Watching, and Growing cards |
 | v66 | Dark mode: ThemeContext with localStorage persistence + `prefers-color-scheme` detection, FOUC prevention script, editorial dark palette (`[data-theme="dark"]`), Sun/Moon toggle in nav. `/now` page: Spotify album embed replaces static images on Listening card, Arsenal next fixture pill on Watching card |
+| v67 | Nav: right-aligned links with dark mode toggle in far-right corner, route-aware brand ("Owen Howe" on home, "OH" on subpages), mobile toggle next to hamburger. `/now` page: Listening promoted to hero card (span 2) with side-by-side Spotify embed, Thinking About demoted to regular card, tighter padding across all cards, larger Arsenal fixture pill |
