@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import { Sun, Moon } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
@@ -14,6 +14,8 @@ const links = [
 
 export const Navigation = () => {
     const { theme, toggleTheme } = useTheme();
+    const location = useLocation();
+    const isHome = location.pathname === '/';
     const [isOpen, setIsOpen] = useState(false);
     const [hidden, setHidden] = useState(false);
     const lastScrollY = useRef(0);
@@ -57,13 +59,13 @@ export const Navigation = () => {
                 y: navY
             }}
         >
-            <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <NavLink to="/" style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--br-green)' }} className="serif-text">
-                    owenhowe.
+            <div className="container" style={{ display: 'flex', alignItems: 'center' }}>
+                <NavLink to="/" style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--br-green)', marginRight: 'auto' }} className="serif-text">
+                    {isHome ? 'Owen Howe' : 'OH'}
                 </NavLink>
 
                 {/* Desktop Links */}
-                <div className="nav-desktop" style={{ display: 'flex', gap: '2rem' }}>
+                <div className="nav-desktop" style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
                     {links.map((link) => (
                         <NavLink
                             key={link.name}
@@ -82,15 +84,17 @@ export const Navigation = () => {
                     ))}
                 </div>
 
-                {/* Dark Mode Toggle */}
+                {/* Dark Mode Toggle — always visible, far right */}
                 <button
                     onClick={toggleTheme}
                     aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+                    className="theme-toggle"
                     style={{
                         background: 'none',
                         border: 'none',
                         cursor: 'none',
                         padding: '0.5rem',
+                        marginLeft: '1.5rem',
                         color: 'var(--text-primary)',
                         display: 'flex',
                         alignItems: 'center'

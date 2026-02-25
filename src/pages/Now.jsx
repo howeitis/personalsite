@@ -18,21 +18,44 @@ export const Now = ({ data, books }) => {
 
     const cards = [
         {
-            label: 'Thinking About',
-            content: now.thinkingAbout,
-            bg: 'var(--br-green)',
-            textColor: 'white',
-            span: 2,
-            large: true
+            label: 'Listening',
+            content: (
+                <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+                    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                        <p style={{ fontSize: '1.05rem', lineHeight: 1.5 }}>{now.listening}</p>
+                        <a href="https://open.spotify.com/show/36Ynwdxjd1TC0Z2OLFtnIm" target="_blank" rel="noopener noreferrer"
+                           style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', opacity: 0.75 }}>
+                            <img src="images/now/stadio.jpg" alt="Stadio podcast" width={32} height={32}
+                                 style={{ width: '32px', height: '32px', borderRadius: '6px' }} />
+                            Stadio Podcast
+                        </a>
+                    </div>
+                    <div style={{ flexShrink: 0, width: '55%', maxWidth: '320px' }}>
+                        <iframe
+                            style={{ borderRadius: '12px' }}
+                            src="https://open.spotify.com/embed/album/6vqY4CxUewSHoLPi2G0s99?utm_source=generator&theme=0"
+                            width="100%"
+                            height="152"
+                            frameBorder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"
+                            title="Spotify: Ebo Taylor - Life Stories"
+                        />
+                    </div>
+                </div>
+            ),
+            bg: 'var(--lavender)',
+            textColor: 'var(--text-primary)',
+            span: 2
         },
         {
             label: 'Traveling',
             content: (
                 <div>
-                    <div style={{ fontSize: '1rem', opacity: 0.75, marginBottom: '0.25rem' }}>Currently</div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{now.traveling.current}</div>
-                    <div style={{ fontSize: '1rem', opacity: 0.75, marginTop: '1rem', marginBottom: '0.25rem' }}>Next up</div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{now.traveling.next} ✈</div>
+                    <div style={{ fontSize: '0.85rem', opacity: 0.75, marginBottom: '0.15rem' }}>Currently</div>
+                    <div style={{ fontSize: '1.3rem', fontWeight: 700 }}>{now.traveling.current}</div>
+                    <div style={{ fontSize: '0.85rem', opacity: 0.75, marginTop: '0.75rem', marginBottom: '0.15rem' }}>Next up</div>
+                    <div style={{ fontSize: '1.3rem', fontWeight: 700 }}>{now.traveling.next} ✈</div>
                 </div>
             ),
             bg: 'var(--terracotta)',
@@ -40,30 +63,10 @@ export const Now = ({ data, books }) => {
             span: 1
         },
         {
-            label: 'Listening',
-            content: (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                    <p style={{ fontSize: '1.05rem', lineHeight: 1.5 }}>{now.listening}</p>
-                    <iframe
-                        style={{ borderRadius: '12px' }}
-                        src="https://open.spotify.com/embed/album/6vqY4CxUewSHoLPi2G0s99?utm_source=generator&theme=0"
-                        width="100%"
-                        height="152"
-                        frameBorder="0"
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="lazy"
-                        title="Spotify: Ebo Taylor - Life Stories"
-                    />
-                    <a href="https://open.spotify.com/show/36Ynwdxjd1TC0Z2OLFtnIm" target="_blank" rel="noopener noreferrer"
-                       style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', opacity: 0.75 }}>
-                        <img src="images/now/stadio.jpg" alt="Stadio podcast" width={32} height={32}
-                             style={{ width: '32px', height: '32px', borderRadius: '6px' }} />
-                        Stadio Podcast
-                    </a>
-                </div>
-            ),
-            bg: 'var(--lavender)',
-            textColor: 'var(--text-primary)',
+            label: 'Thinking About',
+            content: now.thinkingAbout,
+            bg: 'var(--br-green)',
+            textColor: 'white',
             span: 1
         },
         {
@@ -80,11 +83,11 @@ export const Now = ({ data, books }) => {
                                 <a href="https://www.arsenal.com/fixtures" target="_blank" rel="noopener noreferrer"
                                    style={{ display: 'inline-block', textDecoration: 'none', color: 'inherit' }}>
                                     <div style={{
-                                        display: 'flex', alignItems: 'center', gap: '0.5rem',
-                                        padding: '0.5rem 0.75rem',
+                                        display: 'flex', alignItems: 'center', gap: '0.6rem',
+                                        padding: '0.6rem 1rem',
                                         backgroundColor: 'rgba(0,0,0,0.08)',
                                         borderRadius: '12px',
-                                        fontSize: '0.8rem',
+                                        fontSize: '0.9rem',
                                         fontWeight: 600
                                     }}>
                                         <span>⚽</span>
@@ -196,10 +199,10 @@ export const Now = ({ data, books }) => {
             <div
                 className="bento-card"
                 style={{
-                    padding: '4rem',
+                    padding: '3rem',
                     backgroundColor: 'var(--bg-color)',
                     borderBottom: '1px solid var(--text-primary)',
-                    marginBottom: '4rem'
+                    marginBottom: '2.5rem'
                 }}
             >
                 <h1
@@ -236,13 +239,12 @@ export const Now = ({ data, books }) => {
                         className="bento-card"
                         style={{
                             gridColumn: `span ${card.span}`,
-                            padding: '2rem',
+                            padding: '1.5rem',
                             backgroundColor: card.bg,
                             color: card.textColor,
                             display: 'flex',
                             flexDirection: 'column',
-                            gap: '0.75rem',
-                            minHeight: card.large ? '200px' : '140px'
+                            gap: '0.5rem'
                         }}
                     >
                         <span
@@ -257,18 +259,10 @@ export const Now = ({ data, books }) => {
                         >
                             {card.label}
                         </span>
-                        {card.large ? (
-                            <p
-                                className="serif-text"
-                                style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.75rem)', lineHeight: 1.35, fontStyle: 'italic', color: card.textColor }}
-                            >
-                                "{card.content}"
-                            </p>
-                        ) : (
-                            typeof card.content === 'string'
-                                ? <p style={{ fontSize: '1.05rem', lineHeight: 1.5, color: card.textColor }}>{card.content}</p>
-                                : card.content
-                        )}
+                        {typeof card.content === 'string'
+                            ? <p style={{ fontSize: '1.05rem', lineHeight: 1.5, color: card.textColor }}>{card.content}</p>
+                            : card.content
+                        }
                     </motion.div>
                 ))}
             </div>
