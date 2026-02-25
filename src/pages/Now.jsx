@@ -41,24 +41,14 @@ export const Now = ({ data, books }) => {
         },
         {
             label: 'Listening',
-            content: (
-                <div>
-                    <div style={{ fontSize: '1.4rem', fontWeight: 700, lineHeight: 1.2 }}>{now.listening.title}</div>
-                    <div style={{ fontSize: '1rem', opacity: 0.75, marginTop: '0.4rem' }}>{now.listening.artist}</div>
-                </div>
-            ),
+            content: now.listening,
             bg: 'var(--lavender)',
             textColor: 'var(--text-primary)',
             span: 1
         },
         {
             label: 'Watching',
-            content: (
-                <div>
-                    <div style={{ fontSize: '1.4rem', fontWeight: 700, lineHeight: 1.2 }}>{now.watching.title}</div>
-                    <div style={{ fontSize: '1rem', opacity: 0.6, marginTop: '0.4rem' }}>{now.watching.platform}</div>
-                </div>
-            ),
+            content: now.watching,
             bg: 'var(--sky-blue)',
             textColor: 'var(--text-primary)',
             span: 1
@@ -117,12 +107,7 @@ export const Now = ({ data, books }) => {
         },
         {
             label: 'Following',
-            content: (
-                <div>
-                    <div style={{ fontSize: '1.3rem', fontWeight: 700 }}>{now.following.name}</div>
-                    <div style={{ fontSize: '1rem', opacity: 0.8, marginTop: '0.4rem' }}>{now.following.description}</div>
-                </div>
-            ),
+            content: now.following,
             bg: 'var(--lavender)',
             textColor: 'var(--text-primary)',
             span: 2
