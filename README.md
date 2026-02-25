@@ -30,7 +30,7 @@ personal-website/
 │   │   ├── covers/          # Book cover images (auto-matched by title)
 │   │   └── spine_*.png      # Fallback spine textures for books without covers
 │   ├── robots.txt           # Search engine crawler directives
-│   └── sitemap.xml          # Sitemap for SEO (4 routes)
+│   └── sitemap.xml          # Sitemap for SEO (5 routes, with lastmod dates)
 ├── src/
 │   ├── components/
 │   │   ├── Navigation.jsx   # Sticky nav: hamburger (mobile) + inline links (desktop), auto-hides on scroll
@@ -169,7 +169,7 @@ No PR required — `main` pushes go straight to production at [howe.app](https:/
 | Priority | Feature | Goal |
 |---|---|---|
 | ✅ Done | **`/now` page** | Living snapshot — bento grid with media, images, and hyperlinks to Spotify, Goodreads, Arsenal fixtures, NYT Cooking, The Athletic, and Smithsonian NMAAHC. |
-| Next | **Social card (`og-image`)** | Replace square logo with a proper 1200×630 landscape image (name + tagline + logo). Better link previews on LinkedIn, Slack, iMessage. |
+| ✅ Done | **Social card (`og-image`)** | 1200×630 landscape card with logo, name, tagline, and terracotta accent. Proper previews on LinkedIn, Slack, iMessage. |
 | Next | **Writing section** | Thought leadership posts on talent acquisition, AI, tech hiring. Primary driver of organic search traffic and return visits. |
 | Later | **Contact form** | Lower-friction lead capture for Sycamore Creek — replaces external link with an embedded form. |
 
@@ -196,3 +196,4 @@ No PR required — `main` pushes go straight to production at [howe.app](https:/
 | v62 | Fix hero profile and Sycamore logo aspect ratio distortion caused by explicit width/height without `height: auto` |
 | v63 | Add captions to all interests: Soccer, Books, Music, Cars, Food, Art (Fauvism), Travel (London next) |
 | v64 | `/now` page: bento grid with media images (Stadio, Ebo Taylor, Arsenal logo, orchid photo), Spotify/Goodreads/Arsenal/NYT Cooking/Athletic/Smithsonian hyperlinks, updated listening content |
+| v65 | Social card: 1200×630 og-image with logo, name, and tagline. Sitemap lastmod dates. `/now` page: side-by-side image layouts for Listening, Watching, and Growing cards |
