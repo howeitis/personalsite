@@ -250,6 +250,11 @@ a {
     display: block !important;
   }
 
+  /* Theme toggle stays visible on mobile, margin reduced */
+  .theme-toggle {
+    margin-left: 0.75rem !important;
+  }
+
   /* Force the layout to stack gracefully */
   .bento-grid {
     display: flex;
