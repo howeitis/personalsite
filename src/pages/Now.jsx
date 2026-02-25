@@ -46,10 +46,10 @@ export const Now = ({ data, books }) => {
                     <p style={{ fontSize: '1.05rem', lineHeight: 1.5, marginBottom: '0.75rem' }}>{now.listening}</p>
                     <div style={{ display: 'flex', gap: '0.6rem' }}>
                         <a href="https://open.spotify.com/show/36Ynwdxjd1TC0Z2OLFtnIm?si=722ebfa337b841b3" target="_blank" rel="noopener noreferrer">
-                            <img src="images/now/stadio.jpg" alt="Stadio podcast" width={56} height={56} style={{ width: '56px', height: '56px', borderRadius: '8px', border: 'var(--border-thin)', objectFit: 'cover' }} />
+                            <img src="images/now/stadio.jpg" alt="Stadio podcast" width={80} height={80} style={{ width: '80px', height: '80px', borderRadius: '8px', border: 'var(--border-thin)', objectFit: 'cover' }} />
                         </a>
                         <a href="https://open.spotify.com/album/6vqY4CxUewSHoLPi2G0s99?si=qLuE-GvqQNO3JV56tOIJfA" target="_blank" rel="noopener noreferrer">
-                            <img src="images/now/ebo_taylor.jpg" alt="Ebo Taylor - Life Stories" width={56} height={56} style={{ width: '56px', height: '56px', borderRadius: '8px', border: 'var(--border-thin)', objectFit: 'cover' }} />
+                            <img src="images/now/ebo_taylor.jpg" alt="Ebo Taylor - Life Stories" width={80} height={80} style={{ width: '80px', height: '80px', borderRadius: '8px', border: 'var(--border-thin)', objectFit: 'cover' }} />
                         </a>
                     </div>
                 </div>
@@ -64,7 +64,7 @@ export const Now = ({ data, books }) => {
                 <div>
                     <p style={{ fontSize: '1.05rem', lineHeight: 1.5, marginBottom: '0.75rem' }}>{now.watching}</p>
                     <a href="https://www.arsenal.com/fixtures" target="_blank" rel="noopener noreferrer">
-                        <img src="images/now/arsenal_logo.png" alt="Arsenal FC" width={48} height={56} style={{ width: '48px', height: 'auto', objectFit: 'contain' }} />
+                        <img src="images/now/arsenal_logo.png" alt="Arsenal FC" width={72} height={84} style={{ width: '72px', height: 'auto', objectFit: 'contain' }} />
                     </a>
                 </div>
             ),
@@ -135,10 +135,13 @@ export const Now = ({ data, books }) => {
         {
             label: 'Growing',
             content: (
-                <p style={{ fontSize: '1.05rem', lineHeight: 1.5, color: 'white' }}>
-                    Orchids — inspired by the exhibit at the{' '}
-                    <a href="https://nmaahc.si.edu/explore/exhibitions/more-flower" target="_blank" rel="noopener noreferrer" style={{ color: 'white', textDecoration: 'underline', textUnderlineOffset: '2px' }}>Smithsonian African American Museum</a>
-                </p>
+                <div>
+                    <p style={{ fontSize: '1.05rem', lineHeight: 1.5, color: 'white', marginBottom: '0.75rem' }}>
+                        Orchids — inspired by the exhibit at the{' '}
+                        <a href="https://nmaahc.si.edu/explore/exhibitions/more-flower" target="_blank" rel="noopener noreferrer" style={{ color: 'white', textDecoration: 'underline', textUnderlineOffset: '2px' }}>Smithsonian African American Museum</a>
+                    </p>
+                    <img src="images/now/orchid.jpg" alt="Phalaenopsis orchid from the Smithsonian exhibit" width={200} height={267} style={{ width: '100%', maxWidth: '200px', height: 'auto', borderRadius: '8px', objectFit: 'cover' }} />
+                </div>
             ),
             bg: 'var(--br-green)',
             textColor: 'white',
