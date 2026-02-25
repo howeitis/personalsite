@@ -49,6 +49,7 @@ personal-website/
 │   │   ├── Home.jsx         # Hero + MoodBoard + Sycamore Creek card (overlaps moodboard on mobile)
 │   │   ├── Interests.jsx    # "The Full Picture" — masonry collage with optional descriptions
 │   │   ├── Library.jsx      # Bookshelf (shelf/card toggle), "Currently Reading" tag, aria-labels
+│   │   ├── Now.jsx           # /now page — bento grid with media, images, and external links
 │   │   ├── Resume.jsx       # Career timeline + Sycamore Creek banner (teal accents)
 │   │   └── NotFound.jsx
 │   ├── utils/
@@ -126,6 +127,9 @@ Edit the `personal` or `experience` objects in `content.json`. The homepage bent
 ### Update Consulting Info
 The Sycamore Creek card (homepage) and banner (resume) pull from `consulting` in `content.json` — fields: `name`, `tagline`, `url`.
 
+### Update the /now Page
+Edit the `now` object in `content.json` for text-only fields (`thinkingAbout`, `traveling`, `watching`, `playing`, `following`). Cards with embedded media (Listening, Eating, Working On, Reading, Growing) have JSX in `src/pages/Now.jsx` — update the links, images, or text directly in the component. Media images live in `public/images/now/`.
+
 ### Update MoodBoard Images
 Images are hardcoded in `src/components/MoodBoard.jsx`. To swap an image, change the `src` attribute on the relevant `<img>` tag. Image files live in `public/images/`.
 
@@ -164,9 +168,9 @@ No PR required — `main` pushes go straight to production at [howe.app](https:/
 
 | Priority | Feature | Goal |
 |---|---|---|
-| Next | **`/now` page** | Living snapshot of what Owen is currently reading, listening, watching, eating, traveling, thinking about. Drives return visits and adds personality. |
+| ✅ Done | **`/now` page** | Living snapshot — bento grid with media, images, and hyperlinks to Spotify, Goodreads, Arsenal fixtures, NYT Cooking, The Athletic, and Smithsonian NMAAHC. |
 | Next | **Social card (`og-image`)** | Replace square logo with a proper 1200×630 landscape image (name + tagline + logo). Better link previews on LinkedIn, Slack, iMessage. |
-| Later | **Writing section** | Thought leadership posts on talent acquisition, AI, tech hiring. Primary driver of organic search traffic and return visits. |
+| Next | **Writing section** | Thought leadership posts on talent acquisition, AI, tech hiring. Primary driver of organic search traffic and return visits. |
 | Later | **Contact form** | Lower-friction lead capture for Sycamore Creek — replaces external link with an embedded form. |
 
 ---
@@ -191,3 +195,4 @@ No PR required — `main` pushes go straight to production at [howe.app](https:/
 | v61 | SEO infrastructure (robots.txt, sitemap.xml, JSON-LD Person schema, canonical URL, og:url fix), shared debounced hooks (useIsMobile/useViewportWidth), test coverage expanded to 53 tests across 10 files, img width/height for CLS prevention, accessibility (aria-labels, prefers-reduced-motion, contrast audit), "Currently Reading" tag for Library, Interests description-ready, footer credit line |
 | v62 | Fix hero profile and Sycamore logo aspect ratio distortion caused by explicit width/height without `height: auto` |
 | v63 | Add captions to all interests: Soccer, Books, Music, Cars, Food, Art (Fauvism), Travel (London next) |
+| v64 | `/now` page: bento grid with media images (Stadio, Ebo Taylor, Arsenal logo, orchid photo), Spotify/Goodreads/Arsenal/NYT Cooking/Athletic/Smithsonian hyperlinks, updated listening content |
