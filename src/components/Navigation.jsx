@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motio
 
 const links = [
     { name: 'Home', path: '/' },
+    { name: 'Now', path: '/now' },
     { name: 'Interests', path: '/interests' },
     { name: 'Library', path: '/library' },
     { name: 'Resume', path: '/resume' }

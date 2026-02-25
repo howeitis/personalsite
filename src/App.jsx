@@ -11,6 +11,7 @@ import { Home } from './pages/Home';
 import { Resume } from './pages/Resume';
 import { Interests } from './pages/Interests';
 import { Library } from './pages/Library';
+import { Now } from './pages/Now';
 import { NotFound } from './pages/NotFound';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
               <Route path="/resume" element={<Resume data={contentData.experience} consulting={contentData.consulting} />} />
               <Route path="/interests" element={<Interests data={contentData.interests} />} />
               <Route path="/library" element={<Library data={contentData.books} />} />
+              <Route path="/now" element={<Now data={contentData.now} books={contentData.books} />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </ErrorBoundary>

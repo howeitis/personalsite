@@ -160,6 +160,17 @@ No PR required — `main` pushes go straight to production at [howe.app](https:/
 
 ---
 
+## Roadmap
+
+| Priority | Feature | Goal |
+|---|---|---|
+| Next | **`/now` page** | Living snapshot of what Owen is currently reading, listening, watching, eating, traveling, thinking about. Drives return visits and adds personality. |
+| Next | **Social card (`og-image`)** | Replace square logo with a proper 1200×630 landscape image (name + tagline + logo). Better link previews on LinkedIn, Slack, iMessage. |
+| Later | **Writing section** | Thought leadership posts on talent acquisition, AI, tech hiring. Primary driver of organic search traffic and return visits. |
+| Later | **Contact form** | Lower-friction lead capture for Sycamore Creek — replaces external link with an embedded form. |
+
+---
+
 ## Version History
 
 | Version | Summary |
@@ -179,3 +190,4 @@ No PR required — `main` pushes go straight to production at [howe.app](https:/
 | v60 | Soccer replaces fashion in moodboard, text updated to "Soccer/Tech/Food/Flora", captions removed, typography hidden on mobile, code cleanup + test updates |
 | v61 | SEO infrastructure (robots.txt, sitemap.xml, JSON-LD Person schema, canonical URL, og:url fix), shared debounced hooks (useIsMobile/useViewportWidth), test coverage expanded to 53 tests across 10 files, img width/height for CLS prevention, accessibility (aria-labels, prefers-reduced-motion, contrast audit), "Currently Reading" tag for Library, Interests description-ready, footer credit line |
 | v62 | Fix hero profile and Sycamore logo aspect ratio distortion caused by explicit width/height without `height: auto` |
+| v63 | Add captions to all interests: Soccer, Books, Music, Cars, Food, Art (Fauvism), Travel (London next) |

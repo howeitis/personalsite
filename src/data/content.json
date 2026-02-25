@@ -75,6 +75,21 @@
     "Cycling",
     "Cars"
   ],
+  "now": {
+    "updated": "February 2026",
+    "thinkingAbout": "AI and Old European Cut diamonds.",
+    "traveling": {
+      "current": "Washington, D.C.",
+      "next": "London — Emirates Stadium pilgrimage."
+    },
+    "listening": "Fred again.. and KAYTRANADA to keep the cold away",
+    "watching": "Arsenal's title charge (or heartbreak, depending on the Saturday)",
+    "eating": "Lots of miso dishes lately. Also, plenty from good ole NYT Cooking",
+    "workingOn": "Hiring at The Athletic and constant projects with Claude Code",
+    "playing": "Not enough soccer, but the Achilles is nearly fully recovered",
+    "growing": "Orchids — inspired by the exhibit at the Smithsonian African American Museum",
+    "following": "Way too many podcasts"
+  },
   "books": [
     {
       "title": "James",
