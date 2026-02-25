@@ -4,7 +4,7 @@ export const Interests = ({ data }) => {
     // Collect all provided images for the visual collage
     // Image data with optional descriptions — add a "description" field to show text below the tag
     const images = [
-        { src: "images/art.jpg", alt: "Portrait Art", tag: "Art", bg: "var(--mustard)", width: 600, height: 400 },
+        { src: "images/art.jpg", alt: "Portrait Art", tag: "Art", bg: "var(--mustard)", width: 600, height: 400, description: "Fauvism—because you can never have too much color." },
         { src: "images/cars.jpg", alt: "Porsche 911", tag: "Cars", bg: "var(--br-green)", width: 600, height: 400, description: "Proudly driving a car that's older than some of the interns I hire." },
         { src: "images/cycling.jpg", alt: "Cycling", tag: "Cycling", bg: "var(--sky-blue)", width: 600, height: 400, description: "Cycling: because walking is too slow and city driving is boring" },
         { src: "images/fashion.jpg", alt: "Fashion", tag: "Fashion", bg: "var(--lavender)", width: 600, height: 400, description: "Dressing like someone who has spent too many weekends at thrift stores" },
@@ -15,7 +15,7 @@ export const Interests = ({ data }) => {
         { src: "images/music.jpg", alt: "Music Studio", tag: "Music", bg: "var(--lavender)", width: 600, height: 400, description: "Always seeking the perfect soundtrack—currently accepting applications for 'Song of the Summer' 2026." },
         { src: "images/soccer.jpg", alt: "Arsenal Football", tag: "Soccer", bg: "var(--sky-blue)", width: 600, height: 400, description: "My weekend mood is entirely dependent on Arsenal's form" },
         { src: "images/tech.jpg", alt: "Technology", tag: "Technology", bg: "var(--bg-color)", width: 600, height: 400, description: "Ask me about the future of AI, or just how to get your resume past a recruiter who spends too much time thinking about it." },
-        { src: "images/travel.jpg", alt: "Travel Photography", tag: "Travel", bg: "var(--terracotta)", width: 600, height: 400 }
+        { src: "images/travel.jpg", alt: "Travel Photography", tag: "Travel", bg: "var(--terracotta)", width: 600, height: 400, description: "London is up next 🛫" }
     ];
 
     return (
