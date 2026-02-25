@@ -41,14 +41,33 @@ export const Now = ({ data, books }) => {
         },
         {
             label: 'Listening',
-            content: now.listening,
+            content: (
+                <div>
+                    <p style={{ fontSize: '1.05rem', lineHeight: 1.5, marginBottom: '0.75rem' }}>{now.listening}</p>
+                    <div style={{ display: 'flex', gap: '0.6rem' }}>
+                        <a href="https://open.spotify.com/show/36Ynwdxjd1TC0Z2OLFtnIm?si=722ebfa337b841b3" target="_blank" rel="noopener noreferrer">
+                            <img src="images/now/stadio.jpg" alt="Stadio podcast" width={56} height={56} style={{ width: '56px', height: '56px', borderRadius: '8px', border: 'var(--border-thin)', objectFit: 'cover' }} />
+                        </a>
+                        <a href="https://open.spotify.com/album/6vqY4CxUewSHoLPi2G0s99?si=qLuE-GvqQNO3JV56tOIJfA" target="_blank" rel="noopener noreferrer">
+                            <img src="images/now/ebo_taylor.jpg" alt="Ebo Taylor - Life Stories" width={56} height={56} style={{ width: '56px', height: '56px', borderRadius: '8px', border: 'var(--border-thin)', objectFit: 'cover' }} />
+                        </a>
+                    </div>
+                </div>
+            ),
             bg: 'var(--lavender)',
             textColor: 'var(--text-primary)',
             span: 1
         },
         {
             label: 'Watching',
-            content: now.watching,
+            content: (
+                <div>
+                    <p style={{ fontSize: '1.05rem', lineHeight: 1.5, marginBottom: '0.75rem' }}>{now.watching}</p>
+                    <a href="https://www.arsenal.com/fixtures" target="_blank" rel="noopener noreferrer">
+                        <img src="images/now/arsenal_logo.png" alt="Arsenal FC" width={48} height={56} style={{ width: '48px', height: 'auto', objectFit: 'contain' }} />
+                    </a>
+                </div>
+            ),
             bg: 'var(--sky-blue)',
             textColor: 'var(--text-primary)',
             span: 1
@@ -58,17 +77,21 @@ export const Now = ({ data, books }) => {
             content: currentBook ? (
                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
                     {bookCoverSrc && (
-                        <img
-                            src={bookCoverSrc}
-                            alt={currentBook.title}
-                            width={60}
-                            height={90}
-                            style={{ width: '60px', height: 'auto', borderRadius: '4px', border: 'var(--border-thin)', flexShrink: 0 }}
-                            onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                        />
+                        <a href="https://www.goodreads.com/book/show/7235533-the-way-of-kings" target="_blank" rel="noopener noreferrer" style={{ flexShrink: 0 }}>
+                            <img
+                                src={bookCoverSrc}
+                                alt={currentBook.title}
+                                width={85}
+                                height={128}
+                                style={{ width: '85px', height: 'auto', borderRadius: '4px', border: 'var(--border-thin)', flexShrink: 0 }}
+                                onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                            />
+                        </a>
                     )}
                     <div>
-                        <div style={{ fontSize: '1.2rem', fontWeight: 700, lineHeight: 1.3 }}>{currentBook.title}</div>
+                        <a href="https://www.goodreads.com/book/show/7235533-the-way-of-kings" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <div style={{ fontSize: '1.2rem', fontWeight: 700, lineHeight: 1.3 }}>{currentBook.title}</div>
+                        </a>
                         <div style={{ fontSize: '0.95rem', opacity: 0.7, marginTop: '0.3rem' }}>{currentBook.author}</div>
                     </div>
                 </div>
@@ -79,14 +102,25 @@ export const Now = ({ data, books }) => {
         },
         {
             label: 'Eating',
-            content: now.eating,
+            content: (
+                <p style={{ fontSize: '1.05rem', lineHeight: 1.5 }}>
+                    Lots of miso dishes lately. Also, plenty from good ole{' '}
+                    <a href="https://cooking.nytimes.com/search?q=miso&include_content=articles" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline', textUnderlineOffset: '2px' }}>NYT Cooking</a>
+                </p>
+            ),
             bg: 'var(--bg-color)',
             textColor: 'var(--text-primary)',
             span: 1
         },
         {
             label: 'Working On',
-            content: now.workingOn,
+            content: (
+                <p style={{ fontSize: '1.05rem', lineHeight: 1.5 }}>
+                    Hiring at{' '}
+                    <a href="https://www.nytimes.com/athletic/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline', textUnderlineOffset: '2px' }}>The Athletic</a>
+                    {' '}and constant projects with Claude Code
+                </p>
+            ),
             bg: 'var(--mustard)',
             textColor: 'var(--text-primary)',
             span: 2
@@ -100,7 +134,12 @@ export const Now = ({ data, books }) => {
         },
         {
             label: 'Growing',
-            content: now.growing,
+            content: (
+                <p style={{ fontSize: '1.05rem', lineHeight: 1.5, color: 'white' }}>
+                    Orchids — inspired by the exhibit at the{' '}
+                    <a href="https://nmaahc.si.edu/explore/exhibitions/more-flower" target="_blank" rel="noopener noreferrer" style={{ color: 'white', textDecoration: 'underline', textUnderlineOffset: '2px' }}>Smithsonian African American Museum</a>
+                </p>
+            ),
             bg: 'var(--br-green)',
             textColor: 'white',
             span: 1
