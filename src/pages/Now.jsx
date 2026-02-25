@@ -42,16 +42,24 @@ export const Now = ({ data, books }) => {
         {
             label: 'Listening',
             content: (
-                <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                     <p style={{ fontSize: '1.05rem', lineHeight: 1.5 }}>{now.listening}</p>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', flexShrink: 0 }}>
-                        <a href="https://open.spotify.com/show/36Ynwdxjd1TC0Z2OLFtnIm?si=722ebfa337b841b3" target="_blank" rel="noopener noreferrer">
-                            <img src="images/now/stadio.jpg" alt="Stadio podcast" width={80} height={80} style={{ width: '80px', height: '80px', borderRadius: '8px', objectFit: 'cover' }} />
-                        </a>
-                        <a href="https://open.spotify.com/album/6vqY4CxUewSHoLPi2G0s99?si=qLuE-GvqQNO3JV56tOIJfA" target="_blank" rel="noopener noreferrer">
-                            <img src="images/now/ebo_taylor.jpg" alt="Ebo Taylor - Life Stories" width={80} height={80} style={{ width: '80px', height: '80px', borderRadius: '8px', objectFit: 'cover' }} />
-                        </a>
-                    </div>
+                    <iframe
+                        style={{ borderRadius: '12px' }}
+                        src="https://open.spotify.com/embed/album/6vqY4CxUewSHoLPi2G0s99?utm_source=generator&theme=0"
+                        width="100%"
+                        height="152"
+                        frameBorder="0"
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"
+                        title="Spotify: Ebo Taylor - Life Stories"
+                    />
+                    <a href="https://open.spotify.com/show/36Ynwdxjd1TC0Z2OLFtnIm" target="_blank" rel="noopener noreferrer"
+                       style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', opacity: 0.75 }}>
+                        <img src="images/now/stadio.jpg" alt="Stadio podcast" width={32} height={32}
+                             style={{ width: '32px', height: '32px', borderRadius: '6px' }} />
+                        Stadio Podcast
+                    </a>
                 </div>
             ),
             bg: 'var(--lavender)',
@@ -60,14 +68,39 @@ export const Now = ({ data, books }) => {
         },
         {
             label: 'Watching',
-            content: (
-                <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                    <p style={{ fontSize: '1.05rem', lineHeight: 1.5 }}>{now.watching}</p>
-                    <a href="https://www.arsenal.com/fixtures" target="_blank" rel="noopener noreferrer" style={{ flexShrink: 0 }}>
-                        <img src="images/now/arsenal_logo.png" alt="Arsenal FC" width={72} height={84} style={{ width: '72px', height: 'auto', objectFit: 'contain' }} />
-                    </a>
-                </div>
-            ),
+            content: (() => {
+                const fixture = now.nextFixture;
+                const matchDate = fixture ? new Date(fixture.date + 'T' + fixture.time + ':00') : null;
+                const formattedDate = matchDate ? matchDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }) : '';
+                return (
+                    <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+                        <div style={{ flex: 1 }}>
+                            <p style={{ fontSize: '1.05rem', lineHeight: 1.5, marginBottom: '0.75rem' }}>{now.watching}</p>
+                            {fixture && (
+                                <a href="https://www.arsenal.com/fixtures" target="_blank" rel="noopener noreferrer"
+                                   style={{ display: 'inline-block', textDecoration: 'none', color: 'inherit' }}>
+                                    <div style={{
+                                        display: 'flex', alignItems: 'center', gap: '0.5rem',
+                                        padding: '0.5rem 0.75rem',
+                                        backgroundColor: 'rgba(0,0,0,0.08)',
+                                        borderRadius: '12px',
+                                        fontSize: '0.8rem',
+                                        fontWeight: 600
+                                    }}>
+                                        <span>⚽</span>
+                                        <span>{fixture.home ? 'vs' : '@'} {fixture.opponent}</span>
+                                        <span style={{ opacity: 0.6 }}>·</span>
+                                        <span style={{ opacity: 0.75 }}>{formattedDate}</span>
+                                    </div>
+                                </a>
+                            )}
+                        </div>
+                        <a href="https://www.arsenal.com/fixtures" target="_blank" rel="noopener noreferrer" style={{ flexShrink: 0 }}>
+                            <img src="images/now/arsenal_logo.png" alt="Arsenal FC" width={72} height={84} style={{ width: '72px', height: 'auto', objectFit: 'contain' }} />
+                        </a>
+                    </div>
+                );
+            })(),
             bg: 'var(--sky-blue)',
             textColor: 'var(--text-primary)',
             span: 1

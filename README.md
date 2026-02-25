@@ -13,6 +13,7 @@ This project uses vanilla CSS over component libraries (Tailwind, Material UI, e
 
 - **Framework**: React 19 + Vite 7
 - **Routing**: React Router v7 (SPA, client-side navigation)
+- **Theming**: Dark/light mode via React Context + CSS custom properties (`[data-theme="dark"]`)
 - **Styling**: Vanilla CSS (`src/index.css`) with CSS custom properties + inline React styles
 - **Animations**: Framer Motion (`motion.div`, `useScroll`, `useTransform`, `useSpring`, `AnimatePresence`)
 - **Icons**: Lucide React
@@ -33,7 +34,7 @@ personal-website/
 │   └── sitemap.xml          # Sitemap for SEO (5 routes, with lastmod dates)
 ├── src/
 │   ├── components/
-│   │   ├── Navigation.jsx   # Sticky nav: hamburger (mobile) + inline links (desktop), auto-hides on scroll
+│   │   ├── Navigation.jsx   # Sticky nav: hamburger (mobile) + inline links (desktop), auto-hides on scroll, dark mode toggle
 │   │   ├── HeroBento.jsx    # Homepage hero bento grid
 │   │   ├── MoodBoard.jsx    # Parallax interest collage (desktop: typography + 4 images; mobile: images only)
 │   │   ├── ExperienceBento.jsx  # Resume career timeline with color-rotated cards
@@ -49,15 +50,17 @@ personal-website/
 │   │   ├── Home.jsx         # Hero + MoodBoard + Sycamore Creek card (overlaps moodboard on mobile)
 │   │   ├── Interests.jsx    # "The Full Picture" — masonry collage with optional descriptions
 │   │   ├── Library.jsx      # Bookshelf (shelf/card toggle), "Currently Reading" tag, aria-labels
-│   │   ├── Now.jsx           # /now page — bento grid with media, images, and external links
+│   │   ├── Now.jsx           # /now page — bento grid with Spotify embed, Arsenal fixture, media, and external links
 │   │   ├── Resume.jsx       # Career timeline + Sycamore Creek banner (teal accents)
 │   │   └── NotFound.jsx
 │   ├── utils/
 │   │   └── colorHash.js     # Deterministic color hashing for books
-│   ├── App.jsx              # Router, error boundary, lazy loading
-│   ├── index.css            # Design tokens, CSS variables, all responsive overrides
+│   ├── context/
+│   │   └── ThemeContext.jsx  # Dark/light theme provider (localStorage + prefers-color-scheme)
+│   ├── App.jsx              # Router, error boundary, ThemeProvider wrapper
+│   ├── index.css            # Design tokens, CSS variables, dark mode palette, responsive overrides
 │   └── setupTests.js        # Test setup: IntersectionObserver + matchMedia mocks
-├── index.html               # SEO meta tags, JSON-LD Person schema, canonical URL
+├── index.html               # SEO meta tags, JSON-LD Person schema, canonical URL, FOUC prevention script
 └── package.json
 ```
 
@@ -128,7 +131,7 @@ Edit the `personal` or `experience` objects in `content.json`. The homepage bent
 The Sycamore Creek card (homepage) and banner (resume) pull from `consulting` in `content.json` — fields: `name`, `tagline`, `url`.
 
 ### Update the /now Page
-Edit the `now` object in `content.json` for text-only fields (`thinkingAbout`, `traveling`, `watching`, `playing`, `following`). Cards with embedded media (Listening, Eating, Working On, Reading, Growing) have JSX in `src/pages/Now.jsx` — update the links, images, or text directly in the component. Media images live in `public/images/now/`.
+Edit the `now` object in `content.json` for text-only fields (`thinkingAbout`, `traveling`, `watching`, `playing`, `following`). The `nextFixture` object controls the Arsenal match pill (opponent, date, time, competition, home/away). Cards with embedded media (Listening with Spotify embed, Eating, Working On, Reading, Growing) have JSX in `src/pages/Now.jsx` — update the links, images, or text directly in the component. Media images live in `public/images/now/`.
 
 ### Update MoodBoard Images
 Images are hardcoded in `src/components/MoodBoard.jsx`. To swap an image, change the `src` attribute on the relevant `<img>` tag. Image files live in `public/images/`.
@@ -170,6 +173,8 @@ No PR required — `main` pushes go straight to production at [howe.app](https:/
 |---|---|---|
 | ✅ Done | **`/now` page** | Living snapshot — bento grid with media, images, and hyperlinks to Spotify, Goodreads, Arsenal fixtures, NYT Cooking, The Athletic, and Smithsonian NMAAHC. |
 | ✅ Done | **Social card (`og-image`)** | 1200×630 landscape card with logo, name, tagline, and terracotta accent. Proper previews on LinkedIn, Slack, iMessage. |
+| ✅ Done | **Dark mode** | Full light/dark toggle with editorial dark palette, FOUC prevention, localStorage persistence, `prefers-color-scheme` detection. |
+| ✅ Done | **Interactive embeds** | Spotify album embed on Listening card, Arsenal next fixture pill on Watching card. |
 | Next | **Writing section** | Thought leadership posts on talent acquisition, AI, tech hiring. Primary driver of organic search traffic and return visits. |
 | Later | **Contact form** | Lower-friction lead capture for Sycamore Creek — replaces external link with an embedded form. |
 
@@ -197,3 +202,4 @@ No PR required — `main` pushes go straight to production at [howe.app](https:/
 | v63 | Add captions to all interests: Soccer, Books, Music, Cars, Food, Art (Fauvism), Travel (London next) |
 | v64 | `/now` page: bento grid with media images (Stadio, Ebo Taylor, Arsenal logo, orchid photo), Spotify/Goodreads/Arsenal/NYT Cooking/Athletic/Smithsonian hyperlinks, updated listening content |
 | v65 | Social card: 1200×630 og-image with logo, name, and tagline. Sitemap lastmod dates. `/now` page: side-by-side image layouts for Listening, Watching, and Growing cards |
+| v66 | Dark mode: ThemeContext with localStorage persistence + `prefers-color-scheme` detection, FOUC prevention script, editorial dark palette (`[data-theme="dark"]`), Sun/Moon toggle in nav. `/now` page: Spotify album embed replaces static images on Listening card, Arsenal next fixture pill on Watching card |
