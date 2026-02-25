@@ -160,6 +160,17 @@ No PR required — `main` pushes go straight to production at [howe.app](https:/
 
 ---
 
+## Roadmap
+
+| Priority | Feature | Goal |
+|---|---|---|
+| Next | **`/now` page** | Living snapshot of what Owen is currently reading, listening, watching, eating, traveling, thinking about. Drives return visits and adds personality. |
+| Next | **Social card (`og-image`)** | Replace square logo with a proper 1200×630 landscape image (name + tagline + logo). Better link previews on LinkedIn, Slack, iMessage. |
+| Later | **Writing section** | Thought leadership posts on talent acquisition, AI, tech hiring. Primary driver of organic search traffic and return visits. |
+| Later | **Contact form** | Lower-friction lead capture for Sycamore Creek — replaces external link with an embedded form. |
+
+---
+
 ## Version History
 
 | Version | Summary |
