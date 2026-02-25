@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
+import { Sun, Moon } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 const links = [
     { name: 'Home', path: '/' },
@@ -11,6 +13,7 @@ const links = [
 ];
 
 export const Navigation = () => {
+    const { theme, toggleTheme } = useTheme();
     const [isOpen, setIsOpen] = useState(false);
     const [hidden, setHidden] = useState(false);
     const lastScrollY = useRef(0);
@@ -46,7 +49,7 @@ export const Navigation = () => {
         <motion.nav
             style={{
                 padding: '1.5rem 0',
-                borderBottom: '1px solid rgba(0,0,0,0.1)',
+                borderBottom: '1px solid var(--separator-color)',
                 backgroundColor: 'var(--bg-color)',
                 position: 'sticky',
                 top: 0,
@@ -78,6 +81,23 @@ export const Navigation = () => {
                         </NavLink>
                     ))}
                 </div>
+
+                {/* Dark Mode Toggle */}
+                <button
+                    onClick={toggleTheme}
+                    aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+                    style={{
+                        background: 'none',
+                        border: 'none',
+                        cursor: 'none',
+                        padding: '0.5rem',
+                        color: 'var(--text-primary)',
+                        display: 'flex',
+                        alignItems: 'center'
+                    }}
+                >
+                    {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+                </button>
 
                 {/* Hamburger Button (mobile only) */}
                 <button
@@ -130,7 +150,7 @@ export const Navigation = () => {
                         transition={{ duration: 0.25, ease: 'easeInOut' }}
                         style={{
                             overflow: 'hidden',
-                            borderTop: '1px solid rgba(0,0,0,0.05)'
+                            borderTop: '1px solid var(--separator-color)'
                         }}
                     >
                         <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', padding: '1.5rem 2rem' }}>
@@ -145,7 +165,7 @@ export const Navigation = () => {
                                         textDecoration: 'none',
                                         fontSize: '1.25rem',
                                         padding: '0.75rem 0',
-                                        borderBottom: '1px solid rgba(0,0,0,0.05)'
+                                        borderBottom: '1px solid var(--separator-color)'
                                     })}
                                 >
                                     {link.name}

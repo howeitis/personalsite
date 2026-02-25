@@ -43,7 +43,7 @@ export const ExperienceBento = ({ data }) => {
                                 {job.secondTitle && <p style={{ fontWeight: 600, color: textColor || 'var(--terracotta)', opacity: 0.8 }}>{job.secondTitle}</p>}
                             </div>
                             <div style={{ textAlign: 'right' }}>
-                                <span className="pill-tag" style={{ border: '2px solid rgba(0,0,0,0.1)', background: 'transparent', marginBottom: '0.5rem' }}>{job.period}</span>
+                                <span className="pill-tag" style={{ border: '2px solid var(--separator-color)', background: 'transparent', marginBottom: '0.5rem' }}>{job.period}</span>
                                 <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{job.location}</p>
                             </div>
                         </div>

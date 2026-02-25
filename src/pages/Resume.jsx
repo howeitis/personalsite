@@ -37,7 +37,7 @@ export const Resume = ({ data, consulting }) => {
                         <h3 className="serif-text" style={{ fontSize: '1.5rem', color: '#7EC8B5', margin: 0 }}>
                             {consulting.name}
                         </h3>
-                        <p style={{ color: 'var(--bg-color)', fontSize: '0.95rem', opacity: 0.9, marginTop: '0.25rem' }}>
+                        <p style={{ color: 'var(--text-on-overlay)', fontSize: '0.95rem', opacity: 0.9, marginTop: '0.25rem' }}>
                             {consulting.tagline}
                         </p>
                     </div>

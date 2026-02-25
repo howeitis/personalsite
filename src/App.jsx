@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext';
 import { Navigation } from './components/Navigation';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
@@ -16,29 +17,31 @@ import { NotFound } from './pages/NotFound';
 
 function App() {
   return (
-    <Router basename={import.meta.env.BASE_URL}>
-      <ScrollToTop />
-      <div className="app-container" style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-        <a href="#main-content" className="skip-link">Skip to content</a>
-        <CustomCursor />
-        <Navigation />
+    <ThemeProvider>
+      <Router basename={import.meta.env.BASE_URL}>
+        <ScrollToTop />
+        <div className="app-container" style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+          <a href="#main-content" className="skip-link">Skip to content</a>
+          <CustomCursor />
+          <Navigation />
 
-        <main id="main-content" className="container" style={{ flex: 1, paddingBottom: '4rem', paddingTop: '2rem' }}>
-          <ErrorBoundary>
-            <Routes>
-              <Route path="/" element={<Home data={contentData} />} />
-              <Route path="/resume" element={<Resume data={contentData.experience} consulting={contentData.consulting} />} />
-              <Route path="/interests" element={<Interests data={contentData.interests} />} />
-              <Route path="/library" element={<Library data={contentData.books} />} />
-              <Route path="/now" element={<Now data={contentData.now} books={contentData.books} />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </ErrorBoundary>
-        </main>
+          <main id="main-content" className="container" style={{ flex: 1, paddingBottom: '4rem', paddingTop: '2rem' }}>
+            <ErrorBoundary>
+              <Routes>
+                <Route path="/" element={<Home data={contentData} />} />
+                <Route path="/resume" element={<Resume data={contentData.experience} consulting={contentData.consulting} />} />
+                <Route path="/interests" element={<Interests data={contentData.interests} />} />
+                <Route path="/library" element={<Library data={contentData.books} />} />
+                <Route path="/now" element={<Now data={contentData.now} books={contentData.books} />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </ErrorBoundary>
+          </main>
 
-        <Footer personal={contentData.personal} />
-      </div>
-    </Router>
+          <Footer personal={contentData.personal} />
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 

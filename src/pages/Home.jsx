@@ -37,8 +37,8 @@ export const Home = ({ data }) => {
                 }} />
                 {!isMobile && (
                     <>
-                        <h2 className="serif-text" style={{ fontSize: '1.5rem', color: 'var(--bg-color)', marginBottom: '0.25rem' }}>Interested in hiring leadership?</h2>
-                        <p style={{ color: 'var(--bg-color)', fontSize: '0.9rem', marginBottom: '1rem', opacity: 0.9 }}>
+                        <h2 className="serif-text" style={{ fontSize: '1.5rem', color: 'var(--text-on-overlay)', marginBottom: '0.25rem' }}>Interested in hiring leadership?</h2>
+                        <p style={{ color: 'var(--text-on-overlay)', fontSize: '0.9rem', marginBottom: '1rem', opacity: 0.9 }}>
                             I also run a talent advisory practice.
                         </p>
                     </>
