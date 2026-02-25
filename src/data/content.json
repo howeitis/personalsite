@@ -75,6 +75,30 @@
     "Cycling",
     "Cars"
   ],
+  "now": {
+    "updated": "February 2026",
+    "thinkingAbout": "How AI is reshaping the recruiter's job — and whether that's a threat or the biggest opportunity the profession has had in 20 years.",
+    "traveling": {
+      "current": "Washington, D.C.",
+      "next": "London"
+    },
+    "listening": {
+      "title": "GNX",
+      "artist": "Kendrick Lamar"
+    },
+    "watching": {
+      "title": "Adolescence",
+      "platform": "Netflix"
+    },
+    "eating": "Maketto on H St — the khao man gai is non-negotiable.",
+    "workingOn": "Building out the Sycamore Creek client pipeline and thinking about what retained search looks like in an AI-first hiring market.",
+    "playing": "Sunday morning pickup at Meridian Hill. Knees permitting.",
+    "growing": "A bird of paradise and a fiddle leaf fig that is, against all odds, thriving.",
+    "following": {
+      "name": "Brendan Hoban",
+      "description": "Best soccer tactics writing on the internet."
+    }
+  },
   "books": [
     {
       "title": "James",

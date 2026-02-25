@@ -233,6 +233,15 @@ a {
     gap: 1.5rem;
   }
 
+  /* /now page bento grid — single column on mobile */
+  .now-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .now-grid > .bento-card {
+    grid-column: span 1 !important;
+  }
+
   /* Explicitly override Javascript/Inline Grid spans — scoped to grid children only */
   .bento-grid>.bento-card {
     width: 100% !important;
