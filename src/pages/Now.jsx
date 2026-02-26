@@ -46,11 +46,18 @@ export const Now = ({ data, books }) => {
         {
             label: 'Traveling',
             content: (
-                <div>
-                    <div style={{ fontSize: '0.85rem', opacity: 0.75, marginBottom: '0.15rem' }}>Currently</div>
-                    <div style={{ fontSize: '1.3rem', fontWeight: 700 }}>{now.traveling.current}</div>
-                    <div style={{ fontSize: '0.85rem', opacity: 0.75, marginTop: '0.75rem', marginBottom: '0.15rem' }}>Next up</div>
-                    <div style={{ fontSize: '1.3rem', fontWeight: 700 }}>{now.traveling.next} ✈</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                    <div>
+                        <div style={{ fontSize: '0.85rem', opacity: 0.75, marginBottom: '0.15rem' }}>Currently</div>
+                        <div style={{ fontSize: '1.3rem', fontWeight: 700 }}>{now.traveling.current}</div>
+                        <div style={{ fontSize: '0.85rem', opacity: 0.75, marginTop: '0.75rem', marginBottom: '0.15rem' }}>Next up</div>
+                        <div style={{ fontSize: '1.3rem', fontWeight: 700 }}>{now.traveling.next} ✈</div>
+                    </div>
+                    <img
+                        src="images/now/stadium.png"
+                        alt="Emirates Stadium"
+                        style={{ width: '100%', borderRadius: '8px', objectFit: 'cover', maxHeight: '160px', flexShrink: 0 }}
+                    />
                 </div>
             ),
             bg: 'var(--terracotta)',
@@ -83,7 +90,16 @@ export const Now = ({ data, books }) => {
         },
         {
             label: 'Thinking About',
-            content: now.thinkingAbout,
+            content: (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                    <p style={{ fontSize: '1.05rem', lineHeight: 1.5, color: 'white' }}>{now.thinkingAbout}</p>
+                    <img
+                        src="images/now/ring.png"
+                        alt=""
+                        style={{ width: '100%', borderRadius: '8px', objectFit: 'cover', maxHeight: '160px', flexShrink: 0 }}
+                    />
+                </div>
+            ),
             bg: 'var(--br-green)',
             textColor: 'white',
             span: 1
