@@ -62,7 +62,8 @@ export const Now = ({ data, books }) => {
             ),
             bg: 'var(--terracotta)',
             textColor: 'white',
-            span: 1
+            span: 1,
+            rowSpan: 2
         },
         {
             label: 'Podcasts',
@@ -87,22 +88,6 @@ export const Now = ({ data, books }) => {
             bg: 'var(--sky-blue)',
             textColor: 'var(--text-primary)',
             span: 2
-        },
-        {
-            label: 'Thinking About',
-            content: (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                    <p style={{ fontSize: '1.05rem', lineHeight: 1.5, color: 'white' }}>{now.thinkingAbout}</p>
-                    <img
-                        src="images/now/ring.png"
-                        alt=""
-                        style={{ width: '100%', borderRadius: '8px', objectFit: 'cover', maxHeight: '160px', flexShrink: 0 }}
-                    />
-                </div>
-            ),
-            bg: 'var(--br-green)',
-            textColor: 'white',
-            span: 1
         },
         {
             label: 'Watching',
@@ -292,6 +277,7 @@ export const Now = ({ data, books }) => {
                         className="bento-card"
                         style={{
                             gridColumn: `span ${card.span}`,
+                            ...(card.rowSpan && { gridRow: `span ${card.rowSpan}` }),
                             padding: '1.5rem',
                             backgroundColor: card.bg,
                             color: card.textColor,
