@@ -1,28 +1,20 @@
 import { useState, useEffect } from 'react';
 
 const ARSENAL_TEAM_ID = 57;
-const API_BASE = 'https://api.football-data.org/v4';
 
 /**
- * Fetches the next scheduled Arsenal fixture from football-data.org.
- * Requires VITE_FOOTBALL_API_KEY to be set.
- * Falls back to the hardcoded fixture from content.json on error or missing key.
+ * Fetches the next scheduled Arsenal fixture via the /api/arsenal-fixture proxy.
+ * Falls back to the hardcoded fixture from content.json on error.
  */
 export function useArsenalFixture(fallback) {
     const [fixture, setFixture] = useState(fallback ?? null);
 
     useEffect(() => {
-        const apiKey = import.meta.env.VITE_FOOTBALL_API_KEY;
-        if (!apiKey) return; // no key — stay on fallback
-
         let cancelled = false;
 
         async function fetchFixture() {
             try {
-                const res = await fetch(
-                    `${API_BASE}/teams/${ARSENAL_TEAM_ID}/matches?status=SCHEDULED&limit=1`,
-                    { headers: { 'X-Auth-Token': apiKey } }
-                );
+                const res = await fetch('/api/arsenal-fixture');
                 if (!res.ok) return;
                 const data = await res.json();
                 const match = data.matches?.[0];
