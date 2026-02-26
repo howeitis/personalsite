@@ -44,6 +44,20 @@ export const Now = ({ data, books }) => {
             span: 2
         },
         {
+            label: 'Traveling',
+            content: (
+                <div>
+                    <div style={{ fontSize: '0.85rem', opacity: 0.75, marginBottom: '0.15rem' }}>Currently</div>
+                    <div style={{ fontSize: '1.3rem', fontWeight: 700 }}>{now.traveling.current}</div>
+                    <div style={{ fontSize: '0.85rem', opacity: 0.75, marginTop: '0.75rem', marginBottom: '0.15rem' }}>Next up</div>
+                    <div style={{ fontSize: '1.3rem', fontWeight: 700 }}>{now.traveling.next} ✈</div>
+                </div>
+            ),
+            bg: 'var(--terracotta)',
+            textColor: 'white',
+            span: 1
+        },
+        {
             label: 'Podcasts',
             content: (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -66,20 +80,6 @@ export const Now = ({ data, books }) => {
             bg: 'var(--sky-blue)',
             textColor: 'var(--text-primary)',
             span: 2
-        },
-        {
-            label: 'Traveling',
-            content: (
-                <div>
-                    <div style={{ fontSize: '0.85rem', opacity: 0.75, marginBottom: '0.15rem' }}>Currently</div>
-                    <div style={{ fontSize: '1.3rem', fontWeight: 700 }}>{now.traveling.current}</div>
-                    <div style={{ fontSize: '0.85rem', opacity: 0.75, marginTop: '0.75rem', marginBottom: '0.15rem' }}>Next up</div>
-                    <div style={{ fontSize: '1.3rem', fontWeight: 700 }}>{now.traveling.next} ✈</div>
-                </div>
-            ),
-            bg: 'var(--terracotta)',
-            textColor: 'white',
-            span: 1
         },
         {
             label: 'Thinking About',
