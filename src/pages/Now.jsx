@@ -30,7 +30,7 @@ export const Now = ({ data, books }) => {
                                 style={{ borderRadius: '12px' }}
                                 src="https://open.spotify.com/embed/album/6vqY4CxUewSHoLPi2G0s99?utm_source=generator&theme=0"
                                 width="100%"
-                                height="232"
+                                height="352"
                                 frameBorder="0"
                                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                                 loading="lazy"
@@ -42,7 +42,7 @@ export const Now = ({ data, books }) => {
                                 style={{ borderRadius: '12px' }}
                                 src="https://open.spotify.com/embed/show/36Ynwdxjd1TC0Z2OLFtnIm?utm_source=generator&theme=0"
                                 width="100%"
-                                height="232"
+                                height="352"
                                 frameBorder="0"
                                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                                 loading="lazy"
