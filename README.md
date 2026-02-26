@@ -175,19 +175,28 @@ The Arsenal next fixture pill on the `/now` page requires a valid `VITE_FOOTBALL
 
 **Symptoms**: Fixture pill is missing, blank, or shows fallback content.
 
-**Known issue — Vercel env var not taking effect after update**: Even after updating `VITE_FOOTBALL_API_KEY` in the Vercel dashboard and triggering a redeploy, the fixture may still fail. This needs further investigation.
+**Known issue — `VITE_FOOTBALL_API_KEY` is `undefined` in the production bundle.**
+
+Confirmed via DevTools: no request to `api.football-data.org` is ever made. This means `import.meta.env.VITE_FOOTBALL_API_KEY` is `undefined` at runtime, causing `useArsenalFixture.js:16` (`if (!apiKey) return`) to bail out silently and show the hardcoded fallback from `content.json`.
+
+**Root cause**: Vite bakes `VITE_*` env vars into the JS bundle **at build time**, not runtime. The "Redeploy" button in Vercel **reuses the cached build** — it does NOT re-inject env vars. So updating the key in Vercel and clicking Redeploy has no effect if the same build artifact is reused.
 
 **Checklist so far:**
 1. ✅ Updated key in Vercel dashboard (Settings → Environment Variables)
 2. ✅ Triggered manual redeploy from Vercel Deployments tab
-3. ❌ Fixture still not loading — root cause TBD
+3. ✅ Confirmed no network request to `api.football-data.org` (DevTools → Network)
+4. ❌ Key is still not present in bundle — root cause: cached build reused
 
-**Next steps to debug:**
-- Open DevTools → Network tab on live site, filter by `api.football-data` — check the response status and error message
-- Confirm the env var is set for **Production** environment (not just Preview/Development) in Vercel
-- Check if the key itself is valid by testing directly: `curl "https://api.football-data.org/v4/teams/57/matches?status=SCHEDULED&limit=1" -H "X-Auth-Token: YOUR_KEY"`
-- Check Vercel build logs to confirm the env var was injected at build time (Vite bakes `VITE_*` vars in at build, not runtime)
-- If the key is valid but the build still uses the old key, try deleting and re-adding the env var (not just editing) before redeploying
+**Fix — trigger a fresh build:**
+- Push any commit to `main` (even an empty one: `git commit --allow-empty -m "chore: trigger rebuild"`) — this forces Vercel to run a new build that picks up the env var
+- Or in Vercel: Settings → Environment Variables → delete and re-add `VITE_FOOTBALL_API_KEY`, then go to Deployments → select latest → Redeploy → **uncheck "Use existing Build Cache"**
+- Confirm the env var is set for the **Production** environment (not just Preview/Development)
+
+**To verify the key itself is valid before rebuilding:**
+```bash
+curl "https://api.football-data.org/v4/teams/57/matches?status=SCHEDULED&limit=1" \
+  -H "X-Auth-Token: YOUR_KEY"
+```
 
 ---
 
