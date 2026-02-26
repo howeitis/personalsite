@@ -54,7 +54,7 @@ export const Now = ({ data, books }) => {
                         <div style={{ fontSize: '1.3rem', fontWeight: 700 }}>{now.traveling.next} ✈</div>
                     </div>
                     <img
-                        src="images/now/stadium.png"
+                        src="images/now/staidum.png"
                         alt="Emirates Stadium"
                         style={{ width: '100%', borderRadius: '8px', objectFit: 'cover', maxHeight: '160px', flexShrink: 0 }}
                     />
