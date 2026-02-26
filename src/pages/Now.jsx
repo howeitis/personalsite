@@ -22,27 +22,33 @@ export const Now = ({ data, books }) => {
         {
             label: 'Listening',
             content: (
-                <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
-                    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        <p style={{ fontSize: '1.05rem', lineHeight: 1.5 }}>{now.listening}</p>
-                        <a href="https://open.spotify.com/show/36Ynwdxjd1TC0Z2OLFtnIm" target="_blank" rel="noopener noreferrer"
-                           style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', opacity: 0.75 }}>
-                            <img src="images/now/stadio.jpg" alt="Stadio podcast" width={32} height={32}
-                                 style={{ width: '32px', height: '32px', borderRadius: '6px' }} />
-                            Stadio Podcast
-                        </a>
-                    </div>
-                    <div style={{ flexShrink: 0, width: '55%', maxWidth: '320px' }}>
-                        <iframe
-                            style={{ borderRadius: '12px' }}
-                            src="https://open.spotify.com/embed/album/6vqY4CxUewSHoLPi2G0s99?utm_source=generator&theme=0"
-                            width="100%"
-                            height="152"
-                            frameBorder="0"
-                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                            loading="lazy"
-                            title="Spotify: Ebo Taylor - Life Stories"
-                        />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    <p style={{ fontSize: '1.05rem', lineHeight: 1.5 }}>{now.listening}</p>
+                    <div style={{ display: 'flex', gap: '1rem' }}>
+                        <div style={{ flex: 1 }}>
+                            <iframe
+                                style={{ borderRadius: '12px' }}
+                                src="https://open.spotify.com/embed/album/6vqY4CxUewSHoLPi2G0s99?utm_source=generator&theme=0"
+                                width="100%"
+                                height="232"
+                                frameBorder="0"
+                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                loading="lazy"
+                                title="Spotify: Ebo Taylor - Life Stories"
+                            />
+                        </div>
+                        <div style={{ flex: 1 }}>
+                            <iframe
+                                style={{ borderRadius: '12px' }}
+                                src="https://open.spotify.com/embed/show/36Ynwdxjd1TC0Z2OLFtnIm?utm_source=generator&theme=0"
+                                width="100%"
+                                height="232"
+                                frameBorder="0"
+                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                loading="lazy"
+                                title="Stadio Podcast"
+                            />
+                        </div>
                     </div>
                 </div>
             ),
