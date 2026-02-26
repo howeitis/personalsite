@@ -316,6 +316,7 @@ export const Now = ({ data, books }) => {
                         className="bento-card"
                         style={{
                             gridColumn: `span ${card.span}`,
+                            ...(card.rowSpan && { gridRow: `span ${card.rowSpan}` }),
                             padding: '1.5rem',
                             backgroundColor: card.bg,
                             color: card.textColor,
