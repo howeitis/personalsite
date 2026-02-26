@@ -82,6 +82,30 @@ export const Now = ({ data, books }) => {
             span: 1
         },
         {
+            label: 'Podcasts',
+            content: (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                    <div>
+                        <div style={{ fontSize: '1.4rem', fontWeight: 700, lineHeight: 1.2 }}>In the Feed</div>
+                        <div style={{ fontSize: '0.95rem', opacity: 0.7, marginTop: '0.25rem' }}>Football, done differently</div>
+                    </div>
+                    <iframe
+                        style={{ borderRadius: '12px' }}
+                        src="https://open.spotify.com/embed/show/36Ynwdxjd1TC0Z2OLFtnIm?utm_source=generator&theme=0"
+                        width="100%"
+                        height="352"
+                        frameBorder="0"
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"
+                        title="Stadio Podcast"
+                    />
+                </div>
+            ),
+            bg: 'var(--sky-blue)',
+            textColor: 'var(--text-primary)',
+            span: 2
+        },
+        {
             label: 'Thinking About',
             content: now.thinkingAbout,
             bg: 'var(--br-green)',
