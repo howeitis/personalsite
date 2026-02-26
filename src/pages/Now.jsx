@@ -44,30 +44,6 @@ export const Now = ({ data, books }) => {
             span: 2
         },
         {
-            label: 'Podcasts',
-            content: (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                    <div>
-                        <div style={{ fontSize: '1.4rem', fontWeight: 700, lineHeight: 1.2 }}>In the Feed</div>
-                        <div style={{ fontSize: '0.95rem', opacity: 0.7, marginTop: '0.25rem' }}>Football, done differently</div>
-                    </div>
-                    <iframe
-                        style={{ borderRadius: '12px' }}
-                        src="https://open.spotify.com/embed/show/36Ynwdxjd1TC0Z2OLFtnIm?utm_source=generator&theme=0"
-                        width="100%"
-                        height="352"
-                        frameBorder="0"
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="lazy"
-                        title="Stadio Podcast"
-                    />
-                </div>
-            ),
-            bg: 'var(--sky-blue)',
-            textColor: 'var(--text-primary)',
-            span: 2
-        },
-        {
             label: 'Traveling',
             content: (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -186,6 +162,18 @@ export const Now = ({ data, books }) => {
             span: 1
         },
         {
+            label: 'Eating',
+            content: (
+                <p style={{ fontSize: '1.05rem', lineHeight: 1.5 }}>
+                    Lots of miso dishes lately. Also, plenty from good ole{' '}
+                    <a href="https://cooking.nytimes.com/search?q=miso&include_content=articles" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline', textUnderlineOffset: '2px' }}>NYT Cooking</a>
+                </p>
+            ),
+            bg: 'var(--bg-color)',
+            textColor: 'var(--text-primary)',
+            span: 1
+        },
+        {
             label: 'Reading',
             content: currentBook ? (
                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
@@ -210,18 +198,6 @@ export const Now = ({ data, books }) => {
                 </div>
             ) : '—',
             bg: 'var(--mustard)',
-            textColor: 'var(--text-primary)',
-            span: 1
-        },
-        {
-            label: 'Eating',
-            content: (
-                <p style={{ fontSize: '1.05rem', lineHeight: 1.5 }}>
-                    Lots of miso dishes lately. Also, plenty from good ole{' '}
-                    <a href="https://cooking.nytimes.com/search?q=miso&include_content=articles" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline', textUnderlineOffset: '2px' }}>NYT Cooking</a>
-                </p>
-            ),
-            bg: 'var(--bg-color)',
             textColor: 'var(--text-primary)',
             span: 1
         },
