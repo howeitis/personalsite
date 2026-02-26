@@ -209,7 +209,7 @@ a {
 }
 
 /* MoodBoard Baseline (Desktop) Positional Classes */
-.mb-fashion {
+.mb-soccer {
   top: 5%;
   right: 0%;
   width: clamp(315px, 60vw, 525px);
@@ -291,7 +291,7 @@ a {
   }
 
   /* MoodBoard mobile — strip bento-card bulk so images dominate the collage */
-  .mb-fashion,
+  .mb-soccer,
   .mb-flora,
   .mb-food,
   .mb-cars {
@@ -302,7 +302,7 @@ a {
   }
 
   /* MoodBoard mobile overlap — dense collage, each card still visible */
-  .mb-fashion {
+  .mb-soccer {
     top: 0% !important;
     right: -5% !important;
     width: 65vw !important;

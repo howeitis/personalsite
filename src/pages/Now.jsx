@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useArsenalFixture } from '../hooks/useArsenalFixture';
 
 const cardVariant = {
     hidden: { opacity: 0, y: 24 },
@@ -11,6 +12,7 @@ const cardVariant = {
 
 export const Now = ({ data, books }) => {
     const now = data;
+    const fixture = useArsenalFixture(now.nextFixture);
     const currentBook = books?.find((b) => b.currentlyReading);
     const bookCoverSrc = currentBook
         ? `images/covers/${currentBook.title.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '')}.jpg`
@@ -72,7 +74,6 @@ export const Now = ({ data, books }) => {
         {
             label: 'Watching',
             content: (() => {
-                const fixture = now.nextFixture;
                 const matchDate = fixture ? new Date(fixture.date + 'T' + fixture.time + ':00') : null;
                 const formattedDate = matchDate ? matchDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }) : '';
                 return (
@@ -215,7 +216,7 @@ export const Now = ({ data, books }) => {
                     A snapshot of what's on my mind and on my plate.
                 </p>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '1rem' }}>
-                    Updated {now.updated}
+                    Updated {__NOW_UPDATED__}
                 </p>
             </div>
 
