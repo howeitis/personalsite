@@ -131,7 +131,7 @@ Edit the `personal` or `experience` objects in `content.json`. The homepage bent
 The Sycamore Creek card (homepage) and banner (resume) pull from `consulting` in `content.json` — fields: `name`, `tagline`, `url`.
 
 ### Update the /now Page
-Edit the `now` object in `content.json` for text-only fields (`thinkingAbout`, `traveling`, `watching`, `playing`, `following`). The `nextFixture` object controls the Arsenal match pill (opponent, date, time, competition, home/away). Cards with embedded media (Listening with Spotify embed, Eating, Working On, Reading, Growing) have JSX in `src/pages/Now.jsx` — update the links, images, or text directly in the component. Media images live in `public/images/now/`.
+Edit the `now` object in `content.json` for text-only fields (`thinkingAbout`, `traveling`, `watching`, `playing`, `following`). The `nextFixture` object controls the Arsenal match pill (opponent, date, time, competition, home/away). Cards with embedded media (Music and Podcasts with Spotify embeds, Eating, Working On, Reading, Growing) have JSX in `src/pages/Now.jsx` — update the links, images, embed URLs, or header/tagline text directly in the component. Media images live in `public/images/now/`.
 
 ### Update MoodBoard Images
 Images are hardcoded in `src/components/MoodBoard.jsx`. To swap an image, change the `src` attribute on the relevant `<img>` tag. Image files live in `public/images/`.
@@ -175,19 +175,28 @@ The Arsenal next fixture pill on the `/now` page requires a valid `VITE_FOOTBALL
 
 **Symptoms**: Fixture pill is missing, blank, or shows fallback content.
 
-**Known issue — Vercel env var not taking effect after update**: Even after updating `VITE_FOOTBALL_API_KEY` in the Vercel dashboard and triggering a redeploy, the fixture may still fail. This needs further investigation.
+**Known issue — `VITE_FOOTBALL_API_KEY` is `undefined` in the production bundle.**
+
+Confirmed via DevTools: no request to `api.football-data.org` is ever made. This means `import.meta.env.VITE_FOOTBALL_API_KEY` is `undefined` at runtime, causing `useArsenalFixture.js:16` (`if (!apiKey) return`) to bail out silently and show the hardcoded fallback from `content.json`.
+
+**Root cause**: Vite bakes `VITE_*` env vars into the JS bundle **at build time**, not runtime. The "Redeploy" button in Vercel **reuses the cached build** — it does NOT re-inject env vars. So updating the key in Vercel and clicking Redeploy has no effect if the same build artifact is reused.
 
 **Checklist so far:**
 1. ✅ Updated key in Vercel dashboard (Settings → Environment Variables)
 2. ✅ Triggered manual redeploy from Vercel Deployments tab
-3. ❌ Fixture still not loading — root cause TBD
+3. ✅ Confirmed no network request to `api.football-data.org` (DevTools → Network)
+4. ❌ Key is still not present in bundle — root cause: cached build reused
 
-**Next steps to debug:**
-- Open DevTools → Network tab on live site, filter by `api.football-data` — check the response status and error message
-- Confirm the env var is set for **Production** environment (not just Preview/Development) in Vercel
-- Check if the key itself is valid by testing directly: `curl "https://api.football-data.org/v4/teams/57/matches?status=SCHEDULED&limit=1" -H "X-Auth-Token: YOUR_KEY"`
-- Check Vercel build logs to confirm the env var was injected at build time (Vite bakes `VITE_*` vars in at build, not runtime)
-- If the key is valid but the build still uses the old key, try deleting and re-adding the env var (not just editing) before redeploying
+**Fix — trigger a fresh build:**
+- Push any commit to `main` (even an empty one: `git commit --allow-empty -m "chore: trigger rebuild"`) — this forces Vercel to run a new build that picks up the env var
+- Or in Vercel: Settings → Environment Variables → delete and re-add `VITE_FOOTBALL_API_KEY`, then go to Deployments → select latest → Redeploy → **uncheck "Use existing Build Cache"**
+- Confirm the env var is set for the **Production** environment (not just Preview/Development)
+
+**To verify the key itself is valid before rebuilding:**
+```bash
+curl "https://api.football-data.org/v4/teams/57/matches?status=SCHEDULED&limit=1" \
+  -H "X-Auth-Token: YOUR_KEY"
+```
 
 ---
 
@@ -198,7 +207,7 @@ The Arsenal next fixture pill on the `/now` page requires a valid `VITE_FOOTBALL
 | ✅ Done | **`/now` page** | Living snapshot — bento grid with media, images, and hyperlinks to Spotify, Goodreads, Arsenal fixtures, NYT Cooking, The Athletic, and Smithsonian NMAAHC. |
 | ✅ Done | **Social card (`og-image`)** | 1200×630 landscape card with logo, name, tagline, and terracotta accent. Proper previews on LinkedIn, Slack, iMessage. |
 | ✅ Done | **Dark mode** | Full light/dark toggle with editorial dark palette, FOUC prevention, localStorage persistence, `prefers-color-scheme` detection. |
-| ✅ Done | **Interactive embeds** | Spotify album embed on Listening card, Arsenal next fixture pill on Watching card. |
+| ✅ Done | **Interactive embeds** | Spotify embeds on dedicated Music and Podcasts cards, Arsenal next fixture pill on Watching card. |
 | Next | **Writing section** | Thought leadership posts on talent acquisition, AI, tech hiring. Primary driver of organic search traffic and return visits. |
 | Later | **Contact form** | Lower-friction lead capture for Sycamore Creek — replaces external link with an embedded form. |
 
@@ -228,3 +237,4 @@ The Arsenal next fixture pill on the `/now` page requires a valid `VITE_FOOTBALL
 | v65 | Social card: 1200×630 og-image with logo, name, and tagline. Sitemap lastmod dates. `/now` page: side-by-side image layouts for Listening, Watching, and Growing cards |
 | v66 | Dark mode: ThemeContext with localStorage persistence + `prefers-color-scheme` detection, FOUC prevention script, editorial dark palette (`[data-theme="dark"]`), Sun/Moon toggle in nav. `/now` page: Spotify album embed replaces static images on Listening card, Arsenal next fixture pill on Watching card |
 | v67 | Nav: right-aligned links with dark mode toggle in far-right corner, route-aware brand ("Owen Howe" on home, "OH" on subpages), mobile toggle next to hamburger. `/now` page: Listening promoted to hero card (span 2) with side-by-side Spotify embed, Thinking About demoted to regular card, tighter padding across all cards, larger Arsenal fixture pill |
+| v68 | `/now` page: split Listening into dedicated Music ("On Rotation") and Podcasts ("In the Feed") tiles, each span-2 with full-width Spotify embed at 352px. Following tagline updated to Redfin D.C. rowhome copy. |
