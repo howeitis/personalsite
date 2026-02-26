@@ -53,7 +53,7 @@ export const MoodBoard = () => {
                         position: 'absolute',
                         zIndex: 5
                     }}
-                    className="bento-card mb-fashion"
+                    className="bento-card mb-soccer"
                 >
                     <img
                         src="images/soccer.jpg"
