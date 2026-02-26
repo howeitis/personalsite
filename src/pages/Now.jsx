@@ -76,6 +76,23 @@ export const Now = ({ data, books }) => {
             content: (() => {
                 const matchDate = fixture ? new Date(fixture.date + 'T' + fixture.time + ':00') : null;
                 const formattedDate = matchDate ? matchDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }) : '';
+                const formattedTime = fixture ? (() => {
+                    const [h, m] = fixture.time.split(':').map(Number);
+                    const ampm = h >= 12 ? 'PM' : 'AM';
+                    const hour = h % 12 || 12;
+                    return `${hour}:${String(m).padStart(2, '0')} ${ampm} ET`;
+                })() : '';
+                const compAbbr = (() => {
+                    const name = fixture?.competition ?? '';
+                    const n = name.toLowerCase();
+                    if (n.includes('premier league')) return 'PL';
+                    if (n.includes('champions league')) return 'CL';
+                    if (n.includes('fa cup')) return 'FAC';
+                    if (n.includes('efl cup') || n.includes('carabao')) return 'EFL';
+                    if (n.includes('europa league')) return 'UEL';
+                    if (n.includes('conference league')) return 'UECL';
+                    return name.split(/\s+/).map(w => w[0]).join('').toUpperCase();
+                })();
                 return (
                     <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
                         <div style={{ flex: 1 }}>
@@ -91,10 +108,12 @@ export const Now = ({ data, books }) => {
                                         fontSize: '0.9rem',
                                         fontWeight: 600
                                     }}>
-                                        <span>⚽</span>
+                                        <img src="images/now/arsenal_logo.png" alt="Arsenal" style={{ height: '20px', width: 'auto', objectFit: 'contain' }} />
                                         <span>{fixture.home ? 'vs' : '@'} {fixture.opponent}</span>
                                         <span style={{ opacity: 0.6 }}>·</span>
-                                        <span style={{ opacity: 0.75 }}>{formattedDate}</span>
+                                        <span style={{ opacity: 0.75 }}>{formattedDate} · {formattedTime}</span>
+                                        <span style={{ opacity: 0.6 }}>·</span>
+                                        <span style={{ opacity: 0.75 }}>{compAbbr}</span>
                                     </div>
                                 </a>
                             )}
