@@ -167,6 +167,30 @@ No PR required — `main` pushes go straight to production at [howe.app](https:/
 
 ---
 
+## Troubleshooting
+
+### Arsenal Fixture Not Showing (API Key Issues)
+
+The Arsenal next fixture pill on the `/now` page requires a valid `VITE_FOOTBALL_API_KEY` from [football-data.org](https://www.football-data.org/).
+
+**Symptoms**: Fixture pill is missing, blank, or shows fallback content.
+
+**Known issue — Vercel env var not taking effect after update**: Even after updating `VITE_FOOTBALL_API_KEY` in the Vercel dashboard and triggering a redeploy, the fixture may still fail. This needs further investigation.
+
+**Checklist so far:**
+1. ✅ Updated key in Vercel dashboard (Settings → Environment Variables)
+2. ✅ Triggered manual redeploy from Vercel Deployments tab
+3. ❌ Fixture still not loading — root cause TBD
+
+**Next steps to debug:**
+- Open DevTools → Network tab on live site, filter by `api.football-data` — check the response status and error message
+- Confirm the env var is set for **Production** environment (not just Preview/Development) in Vercel
+- Check if the key itself is valid by testing directly: `curl "https://api.football-data.org/v4/teams/57/matches?status=SCHEDULED&limit=1" -H "X-Auth-Token: YOUR_KEY"`
+- Check Vercel build logs to confirm the env var was injected at build time (Vite bakes `VITE_*` vars in at build, not runtime)
+- If the key is valid but the build still uses the old key, try deleting and re-adding the env var (not just editing) before redeploying
+
+---
+
 ## Roadmap
 
 | Priority | Feature | Goal |
