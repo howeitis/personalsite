@@ -20,39 +20,50 @@ export const Now = ({ data, books }) => {
 
     const cards = [
         {
-            label: 'Listening',
+            label: 'Music',
             content: (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                    <p style={{ fontSize: '1.05rem', lineHeight: 1.5 }}>{now.listening}</p>
-                    <div style={{ display: 'flex', gap: '1rem' }}>
-                        <div style={{ flex: 1 }}>
-                            <iframe
-                                style={{ borderRadius: '12px' }}
-                                src="https://open.spotify.com/embed/album/6vqY4CxUewSHoLPi2G0s99?utm_source=generator&theme=0"
-                                width="100%"
-                                height="352"
-                                frameBorder="0"
-                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                                loading="lazy"
-                                title="Spotify: Ebo Taylor - Life Stories"
-                            />
-                        </div>
-                        <div style={{ flex: 1 }}>
-                            <iframe
-                                style={{ borderRadius: '12px' }}
-                                src="https://open.spotify.com/embed/show/36Ynwdxjd1TC0Z2OLFtnIm?utm_source=generator&theme=0"
-                                width="100%"
-                                height="352"
-                                frameBorder="0"
-                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                                loading="lazy"
-                                title="Stadio Podcast"
-                            />
-                        </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                    <div>
+                        <div style={{ fontSize: '1.4rem', fontWeight: 700, lineHeight: 1.2 }}>On Rotation</div>
+                        <div style={{ fontSize: '0.95rem', opacity: 0.7, marginTop: '0.25rem' }}>Celebrating the life stories of Ebo Taylor</div>
                     </div>
+                    <iframe
+                        style={{ borderRadius: '12px' }}
+                        src="https://open.spotify.com/embed/album/6vqY4CxUewSHoLPi2G0s99?utm_source=generator&theme=0"
+                        width="100%"
+                        height="352"
+                        frameBorder="0"
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"
+                        title="Spotify: Ebo Taylor - Life Stories"
+                    />
                 </div>
             ),
             bg: 'var(--lavender)',
+            textColor: 'var(--text-primary)',
+            span: 2
+        },
+        {
+            label: 'Podcasts',
+            content: (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                    <div>
+                        <div style={{ fontSize: '1.4rem', fontWeight: 700, lineHeight: 1.2 }}>In the Feed</div>
+                        <div style={{ fontSize: '0.95rem', opacity: 0.7, marginTop: '0.25rem' }}>Football, done differently</div>
+                    </div>
+                    <iframe
+                        style={{ borderRadius: '12px' }}
+                        src="https://open.spotify.com/embed/show/36Ynwdxjd1TC0Z2OLFtnIm?utm_source=generator&theme=0"
+                        width="100%"
+                        height="352"
+                        frameBorder="0"
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"
+                        title="Stadio Podcast"
+                    />
+                </div>
+            ),
+            bg: 'var(--sky-blue)',
             textColor: 'var(--text-primary)',
             span: 2
         },

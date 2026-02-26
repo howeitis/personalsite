@@ -131,7 +131,7 @@ Edit the `personal` or `experience` objects in `content.json`. The homepage bent
 The Sycamore Creek card (homepage) and banner (resume) pull from `consulting` in `content.json` — fields: `name`, `tagline`, `url`.
 
 ### Update the /now Page
-Edit the `now` object in `content.json` for text-only fields (`thinkingAbout`, `traveling`, `watching`, `playing`, `following`). The `nextFixture` object controls the Arsenal match pill (opponent, date, time, competition, home/away). Cards with embedded media (Listening with Spotify embed, Eating, Working On, Reading, Growing) have JSX in `src/pages/Now.jsx` — update the links, images, or text directly in the component. Media images live in `public/images/now/`.
+Edit the `now` object in `content.json` for text-only fields (`thinkingAbout`, `traveling`, `watching`, `playing`, `following`). The `nextFixture` object controls the Arsenal match pill (opponent, date, time, competition, home/away). Cards with embedded media (Music and Podcasts with Spotify embeds, Eating, Working On, Reading, Growing) have JSX in `src/pages/Now.jsx` — update the links, images, embed URLs, or header/tagline text directly in the component. Media images live in `public/images/now/`.
 
 ### Update MoodBoard Images
 Images are hardcoded in `src/components/MoodBoard.jsx`. To swap an image, change the `src` attribute on the relevant `<img>` tag. Image files live in `public/images/`.
@@ -207,7 +207,7 @@ curl "https://api.football-data.org/v4/teams/57/matches?status=SCHEDULED&limit=1
 | ✅ Done | **`/now` page** | Living snapshot — bento grid with media, images, and hyperlinks to Spotify, Goodreads, Arsenal fixtures, NYT Cooking, The Athletic, and Smithsonian NMAAHC. |
 | ✅ Done | **Social card (`og-image`)** | 1200×630 landscape card with logo, name, tagline, and terracotta accent. Proper previews on LinkedIn, Slack, iMessage. |
 | ✅ Done | **Dark mode** | Full light/dark toggle with editorial dark palette, FOUC prevention, localStorage persistence, `prefers-color-scheme` detection. |
-| ✅ Done | **Interactive embeds** | Spotify album embed on Listening card, Arsenal next fixture pill on Watching card. |
+| ✅ Done | **Interactive embeds** | Spotify embeds on dedicated Music and Podcasts cards, Arsenal next fixture pill on Watching card. |
 | Next | **Writing section** | Thought leadership posts on talent acquisition, AI, tech hiring. Primary driver of organic search traffic and return visits. |
 | Later | **Contact form** | Lower-friction lead capture for Sycamore Creek — replaces external link with an embedded form. |
 
@@ -237,3 +237,4 @@ curl "https://api.football-data.org/v4/teams/57/matches?status=SCHEDULED&limit=1
 | v65 | Social card: 1200×630 og-image with logo, name, and tagline. Sitemap lastmod dates. `/now` page: side-by-side image layouts for Listening, Watching, and Growing cards |
 | v66 | Dark mode: ThemeContext with localStorage persistence + `prefers-color-scheme` detection, FOUC prevention script, editorial dark palette (`[data-theme="dark"]`), Sun/Moon toggle in nav. `/now` page: Spotify album embed replaces static images on Listening card, Arsenal next fixture pill on Watching card |
 | v67 | Nav: right-aligned links with dark mode toggle in far-right corner, route-aware brand ("Owen Howe" on home, "OH" on subpages), mobile toggle next to hamburger. `/now` page: Listening promoted to hero card (span 2) with side-by-side Spotify embed, Thinking About demoted to regular card, tighter padding across all cards, larger Arsenal fixture pill |
+| v68 | `/now` page: split Listening into dedicated Music ("On Rotation") and Podcasts ("In the Feed") tiles, each span-2 with full-width Spotify embed at 352px. Following tagline updated to Redfin D.C. rowhome copy. |
