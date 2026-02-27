@@ -54,7 +54,8 @@ personal-website/
 │   │   ├── Resume.jsx       # Career timeline + Sycamore Creek banner (teal accents)
 │   │   └── NotFound.jsx
 │   ├── utils/
-│   │   └── colorHash.js     # Deterministic color hashing for books
+│   │   ├── colorHash.js     # Deterministic color hashing for books
+│   │   └── bookFilename.js  # Converts book title → cover image filename (matches fetch_covers.py)
 │   ├── context/
 │   │   └── ThemeContext.jsx  # Dark/light theme provider (localStorage + prefers-color-scheme)
 │   ├── App.jsx              # Router, error boundary, ThemeProvider wrapper
@@ -242,3 +243,4 @@ curl "https://api.football-data.org/v4/teams/57/matches?status=SCHEDULED&limit=1
 | v67 | Nav: right-aligned links with dark mode toggle in far-right corner, route-aware brand ("Owen Howe" on home, "OH" on subpages), mobile toggle next to hamburger. `/now` page: Listening promoted to hero card (span 2) with side-by-side Spotify embed, Thinking About demoted to regular card, tighter padding across all cards, larger Arsenal fixture pill |
 | v68 | `/now` page: split Listening into dedicated Music ("On Rotation") and Podcasts ("In the Feed") tiles, each span-2 with full-width Spotify embed at 352px. Following tagline updated to Redfin D.C. rowhome copy. |
 | v69 | Mobile nav drawer moved to `position: fixed` overlay (unaffected by nav y-transform), fixing overlap on mid-page scroll. Fixture time stored as `{hours, minutes}` integers instead of locale string. Reading card Goodreads URL driven by `url` field on book in `content.json`. HeroBento hover uses Framer Motion `whileHover` instead of imperative style mutations. `/now` Watching card logic extracted from IIFE to named variables. |
+| v70 | Code cleanup: remove unused `useMotionValue` import, dead ternary in ExperienceBento, unused props on Footer and Interests. Now.jsx `data` param renamed to `now`. `getCompAbbr` extracted to named module-level function. Static `IMAGES` array moved to module level in Interests.jsx. `toImageFilename()` utility added to `src/utils/bookFilename.js` — shared by Library and Now pages, matches `fetch_covers.py` filename convention. |
