@@ -18,6 +18,30 @@ export const Now = ({ data, books }) => {
         ? `images/covers/${currentBook.title.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '')}.jpg`
         : null;
 
+    // Fixture display values — derived once, used in the Watching card
+    const matchDate = fixture ? new Date(fixture.date + 'T00:00:00') : null;
+    const formattedDate = matchDate
+        ? matchDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
+        : '';
+    const formattedTime = fixture
+        ? (() => {
+            const ampm = fixture.hours >= 12 ? 'PM' : 'AM';
+            const hour = fixture.hours % 12 || 12;
+            return `${hour}:${String(fixture.minutes).padStart(2, '0')} ${ampm} ET`;
+        })()
+        : '';
+    const compAbbr = (() => {
+        const name = fixture?.competition ?? '';
+        const n = name.toLowerCase();
+        if (n.includes('premier league')) return 'PL';
+        if (n.includes('champions league')) return 'CL';
+        if (n.includes('fa cup')) return 'FAC';
+        if (n.includes('efl cup') || n.includes('carabao')) return 'EFL';
+        if (n.includes('europa league')) return 'UEL';
+        if (n.includes('conference league')) return 'UECL';
+        return name.split(/\s+/).map(w => w[0]).join('').toUpperCase();
+    })();
+
     const cards = [
         {
             label: 'Music',
@@ -106,57 +130,36 @@ export const Now = ({ data, books }) => {
         },
         {
             label: 'Watching',
-            content: (() => {
-                const matchDate = fixture ? new Date(fixture.date + 'T' + fixture.time + ':00') : null;
-                const formattedDate = matchDate ? matchDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }) : '';
-                const formattedTime = fixture ? (() => {
-                    const [h, m] = fixture.time.split(':').map(Number);
-                    const ampm = h >= 12 ? 'PM' : 'AM';
-                    const hour = h % 12 || 12;
-                    return `${hour}:${String(m).padStart(2, '0')} ${ampm} ET`;
-                })() : '';
-                const compAbbr = (() => {
-                    const name = fixture?.competition ?? '';
-                    const n = name.toLowerCase();
-                    if (n.includes('premier league')) return 'PL';
-                    if (n.includes('champions league')) return 'CL';
-                    if (n.includes('fa cup')) return 'FAC';
-                    if (n.includes('efl cup') || n.includes('carabao')) return 'EFL';
-                    if (n.includes('europa league')) return 'UEL';
-                    if (n.includes('conference league')) return 'UECL';
-                    return name.split(/\s+/).map(w => w[0]).join('').toUpperCase();
-                })();
-                return (
-                    <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                        <div style={{ flex: 1 }}>
-                            <p style={{ fontSize: '1.05rem', lineHeight: 1.5, marginBottom: '0.75rem' }}>{now.watching}</p>
-                            {fixture && (
-                                <a href="https://www.arsenal.com/fixtures" target="_blank" rel="noopener noreferrer"
-                                   style={{ display: 'inline-block', textDecoration: 'none', color: 'inherit' }}>
-                                    <div style={{
-                                        display: 'flex', alignItems: 'center', gap: '0.6rem',
-                                        padding: '0.6rem 1rem',
-                                        backgroundColor: 'rgba(0,0,0,0.08)',
-                                        borderRadius: '12px',
-                                        fontSize: '0.9rem',
-                                        fontWeight: 600
-                                    }}>
-                                        <img src="images/now/arsenal_logo.png" alt="Arsenal" style={{ height: '20px', width: 'auto', objectFit: 'contain' }} />
-                                        <span>{fixture.home ? 'vs' : '@'} {fixture.opponent}</span>
-                                        <span style={{ opacity: 0.6 }}>·</span>
-                                        <span style={{ opacity: 0.75 }}>{formattedDate} · {formattedTime}</span>
-                                        <span style={{ opacity: 0.6 }}>·</span>
-                                        <span style={{ opacity: 0.75 }}>{compAbbr}</span>
-                                    </div>
-                                </a>
-                            )}
-                        </div>
-                        <a href="https://www.arsenal.com/fixtures" target="_blank" rel="noopener noreferrer" style={{ flexShrink: 0 }}>
-                            <img src="images/now/arsenal_logo.png" alt="Arsenal FC" width={72} height={84} style={{ width: '72px', height: 'auto', objectFit: 'contain' }} />
-                        </a>
+            content: (
+                <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+                    <div style={{ flex: 1 }}>
+                        <p style={{ fontSize: '1.05rem', lineHeight: 1.5, marginBottom: '0.75rem' }}>{now.watching}</p>
+                        {fixture && (
+                            <a href="https://www.arsenal.com/fixtures" target="_blank" rel="noopener noreferrer"
+                               style={{ display: 'inline-block', textDecoration: 'none', color: 'inherit' }}>
+                                <div style={{
+                                    display: 'flex', alignItems: 'center', gap: '0.6rem',
+                                    padding: '0.6rem 1rem',
+                                    backgroundColor: 'rgba(0,0,0,0.08)',
+                                    borderRadius: '12px',
+                                    fontSize: '0.9rem',
+                                    fontWeight: 600
+                                }}>
+                                    <img src="images/now/arsenal_logo.png" alt="Arsenal" style={{ height: '20px', width: 'auto', objectFit: 'contain' }} />
+                                    <span>{fixture.home ? 'vs' : '@'} {fixture.opponent}</span>
+                                    <span style={{ opacity: 0.6 }}>·</span>
+                                    <span style={{ opacity: 0.75 }}>{formattedDate} · {formattedTime}</span>
+                                    <span style={{ opacity: 0.6 }}>·</span>
+                                    <span style={{ opacity: 0.75 }}>{compAbbr}</span>
+                                </div>
+                            </a>
+                        )}
                     </div>
-                );
-            })(),
+                    <a href="https://www.arsenal.com/fixtures" target="_blank" rel="noopener noreferrer" style={{ flexShrink: 0 }}>
+                        <img src="images/now/arsenal_logo.png" alt="Arsenal FC" width={72} height={84} style={{ width: '72px', height: 'auto', objectFit: 'contain' }} />
+                    </a>
+                </div>
+            ),
             bg: 'var(--sky-blue)',
             textColor: 'var(--text-primary)',
             span: 1
@@ -178,7 +181,7 @@ export const Now = ({ data, books }) => {
             content: currentBook ? (
                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
                     {bookCoverSrc && (
-                        <a href="https://www.goodreads.com/book/show/7235533-the-way-of-kings" target="_blank" rel="noopener noreferrer" style={{ flexShrink: 0 }}>
+                        <a href={currentBook.url} target="_blank" rel="noopener noreferrer" style={{ flexShrink: 0 }}>
                             <img
                                 src={bookCoverSrc}
                                 alt={currentBook.title}
@@ -190,7 +193,7 @@ export const Now = ({ data, books }) => {
                         </a>
                     )}
                     <div>
-                        <a href="https://www.goodreads.com/book/show/7235533-the-way-of-kings" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <a href={currentBook.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
                             <div style={{ fontSize: '1.2rem', fontWeight: 700, lineHeight: 1.3 }}>{currentBook.title}</div>
                         </a>
                         <div style={{ fontSize: '0.95rem', opacity: 0.7, marginTop: '0.3rem' }}>{currentBook.author}</div>

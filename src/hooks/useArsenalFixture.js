@@ -26,15 +26,19 @@ export function useArsenalFixture(fallback) {
                 // Strip "FC" / "AFC" suffix for display cleanliness
                 const opponentShort = opponent.replace(/\s+(F\.?C\.?|A\.?F\.?C\.?)$/i, '').trim();
 
+                const etTimeStr = utcDate.toLocaleString('en-US', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false,
+                    timeZone: 'America/New_York',
+                });
+                const [etHours, etMinutes] = etTimeStr.split(':').map(Number);
+
                 setFixture({
                     opponent: opponentShort,
                     date: utcDate.toISOString().split('T')[0],
-                    time: utcDate.toLocaleTimeString('en-US', {
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        hour12: false,
-                        timeZone: 'America/New_York',
-                    }),
+                    hours: etHours,
+                    minutes: etMinutes,
                     competition: match.competition?.name ?? 'Premier League',
                     home: isHome,
                 });

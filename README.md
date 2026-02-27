@@ -131,7 +131,10 @@ Edit the `personal` or `experience` objects in `content.json`. The homepage bent
 The Sycamore Creek card (homepage) and banner (resume) pull from `consulting` in `content.json` — fields: `name`, `tagline`, `url`.
 
 ### Update the /now Page
-Edit the `now` object in `content.json` for text-only fields (`thinkingAbout`, `traveling`, `watching`, `playing`, `following`). The `nextFixture` object controls the Arsenal match pill (opponent, date, time, competition, home/away). Cards with embedded media (Music and Podcasts with Spotify embeds, Eating, Working On, Reading, Growing) have JSX in `src/pages/Now.jsx` — update the links, images, embed URLs, or header/tagline text directly in the component. Media images live in `public/images/now/`.
+Edit the `now` object in `content.json` for text-only fields (`thinkingAbout`, `traveling`, `watching`, `playing`, `following`). The `nextFixture` object controls the Arsenal match pill — fields: `opponent`, `date` (YYYY-MM-DD), `hours` (0–23 ET), `minutes` (0–59), `competition`, `home` (boolean). Cards with embedded media (Music and Podcasts with Spotify embeds, Eating, Working On, Reading, Growing) have JSX in `src/pages/Now.jsx` — update the links, images, embed URLs, or header/tagline text directly in the component. Media images live in `public/images/now/`.
+
+### Update Currently Reading
+Set `"currentlyReading": true` on a book in `content.json`. Also add a `"url"` field (Goodreads or similar) — the Reading card on `/now` uses it for both the cover and title links. If no `url` is present, the links render without an `href`.
 
 ### Update MoodBoard Images
 Images are hardcoded in `src/components/MoodBoard.jsx`. To swap an image, change the `src` attribute on the relevant `<img>` tag. Image files live in `public/images/`.
@@ -238,3 +241,4 @@ curl "https://api.football-data.org/v4/teams/57/matches?status=SCHEDULED&limit=1
 | v66 | Dark mode: ThemeContext with localStorage persistence + `prefers-color-scheme` detection, FOUC prevention script, editorial dark palette (`[data-theme="dark"]`), Sun/Moon toggle in nav. `/now` page: Spotify album embed replaces static images on Listening card, Arsenal next fixture pill on Watching card |
 | v67 | Nav: right-aligned links with dark mode toggle in far-right corner, route-aware brand ("Owen Howe" on home, "OH" on subpages), mobile toggle next to hamburger. `/now` page: Listening promoted to hero card (span 2) with side-by-side Spotify embed, Thinking About demoted to regular card, tighter padding across all cards, larger Arsenal fixture pill |
 | v68 | `/now` page: split Listening into dedicated Music ("On Rotation") and Podcasts ("In the Feed") tiles, each span-2 with full-width Spotify embed at 352px. Following tagline updated to Redfin D.C. rowhome copy. |
+| v69 | Mobile nav drawer moved to `position: fixed` overlay (unaffected by nav y-transform), fixing overlap on mid-page scroll. Fixture time stored as `{hours, minutes}` integers instead of locale string. Reading card Goodreads URL driven by `url` field on book in `content.json`. HeroBento hover uses Framer Motion `whileHover` instead of imperative style mutations. `/now` Watching card logic extracted from IIFE to named variables. |

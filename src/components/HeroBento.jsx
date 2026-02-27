@@ -48,7 +48,8 @@ export const HeroBento = ({ data }) => {
                         transition={{ type: "spring", delay: 0.5, bounce: 0.5 }}
                         style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-start' }}
                     >
-                        <a href={`mailto:${data.email}`}
+                        <motion.a
+                            href={`mailto:${data.email}`}
                             style={{
                                 display: 'inline-flex',
                                 padding: '1rem 2rem',
@@ -59,20 +60,13 @@ export const HeroBento = ({ data }) => {
                                 borderRadius: 'var(--border-radius-pill)',
                                 border: 'var(--border-thick)',
                                 boxShadow: '4px 4px 0px 0px rgba(0,0,0,0.5)',
-                                cursor: 'none',
-                                transition: 'transform 0.2s, box-shadow 0.2s'
+                                cursor: 'none'
                             }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.transform = 'translate(-2px, -2px)';
-                                e.currentTarget.style.boxShadow = '6px 6px 0px 0px rgba(0,0,0,0.5)';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.transform = 'translate(0, 0)';
-                                e.currentTarget.style.boxShadow = '4px 4px 0px 0px rgba(0,0,0,0.5)';
-                            }}
+                            whileHover={{ x: -2, y: -2, boxShadow: '6px 6px 0px 0px rgba(0,0,0,0.5)' }}
+                            transition={{ duration: 0.15 }}
                         >
                             Say Hello ↗
-                        </a>
+                        </motion.a>
                     </motion.div>
                 </div>
             </div>

@@ -18,8 +18,16 @@ export const Navigation = () => {
     const isHome = location.pathname === '/';
     const [isOpen, setIsOpen] = useState(false);
     const [hidden, setHidden] = useState(false);
+    const [navHeight, setNavHeight] = useState(72);
     const lastScrollY = useRef(0);
+    const navRef = useRef(null);
     const navY = useSpring(0, { stiffness: 300, damping: 30 });
+
+    useEffect(() => {
+        if (navRef.current) {
+            setNavHeight(navRef.current.offsetHeight);
+        }
+    }, []);
 
     useEffect(() => {
         const threshold = 10;
@@ -47,8 +55,15 @@ export const Navigation = () => {
         navY.set(hidden ? -100 : 0);
     }, [hidden, navY]);
 
+    const handleHamburgerClick = () => {
+        setHidden(false);
+        setIsOpen(prev => !prev);
+    };
+
     return (
+        <>
         <motion.nav
+            ref={navRef}
             style={{
                 padding: '1.5rem 0',
                 borderBottom: '1px solid var(--separator-color)',
@@ -106,7 +121,7 @@ export const Navigation = () => {
                 {/* Hamburger Button (mobile only) */}
                 <button
                     className="nav-hamburger"
-                    onClick={() => setIsOpen(!isOpen)}
+                    onClick={handleHamburgerClick}
                     aria-label="Toggle menu"
                     style={{
                         display: 'none',
@@ -142,43 +157,50 @@ export const Navigation = () => {
                     }} />
                 </button>
             </div>
-
-            {/* Mobile Drawer */}
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        className="nav-mobile-drawer"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.25, ease: 'easeInOut' }}
-                        style={{
-                            overflow: 'hidden',
-                            borderTop: '1px solid var(--separator-color)'
-                        }}
-                    >
-                        <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', padding: '1.5rem 2rem' }}>
-                            {links.map((link) => (
-                                <NavLink
-                                    key={link.name}
-                                    to={link.path}
-                                    onClick={() => setIsOpen(false)}
-                                    style={({ isActive }) => ({
-                                        color: isActive ? 'var(--terracotta)' : 'var(--text-primary)',
-                                        fontWeight: isActive ? 700 : 500,
-                                        textDecoration: 'none',
-                                        fontSize: '1.25rem',
-                                        padding: '0.75rem 0',
-                                        borderBottom: '1px solid var(--separator-color)'
-                                    })}
-                                >
-                                    {link.name}
-                                </NavLink>
-                            ))}
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
         </motion.nav>
+
+        {/* Mobile Drawer — fixed overlay so it's unaffected by the nav's y-transform */}
+        <AnimatePresence>
+            {isOpen && (
+                <motion.div
+                    className="nav-mobile-drawer"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.25, ease: 'easeInOut' }}
+                    style={{
+                        position: 'fixed',
+                        top: navHeight,
+                        left: 0,
+                        right: 0,
+                        zIndex: 99,
+                        overflow: 'hidden',
+                        backgroundColor: 'var(--bg-color)',
+                        borderBottom: '1px solid var(--separator-color)'
+                    }}
+                >
+                    <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', padding: '1.5rem 2rem' }}>
+                        {links.map((link) => (
+                            <NavLink
+                                key={link.name}
+                                to={link.path}
+                                onClick={() => setIsOpen(false)}
+                                style={({ isActive }) => ({
+                                    color: isActive ? 'var(--terracotta)' : 'var(--text-primary)',
+                                    fontWeight: isActive ? 700 : 500,
+                                    textDecoration: 'none',
+                                    fontSize: '1.25rem',
+                                    padding: '0.75rem 0',
+                                    borderBottom: '1px solid var(--separator-color)'
+                                })}
+                            >
+                                {link.name}
+                            </NavLink>
+                        ))}
+                    </div>
+                </motion.div>
+            )}
+        </AnimatePresence>
+        </>
     );
 };

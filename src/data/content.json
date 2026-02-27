@@ -87,7 +87,8 @@
     "nextFixture": {
       "opponent": "Manchester City",
       "date": "2026-03-01",
-      "time": "12:30",
+      "hours": 12,
+      "minutes": 30,
       "competition": "Premier League",
       "home": true
     },
@@ -125,7 +126,8 @@
     {
       "title": "The Way of Kings",
       "author": "Brandon Sanderson",
-      "currentlyReading": true
+      "currentlyReading": true,
+      "url": "https://www.goodreads.com/book/show/7235533-the-way-of-kings"
     },
     {
       "title": "The Three-Body Problem",
