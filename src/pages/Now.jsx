@@ -1,5 +1,17 @@
 import { motion } from 'framer-motion';
 import { useArsenalFixture } from '../hooks/useArsenalFixture';
+import { toImageFilename } from '../utils/bookFilename';
+
+const getCompAbbr = (name = '') => {
+    const n = name.toLowerCase();
+    if (n.includes('premier league')) return 'PL';
+    if (n.includes('champions league')) return 'CL';
+    if (n.includes('fa cup')) return 'FAC';
+    if (n.includes('efl cup') || n.includes('carabao')) return 'EFL';
+    if (n.includes('europa league')) return 'UEL';
+    if (n.includes('conference league')) return 'UECL';
+    return name.split(/\s+/).map(w => w[0]).join('').toUpperCase();
+};
 
 const cardVariant = {
     hidden: { opacity: 0, y: 24 },
@@ -10,12 +22,11 @@ const cardVariant = {
     })
 };
 
-export const Now = ({ data, books }) => {
-    const now = data;
+export const Now = ({ now, books }) => {
     const fixture = useArsenalFixture(now.nextFixture);
     const currentBook = books?.find((b) => b.currentlyReading);
     const bookCoverSrc = currentBook
-        ? `images/covers/${currentBook.title.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '')}.jpg`
+        ? `images/covers/${toImageFilename(currentBook.title)}.jpg`
         : null;
 
     // Fixture display values — derived once, used in the Watching card
@@ -30,17 +41,7 @@ export const Now = ({ data, books }) => {
             return `${hour}:${String(fixture.minutes).padStart(2, '0')} ${ampm} ET`;
         })()
         : '';
-    const compAbbr = (() => {
-        const name = fixture?.competition ?? '';
-        const n = name.toLowerCase();
-        if (n.includes('premier league')) return 'PL';
-        if (n.includes('champions league')) return 'CL';
-        if (n.includes('fa cup')) return 'FAC';
-        if (n.includes('efl cup') || n.includes('carabao')) return 'EFL';
-        if (n.includes('europa league')) return 'UEL';
-        if (n.includes('conference league')) return 'UECL';
-        return name.split(/\s+/).map(w => w[0]).join('').toUpperCase();
-    })();
+    const compAbbr = getCompAbbr(fixture?.competition);
 
     const cards = [
         {

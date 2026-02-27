@@ -30,15 +30,15 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home data={contentData} />} />
                 <Route path="/resume" element={<Resume data={contentData.experience} consulting={contentData.consulting} />} />
-                <Route path="/interests" element={<Interests data={contentData.interests} />} />
+                <Route path="/interests" element={<Interests />} />
                 <Route path="/library" element={<Library data={contentData.books} />} />
-                <Route path="/now" element={<Now data={contentData.now} books={contentData.books} />} />
+                <Route path="/now" element={<Now now={contentData.now} books={contentData.books} />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </ErrorBoundary>
           </main>
 
-          <Footer personal={contentData.personal} />
+          <Footer />
         </div>
       </Router>
     </ThemeProvider>

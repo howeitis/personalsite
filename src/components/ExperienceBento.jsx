@@ -52,7 +52,7 @@ export const ExperienceBento = ({ data }) => {
                             {/* Only show top 3 highlights to keep the bento box clean, or all if we have space */}
                             {(isWide ? job.highlights.slice(0, 4) : job.highlights.slice(0, 2)).map((highlight, idx) => (
                                 <li key={idx} style={{ position: 'relative', paddingLeft: '1.5rem', fontSize: '0.95rem', color: textColor || 'inherit' }}>
-                                    <span style={{ position: 'absolute', left: 0, top: '10px', width: '8px', height: '8px', backgroundColor: bgColor === 'var(--terracotta)' ? 'var(--mustard)' : 'var(--mustard)', borderRadius: '2px', transform: 'rotate(45deg)' }}></span>
+                                    <span style={{ position: 'absolute', left: 0, top: '10px', width: '8px', height: '8px', backgroundColor: 'var(--mustard)', borderRadius: '2px', transform: 'rotate(45deg)' }}></span>
                                     {highlight}
                                 </li>
                             ))}

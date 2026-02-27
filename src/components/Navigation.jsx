@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
+import { motion, AnimatePresence, useSpring } from 'framer-motion';
 import { Sun, Moon } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { getBookColor } from '../utils/colorHash';
+import { toImageFilename } from '../utils/bookFilename';
 import { useIsMobile, useViewportWidth } from '../hooks/useResponsive';
 
 const ShelfView = ({ books }) => {
@@ -55,8 +56,7 @@ const ShelfView = ({ books }) => {
                             const heightValue = 240 + ((charSum * index) % 40);
                             const widthValue = heightValue * 0.65;
 
-                            const safeName = title.replace(/ /g, "_").replace(/'/g, "").toLowerCase();
-                            const primarySrc = `${import.meta.env.BASE_URL}images/covers/${safeName}.jpg`;
+                            const primarySrc = `${import.meta.env.BASE_URL}images/covers/${toImageFilename(title)}.jpg`;
                             const fallbackSrc = spineTextures[index % spineTextures.length];
 
                             const isCurrentlyReading = book.currentlyReading;
