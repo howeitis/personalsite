@@ -291,6 +291,7 @@ export const Library = ({ data }) => {
         <div style={{
             padding: '2rem 0',
             paddingBottom: '4rem',
+
             background: isShelf ? `
                 repeating-linear-gradient(
                     to right,
@@ -307,6 +308,9 @@ export const Library = ({ data }) => {
             overflowX: 'hidden',
             transition: 'background-color 0.4s ease'
         }}>
+            <title>Library — Owen Howe</title>
+            <meta name="description" content="Owen Howe's reading list — a mix of fiction, non-fiction, sci-fi, and history spanning continents and centuries." />
+            <link rel="canonical" href="https://howe.app/library" />
             {/* Page Header */}
             <div className="container" style={{ padding: '4rem 2rem', marginBottom: '4rem', textAlign: 'center' }}>
                 <h1 className="serif-text" style={{

@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 export const NotFound = () => {
     return (
         <div style={{ padding: '8rem 2rem', textAlign: 'center', minHeight: '60vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+            <title>Page Not Found — Owen Howe</title>
+            <meta name="robots" content="noindex" />
             <motion.h1
                 className="serif-text"
                 initial={{ opacity: 0, y: 20 }}

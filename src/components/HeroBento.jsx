@@ -83,6 +83,7 @@ export const HeroBento = ({ data }) => {
                     alt="Owen's Profile"
                     width={600}
                     height={600}
+                    fetchpriority="high"
                     style={{
                         width: '100%',
                         height: 'auto',

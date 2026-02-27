@@ -19,6 +19,9 @@ export const Interests = () => {
 
     return (
         <div style={{ padding: '2rem 0', paddingBottom: '2rem' }}>
+            <title>Interests — Owen Howe</title>
+            <meta name="description" content="Soccer, cars, food, music, tech, travel, and more — a look at what Owen Howe is into beyond the 9-to-5." />
+            <link rel="canonical" href="https://howe.app/interests" />
 
             {/* Collage Header */}
             <div className="bento-card" style={{ padding: '4rem', backgroundColor: 'var(--bg-color)', borderBottom: '1px solid var(--text-primary)', marginBottom: '4rem' }}>

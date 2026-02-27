@@ -5,6 +5,9 @@ import { ExperienceBento } from '../components/ExperienceBento';
 export const Resume = ({ data, consulting }) => {
     return (
         <div style={{ padding: '2rem 0' }}>
+            <title>Resume — Owen Howe</title>
+            <meta name="description" content="Career journey and professional experience of Owen Howe — Talent Acquisition leader at The New York Times, with a background spanning tech, media, and executive search." />
+            <link rel="canonical" href="https://howe.app/resume" />
             <div className="bento-grid">
                 <ExperienceBento data={data} />
 

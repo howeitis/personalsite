@@ -251,6 +251,9 @@ export const Now = ({ now, books }) => {
 
     return (
         <div style={{ padding: '2rem 0', paddingBottom: '2rem' }}>
+            <title>Right Now — Owen Howe</title>
+            <meta name="description" content="A living snapshot of what Owen Howe is reading, listening to, watching, and thinking about right now." />
+            <link rel="canonical" href="https://howe.app/now" />
 
             {/* Header */}
             <div

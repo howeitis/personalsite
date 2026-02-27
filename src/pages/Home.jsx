@@ -7,6 +7,9 @@ export const Home = ({ data }) => {
 
     return (
         <div>
+            <title>Owen Howe — Finding the people who aren't looking.</title>
+            <meta name="description" content="Talent Acquisition leader based in Washington, D.C. Explore my professional background, projects, and personal interests in soccer, tech, food, and music." />
+            <link rel="canonical" href="https://howe.app/" />
             {/* The Get To Know Me Intro */}
             <HeroBento data={data.personal} />
 
