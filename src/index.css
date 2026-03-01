@@ -206,6 +206,57 @@ a {
   display: none !important;
 }
 
+/* MoodBoard Container — SSG-safe responsive values via CSS, not JS */
+.mb-container {
+  height: clamp(600px, 90vh, 1000px);
+  margin: -4rem 0 4rem 0;
+  overflow: visible;
+}
+
+.mb-text {
+  display: block;
+}
+
+/* Sycamore Home Card — SSG-safe responsive values via CSS, not JS */
+.sycamore-home-card {
+  max-width: 600px;
+  margin: 4rem auto 0 calc(50% - 200px);
+  padding: 2rem;
+  gap: 0;
+}
+
+.sycamore-logo {
+  width: 100px;
+  margin-bottom: 1rem;
+}
+
+.sycamore-text-block {
+  display: block;
+}
+
+.sycamore-cta-link {
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+}
+
+.sycamore-cta-short { display: none; }
+.sycamore-cta-full  { display: inline; }
+
+/* Library Shelf — SSG-safe responsive values via CSS, not JS */
+.shelf-outer {
+  padding: 0 2vw;
+}
+
+.shelf-row {
+  margin-bottom: 8rem;
+  padding: 0 2rem;
+}
+
+.shelf-books-wrapper {
+  justify-content: center;
+  gap: 2rem;
+}
+
 /* MoodBoard Baseline (Desktop) Positional Classes */
 .mb-soccer {
   top: 5%;
@@ -286,6 +337,57 @@ a {
   h1,
   .serif-text {
     font-size: clamp(2.5rem, 10vw, 4rem) !important;
+  }
+
+  /* MoodBoard container — mobile overrides */
+  .mb-container {
+    height: clamp(520px, 80vh, 700px);
+    margin: -1rem 0 0 0;
+    overflow: hidden;
+  }
+
+  .mb-text {
+    display: none;
+  }
+
+  /* Sycamore Home Card — mobile overrides */
+  .sycamore-home-card {
+    max-width: 220px;
+    margin: -11rem 1rem 0 auto;
+    padding: 1.25rem;
+    gap: 0.75rem;
+  }
+
+  .sycamore-logo {
+    width: 60px;
+    margin-bottom: 0;
+  }
+
+  .sycamore-text-block {
+    display: none;
+  }
+
+  .sycamore-cta-link {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.75rem;
+  }
+
+  .sycamore-cta-short { display: inline; }
+  .sycamore-cta-full  { display: none; }
+
+  /* Library Shelf — mobile overrides */
+  .shelf-outer {
+    padding: 0;
+  }
+
+  .shelf-row {
+    margin-bottom: 2rem;
+    padding: 0;
+  }
+
+  .shelf-books-wrapper {
+    justify-content: space-evenly;
+    gap: 0px;
   }
 
   /* MoodBoard mobile — strip bento-card bulk so images dominate the collage */

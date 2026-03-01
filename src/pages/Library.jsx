@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { ClientOnly } from 'vite-react-ssg';
 import { getBookColor } from '../utils/colorHash';
 import { toImageFilename } from '../utils/bookFilename';
 import { useIsMobile, useViewportWidth } from '../hooks/useResponsive';
@@ -30,19 +31,13 @@ const ShelfView = ({ books }) => {
     }
 
     return (
-        <div style={{ padding: isMobile ? '0' : '0 2vw' }}>
+        <div className="shelf-outer">
             {shelfChunks.map((chunk, shelfIndex) => (
-                <div key={shelfIndex} style={{
-                    position: 'relative',
-                    marginBottom: isMobile ? '2rem' : '8rem',
-                    padding: isMobile ? '0' : '0 2rem'
-                }}>
+                <div key={shelfIndex} className="shelf-row" style={{ position: 'relative' }}>
                     {/* The Books */}
-                    <div style={{
+                    <div className="shelf-books-wrapper" style={{
                         display: 'flex',
                         flexWrap: 'nowrap',
-                        justifyContent: isMobile ? 'space-evenly' : 'center',
-                        gap: isMobile ? '0px' : '2rem',
                         alignItems: 'flex-end',
                         position: 'relative',
                         zIndex: 10,
@@ -377,8 +372,14 @@ export const Library = ({ data }) => {
                 </div>
             </div>
 
-            {/* Conditional View */}
-            {isShelf ? <ShelfView books={books} /> : <CardView books={books} />}
+            {/* Conditional View — ShelfView uses ClientOnly to avoid hydration mismatch
+                from viewport-dependent booksPerShelf calculation */}
+            {isShelf
+                ? <ClientOnly fallback={<div className="shelf-placeholder" style={{ minHeight: '400px' }} />}>
+                      {() => <ShelfView books={books} />}
+                  </ClientOnly>
+                : <CardView books={books} />
+            }
         </div>
     );
 };

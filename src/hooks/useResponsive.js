@@ -5,7 +5,9 @@ import { useState, useEffect } from 'react';
  * Used across components for mobile-specific rendering and styling.
  */
 export const useIsMobile = () => {
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [isMobile, setIsMobile] = useState(
+        typeof window !== 'undefined' ? window.innerWidth <= 768 : false
+    );
     useEffect(() => {
         let timeout;
         const handler = () => {
@@ -26,7 +28,9 @@ export const useIsMobile = () => {
  * Used in Library for calculating books-per-shelf.
  */
 export const useViewportWidth = () => {
-    const [width, setWidth] = useState(window.innerWidth);
+    const [width, setWidth] = useState(
+        typeof window !== 'undefined' ? window.innerWidth : 1200
+    );
     useEffect(() => {
         let timeout;
         const handler = () => {

@@ -13,6 +13,7 @@ export const MoodBoard = () => {
     });
 
     // Tighter parallax on mobile so cards stay overlapping and dense
+    // (kept as JS — motion values are runtime-only, no hydration mismatch)
     const y1 = useTransform(scrollYProgress, [0, 1], isMobile ? [0, -40] : [0, -100]);
     const y2 = useTransform(scrollYProgress, [0, 1], isMobile ? [20, -60] : [50, -150]);
     const y3 = useTransform(scrollYProgress, [0, 1], isMobile ? [-10, 30] : [-25, 100]);
@@ -22,29 +23,26 @@ export const MoodBoard = () => {
     return (
         <div
             ref={containerRef}
+            className="mb-container"
             style={{
                 position: 'relative',
-                height: isMobile ? 'clamp(520px, 80vh, 700px)' : 'clamp(600px, 90vh, 1000px)',
                 width: '100%',
-                margin: isMobile ? '-1rem 0 0 0' : '-4rem 0 4rem 0',
                 borderTop: '1px solid var(--text-primary)',
                 backgroundColor: 'var(--bg-color)',
-                overflow: isMobile ? 'hidden' : 'visible',
                 zIndex: 1
             }}
         >
             <div className="container" style={{ position: 'relative', height: '100%' }}>
 
-                {/* Giant Floating Typography — desktop only */}
-                {!isMobile && (
-                    <motion.div
-                        style={{ y: yTxt, position: 'absolute', top: '10%', left: '5%', zIndex: 10 }}
-                    >
-                        <h2 className="serif-text" style={{ fontSize: 'clamp(4rem, 18vw, 7rem)', lineHeight: 0.9, mixBlendMode: 'difference', color: 'var(--text-primary)' }}>
-                            Soccer.<br />Tech.<br />Food.<br />Flora.
-                        </h2>
-                    </motion.div>
-                )}
+                {/* Giant Floating Typography — CSS hides on mobile */}
+                <motion.div
+                    className="mb-text"
+                    style={{ y: yTxt, position: 'absolute', top: '10%', left: '5%', zIndex: 10 }}
+                >
+                    <h2 className="serif-text" style={{ fontSize: 'clamp(4rem, 18vw, 7rem)', lineHeight: 0.9, mixBlendMode: 'difference', color: 'var(--text-primary)' }}>
+                        Soccer.<br />Tech.<br />Food.<br />Flora.
+                    </h2>
+                </motion.div>
 
                 {/* 1. Soccer Image (top right) */}
                 <motion.div

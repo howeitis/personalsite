@@ -10,6 +10,13 @@ export default defineConfig({
       new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
     ),
   },
+  ssgOptions: {
+    script: 'defer',
+    formatting: 'minify',
+    includedRoutes(paths) {
+      return [...paths.filter(p => !p.includes('*')), '/404'];
+    },
+  },
   test: {
     environment: 'jsdom',
     globals: true,

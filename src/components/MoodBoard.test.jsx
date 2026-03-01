@@ -37,16 +37,11 @@ describe('MoodBoard Component', () => {
         expect(screen.getByRole('img', { name: /vintage porsche/i })).toBeInTheDocument();
     });
 
-    it('hides typography on mobile', () => {
-        // Simulate mobile viewport
-        Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value: 375 });
-        window.dispatchEvent(new Event('resize'));
-
+    it('typography is always in the DOM with mb-text class (CSS hides on mobile)', () => {
+        // After SSG migration, typography is always rendered — CSS controls visibility
         render(<MoodBoard />);
-        expect(screen.queryByRole('heading', { level: 2 })).not.toBeInTheDocument();
-
-        // Restore desktop
-        Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value: 1024 });
-        window.dispatchEvent(new Event('resize'));
+        const heading = screen.getByRole('heading', { level: 2 });
+        expect(heading).toBeInTheDocument();
+        expect(heading.closest('.mb-text')).not.toBeNull();
     });
 });
