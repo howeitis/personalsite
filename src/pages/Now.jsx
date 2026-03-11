@@ -81,6 +81,7 @@ export const Now = ({ now, books }) => {
                     <img
                         src="images/now/stadium.png"
                         alt="Emirates Stadium"
+                        loading="lazy"
                         style={{ width: '100%', borderRadius: '8px', objectFit: 'cover', maxHeight: '160px', flexShrink: 0 }}
                     />
                 </div>
@@ -121,6 +122,7 @@ export const Now = ({ now, books }) => {
                     <img
                         src="images/now/ring.png"
                         alt=""
+                        loading="lazy"
                         style={{ width: '100%', borderRadius: '8px', objectFit: 'cover', maxHeight: '160px', flexShrink: 0 }}
                     />
                 </div>
@@ -146,7 +148,7 @@ export const Now = ({ now, books }) => {
                                     fontSize: '0.9rem',
                                     fontWeight: 600
                                 }}>
-                                    <img src="images/now/arsenal_logo.png" alt="Arsenal" style={{ height: '20px', width: 'auto', objectFit: 'contain' }} />
+                                    <img src="images/now/arsenal_logo.png" alt="Arsenal" loading="lazy" style={{ height: '20px', width: 'auto', objectFit: 'contain' }} />
                                     <span>{fixture.home ? 'vs' : '@'} {fixture.opponent}</span>
                                     <span style={{ opacity: 0.6 }}>·</span>
                                     <span style={{ opacity: 0.75 }}>{formattedDate} · {formattedTime}</span>
@@ -157,7 +159,7 @@ export const Now = ({ now, books }) => {
                         )}
                     </div>
                     <a href="https://www.arsenal.com/fixtures" target="_blank" rel="noopener noreferrer" style={{ flexShrink: 0 }}>
-                        <img src="images/now/arsenal_logo.png" alt="Arsenal FC" width={72} height={84} style={{ width: '72px', height: 'auto', objectFit: 'contain' }} />
+                        <img src="images/now/arsenal_logo.png" alt="Arsenal FC" width={72} height={84} loading="lazy" style={{ width: '72px', height: 'auto', objectFit: 'contain' }} />
                     </a>
                 </div>
             ),
@@ -188,6 +190,7 @@ export const Now = ({ now, books }) => {
                                 alt={currentBook.title}
                                 width={85}
                                 height={128}
+                                loading="lazy"
                                 style={{ width: '85px', height: 'auto', borderRadius: '4px', border: 'var(--border-thin)', flexShrink: 0 }}
                                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
                             />
@@ -233,7 +236,7 @@ export const Now = ({ now, books }) => {
                         Orchids — inspired by the exhibit at the{' '}
                         <a href="https://nmaahc.si.edu/explore/exhibitions/more-flower" target="_blank" rel="noopener noreferrer" style={{ color: 'white', textDecoration: 'underline', textUnderlineOffset: '2px' }}>Smithsonian African American Museum</a>
                     </p>
-                    <img src="images/now/orchid.jpg" alt="Phalaenopsis orchid from the Smithsonian exhibit" width={120} height={160} style={{ width: '120px', height: 'auto', borderRadius: '8px', objectFit: 'cover', flexShrink: 0 }} />
+                    <img src="images/now/orchid.jpg" alt="Phalaenopsis orchid from the Smithsonian exhibit" width={120} height={160} loading="lazy" style={{ width: '120px', height: 'auto', borderRadius: '8px', objectFit: 'cover', flexShrink: 0 }} />
                 </div>
             ),
             bg: 'var(--br-green)',

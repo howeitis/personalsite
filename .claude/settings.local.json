@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /c/Users/omhhe/.gemini/antigravity/workspace/personal-website status)",
+      "Bash(git -C /c/Users/omhhe/.gemini/antigravity/workspace/personal-website diff)",
+      "Bash(git -C /c/Users/omhhe/.gemini/antigravity/workspace/personal-website add src/pages/Now.jsx)",
+      "Bash(git -C:*)",
+      "Bash(git -C /c/Users/omhhe/.gemini/antigravity/workspace/personal-website push)",
+      "Bash(ls:*)",
+      "Bash(dir:*)",
+      "Bash(git pull:*)",
+      "Bash(npx vite build:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "WebSearch",
+      "WebFetch(domain:vite-react-ssg.netlify.app)",
+      "WebFetch(domain:github.com)"
+    ]
+  }
+}

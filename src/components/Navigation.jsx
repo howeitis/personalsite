@@ -122,6 +122,7 @@ export const Navigation = () => {
                 <button
                     className="nav-hamburger"
                     onClick={handleHamburgerClick}
+                    aria-expanded={isOpen}
                     aria-label="Toggle menu"
                     style={{
                         display: 'none',
@@ -168,16 +169,7 @@ export const Navigation = () => {
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.25, ease: 'easeInOut' }}
-                    style={{
-                        position: 'fixed',
-                        top: navHeight,
-                        left: 0,
-                        right: 0,
-                        zIndex: 99,
-                        overflow: 'hidden',
-                        backgroundColor: 'var(--bg-color)',
-                        borderBottom: '1px solid var(--separator-color)'
-                    }}
+                    style={{ top: navHeight }}
                 >
                     <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', padding: '1.5rem 2rem' }}>
                         {links.map((link) => (
