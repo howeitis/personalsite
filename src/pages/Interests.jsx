@@ -28,6 +28,19 @@ export const Interests = () => {
                 <meta property="og:title" content="Interests — Owen Howe" />
                 <meta property="og:description" content="Soccer, cars, food, music, tech, travel, and more — a look at what Owen Howe is into beyond the 9-to-5." />
                 <meta property="og:url" content="https://howe.app/interests" />
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "CollectionPage",
+                        "name": "Interests — Owen Howe",
+                        "description": "Soccer, cars, food, music, tech, travel, and more — a look at what Owen Howe is into beyond the 9-to-5.",
+                        "about": {
+                            "@type": "Person",
+                            "name": "Owen Howe",
+                            "knowsAbout": IMAGES.map(img => img.tag)
+                        }
+                    })}
+                </script>
             </Helmet>
 
             {/* Collage Header */}

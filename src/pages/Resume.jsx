@@ -15,6 +15,21 @@ export const Resume = () => {
                 <meta property="og:title" content="Resume — Owen Howe" />
                 <meta property="og:description" content="Career journey and professional experience of Owen Howe — Talent Acquisition leader at The New York Times, with a background spanning tech, media, and executive search." />
                 <meta property="og:url" content="https://howe.app/resume" />
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@graph": data.map(job => ({
+                            "@type": "OrganizationRole",
+                            "roleName": job.role,
+                            "startDate": job.period.split(' – ')[0],
+                            "endDate": job.period.includes('Present') ? undefined : job.period.split(' – ')[1],
+                            "member": {
+                                "@type": "Organization",
+                                "name": job.company
+                            }
+                        }))
+                    })}
+                </script>
             </Helmet>
             <div className="bento-grid">
                 <ExperienceBento data={data} />

@@ -143,6 +143,19 @@ export const Now = () => {
                 <title>Right Now — Owen Howe</title>
                 <meta name="description" content="A living snapshot of what Owen Howe is reading, listening to, watching, and thinking about right now." />
                 <link rel="canonical" href="https://howe.app/now" />
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "ProfilePage",
+                        "name": "Right Now — Owen Howe",
+                        "description": "A living snapshot of what Owen Howe is reading, listening to, watching, and thinking about right now.",
+                        "mainEntity": {
+                            "@type": "Person",
+                            "name": "Owen Howe",
+                            "abstract": now.thinkingAbout
+                        }
+                    })}
+                </script>
             </Helmet>
 
             {/* Header */}
@@ -157,7 +170,7 @@ export const Now = () => {
             >
                 <h1
                     className="serif-text"
-                    style={{ fontSize: 'clamp(var(--text-4xl), 6vw, var(--text-5xl))', color: 'var(--text-primary)', marginBottom: '1rem', lineHeight: 1 }}
+                    style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', color: 'var(--text-primary)', marginBottom: '1rem', lineHeight: 1 }}
                 >
                     Right Now.
                 </h1>
@@ -207,11 +220,11 @@ export const Now = () => {
                     >
                         <span
                             style={{
-                                fontSize: 'var(--text-xs)',
+                                fontSize: 'var(--text-sm)',
                                 fontWeight: 700,
                                 letterSpacing: '0.12em',
                                 textTransform: 'uppercase',
-                                opacity: 0.6,
+                                opacity: 0.8,
                                 color: card.textColor
                             }}
                         >

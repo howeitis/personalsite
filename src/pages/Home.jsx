@@ -14,6 +14,24 @@ export const Home = () => {
                 <title>Owen Howe — Finding the people who aren't looking.</title>
                 <meta name="description" content="Talent Acquisition leader based in Washington, D.C. Explore my professional background, projects, and personal interests in soccer, tech, food, and music." />
                 <link rel="canonical" href="https://howe.app/" />
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Person",
+                        "name": personal.name,
+                        "jobTitle": personal.title,
+                        "worksFor": {
+                            "@type": "Organization",
+                            "name": personal.organization
+                        },
+                        "url": "https://howe.app/",
+                        "sameAs": [
+                            personal.socials.linkedin,
+                            personal.socials.github,
+                            personal.socials.twitter
+                        ]
+                    })}
+                </script>
             </Helmet>
             {/* The Get To Know Me Intro */}
             <HeroBento data={personal} />

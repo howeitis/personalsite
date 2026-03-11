@@ -336,6 +336,24 @@ export const Library = () => {
                 <meta property="og:title" content="Library — Owen Howe" />
                 <meta property="og:description" content="Owen Howe's reading list — a mix of fiction, non-fiction, sci-fi, and history spanning continents and centuries." />
                 <meta property="og:url" content="https://howe.app/library" />
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "ItemList",
+                        "itemListElement": books.slice(0, 15).map((book, idx) => ({
+                            "@type": "ListItem",
+                            "position": idx + 1,
+                            "item": {
+                                "@type": "Book",
+                                "name": book.title,
+                                "author": {
+                                    "@type": "Person",
+                                    "name": book.author
+                                }
+                            }
+                        }))
+                    })}
+                </script>
             </Helmet>
             {/* Page Header */}
             <div className="container" style={{ padding: '4rem 2rem', marginBottom: '4rem', textAlign: 'center' }}>
