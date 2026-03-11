@@ -5,11 +5,13 @@ import { toImageFilename } from '../utils/bookFilename';
 import { useIsMobile, useViewportWidth } from '../hooks/useResponsive';
 import { ImageLightbox } from '../components/ImageLightbox';
 import { useContent } from '../context/ContentContext';
+import { useTheme } from '../context/ThemeContext';
 import { Helmet } from 'react-helmet-async';
 
 const ShelfView = ({ books }) => {
     const isMobile = useIsMobile();
     const viewportWidth = useViewportWidth();
+    const { theme } = useTheme();
 
     const spineTextures = [
         `${import.meta.env.BASE_URL}images/spine_1.webp`,
@@ -198,13 +200,22 @@ const ShelfView = ({ books }) => {
                     }}>
                         <div style={{
                             height: '26px',
-                            background: '#c8874a',
-                            borderTop: '16px solid #b97a40',
-                            borderBottom: '6px solid #8e5520',
+                            background: `
+                                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02 0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E"),
+                                repeating-linear-gradient(
+                                    to bottom,
+                                    ${theme === 'dark' ? 'transparent' : 'transparent'},
+                                    ${theme === 'dark' ? 'rgba(0,0,0,0.1) 2px' : 'rgba(0,0,0,0.05) 2px'}
+                                ),
+                                ${theme === 'dark' ? '#3e2714' : '#c8874a'}
+                            `,
+                            borderTop: `16px solid ${theme === 'dark' ? '#331f0f' : '#b97a40'}`,
+                            borderBottom: `6px solid ${theme === 'dark' ? '#1f1309' : '#8e5520'}`,
                             borderRadius: '2px',
-                            boxShadow: '0 8px 16px rgba(0,0,0,0.15), inset 0px 4px 6px rgba(255,255,255,0.1)',
+                            boxShadow: '0 8px 16px rgba(0,0,0,0.15), inset 0px 4px 6px rgba(255,255,255,0.05)',
                             zIndex: 6,
-                            position: 'relative'
+                            position: 'relative',
+                            backgroundBlendMode: 'overlay, normal, normal'
                         }}>
                         </div>
                     </div>
@@ -291,9 +302,11 @@ const CardView = ({ books }) => {
 export const Library = () => {
     const [view, setView] = useState('shelf');
     const { books: data } = useContent();
+    const { theme } = useTheme();
     const books = [...(data || [])].sort((a, b) => (b.currentlyReading ? 1 : 0) - (a.currentlyReading ? 1 : 0));
 
     const isShelf = view === 'shelf';
+    const isDark = theme === 'dark';
 
     return (
         <div style={{
@@ -303,16 +316,16 @@ export const Library = () => {
             background: isShelf ? `
                 repeating-linear-gradient(
                     to right,
-                    rgba(0,0,0,0.03) 0px,
-                    rgba(0,0,0,0.03) 2px,
+                    ${isDark ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.03)'} 0px,
+                    ${isDark ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.03)'} 2px,
                     transparent 2px,
                     transparent 40px
                 ),
-                linear-gradient(to bottom, #f2eadf 0%, #e0d0ba 100%)
+                linear-gradient(to bottom, ${isDark ? '#2a2520 0%, #1f1b17 100%' : '#e6d3ba 0%, #d8c3a9 100%'})
             ` : 'none',
-            backgroundColor: isShelf ? '#f2eadf' : 'var(--bg-color)',
+            backgroundColor: isShelf ? (isDark ? '#2a2520' : '#e6d3ba') : 'var(--bg-color)',
             minHeight: '100vh',
-            color: isShelf ? '#4a3018' : 'var(--text-primary)',
+            color: isShelf ? (isDark ? 'var(--text-primary)' : '#4a3018') : 'var(--text-primary)',
             overflowX: 'hidden',
             transition: 'background-color 0.4s ease'
         }}>
@@ -328,15 +341,15 @@ export const Library = () => {
             <div className="container" style={{ padding: '4rem 2rem', marginBottom: '4rem', textAlign: 'center' }}>
                 <h1 className="serif-text" style={{
                     fontSize: 'clamp(3rem, 8vw, 6rem)',
-                    color: isShelf ? '#4a3018' : 'var(--text-primary)',
+                    color: isShelf ? (isDark ? 'var(--text-primary)' : '#4a3018') : 'var(--text-primary)',
                     marginBottom: '1rem',
                     lineHeight: 1,
-                    textShadow: isShelf ? '0px 2px 4px rgba(0,0,0,0.1)' : 'none'
+                    textShadow: isShelf ? (isDark ? '0px 2px 4px rgba(0,0,0,0.5)' : '0px 2px 4px rgba(0,0,0,0.1)') : 'none'
                 }}>
                     The Library.
                 </h1>
                 <p style={{
-                    color: isShelf ? '#6e5033' : 'var(--text-secondary)',
+                    color: isShelf ? (isDark ? 'var(--text-secondary)' : '#6e5033') : 'var(--text-secondary)',
                     fontSize: '1.25rem',
                     maxWidth: '600px',
                     margin: '0 auto 2rem auto',
