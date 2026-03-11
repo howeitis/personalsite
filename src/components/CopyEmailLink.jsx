@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useIsMobile } from '../hooks/useResponsive';
 
-export const CopyEmailLink = ({ email, children, className, style, ...rest }) => {
+export const CopyEmailLink = ({ email, children, className, style, toastBg = 'var(--br-green)', toastColor = 'white', ...rest }) => {
     const isMobile = useIsMobile();
     const [copied, setCopied] = useState(false);
 
@@ -30,8 +30,8 @@ export const CopyEmailLink = ({ email, children, className, style, ...rest }) =>
                             position: 'absolute',
                             bottom: 'calc(100% + 6px)',
                             left: '50%',
-                            backgroundColor: 'var(--br-green)',
-                            color: 'white',
+                            backgroundColor: toastBg,
+                            color: toastColor,
                             fontSize: '0.7rem',
                             fontWeight: 700,
                             padding: '3px 10px',

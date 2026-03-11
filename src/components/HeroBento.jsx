@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { CopyEmailLink } from './CopyEmailLink';
 
 export const HeroBento = ({ data }) => {
     return (
@@ -48,8 +49,10 @@ export const HeroBento = ({ data }) => {
                         transition={{ type: "spring", delay: 0.5, bounce: 0.5 }}
                         style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-start' }}
                     >
-                        <motion.a
-                            href={`mailto:${data.email}`}
+                        <CopyEmailLink
+                            email={data.email}
+                            toastBg="var(--mustard)"
+                            toastColor="var(--text-primary)"
                             style={{
                                 display: 'inline-flex',
                                 padding: '1rem 2rem',
@@ -60,13 +63,14 @@ export const HeroBento = ({ data }) => {
                                 borderRadius: 'var(--border-radius-pill)',
                                 border: 'var(--border-thick)',
                                 boxShadow: '4px 4px 0px 0px rgba(0,0,0,0.5)',
-                                cursor: 'none'
+                                cursor: 'none',
+                                textDecoration: 'none'
                             }}
                             whileHover={{ x: -2, y: -2, boxShadow: '6px 6px 0px 0px rgba(0,0,0,0.5)' }}
                             transition={{ duration: 0.15 }}
                         >
                             Say Hello ↗
-                        </motion.a>
+                        </CopyEmailLink>
                     </motion.div>
                 </div>
             </div>
