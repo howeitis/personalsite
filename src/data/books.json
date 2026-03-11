@@ -1,27 +1,33 @@
 [
   {
     "title": "James",
-    "author": "Percival Everett"
+    "author": "Percival Everett",
+    "url": "https://www.goodreads.com/book/show/173754979"
   },
   {
     "title": "Sixteenth Street NW",
-    "author": "John DeFerrari"
+    "author": "John DeFerrari",
+    "url": "https://www.goodreads.com/book/show/58467243-sixteenth-street-nw"
   },
   {
     "title": "The Lies of Locke Lamora",
-    "author": "Scott Lynch"
+    "author": "Scott Lynch",
+    "url": "https://www.goodreads.com/book/show/127455"
   },
   {
     "title": "The Jungle",
-    "author": "Upton Sinclair"
+    "author": "Upton Sinclair",
+    "url": "https://www.goodreads.com/book/show/447688"
   },
   {
     "title": "On the Decay of the Art of Lying",
-    "author": "Mark Twain"
+    "author": "Mark Twain",
+    "url": "https://www.goodreads.com/book/show/1803982"
   },
   {
     "title": "Stories of Your Life",
-    "author": "Ted Chiang"
+    "author": "Ted Chiang",
+    "url": "https://www.goodreads.com/book/show/8130318"
   },
   {
     "title": "The Way of Kings",
@@ -31,98 +37,122 @@
   },
   {
     "title": "The Three-Body Problem",
-    "author": "Cixin Liu"
+    "author": "Cixin Liu",
+    "url": "https://www.goodreads.com/book/show/129806971"
   },
   {
     "title": "Conquerors",
-    "author": "Roger Crowley"
+    "author": "Roger Crowley",
+    "url": "https://www.goodreads.com/book/show/6453719"
   },
   {
     "title": "Mistborn",
-    "author": "Brandon Sanderson"
+    "author": "Brandon Sanderson",
+    "url": "https://www.goodreads.com/book/show/52264112"
   },
   {
     "title": "The Nature of Oaks",
-    "author": "Douglas W. Tallamy"
+    "author": "Douglas W. Tallamy",
+    "url": "https://www.goodreads.com/book/show/54110488-the-nature-of-oaks"
   },
   {
     "title": "The Gift of Good Land",
-    "author": "Wendell Berry"
+    "author": "Wendell Berry",
+    "url": "https://www.goodreads.com/book/show/7226333"
   },
   {
     "title": "The Unsettling of America",
-    "author": "Wendell Berry"
+    "author": "Wendell Berry",
+    "url": "https://www.goodreads.com/book/show/227297"
   },
   {
     "title": "A Walk in the Woods",
-    "author": "Bill Bryson"
+    "author": "Bill Bryson",
+    "url": "https://www.goodreads.com/book/show/978272"
   },
   {
     "title": "The Anarchy",
-    "author": "William Dalrymple"
+    "author": "William Dalrymple",
+    "url": "https://www.goodreads.com/book/show/42972023-the-anarchy"
   },
   {
     "title": "The Overstory",
-    "author": "Richard Powers"
+    "author": "Richard Powers",
+    "url": "https://www.goodreads.com/book/show/40180098-the-overstory"
   },
   {
     "title": "The Jakarta Method",
-    "author": "Vincent Bevins"
+    "author": "Vincent Bevins",
+    "url": "https://www.goodreads.com/book/show/88251259"
   },
   {
     "title": "Homo Deus",
-    "author": "Yuval Noah Harari"
+    "author": "Yuval Noah Harari",
+    "url": "https://www.goodreads.com/book/show/31138556-homo-deus"
   },
   {
     "title": "The Outlaw Ocean",
-    "author": "Ian Urbina"
+    "author": "Ian Urbina",
+    "url": "https://www.goodreads.com/book/show/52199293"
   },
   {
     "title": "Aerotropolis",
-    "author": "John D. Kasarda & Greg Lindsay"
+    "author": "John D. Kasarda & Greg Lindsay",
+    "url": "https://www.goodreads.com/book/show/9487693-aerotropolis"
   },
   {
     "title": "Why We're Polarized",
-    "author": "Ezra Klein"
+    "author": "Ezra Klein",
+    "url": "https://www.goodreads.com/book/show/52098718-why-we-re-polarized"
   },
   {
     "title": "The Soul of America",
-    "author": "Jon Meacham"
+    "author": "Jon Meacham",
+    "url": "https://www.goodreads.com/book/show/2038197"
   },
   {
     "title": "Sapiens",
-    "author": "Yuval Noah Harari"
+    "author": "Yuval Noah Harari",
+    "url": "https://www.goodreads.com/book/show/26054257-sapiens"
   },
   {
     "title": "Around The World in 80 Days",
-    "author": "Jules Verne"
+    "author": "Jules Verne",
+    "url": "https://www.goodreads.com/book/show/2171971"
   },
   {
     "title": "The Body",
-    "author": "Bill Bryson"
+    "author": "Bill Bryson",
+    "url": "https://www.goodreads.com/book/show/43582376-the-body"
   },
   {
     "title": "American Nations",
-    "author": "Colin Woodard"
+    "author": "Colin Woodard",
+    "url": "https://www.goodreads.com/book/show/11140803-american-nations"
   },
   {
     "title": "The Autobiography of Malcolm X",
-    "author": "Malcolm X & Alex Haley"
+    "author": "Malcolm X & Alex Haley",
+    "url": "https://www.goodreads.com/book/show/7334256"
   },
   {
     "title": "The Mixer",
-    "author": "Michael Cox"
+    "author": "Michael Cox",
+    "url": "https://www.goodreads.com/book/show/34746655-the-mixer"
   },
   {
     "title": "AI Superpowers",
-    "author": "Kai-Fu Lee"
+    "author": "Kai-Fu Lee",
+    "url": "https://www.goodreads.com/book/show/38242135"
   },
   {
     "title": "The Perfect Weapon",
-    "author": "David E. Sanger"
+    "author": "David E. Sanger",
+    "url": "https://www.goodreads.com/book/show/36560496-the-perfect-weapon"
   },
   {
     "title": "Prisoners of Geography",
-    "author": "Tim Marshall"
+    "author": "Tim Marshall",
+    "url": "https://www.goodreads.com/book/show/25135194-prisoners-of-geography"
   }
 ]

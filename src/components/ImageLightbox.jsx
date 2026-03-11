@@ -50,7 +50,7 @@ export const ImageLightbox = ({ src, alt, children, className, style, externalLi
                                 backgroundColor: 'rgba(0, 0, 0, 0.6)',
                                 backdropFilter: 'blur(8px)',
                                 WebkitBackdropFilter: 'blur(8px)',
-                                zIndex: 9999,
+                                zIndex: 9990,
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
