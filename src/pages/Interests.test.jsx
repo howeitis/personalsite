@@ -1,5 +1,17 @@
 import { render, screen } from '@testing-library/react';
 import { Interests } from './Interests';
+import { ContentProvider } from '../context/ContentContext';
+import { HelmetProvider } from 'react-helmet-async';
+
+const renderWithProviders = (ui) => {
+    return render(
+        <HelmetProvider>
+            <ContentProvider>
+                {ui}
+            </ContentProvider>
+        </HelmetProvider>
+    );
+};
 
 // Mock matchMedia for framer-motion
 beforeAll(() => {
@@ -22,23 +34,23 @@ const mockInterests = ['Soccer', 'Tech', 'Food', 'Flora', 'Music', 'Travel'];
 
 describe('Interests Page', () => {
     it('renders the page heading', () => {
-        render(<Interests data={mockInterests} />);
+        renderWithProviders(<Interests data={mockInterests} />);
         expect(screen.getByText('The Full Picture.')).toBeInTheDocument();
     });
 
     it('renders the subheading', () => {
-        render(<Interests data={mockInterests} />);
+        renderWithProviders(<Interests data={mockInterests} />);
         expect(screen.getByText("Take a look at what I'm into.")).toBeInTheDocument();
     });
 
     it('renders all 12 interest images', () => {
-        render(<Interests data={mockInterests} />);
+        renderWithProviders(<Interests data={mockInterests} />);
         const images = screen.getAllByRole('img');
         expect(images.length).toBe(12);
     });
 
     it('renders interest tags for each image', () => {
-        render(<Interests data={mockInterests} />);
+        renderWithProviders(<Interests data={mockInterests} />);
         expect(screen.getByText('Art')).toBeInTheDocument();
         expect(screen.getByText('Cars')).toBeInTheDocument();
         expect(screen.getByText('Cycling')).toBeInTheDocument();
@@ -54,14 +66,14 @@ describe('Interests Page', () => {
     });
 
     it('renders images with descriptive alt text', () => {
-        render(<Interests data={mockInterests} />);
+        renderWithProviders(<Interests data={mockInterests} />);
         expect(screen.getByAltText('Portrait Art')).toBeInTheDocument();
         expect(screen.getByAltText('Arsenal Football')).toBeInTheDocument();
         expect(screen.getByAltText('Korean Stew')).toBeInTheDocument();
     });
 
     it('uses lazy loading for all images', () => {
-        render(<Interests data={mockInterests} />);
+        renderWithProviders(<Interests data={mockInterests} />);
         const images = screen.getAllByRole('img');
         images.forEach(img => {
             expect(img).toHaveAttribute('loading', 'lazy');

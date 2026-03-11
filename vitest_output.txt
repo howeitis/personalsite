@@ -1,0 +1,343 @@
+
+[1m[46m RUN [49m[22m [36mv4.0.18 [39m[90mC:/Users/omhhe/.gemini/antigravity/workspace/personal-website[39m
+
+[90mstderr[2m | src/components/HeroBento.test.jsx[2m > [22m[2mHeroBento Component[2m > [22m[2mrenders the greeting correctly
+[22m[39mInvalid DOM property `fetchpriority`. Did you mean `fetchPriority`?
+
+ [31m❯[39m src/components/Navigation.test.jsx [2m([22m[2m5 tests[22m[2m | [22m[31m5 failed[39m[2m)[22m[32m 87[2mms[22m[39m
+[31m     [31m×[31m renders the brand logo link[39m[32m 50[2mms[22m[39m
+[31m     [31m×[31m renders all four navigation links[39m[32m 7[2mms[22m[39m
+[31m     [31m×[31m renders the hamburger toggle button with correct aria-label[39m[32m 8[2mms[22m[39m
+[31m     [31m×[31m has a sticky navigation bar[39m[32m 8[2mms[22m[39m
+[31m     [31m×[31m links point to correct routes[39m[32m 8[2mms[22m[39m
+ [31m❯[39m .claude/worktrees/admiring-sammet/src/components/Navigation.test.jsx [2m([22m[2m5 tests[22m[2m | [22m[31m5 failed[39m[2m)[22m[32m 86[2mms[22m[39m
+[31m     [31m×[31m renders the brand logo link[39m[32m 48[2mms[22m[39m
+[31m     [31m×[31m renders all four navigation links[39m[32m 7[2mms[22m[39m
+[31m     [31m×[31m renders the hamburger toggle button with correct aria-label[39m[32m 9[2mms[22m[39m
+[31m     [31m×[31m has a sticky navigation bar[39m[32m 9[2mms[22m[39m
+[31m     [31m×[31m links point to correct routes[39m[32m 8[2mms[22m[39m
+ [31m❯[39m .claude/worktrees/interesting-robinson/src/components/Navigation.test.jsx [2m([22m[2m5 tests[22m[2m | [22m[31m5 failed[39m[2m)[22m[32m 78[2mms[22m[39m
+[31m     [31m×[31m renders the brand logo link[39m[32m 48[2mms[22m[39m
+[31m     [31m×[31m renders all four navigation links[39m[32m 7[2mms[22m[39m
+[31m     [31m×[31m renders the hamburger toggle button with correct aria-label[39m[32m 6[2mms[22m[39m
+[31m     [31m×[31m has a sticky navigation bar[39m[32m 6[2mms[22m[39m
+[31m     [31m×[31m links point to correct routes[39m[32m 6[2mms[22m[39m
+ [31m❯[39m src/pages/Library.test.jsx [2m([22m[2m7 tests[22m[2m | [22m[31m7 failed[39m[2m)[22m[32m 82[2mms[22m[39m
+[31m     [31m×[31m renders the page heading[39m[32m 44[2mms[22m[39m
+[31m     [31m×[31m renders the Shelf and Cards toggle buttons[39m[32m 5[2mms[22m[39m
+[31m     [31m×[31m renders shelf view by default with correct subtitle[39m[32m 4[2mms[22m[39m
+[31m     [31m×[31m renders book links to Goodreads[39m[32m 4[2mms[22m[39m
+[31m     [31m×[31m renders book cover images with correct alt text[39m[32m 12[2mms[22m[39m
+[31m     [31m×[31m handles empty data gracefully[39m[32m 4[2mms[22m[39m
+[31m     [31m×[31m handles undefined data gracefully[39m[32m 4[2mms[22m[39m
+ [31m❯[39m src/components/MoodBoard.test.jsx [2m([22m[2m3 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[33m 1057[2mms[22m[39m
+[31m     [31m×[31m renders the main typography correctly on desktop[39m[33m 779[2mms[22m[39m
+     [32m✓[39m renders all four main images with descriptive alt text[32m 222[2mms[22m[39m
+     [32m✓[39m hides typography on mobile[32m 43[2mms[22m[39m
+ [31m❯[39m src/components/HeroBento.test.jsx [2m([22m[2m5 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[33m 905[2mms[22m[39m
+     [32m✓[39m renders the greeting correctly[32m 227[2mms[22m[39m
+     [32m✓[39m renders the first name from the data[32m 23[2mms[22m[39m
+     [32m✓[39m renders the location paragraph as an orange pill[32m 30[2mms[22m[39m
+[31m     [31m×[31m renders the profile image[39m[32m 80[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the Say Hello email button with correct mailto link [33m 540[2mms[22m[39m
+ [32m✓[39m .claude/worktrees/interesting-robinson/src/pages/Library.test.jsx [2m([22m[2m7 tests[22m[2m)[22m[33m 1966[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the page heading [33m 734[2mms[22m[39m
+     [33m[2m✓[22m[39m renders book links to Goodreads [33m 758[2mms[22m[39m
+ [32m✓[39m .claude/worktrees/interesting-robinson/src/pages/Interests.test.jsx [2m([22m[2m6 tests[22m[2m)[22m[33m 2128[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the page heading [33m 430[2mms[22m[39m
+     [33m[2m✓[22m[39m renders all 12 interest images [33m 991[2mms[22m[39m
+     [33m[2m✓[22m[39m uses lazy loading for all images [33m 426[2mms[22m[39m
+ [32m✓[39m .claude/worktrees/admiring-sammet/src/pages/Library.test.jsx [2m([22m[2m7 tests[22m[2m)[22m[33m 1964[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the page heading [33m 604[2mms[22m[39m
+     [33m[2m✓[22m[39m renders book links to Goodreads [33m 803[2mms[22m[39m
+ [32m✓[39m .claude/worktrees/admiring-sammet/src/pages/Interests.test.jsx [2m([22m[2m6 tests[22m[2m)[22m[33m 2156[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the page heading [33m 407[2mms[22m[39m
+     [33m[2m✓[22m[39m renders all 12 interest images [33m 1033[2mms[22m[39m
+     [33m[2m✓[22m[39m uses lazy loading for all images [33m 459[2mms[22m[39m
+ [32m✓[39m src/pages/Interests.test.jsx [2m([22m[2m6 tests[22m[2m)[22m[33m 2352[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the page heading [33m 387[2mms[22m[39m
+     [33m[2m✓[22m[39m renders all 12 interest images [33m 1067[2mms[22m[39m
+     [33m[2m✓[22m[39m uses lazy loading for all images [33m 566[2mms[22m[39m
+[90mstderr[2m | .claude/worktrees/admiring-sammet/src/components/HeroBento.test.jsx[2m > [22m[2mHeroBento Component[2m > [22m[2mrenders the greeting correctly
+[22m[39mInvalid DOM property `fetchpriority`. Did you mean `fetchPriority`?
+
+ [32m✓[39m .claude/worktrees/confident-heyrovsky/src/components/HeroBento.test.jsx [2m([22m[2m5 tests[22m[2m)[22m[33m 974[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the Say Hello email button with correct mailto link [33m 486[2mms[22m[39m
+ [32m✓[39m .claude/worktrees/interesting-robinson/src/components/MoodBoard.test.jsx [2m([22m[2m3 tests[22m[2m)[22m[33m 1031[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the main typography correctly on desktop [33m 684[2mms[22m[39m
+     [33m[2m✓[22m[39m renders all four main images with descriptive alt text [33m 315[2mms[22m[39m
+ [32m✓[39m .claude/worktrees/confident-heyrovsky/src/components/MoodBoard.test.jsx [2m([22m[2m3 tests[22m[2m)[22m[33m 1078[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the main typography correctly [33m 746[2mms[22m[39m
+ [32m✓[39m .claude/worktrees/admiring-sammet/src/components/MoodBoard.test.jsx [2m([22m[2m3 tests[22m[2m)[22m[33m 1101[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the main typography correctly on desktop [33m 784[2mms[22m[39m
+ [32m✓[39m .claude/worktrees/interesting-robinson/src/components/HeroBento.test.jsx [2m([22m[2m5 tests[22m[2m)[22m[33m 1055[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the Say Hello email button with correct mailto link [33m 551[2mms[22m[39m
+ [32m✓[39m .claude/worktrees/admiring-sammet/src/components/HeroBento.test.jsx [2m([22m[2m5 tests[22m[2m)[22m[33m 890[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the greeting correctly [33m 309[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the Say Hello email button with correct mailto link [33m 450[2mms[22m[39m
+ [32m✓[39m src/components/Footer.test.jsx [2m([22m[2m4 tests[22m[2m)[22m[32m 183[2mms[22m[39m
+ [32m✓[39m .claude/worktrees/interesting-robinson/src/components/ExperienceBento.test.jsx [2m([22m[2m7 tests[22m[2m)[22m[33m 456[2mms[22m[39m
+ [32m✓[39m .claude/worktrees/admiring-sammet/src/components/Footer.test.jsx [2m([22m[2m4 tests[22m[2m)[22m[32m 174[2mms[22m[39m
+ [32m✓[39m .claude/worktrees/admiring-sammet/src/components/ExperienceBento.test.jsx [2m([22m[2m7 tests[22m[2m)[22m[33m 407[2mms[22m[39m
+ [32m✓[39m src/components/ExperienceBento.test.jsx [2m([22m[2m7 tests[22m[2m)[22m[33m 390[2mms[22m[39m
+ [32m✓[39m .claude/worktrees/interesting-robinson/src/utils/colorHash.test.js [2m([22m[2m8 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m src/utils/colorHash.test.js [2m([22m[2m8 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m .claude/worktrees/admiring-sammet/src/utils/colorHash.test.js [2m([22m[2m8 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m .claude/worktrees/interesting-robinson/src/components/Footer.test.jsx [2m([22m[2m4 tests[22m[2m)[22m[32m 77[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 24 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/components/HeroBento.test.jsx[2m > [22mHeroBento Component[2m > [22mrenders the profile image
+[31m[1mError[22m: [2mexpect([22m[31melement[31m[2m).toHaveAttribute([22m[32m[32m"src"[32m[31m[2m, [22m[32m[32m"images/hero_profile.jpg"[32m[31m[2m) // element.getAttribute("src") === "images/hero_profile.jpg"[22m
+
+Expected the element to have attribute:
+[32m  src="images/hero_profile.jpg"[31m
+Received:
+[31m  src="images/hero_profile.webp"[31m[39m
+[36m [2m❯[22m src/components/HeroBento.test.jsx:[2m32:23[22m[39m
+    [90m 30| [39m        [35mconst[39m image [33m=[39m screen[33m.[39m[34mgetByAltText[39m([36m/owen's profile/i[39m)[33m;[39m
+    [90m 31| [39m        [34mexpect[39m(image)[33m.[39m[34mtoBeInTheDocument[39m()[33m;[39m
+    [90m 32| [39m        expect(image).toHaveAttribute('src', 'images/hero_profile.jpg'…
+    [90m   | [39m                      [31m^[39m
+    [90m 33| [39m    })[33m;[39m
+    [90m 34| [39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/24]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/components/MoodBoard.test.jsx[2m > [22mMoodBoard Component[2m > [22mrenders the main typography correctly on desktop
+[31m[1mTestingLibraryElementError[22m: Unable to find an accessible element with the role "heading"
+
+Here are the accessible roles:
+
+  img:
+
+  Name "Soccer":
+  [36m<img[31m
+    [33malt[31m=[32m"Soccer"[31m
+    [33mheight[31m=[32m"350"[31m
+    [33mloading[31m=[32m"lazy"[31m
+    [33msrc[31m=[32m"images/soccer.webp"[31m
+    [33mstyle[31m=[32m"width: 100%; height: auto; border-radius: 8px; display: block;"[31m
+    [33mwidth[31m=[32m"525"[31m
+  [36m/>[31m
+
+  Name "Anime bike in forest":
+  [36m<img[31m
+    [33malt[31m=[32m"Anime bike in forest"[31m
+    [33mheight[31m=[32m"450"[31m
+    [33mloading[31m=[32m"lazy"[31m
+    [33msrc[31m=[32m"images/flora.webp"[31m
+    [33mstyle[31m=[32m"width: 100%; height: auto; border-radius: 8px; display: block;"[31m
+    [33mwidth[31m=[32m"675"[31m
+  [36m/>[31m
+
+  Name "Korean Stew":
+  [36m<img[31m
+    [33malt[31m=[32m"Korean Stew"[31m
+    [33mheight[31m=[32m"400"[31m
+    [33mloading[31m=[32m"lazy"[31m
+    [33msrc[31m=[32m"images/food.webp"[31m
+    [33mstyle[31m=[32m"width: 100%; height: auto; border-radius: 8px; display: block; transform: rotate(-3deg);"[31m
+    [33mwidth[31m=[32m"600"[31m
+  [36m/>[31m
+
+  Name "Vintage Porsche":
+  [36m<img[31m
+    [33malt[31m=[32m"Vintage Porsche"[31m
+    [33mheight[31m=[32m"500"[31m
+    [33mloading[31m=[32m"lazy"[31m
+    [33msrc[31m=[32m"images/cars.webp"[31m
+    [33mstyle[31m=[32m"width: 100%; height: auto; border-radius: 8px; display: block;"[31m
+    [33mwidth[31m=[32m"750"[31m
+  [36m/>[31m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<div[31m
+      [33mstyle[31m=[32m"position: relative; width: 100%; margin: -4rem 0px 4rem; border-top: 1px solid var(--text-primary); background-color: var(--bg-color); overflow: visible; z-index: 1;"[31m
+    [36m>[31m
+      [36m<div[31m
+        [33mclass[31m=[32m"container"[31m
+        [33mstyle[31m=[32m"position: relative; height: 100%;"[31m
+      [36m>[31m
+        [36m<div[31m
+          [33mclass[31m=[32m"bento-card mb-soccer"[31m
+          [33mstyle[31m=[32m"position: absolute; z-index: 5; transform: translateY(50px);"[31m
+        [36m>[31m
+          [36m<img[31m
+            [33malt[31m=[32m"Soccer"[31m
+            [33mheight[31m=[32m"350"[31m
+            [33mloading[31m=[32m"lazy"[31m
+            [33msrc[31m=[32m"images/soccer.webp"[31m
+            [33mstyle[31m=[32m"width: 100%; height: auto; border-radius: 8px; display: block;"[31m
+            [33mwidth[31m=[32m"525"[31m
+          [36m/>[31m
+        [36m</div>[31m
+        [36m<div[31m
+          [33mclass[31m=[32m"bento-card mb-flora"[31m
+          [33mstyle[31m=[32m"position: absolute; z-index: 2; transform: none;"[31m
+        [36m>[31m
+          [36m<img[31m
+            [33malt[31m=[32m"Anime bike in forest"[31m
+            [33mheight[31m=[32m"450"[31m
+            [33mloading[31m=[32m"lazy"[31m
+            [33msrc[31m=[32m"images/flora.webp"[31m
+            [33mstyle[31m=[32m"width: 100%; height: auto; border-radius: 8px; display: block;"[31m
+            [33mwidth[31m=[32m"675"[31m
+          [36m/>[31m
+        [36m</div>[31m
+        [36m<div[31m
+          [33mclass[31m=[32m"bento-card bg-terracotta mb-food"[31m
+          [33mstyle[31m=[32m"position: absolute; z-index: 8; transform: none;"[31m
+        [36m>[31m
+          [36m<img[31m
+            [33malt[31m=[32m"Korean Stew"[31m
+            [33mheight[31m=[32m"400"[31m
+            [33mloading[31m=[32m"lazy"[31m
+            [33msrc[31m=[32m"images/food.webp"[31m
+            [33mstyle[31m=[32m"width: 100%; height: auto; border-radius: 8px; display: block; transform: rotate(-3deg);"[31m
+            [33mwidth[31m=[32m"600"[31m
+          [36m/>[31m
+        [36m</div>[31m
+        [36m<div[31m
+          [33mclass[31m=[32m"bento-card mb-cars"[31m
+          [33mstyle[31m=[32m"position: absolute; z-index: 7; transform: translateY(-25px);"[31m
+        [36m>[31m
+          [36m<img[31m
+            [33malt[31m=[32m"Vintage Porsche"[31m
+            [33mheight[31m=[32m"500"[31m
+            [33mloading[31m=[32m"lazy"[31m
+            [33msrc[31m=[32m"images/cars.webp"[31m
+            [33mstyle[31m=[32m"width: 100%; height: auto; border-radius: 8px; display: block;"[31m
+            [33mwidth[31m=[32m"750"[31m
+          [36m/>[31m
+        [36m</div>[31m
+      [36m</div>[31m
+    [36m</div>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2m❯[22m Object.getElementError node_modules/@testing-library/dom/dist/config.js:[2m37:19[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m76:38[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m52:17[22m[39m
+[90m [2m❯[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m95:19[22m[39m
+[36m [2m❯[22m src/components/MoodBoard.test.jsx:[2m25:32[22m[39m
+    [90m 23| [39m        [90m// Default window.innerWidth > 768, so text is visible[39m
+    [90m 24| [39m        [34mrender[39m([33m<[39m[33mMoodBoard[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m 25| [39m        [35mconst[39m heading [33m=[39m screen[33m.[39m[34mgetByRole[39m([32m'heading'[39m[33m,[39m { level[33m:[39m [34m2[39m })[33m;[39m
+    [90m   | [39m                               [31m^[39m
+    [90m 26| [39m        [34mexpect[39m(heading)[33m.[39m[34mtoHaveTextContent[39m([36m/Soccer/i[39m)[33m;[39m
+    [90m 27| [39m        [34mexpect[39m(heading)[33m.[39m[34mtoHaveTextContent[39m([36m/Tech/i[39m)[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/24]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/components/Navigation.test.jsx[2m > [22mNavigation Component[2m > [22mrenders the brand logo link
+[41m[1m FAIL [22m[49m src/components/Navigation.test.jsx[2m > [22mNavigation Component[2m > [22mrenders all four navigation links
+[41m[1m FAIL [22m[49m src/components/Navigation.test.jsx[2m > [22mNavigation Component[2m > [22mrenders the hamburger toggle button with correct aria-label
+[41m[1m FAIL [22m[49m src/components/Navigation.test.jsx[2m > [22mNavigation Component[2m > [22mhas a sticky navigation bar
+[41m[1m FAIL [22m[49m src/components/Navigation.test.jsx[2m > [22mNavigation Component[2m > [22mlinks point to correct routes
+[31m[1mTypeError[22m: Cannot destructure property 'theme' of '(0 , __vite_ssr_import_5__.useTheme)(...)' as it is undefined.[39m
+[36m [2m❯[22m Navigation src/components/Navigation.jsx:[2m17:13[22m[39m
+    [90m 15| [39m
+    [90m 16| [39m[35mexport[39m [35mconst[39m [33mNavigation[39m [33m=[39m () [33m=>[39m {
+    [90m 17| [39m    [35mconst[39m { theme[33m,[39m toggleTheme } [33m=[39m [34museTheme[39m()[33m;[39m
+    [90m   | [39m            [31m^[39m
+    [90m 18| [39m    [35mconst[39m location [33m=[39m [34museLocation[39m()[33m;[39m
+    [90m 19| [39m    [35mconst[39m isHome [33m=[39m location[33m.[39mpathname [33m===[39m [32m'/'[39m[33m;[39m
+[90m [2m❯[22m Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:[2m25904:20[22m[39m
+[90m [2m❯[22m renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:[2m7662:22[22m[39m
+[90m [2m❯[22m updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:[2m10166:19[22m[39m
+[90m [2m❯[22m beginWork node_modules/react-dom/cjs/react-dom-client.development.js:[2m11778:18[22m[39m
+[90m [2m❯[22m runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:[2m874:13[22m[39m
+[90m [2m❯[22m performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:[2m17641:22[22m[39m
+[90m [2m❯[22m workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:[2m17469:41[22m[39m
+[90m [2m❯[22m renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:[2m17450:11[22m[39m
+[90m [2m❯[22m performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:[2m16583:35[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/24]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/pages/Library.test.jsx[2m > [22mLibrary Page[2m > [22mrenders the page heading
+[41m[1m FAIL [22m[49m src/pages/Library.test.jsx[2m > [22mLibrary Page[2m > [22mrenders the Shelf and Cards toggle buttons
+[41m[1m FAIL [22m[49m src/pages/Library.test.jsx[2m > [22mLibrary Page[2m > [22mrenders shelf view by default with correct subtitle
+[41m[1m FAIL [22m[49m src/pages/Library.test.jsx[2m > [22mLibrary Page[2m > [22mrenders book links to Goodreads
+[41m[1m FAIL [22m[49m src/pages/Library.test.jsx[2m > [22mLibrary Page[2m > [22mrenders book cover images with correct alt text
+[41m[1m FAIL [22m[49m src/pages/Library.test.jsx[2m > [22mLibrary Page[2m > [22mhandles empty data gracefully
+[41m[1m FAIL [22m[49m src/pages/Library.test.jsx[2m > [22mLibrary Page[2m > [22mhandles undefined data gracefully
+[31m[1mError[22m: useContent must be used within a ContentProvider[39m
+[36m [2m❯[22m useContent src/context/ContentContext.jsx:[2m32:15[22m[39m
+    [90m 30| [39m    [35mconst[39m context [33m=[39m [34museContext[39m([33mContentContext[39m)[33m;[39m
+    [90m 31| [39m    [35mif[39m ([33m![39mcontext) {
+    [90m 32| [39m        throw new Error('useContent must be used within a ContentProvi…
+    [90m   | [39m              [31m^[39m
+    [90m 33| [39m    }
+    [90m 34| [39m    [35mreturn[39m context[33m;[39m
+[90m [2m❯[22m Library src/pages/Library.jsx:[2m304:29[22m[39m
+[90m [2m❯[22m Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:[2m25904:20[22m[39m
+[90m [2m❯[22m renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:[2m7662:22[22m[39m
+[90m [2m❯[22m updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:[2m10166:19[22m[39m
+[90m [2m❯[22m beginWork node_modules/react-dom/cjs/react-dom-client.development.js:[2m11778:18[22m[39m
+[90m [2m❯[22m runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:[2m874:13[22m[39m
+[90m [2m❯[22m performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:[2m17641:22[22m[39m
+[90m [2m❯[22m workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:[2m17469:41[22m[39m
+[90m [2m❯[22m renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:[2m17450:11[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/24]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m .claude/worktrees/admiring-sammet/src/components/Navigation.test.jsx[2m > [22mNavigation Component[2m > [22mrenders the brand logo link
+[41m[1m FAIL [22m[49m .claude/worktrees/admiring-sammet/src/components/Navigation.test.jsx[2m > [22mNavigation Component[2m > [22mrenders all four navigation links
+[41m[1m FAIL [22m[49m .claude/worktrees/admiring-sammet/src/components/Navigation.test.jsx[2m > [22mNavigation Component[2m > [22mrenders the hamburger toggle button with correct aria-label
+[41m[1m FAIL [22m[49m .claude/worktrees/admiring-sammet/src/components/Navigation.test.jsx[2m > [22mNavigation Component[2m > [22mhas a sticky navigation bar
+[41m[1m FAIL [22m[49m .claude/worktrees/admiring-sammet/src/components/Navigation.test.jsx[2m > [22mNavigation Component[2m > [22mlinks point to correct routes
+[31m[1mTypeError[22m: Cannot destructure property 'theme' of '(0 , __vite_ssr_import_5__.useTheme)(...)' as it is undefined.[39m
+[36m [2m❯[22m Navigation .claude/worktrees/admiring-sammet/src/components/Navigation.jsx:[2m16:13[22m[39m
+    [90m 14| [39m
+    [90m 15| [39m[35mexport[39m [35mconst[39m [33mNavigation[39m [33m=[39m () [33m=>[39m {
+    [90m 16| [39m    [35mconst[39m { theme[33m,[39m toggleTheme } [33m=[39m [34museTheme[39m()[33m;[39m
+    [90m   | [39m            [31m^[39m
+    [90m 17| [39m    [35mconst[39m location [33m=[39m [34museLocation[39m()[33m;[39m
+    [90m 18| [39m    [35mconst[39m isHome [33m=[39m location[33m.[39mpathname [33m===[39m [32m'/'[39m[33m;[39m
+[90m [2m❯[22m Object.react_stack_bottom_frame .claude/worktrees/admiring-sammet/node_modules/react-dom/cjs/react-dom-client.development.js:[2m25904:20[22m[39m
+[90m [2m❯[22m renderWithHooks .claude/worktrees/admiring-sammet/node_modules/react-dom/cjs/react-dom-client.development.js:[2m7662:22[22m[39m
+[90m [2m❯[22m updateFunctionComponent .claude/worktrees/admiring-sammet/node_modules/react-dom/cjs/react-dom-client.development.js:[2m10166:19[22m[39m
+[90m [2m❯[22m beginWork .claude/worktrees/admiring-sammet/node_modules/react-dom/cjs/react-dom-client.development.js:[2m11778:18[22m[39m
+[90m [2m❯[22m runWithFiberInDEV .claude/worktrees/admiring-sammet/node_modules/react-dom/cjs/react-dom-client.development.js:[2m874:13[22m[39m
+[90m [2m❯[22m performUnitOfWork .claude/worktrees/admiring-sammet/node_modules/react-dom/cjs/react-dom-client.development.js:[2m17641:22[22m[39m
+[90m [2m❯[22m workLoopSync .claude/worktrees/admiring-sammet/node_modules/react-dom/cjs/react-dom-client.development.js:[2m17469:41[22m[39m
+[90m [2m❯[22m renderRootSync .claude/worktrees/admiring-sammet/node_modules/react-dom/cjs/react-dom-client.development.js:[2m17450:11[22m[39m
+[90m [2m❯[22m performWorkOnRoot .claude/worktrees/admiring-sammet/node_modules/react-dom/cjs/react-dom-client.development.js:[2m16583:35[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/24]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m .claude/worktrees/interesting-robinson/src/components/Navigation.test.jsx[2m > [22mNavigation Component[2m > [22mrenders the brand logo link
+[41m[1m FAIL [22m[49m .claude/worktrees/interesting-robinson/src/components/Navigation.test.jsx[2m > [22mNavigation Component[2m > [22mrenders all four navigation links
+[41m[1m FAIL [22m[49m .claude/worktrees/interesting-robinson/src/components/Navigation.test.jsx[2m > [22mNavigation Component[2m > [22mrenders the hamburger toggle button with correct aria-label
+[41m[1m FAIL [22m[49m .claude/worktrees/interesting-robinson/src/components/Navigation.test.jsx[2m > [22mNavigation Component[2m > [22mhas a sticky navigation bar
+[41m[1m FAIL [22m[49m .claude/worktrees/interesting-robinson/src/components/Navigation.test.jsx[2m > [22mNavigation Component[2m > [22mlinks point to correct routes
+[31m[1mTypeError[22m: Cannot destructure property 'theme' of '(0 , __vite_ssr_import_5__.useTheme)(...)' as it is undefined.[39m
+[36m [2m❯[22m Navigation .claude/worktrees/interesting-robinson/src/components/Navigation.jsx:[2m16:13[22m[39m
+    [90m 14| [39m
+    [90m 15| [39m[35mexport[39m [35mconst[39m [33mNavigation[39m [33m=[39m () [33m=>[39m {
+    [90m 16| [39m    [35mconst[39m { theme[33m,[39m toggleTheme } [33m=[39m [34museTheme[39m()[33m;[39m
+    [90m   | [39m            [31m^[39m
+    [90m 17| [39m    [35mconst[39m location [33m=[39m [34museLocation[39m()[33m;[39m
+    [90m 18| [39m    [35mconst[39m isHome [33m=[39m location[33m.[39mpathname [33m===[39m [32m'/'[39m[33m;[39m
+[90m [2m❯[22m Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:[2m25904:20[22m[39m
+[90m [2m❯[22m renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:[2m7662:22[22m[39m
+[90m [2m❯[22m updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:[2m10166:19[22m[39m
+[90m [2m❯[22m beginWork node_modules/react-dom/cjs/react-dom-client.development.js:[2m11778:18[22m[39m
+[90m [2m❯[22m runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:[2m874:13[22m[39m
+[90m [2m❯[22m performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:[2m17641:22[22m[39m
+[90m [2m❯[22m workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:[2m17469:41[22m[39m
+[90m [2m❯[22m renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:[2m17450:11[22m[39m
+[90m [2m❯[22m performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:[2m16583:35[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/24]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m6 failed[39m[22m[2m | [22m[1m[32m20 passed[39m[22m[90m (26)[39m
+[2m      Tests [22m [1m[31m24 failed[39m[22m[2m | [22m[1m[32m119 passed[39m[22m[90m (143)[39m
+[2m   Start at [22m 18:20:11
+[2m   Duration [22m 17.38s[2m (transform 3.84s, setup 9.22s, import 37.92s, tests 20.70s, environment 85.64s)[22m
+

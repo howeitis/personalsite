@@ -1,5 +1,23 @@
 import { render, screen } from '@testing-library/react';
 import { Library } from './Library';
+import { ContentProvider } from '../context/ContentContext';
+import { ThemeProvider } from '../context/ThemeContext';
+import { HelmetProvider } from 'react-helmet-async';
+import { BrowserRouter } from 'react-router-dom';
+
+const renderWithProviders = (ui) => {
+    return render(
+        <HelmetProvider>
+            <ThemeProvider>
+                <ContentProvider>
+                    <BrowserRouter>
+                        {ui}
+                    </BrowserRouter>
+                </ContentProvider>
+            </ThemeProvider>
+        </HelmetProvider>
+    );
+};
 
 // Mock matchMedia for framer-motion
 beforeAll(() => {
@@ -30,41 +48,41 @@ const mockBooks = [
 
 describe('Library Page', () => {
     it('renders the page heading', () => {
-        render(<Library data={mockBooks} />);
+        renderWithProviders(<Library data={mockBooks} />);
         expect(screen.getByText('The Library.')).toBeInTheDocument();
     });
 
     it('renders the Shelf and Cards toggle buttons', () => {
-        render(<Library data={mockBooks} />);
+        renderWithProviders(<Library data={mockBooks} />);
         expect(screen.getByText('Shelf')).toBeInTheDocument();
         expect(screen.getByText('Cards')).toBeInTheDocument();
     });
 
     it('renders shelf view by default with correct subtitle', () => {
-        render(<Library data={mockBooks} />);
+        renderWithProviders(<Library data={mockBooks} />);
         expect(screen.getByText('Grab a book off my shelf.')).toBeInTheDocument();
     });
 
     it('renders book links to Goodreads', () => {
-        render(<Library data={mockBooks} />);
+        renderWithProviders(<Library data={mockBooks} />);
         const links = screen.getAllByRole('link');
         const goodreadsLinks = links.filter(l => l.href && l.href.includes('goodreads.com'));
         expect(goodreadsLinks.length).toBe(mockBooks.length);
     });
 
     it('renders book cover images with correct alt text', () => {
-        render(<Library data={mockBooks} />);
+        renderWithProviders(<Library data={mockBooks} />);
         expect(screen.getByAltText('Sapiens by Yuval Noah Harari')).toBeInTheDocument();
         expect(screen.getByAltText('Mistborn by Brandon Sanderson')).toBeInTheDocument();
     });
 
     it('handles empty data gracefully', () => {
-        render(<Library data={[]} />);
+        renderWithProviders(<Library data={[]} />);
         expect(screen.getByText('The Library.')).toBeInTheDocument();
     });
 
     it('handles undefined data gracefully', () => {
-        render(<Library data={undefined} />);
+        renderWithProviders(<Library data={undefined} />);
         expect(screen.getByText('The Library.')).toBeInTheDocument();
     });
 });

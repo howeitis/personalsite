@@ -6,13 +6,16 @@ export const CopyEmailLink = ({ email, children, className, style, toastBg = 'va
     const isMobile = useIsMobile();
     const [copied, setCopied] = useState(false);
 
-    const handleClick = (e) => {
-        if (!isMobile) {
-            e.preventDefault();
-            navigator.clipboard.writeText(email).then(() => {
-                setCopied(true);
-                setTimeout(() => setCopied(false), 2000);
-            });
+    const handleClick = async (e) => {
+        e.preventDefault();
+        try {
+            await navigator.clipboard.writeText(email);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy text: ', err);
+            // Fallback for older mobile browsers
+            window.location.href = `mailto:${email}`;
         }
     };
 
@@ -41,7 +44,7 @@ export const CopyEmailLink = ({ email, children, className, style, toastBg = 'va
                             zIndex: 100
                         }}
                     >
-                        Copied!
+                        Email Copied!
                     </m.span>
                 )}
             </AnimatePresence>

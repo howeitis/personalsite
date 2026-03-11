@@ -54,7 +54,7 @@ const ShelfView = ({ books }) => {
                         paddingBottom: '16px'
                     }}>
                         {chunk.map((book, bookIndex) => {
-                            const { title, author } = book;
+                            const { title, author, url } = book;
                             const index = (shelfIndex * booksPerShelf) + bookIndex;
                             const { bgColor, charSum } = getBookColor(title, index);
 
@@ -71,7 +71,7 @@ const ShelfView = ({ books }) => {
                                     key={index}
                                     src={primarySrc}
                                     alt={`${title} by ${author}`}
-                                    externalLink={`https://www.goodreads.com/search?q=${encodeURIComponent(title + " " + author)}`}
+                                    externalLink={url || `https://www.goodreads.com/search?q=${encodeURIComponent(title + " " + author)}`}
                                     style={{ display: 'block', flexShrink: 0, position: 'relative' }}
                                 >
                                     {isCurrentlyReading && (
@@ -213,7 +213,7 @@ const ShelfView = ({ books }) => {
                             borderBottom: `6px solid ${theme === 'dark' ? '#1f1309' : '#8e5520'}`,
                             borderRadius: '2px',
                             boxShadow: '0 8px 16px rgba(0,0,0,0.15), inset 0px 4px 6px rgba(255,255,255,0.05)',
-                            zIndex: 6,
+                            zIndex: 0,
                             position: 'relative',
                             backgroundBlendMode: 'overlay, normal, normal'
                         }}>
@@ -236,7 +236,7 @@ const CardView = ({ books }) => {
             padding: '0 1rem'
         }}>
             {books.map((book, index) => {
-                const { title, author } = book;
+                const { title, author, url } = book;
                 const { bgColor, textColor } = getBookColor(title, index);
                 const rotation = index % 2 === 0 ? (index % 3 === 0 ? 3 : -2) : (index % 4 === 0 ? -4 : 2);
 
@@ -247,7 +247,7 @@ const CardView = ({ books }) => {
                         key={index}
                         src={primarySrc}
                         alt={`${title} by ${author}`}
-                        externalLink={`https://www.goodreads.com/search?q=${encodeURIComponent(title + " " + author)}`}
+                        externalLink={url || `https://www.goodreads.com/search?q=${encodeURIComponent(title + " " + author)}`}
                         style={{ display: 'block' }}
                     >
                     <m.div

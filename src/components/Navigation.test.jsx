@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { Navigation } from './Navigation';
+import { ThemeProvider } from '../context/ThemeContext';
 
 // Mock matchMedia for framer-motion
 beforeAll(() => {
@@ -21,16 +22,18 @@ beforeAll(() => {
 
 const renderNav = (initialRoute = '/') => {
     return render(
-        <MemoryRouter initialEntries={[initialRoute]}>
-            <Navigation />
-        </MemoryRouter>
+        <ThemeProvider>
+            <MemoryRouter initialEntries={[initialRoute]}>
+                <Navigation />
+            </MemoryRouter>
+        </ThemeProvider>
     );
 };
 
 describe('Navigation Component', () => {
     it('renders the brand logo link', () => {
         renderNav();
-        const logo = screen.getByText('owenhowe.');
+        const logo = screen.getByText('Owen Howe');
         expect(logo).toBeInTheDocument();
         expect(logo.closest('a')).toHaveAttribute('href', '/');
     });
