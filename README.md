@@ -206,42 +206,21 @@ curl "https://api.football-data.org/v4/teams/57/matches?status=SCHEDULED&limit=1
 
 ## Roadmap
 
-| Priority | Feature | Goal |
+| Phase | Focus | Status |
 |---|---|---|
-| ✅ Done | **`/now` page** | Living snapshot — bento grid with media, images, and hyperlinks to Spotify, Goodreads, Arsenal fixtures, NYT Cooking, The Athletic, and Smithsonian NMAAHC. |
-| ✅ Done | **Social card (`og-image`)** | 1200×630 landscape card with logo, name, tagline, and terracotta accent. Proper previews on LinkedIn, Slack, iMessage. |
-| ✅ Done | **Dark mode** | Full light/dark toggle with editorial dark palette, FOUC prevention, localStorage persistence, `prefers-color-scheme` detection. |
-| ✅ Done | **Interactive embeds** | Spotify embeds on dedicated Music and Podcasts cards, Arsenal next fixture pill on Watching card. |
-| Next | **Writing section** | Thought leadership posts on talent acquisition, AI, tech hiring. Primary driver of organic search traffic and return visits. |
-| Later | **Contact form** | Lower-friction lead capture for Sycamore Creek — replaces external link with an embedded form. |
+| **Phase 1: Foundation** | Build the core SPA, implement `content.json` data architecture, build the base Bento grid UI. | ✅ Complete |
+| **Phase 2: Tactile UI & Perf** | Refactor the `Now` and `Library` data layers into modular components. Transpile image assets to WebP for 100/100 Lighthouse scores. Implement rich CSS-driven textures for Dark/Light mode library shelves. | ✅ Complete |
+| **Phase 3: The Native App Feel** | Wrap `react-router` in `framer-motion` `<AnimatePresence>` for fluid page cross-fades. Inject programmatic Schema.org/JSON-LD structures across all core routes for aggressive SEO indexing. | ✅ Complete |
+| **Phase 4: Content Expansion** | Build an interactive `/uses` gear page detailing hardware, software, and desk setup. | ⏳ Pending |
 
 ---
 
-## Version History
+## Recent Architectural Updates (v3.0.0+)
 
-| Version | Summary |
-|---|---|
-| v48 | Dead code removal, Library/Readings merge with shelf/card toggle |
-| v49 | Hamburger nav (mobile), auto-hide on scroll, Sycamore Creek cards |
-| v50 | Compact Sycamore card, book cover clipping fix, resume tree background |
-| v51 | Sycamore vertical layout, bookshelf floating-books fix (`flexWrap: nowrap`) |
-| v52 | Mobile moodboard overlap (CSS class positioning), library centering |
-| v53 | Desktop overflow fix (`overflow: visible` on desktop, `hidden` on mobile) |
-| v54 | Strip moodboard card padding on mobile, dampen parallax, library shelf gap reduction |
-| v55 | Compress moodboard container height, tighter card positions, dampened parallax ranges |
-| v56 | Full-bleed library shelves on mobile, Sycamore overlap, space-evenly book distribution |
-| v57 | Moodboard hero tuck / Sycamore overlap tuning, Interests copy update, docs overhaul |
-| v58 | Resume: Sycamore teal accents, Chungdahm terracotta card, moodboard margin tuning |
-| v59 | Sycamore card right-offset on mobile to mirror desktop positioning |
-| v60 | Soccer replaces fashion in moodboard, text updated to "Soccer/Tech/Food/Flora", captions removed, typography hidden on mobile, code cleanup + test updates |
-| v61 | SEO infrastructure (robots.txt, sitemap.xml, JSON-LD Person schema, canonical URL, og:url fix), shared debounced hooks (useIsMobile/useViewportWidth), test coverage expanded to 53 tests across 10 files, img width/height for CLS prevention, accessibility (aria-labels, prefers-reduced-motion, contrast audit), "Currently Reading" tag for Library, Interests description-ready, footer credit line |
-| v62 | Fix hero profile and Sycamore logo aspect ratio distortion caused by explicit width/height without `height: auto` |
-| v63 | Add captions to all interests: Soccer, Books, Music, Cars, Food, Art (Fauvism), Travel (London next) |
-| v64 | `/now` page: bento grid with media images (Stadio, Ebo Taylor, Arsenal logo, orchid photo), Spotify/Goodreads/Arsenal/NYT Cooking/Athletic/Smithsonian hyperlinks, updated listening content |
-| v65 | Social card: 1200×630 og-image with logo, name, and tagline. Sitemap lastmod dates. `/now` page: side-by-side image layouts for Listening, Watching, and Growing cards |
-| v66 | Dark mode: ThemeContext with localStorage persistence + `prefers-color-scheme` detection, FOUC prevention script, editorial dark palette (`[data-theme="dark"]`), Sun/Moon toggle in nav. `/now` page: Spotify album embed replaces static images on Listening card, Arsenal next fixture pill on Watching card |
-| v67 | Nav: right-aligned links with dark mode toggle in far-right corner, route-aware brand ("Owen Howe" on home, "OH" on subpages), mobile toggle next to hamburger. `/now` page: Listening promoted to hero card (span 2) with side-by-side Spotify embed, Thinking About demoted to regular card, tighter padding across all cards, larger Arsenal fixture pill |
-| v68 | `/now` page: split Listening into dedicated Music ("On Rotation") and Podcasts ("In the Feed") tiles, each span-2 with full-width Spotify embed at 352px. Following tagline updated to Redfin D.C. rowhome copy. |
-| v69 | Mobile nav drawer moved to `position: fixed` overlay (unaffected by nav y-transform), fixing overlap on mid-page scroll. Fixture time stored as `{hours, minutes}` integers instead of locale string. Reading card Goodreads URL driven by `url` field on book in `content.json`. HeroBento hover uses Framer Motion `whileHover` instead of imperative style mutations. `/now` Watching card logic extracted from IIFE to named variables. |
-| v70 | Code cleanup: remove unused `useMotionValue` import, dead ternary in ExperienceBento, unused props on Footer and Interests. Now.jsx `data` param renamed to `now`. `getCompAbbr` extracted to named module-level function. Static `IMAGES` array moved to module level in Interests.jsx. `toImageFilename()` utility added to `src/utils/bookFilename.js` — shared by Library and Now pages, matches `fetch_covers.py` filename convention. |
-| v71 | Performance & A11y: Add `loading="lazy"` to off-screen images, announce mobile menu state with `aria-expanded`, and extract heavily inlined component styles from Home and Navigation to index.css for maintainability. |
+The platform recently underwent a massive structural refactoring to elevate it from a static portfolio into a highly performant, semantic web application:
+
+1. **Fluid Page Transitions:** The core routing tree (`App.jsx`) is now wrapped in `framer-motion`'s `AnimatePresence`. Page navigation triggers concurrent `exit` and `initial` animation loops, creating a native iOS-like transition devoid of white-flashes.
+2. **Knowledge Graph SEO:** The application dynamically generates `application/ld+json` Schema.org scripts via `react-helmet-async`. Google now explicitly understands the `Person`, `OrganizationRole`, `ItemList` (Books), and `CollectionPage` hierarchies. 
+3. **Data Layer Modularization:** Huge monolithic components (ex: `Now.jsx`) were aggressively decoupled into discrete, testable `.jsx` files inside nested component directories (ex: `src/components/now/`). 
+4. **Next-Gen Asset Pipeline:** All legacy `.jpg` and `.png` assets were transpiled into `.webp` artifacts, decimating the First Contentful Paint times. 
+5. **Tactile Styling:** Advanced `repeating-linear-gradient` and SVG Noise filters were layered to create realistic material textures (namely the wood-grain on the Library routes), supported dynamically across Light and Dark mode Contexts.
