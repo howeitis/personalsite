@@ -1,3 +1,4 @@
+import { Download } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const ExperienceBento = ({ data }) => {
@@ -5,6 +6,17 @@ export const ExperienceBento = ({ data }) => {
         <>
             <div className="bento-card" style={{ gridColumn: 'span 12', padding: '1.5rem 2.5rem', backgroundColor: 'var(--lavender)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <h2 className="serif-text" style={{ fontSize: '2rem', margin: 0 }}>Career Journey</h2>
+                <motion.a
+                    href="/resume.pdf"
+                    download
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ type: 'spring', delay: 0.1 }}
+                    className="pill-tag"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}
+                >
+                    Download PDF <Download size={16} />
+                </motion.a>
             </div>
 
             {data.map((job, index) => {
