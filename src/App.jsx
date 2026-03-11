@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import { ThemeProvider } from './context/ThemeContext';
 import { Navigation } from './components/Navigation';
 import { Footer } from './components/Footer';
@@ -15,6 +16,42 @@ import { Library } from './pages/Library';
 import { Now } from './pages/Now';
 import { NotFound } from './pages/NotFound';
 
+const pageVariants = {
+  initial: { opacity: 0, y: 30, rotate: -0.6 },
+  animate: {
+    opacity: 1, y: 0, rotate: 0,
+    transition: { type: 'spring', stiffness: 260, damping: 24 }
+  },
+  exit: {
+    opacity: 0, y: -20, scale: 0.98,
+    transition: { duration: 0.15, ease: 'easeIn' }
+  }
+};
+
+function AnimatedRoutes() {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.div
+        key={location.pathname}
+        variants={pageVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
+        <Routes location={location}>
+          <Route path="/" element={<Home data={contentData} />} />
+          <Route path="/resume" element={<Resume data={contentData.experience} consulting={contentData.consulting} />} />
+          <Route path="/interests" element={<Interests />} />
+          <Route path="/library" element={<Library data={contentData.books} />} />
+          <Route path="/now" element={<Now now={contentData.now} books={contentData.books} />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
 function App() {
   return (
     <ThemeProvider>
@@ -27,14 +64,7 @@ function App() {
 
           <main id="main-content" className="container" style={{ flex: 1, paddingBottom: '4rem', paddingTop: '2rem' }}>
             <ErrorBoundary>
-              <Routes>
-                <Route path="/" element={<Home data={contentData} />} />
-                <Route path="/resume" element={<Resume data={contentData.experience} consulting={contentData.consulting} />} />
-                <Route path="/interests" element={<Interests />} />
-                <Route path="/library" element={<Library data={contentData.books} />} />
-                <Route path="/now" element={<Now now={contentData.now} books={contentData.books} />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
+              <AnimatedRoutes />
             </ErrorBoundary>
           </main>
 

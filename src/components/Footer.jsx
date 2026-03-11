@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { CopyEmailLink } from './CopyEmailLink';
 
 export const Footer = () => {
     return (
@@ -9,14 +10,14 @@ export const Footer = () => {
                 </div>
 
                 <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
-                    <motion.a
-                        href="mailto:owen@howe.app"
+                    <CopyEmailLink
+                        email="owen@howe.app"
                         aria-label="Send email to Owen"
                         whileHover={{ y: -3, color: 'var(--terracotta)' }}
                         style={{ color: 'var(--text-primary)', transition: 'color 0.3s', cursor: 'none', fontWeight: 500 }}
                     >
                         Email
-                    </motion.a>
+                    </CopyEmailLink>
                     <motion.a
                         href="https://www.linkedin.com/in/owen-howe-wm2016/"
                         target="_blank"

@@ -1,22 +1,47 @@
 import { Download } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { CopyEmailLink } from './CopyEmailLink';
 
 export const ExperienceBento = ({ data }) => {
     return (
         <>
-            <div className="bento-card" style={{ gridColumn: 'span 12', padding: '1.5rem 2.5rem', backgroundColor: 'var(--lavender)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div className="bento-card" style={{ gridColumn: 'span 12', padding: '1.5rem 2.5rem', backgroundColor: 'var(--lavender)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
                 <h2 className="serif-text" style={{ fontSize: '2rem', margin: 0 }}>Career Journey</h2>
-                <motion.a
-                    href="/resume.pdf"
-                    download
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ type: 'spring', delay: 0.1 }}
-                    className="pill-tag"
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}
-                >
-                    Download PDF <Download size={16} />
-                </motion.a>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
+                    <CopyEmailLink
+                        email="owen@howe.app"
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ type: 'spring', delay: 0.05 }}
+                        className="pill-tag"
+                        style={{ textDecoration: 'none' }}
+                    >
+                        Email
+                    </CopyEmailLink>
+                    <motion.a
+                        href="https://www.linkedin.com/in/owen-howe-wm2016/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ type: 'spring', delay: 0.08 }}
+                        className="pill-tag"
+                        style={{ textDecoration: 'none' }}
+                    >
+                        LinkedIn
+                    </motion.a>
+                    <motion.a
+                        href="/resume.pdf"
+                        download
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ type: 'spring', delay: 0.11 }}
+                        className="pill-tag"
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}
+                    >
+                        Download PDF <Download size={16} />
+                    </motion.a>
+                </div>
             </div>
 
             {data.map((job, index) => {

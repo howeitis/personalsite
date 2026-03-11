@@ -283,7 +283,7 @@ const CardView = ({ books }) => {
 
 export const Library = ({ data }) => {
     const [view, setView] = useState('shelf');
-    const books = data || [];
+    const books = [...(data || [])].sort((a, b) => (b.currentlyReading ? 1 : 0) - (a.currentlyReading ? 1 : 0));
 
     const isShelf = view === 'shelf';
 

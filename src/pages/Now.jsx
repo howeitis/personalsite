@@ -272,11 +272,18 @@ export const Now = ({ now, books }) => {
                     Right Now.
                 </h1>
                 <p style={{ color: 'var(--text-primary)', fontSize: '1.25rem', maxWidth: '600px', fontWeight: 500 }}>
-                    A snapshot of what's on my mind and on my plate.
+                    The current starting lineup.
                 </p>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '1rem' }}>
-                    Updated {__NOW_UPDATED__}
-                </p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '1.25rem' }}>
+                    <motion.span
+                        animate={{ opacity: [1, 0.3, 1], scale: [1, 0.8, 1] }}
+                        transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+                        style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#4ade80', display: 'inline-block', flexShrink: 0 }}
+                    />
+                    <span className="pill-tag" style={{ fontSize: '0.8rem', fontWeight: 700, backgroundColor: 'var(--mustard)', border: '2px solid var(--text-primary)', letterSpacing: '0.04em' }}>
+                        Updated {__NOW_UPDATED__}
+                    </span>
+                </div>
             </div>
 
             {/* Bento Grid */}
