@@ -1,18 +1,18 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const IMAGES = [
-    { src: "images/art.jpg", alt: "Portrait Art", tag: "Art", bg: "var(--mustard)", width: 600, height: 400, description: "Fauvism—because you can never have too much color." },
-    { src: "images/cars.jpg", alt: "Porsche 911", tag: "Cars", bg: "var(--br-green)", width: 600, height: 400, description: "Proudly driving a car that's older than some of the interns I hire." },
-    { src: "images/cycling.jpg", alt: "Cycling", tag: "Cycling", bg: "var(--sky-blue)", width: 600, height: 400, description: "Cycling: because walking is too slow and city driving is boring" },
-    { src: "images/fashion.jpg", alt: "Fashion", tag: "Fashion", bg: "var(--lavender)", width: 600, height: 400, description: "Dressing like someone who has spent too many weekends at thrift stores" },
-    { src: "images/flora.jpg", alt: "Anime Bike in Forest", tag: "Flora", bg: "var(--bg-color)", width: 600, height: 400, description: "Trying to recreate a botanical garden in my apartment." },
-    { src: "images/food.jpg", alt: "Korean Stew", tag: "Food", bg: "var(--terracotta)", width: 600, height: 400, description: "I take restaurant recommendations seriously; tell me what I should try next." },
-    { src: "images/history.jpg", alt: "Korean History", tag: "History", bg: "var(--mustard)", width: 600, height: 400, description: "I enjoy exploring the past, mostly so I can feel better about how long it takes us to do things in the present." },
-    { src: "images/international relations.jpg", alt: "Diplomacy", tag: "International Relations", bg: "var(--br-green)", width: 600, height: 400, description: "Applying my IR degree to the complex geopolitical landscape of 'which neighborhood has the best soup dumplings.'" },
-    { src: "images/music.jpg", alt: "Music Studio", tag: "Music", bg: "var(--lavender)", width: 600, height: 400, description: "Always seeking the perfect soundtrack—currently accepting applications for 'Song of the Summer' 2026." },
-    { src: "images/soccer.jpg", alt: "Arsenal Football", tag: "Soccer", bg: "var(--sky-blue)", width: 600, height: 400, description: "My weekend mood is entirely dependent on Arsenal's form" },
-    { src: "images/tech.jpg", alt: "Technology", tag: "Technology", bg: "var(--bg-color)", width: 600, height: 400, description: "Ask me about the future of AI, or just how to get your resume past a recruiter who spends too much time thinking about it." },
-    { src: "images/travel.jpg", alt: "Travel Photography", tag: "Travel", bg: "var(--terracotta)", width: 600, height: 400, description: "London is up next 🛫" }
+    { src: "images/art.webp", alt: "Portrait Art", tag: "Art", bg: "var(--mustard)", width: 600, height: 400, description: "Fauvism—because you can never have too much color." },
+    { src: "images/cars.webp", alt: "Porsche 911", tag: "Cars", bg: "var(--br-green)", width: 600, height: 400, description: "Proudly driving a car that's older than some of the interns I hire." },
+    { src: "images/cycling.webp", alt: "Cycling", tag: "Cycling", bg: "var(--sky-blue)", width: 600, height: 400, description: "Cycling: because walking is too slow and city driving is boring" },
+    { src: "images/fashion.webp", alt: "Fashion", tag: "Fashion", bg: "var(--lavender)", width: 600, height: 400, description: "Dressing like someone who has spent too many weekends at thrift stores" },
+    { src: "images/flora.webp", alt: "Anime Bike in Forest", tag: "Flora", bg: "var(--bg-color)", width: 600, height: 400, description: "Trying to recreate a botanical garden in my apartment." },
+    { src: "images/food.webp", alt: "Korean Stew", tag: "Food", bg: "var(--terracotta)", width: 600, height: 400, description: "I take restaurant recommendations seriously; tell me what I should try next." },
+    { src: "images/history.webp", alt: "Korean History", tag: "History", bg: "var(--mustard)", width: 600, height: 400, description: "I enjoy exploring the past, mostly so I can feel better about how long it takes us to do things in the present." },
+    { src: "images/international relations.webp", alt: "Diplomacy", tag: "International Relations", bg: "var(--br-green)", width: 600, height: 400, description: "Applying my IR degree to the complex geopolitical landscape of 'which neighborhood has the best soup dumplings.'" },
+    { src: "images/music.webp", alt: "Music Studio", tag: "Music", bg: "var(--lavender)", width: 600, height: 400, description: "Always seeking the perfect soundtrack—currently accepting applications for 'Song of the Summer' 2026." },
+    { src: "images/soccer.webp", alt: "Arsenal Football", tag: "Soccer", bg: "var(--sky-blue)", width: 600, height: 400, description: "My weekend mood is entirely dependent on Arsenal's form" },
+    { src: "images/tech.webp", alt: "Technology", tag: "Technology", bg: "var(--bg-color)", width: 600, height: 400, description: "Ask me about the future of AI, or just how to get your resume past a recruiter who spends too much time thinking about it." },
+    { src: "images/travel.webp", alt: "Travel Photography", tag: "Travel", bg: "var(--terracotta)", width: 600, height: 400, description: "London is up next 🛫" }
 ];
 
 export const Interests = () => {
@@ -43,7 +43,7 @@ export const Interests = () => {
                 {IMAGES.map((img, index) => {
                     const textColor = (img.bg === 'var(--br-green)' || img.bg === 'var(--terracotta)') ? 'white' : 'var(--text-primary)';
                     return (
-                        <motion.div
+                        <m.div
                             key={index}
                             initial={{ opacity: 0, y: 30, rotate: 0 }}
                             whileInView={{ opacity: 1, y: 0, rotate: index % 2 === 0 ? 1 : -1 }}
@@ -85,7 +85,7 @@ export const Interests = () => {
                                     </p>
                                 )}
                             </div>
-                        </motion.div>
+                        </m.div>
                     );
                 })}
             </div>

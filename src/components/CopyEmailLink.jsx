@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { useIsMobile } from '../hooks/useResponsive';
 
 export const CopyEmailLink = ({ email, children, className, style, toastBg = 'var(--br-green)', toastColor = 'white', ...rest }) => {
@@ -20,7 +20,7 @@ export const CopyEmailLink = ({ email, children, className, style, toastBg = 'va
         <span style={{ position: 'relative', display: 'inline-block' }}>
             <AnimatePresence>
                 {copied && (
-                    <motion.span
+                    <m.span
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.9 }}
@@ -42,10 +42,10 @@ export const CopyEmailLink = ({ email, children, className, style, toastBg = 'va
                         }}
                     >
                         Copied!
-                    </motion.span>
+                    </m.span>
                 )}
             </AnimatePresence>
-            <motion.a
+            <m.a
                 href={`mailto:${email}`}
                 onClick={handleClick}
                 className={className}
@@ -53,7 +53,7 @@ export const CopyEmailLink = ({ email, children, className, style, toastBg = 'va
                 {...rest}
             >
                 {children}
-            </motion.a>
+            </m.a>
         </span>
     );
 };

@@ -1,28 +1,28 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 export const NotFound = () => {
     return (
         <div style={{ padding: '8rem 2rem', textAlign: 'center', minHeight: '60vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
             <title>Page Not Found — Owen Howe</title>
             <meta name="robots" content="noindex" />
-            <motion.h1
+            <m.h1
                 className="serif-text"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 style={{ fontSize: 'clamp(4rem, 10vw, 8rem)', lineHeight: 1, marginBottom: '1rem' }}
             >
                 404.
-            </motion.h1>
-            <motion.p
+            </m.h1>
+            <m.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
                 style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', marginBottom: '2rem', maxWidth: '400px' }}
             >
                 This page wandered off. Let's get you back.
-            </motion.p>
-            <motion.div
+            </m.p>
+            <m.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2, type: 'spring', bounce: 0.4 }}
@@ -34,7 +34,7 @@ export const NotFound = () => {
                 >
                     Back Home
                 </Link>
-            </motion.div>
+            </m.div>
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { getBookColor } from '../utils/colorHash';
 import { toImageFilename } from '../utils/bookFilename';
 import { useIsMobile, useViewportWidth } from '../hooks/useResponsive';
@@ -9,9 +9,9 @@ const ShelfView = ({ books }) => {
     const viewportWidth = useViewportWidth();
 
     const spineTextures = [
-        `${import.meta.env.BASE_URL}images/spine_1.png`,
-        `${import.meta.env.BASE_URL}images/spine_2.png`,
-        `${import.meta.env.BASE_URL}images/spine_3.png`
+        `${import.meta.env.BASE_URL}images/spine_1.webp`,
+        `${import.meta.env.BASE_URL}images/spine_2.webp`,
+        `${import.meta.env.BASE_URL}images/spine_3.webp`
     ];
 
     // On mobile, calculate how many books actually fit on one shelf
@@ -56,7 +56,7 @@ const ShelfView = ({ books }) => {
                             const heightValue = 240 + ((charSum * index) % 40);
                             const widthValue = heightValue * 0.65;
 
-                            const primarySrc = `${import.meta.env.BASE_URL}images/covers/${toImageFilename(title)}.jpg`;
+                            const primarySrc = `${import.meta.env.BASE_URL}images/covers/${toImageFilename(title)}.webp`;
                             const fallbackSrc = spineTextures[index % spineTextures.length];
 
                             const isCurrentlyReading = book.currentlyReading;
@@ -90,7 +90,7 @@ const ShelfView = ({ books }) => {
                                             Reading Now
                                         </span>
                                     )}
-                                    <motion.div
+                                    <m.div
                                         initial={{ opacity: 0, y: 50 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         whileHover={{ y: -10, scale: 1.02, cursor: 'none' }}
@@ -178,7 +178,7 @@ const ShelfView = ({ books }) => {
                                                 {author}
                                             </span>
                                         </div>
-                                    </motion.div>
+                                    </m.div>
                                 </a>
                             );
                         })}
@@ -228,7 +228,7 @@ const CardView = ({ books }) => {
                 const rotation = index % 2 === 0 ? (index % 3 === 0 ? 3 : -2) : (index % 4 === 0 ? -4 : 2);
 
                 return (
-                    <motion.a
+                    <m.a
                         key={index}
                         href={`https://www.goodreads.com/search?q=${encodeURIComponent(title + " " + author)}`}
                         target="_blank"
@@ -274,7 +274,7 @@ const CardView = ({ books }) => {
                                 {author}
                             </span>
                         </div>
-                    </motion.a>
+                    </m.a>
                 );
             })}
         </div>

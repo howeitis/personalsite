@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import { ExperienceBento } from '../components/ExperienceBento';
 
@@ -12,7 +12,7 @@ export const Resume = ({ data, consulting }) => {
                 <ExperienceBento data={data} />
 
                 {/* Sycamore Creek Consulting Banner */}
-                <motion.a
+                <m.a
                     href={consulting.url}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -54,7 +54,7 @@ export const Resume = ({ data, consulting }) => {
                     }}>
                         Visit the practice <ExternalLink size={16} />
                     </span>
-                </motion.a>
+                </m.a>
             </div>
         </div>
     );

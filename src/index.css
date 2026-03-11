@@ -7,7 +7,7 @@
   --br-green: #004225;
   --terracotta: #E2725B;
   --mustard: #F4C430;
-  --sky-blue: #87CEEB;
+  --sky-blue: #62B8DE;
   --lavender: #E6E6FA;
 
   --card-bg: white;
@@ -15,6 +15,16 @@
   --text-on-overlay: #F4EFE6;
 
   --spacing-unit: 1rem;
+  
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-4xl: 3rem;
+
   --border-radius: 24px;
   --border-radius-pill: 999px;
   --border-radius-blob: 40% 60% 70% 30% / 40% 50% 60% 50%;
@@ -115,7 +125,6 @@ h4,
   margin: 4rem auto 0 calc(50% - 200px);
   text-align: center;
   padding: 2rem;
-  background-image: linear-gradient(rgba(17, 75, 47, 0.85), rgba(17, 75, 47, 0.95)), url("images/sycamore_bg.jpg");
   background-size: cover;
   background-position: center;
   display: flex;

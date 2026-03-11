@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence, useSpring } from 'framer-motion';
+import { m, AnimatePresence, useSpring } from 'framer-motion';
 import { Sun, Moon } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
@@ -62,7 +62,7 @@ export const Navigation = () => {
 
     return (
         <>
-        <motion.nav
+        <m.nav
             ref={navRef}
             style={{
                 padding: '1.5rem 0',
@@ -92,9 +92,9 @@ export const Navigation = () => {
                                 position: 'relative'
                             })}
                         >
-                            <motion.span whileHover={{ y: -2 }} style={{ display: 'inline-block' }}>
+                            <m.span whileHover={{ y: -2 }} style={{ display: 'inline-block' }}>
                                 {link.name}
-                            </motion.span>
+                            </m.span>
                         </NavLink>
                     ))}
                 </div>
@@ -158,12 +158,12 @@ export const Navigation = () => {
                     }} />
                 </button>
             </div>
-        </motion.nav>
+        </m.nav>
 
         {/* Mobile Drawer — fixed overlay so it's unaffected by the nav's y-transform */}
         <AnimatePresence>
             {isOpen && (
-                <motion.div
+                <m.div
                     className="nav-mobile-drawer"
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
@@ -190,7 +190,7 @@ export const Navigation = () => {
                             </NavLink>
                         ))}
                     </div>
-                </motion.div>
+                </m.div>
             )}
         </AnimatePresence>
         </>

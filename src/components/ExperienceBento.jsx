@@ -1,5 +1,5 @@
 import { Download } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { CopyEmailLink } from './CopyEmailLink';
 
 export const ExperienceBento = ({ data }) => {
@@ -18,7 +18,7 @@ export const ExperienceBento = ({ data }) => {
                     >
                         Email
                     </CopyEmailLink>
-                    <motion.a
+                    <m.a
                         href="https://www.linkedin.com/in/owen-howe-wm2016/"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -29,8 +29,8 @@ export const ExperienceBento = ({ data }) => {
                         style={{ textDecoration: 'none' }}
                     >
                         LinkedIn
-                    </motion.a>
-                    <motion.a
+                    </m.a>
+                    <m.a
                         href="/resume.pdf"
                         download
                         initial={{ opacity: 0, y: -10 }}
@@ -40,7 +40,7 @@ export const ExperienceBento = ({ data }) => {
                         style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}
                     >
                         Download PDF <Download size={16} />
-                    </motion.a>
+                    </m.a>
                 </div>
             </div>
 
@@ -58,7 +58,7 @@ export const ExperienceBento = ({ data }) => {
                 const textColor = bgColor === 'var(--terracotta)' ? 'rgba(255,255,255,0.9)' : undefined;
 
                 return (
-                    <motion.div
+                    <m.div
                         key={job.id}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -94,12 +94,12 @@ export const ExperienceBento = ({ data }) => {
                                 </li>
                             ))}
                         </ul>
-                    </motion.div>
+                    </m.div>
                 );
             })}
 
             {/* Education Card */}
-            <motion.div
+            <m.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -123,7 +123,7 @@ export const ExperienceBento = ({ data }) => {
                 <p style={{ color: 'var(--mustard)', fontWeight: 600, fontSize: '1.4rem', marginBottom: '0.25rem' }}>B.A. Government</p>
                 <p style={{ color: 'var(--mustard)', fontWeight: 500, fontSize: '1.1rem', opacity: 0.9 }}>Class of 2016</p>
                 <div style={{ marginTop: '2rem', width: '40px', height: '4px', backgroundColor: 'var(--mustard)', borderRadius: '2px' }}></div>
-            </motion.div>
+            </m.div>
         </>
     );
 };

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { m, useMotionValue, useSpring } from 'framer-motion';
 
 export const CustomCursor = () => {
     const mouseX = useMotionValue(0);
@@ -36,7 +36,7 @@ export const CustomCursor = () => {
     return (
         <>
             {/* Dot - follows mouse directly */}
-            <motion.div
+            <m.div
                 className="cursor-dot"
                 style={{
                     position: 'fixed',
@@ -55,7 +55,7 @@ export const CustomCursor = () => {
                 }}
             />
             {/* Ring - spring-follows with expansion on hover */}
-            <motion.div
+            <m.div
                 className="cursor-outline"
                 style={{
                     position: 'fixed',

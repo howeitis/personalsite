@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m, LazyMotion, domAnimation } from 'framer-motion';
+import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from './context/ThemeContext';
 import { Navigation } from './components/Navigation';
 import { Footer } from './components/Footer';
@@ -32,7 +33,7 @@ function AnimatedRoutes() {
   const location = useLocation();
   return (
     <AnimatePresence mode="wait" initial={false}>
-      <motion.div
+      <m.div
         key={location.pathname}
         variants={pageVariants}
         initial="initial"
@@ -47,31 +48,35 @@ function AnimatedRoutes() {
           <Route path="/now" element={<Now now={contentData.now} books={contentData.books} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </motion.div>
+      </m.div>
     </AnimatePresence>
   );
 }
 
 function App() {
   return (
-    <ThemeProvider>
-      <Router basename={import.meta.env.BASE_URL}>
-        <ScrollToTop />
-        <div className="app-container" style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-          <a href="#main-content" className="skip-link">Skip to content</a>
-          <CustomCursor />
-          <Navigation />
+    <HelmetProvider>
+      <LazyMotion features={domAnimation}>
+        <ThemeProvider>
+          <Router basename={import.meta.env.BASE_URL}>
+            <ScrollToTop />
+            <div className="app-container" style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+              <a href="#main-content" className="skip-link">Skip to content</a>
+              <CustomCursor />
+              <Navigation />
 
-          <main id="main-content" className="container" style={{ flex: 1, paddingBottom: '4rem', paddingTop: '2rem' }}>
-            <ErrorBoundary>
-              <AnimatedRoutes />
-            </ErrorBoundary>
-          </main>
+              <main id="main-content" className="container" style={{ flex: 1, paddingBottom: '4rem', paddingTop: '2rem' }}>
+                <ErrorBoundary>
+                  <AnimatedRoutes />
+                </ErrorBoundary>
+              </main>
 
-          <Footer />
-        </div>
-      </Router>
-    </ThemeProvider>
+              <Footer />
+            </div>
+          </Router>
+        </ThemeProvider>
+      </LazyMotion>
+    </HelmetProvider>
   );
 }
 

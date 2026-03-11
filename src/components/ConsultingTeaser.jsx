@@ -1,11 +1,11 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 
 export const ConsultingTeaser = ({ data }) => {
     return (
         <section className="consulting-teaser" style={{ padding: '8rem 0', backgroundColor: 'var(--br-green)', color: 'var(--bg-color)', position: 'relative', overflow: 'hidden' }}>
             <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
@@ -25,7 +25,7 @@ export const ConsultingTeaser = ({ data }) => {
                     <p style={{ fontSize: '1.5rem', color: 'var(--terracotta)', marginBottom: '1.5rem', fontStyle: 'italic' }}>"{data.tagline}"</p>
                     <p style={{ fontSize: '1.2rem', marginBottom: '3rem', opacity: 0.9 }}>{data.description}</p>
 
-                    <motion.a
+                    <m.a
                         href={data.url}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -47,12 +47,12 @@ export const ConsultingTeaser = ({ data }) => {
                         }}
                     >
                         Visit the practice <ExternalLink size={20} />
-                    </motion.a>
-                </motion.div>
+                    </m.a>
+                </m.div>
             </div>
 
             {/* Abstract background shapes */}
-            <motion.div
+            <m.div
                 animate={{
                     rotate: [0, 90, 0],
                     scale: [1, 1.1, 1]

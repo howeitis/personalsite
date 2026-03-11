@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { CopyEmailLink } from './CopyEmailLink';
 
 export const HeroBento = ({ data }) => {
@@ -7,7 +7,7 @@ export const HeroBento = ({ data }) => {
 
             <div style={{ flex: 1, minWidth: '300px', zIndex: 1 }}>
                 {/* Playful greeting */}
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, rotate: -5 }}
                     animate={{ opacity: 1, rotate: 0 }}
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
@@ -16,9 +16,9 @@ export const HeroBento = ({ data }) => {
                     <span className="pill-tag bg-mustard" style={{ transform: 'rotate(-5deg)', color: 'var(--text-primary)' }}>
                         👋 Hello!
                     </span>
-                </motion.div>
+                </m.div>
 
-                <motion.h1
+                <m.h1
                     className="serif-text"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -26,10 +26,10 @@ export const HeroBento = ({ data }) => {
                     style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', letterSpacing: '-0.03em', lineHeight: 0.9, marginBottom: '1.5rem' }}
                 >
                     I'm {data.name.split(' ')[0]}.
-                </motion.h1>
+                </m.h1>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                     >
@@ -41,9 +41,9 @@ export const HeroBento = ({ data }) => {
                                 {data.about[2]}
                             </span>
                         </div>
-                    </motion.div>
+                    </m.div>
 
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ type: "spring", delay: 0.5, bounce: 0.5 }}
@@ -71,19 +71,19 @@ export const HeroBento = ({ data }) => {
                         >
                             Say Hello ↗
                         </CopyEmailLink>
-                    </motion.div>
+                    </m.div>
                 </div>
             </div>
 
             {/* Profile Image */}
-            <motion.div
+            <m.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 style={{ flex: 1, minWidth: '280px', display: 'flex', justifyContent: 'center', zIndex: 1 }}
             >
                 <img
-                    src="images/hero_profile.jpg"
+                    src="images/hero_profile.webp"
                     alt="Owen's Profile"
                     width={600}
                     height={600}
@@ -98,10 +98,10 @@ export const HeroBento = ({ data }) => {
                         transform: 'rotate(2deg)'
                     }}
                 />
-            </motion.div>
+            </m.div>
 
             {/* Organic absolute shape */}
-            <motion.div
+            <m.div
                 animate={{
                     rotate: [0, 10, -10, 0],
                     scale: [1, 1.05, 1]

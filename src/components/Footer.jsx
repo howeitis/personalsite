@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { CopyEmailLink } from './CopyEmailLink';
 
 export const Footer = () => {
@@ -18,7 +18,7 @@ export const Footer = () => {
                     >
                         Email
                     </CopyEmailLink>
-                    <motion.a
+                    <m.a
                         href="https://www.linkedin.com/in/owen-howe-wm2016/"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -27,7 +27,7 @@ export const Footer = () => {
                         style={{ color: 'var(--text-primary)', transition: 'color 0.3s', cursor: 'none', fontWeight: 500 }}
                     >
                         LinkedIn
-                    </motion.a>
+                    </m.a>
                 </div>
             </div>
             <div className="container" style={{ marginTop: '1rem' }}>
