@@ -1,14 +1,22 @@
 import { m } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import { ExperienceBento } from '../components/ExperienceBento';
+import { useContent } from '../context/ContentContext';
+import { Helmet } from 'react-helmet-async';
 
-export const Resume = ({ data, consulting }) => {
+export const Resume = () => {
+    const { experience: data, consulting } = useContent();
     return (
         <div style={{ padding: '2rem 0' }}>
-            <title>Resume — Owen Howe</title>
-            <meta name="description" content="Career journey and professional experience of Owen Howe — Talent Acquisition leader at The New York Times, with a background spanning tech, media, and executive search." />
-            <link rel="canonical" href="https://howe.app/resume" />
-<div className="bento-grid">
+            <Helmet>
+                <title>Resume — Owen Howe</title>
+                <meta name="description" content="Career journey and professional experience of Owen Howe — Talent Acquisition leader at The New York Times, with a background spanning tech, media, and executive search." />
+                <link rel="canonical" href="https://howe.app/resume" />
+                <meta property="og:title" content="Resume — Owen Howe" />
+                <meta property="og:description" content="Career journey and professional experience of Owen Howe — Talent Acquisition leader at The New York Times, with a background spanning tech, media, and executive search." />
+                <meta property="og:url" content="https://howe.app/resume" />
+            </Helmet>
+            <div className="bento-grid">
                 <ExperienceBento data={data} />
 
                 {/* Sycamore Creek Consulting Banner */}

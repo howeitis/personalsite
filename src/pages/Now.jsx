@@ -2,6 +2,7 @@ import { m } from 'framer-motion';
 import { useArsenalFixture } from '../hooks/useArsenalFixture';
 import { toImageFilename } from '../utils/bookFilename';
 import { Helmet } from 'react-helmet-async';
+import { useContent } from '../context/ContentContext';
 
 // Import new card components
 import { MusicCard } from '../components/now/MusicCard';
@@ -34,7 +35,8 @@ const cardVariant = {
     })
 };
 
-export const Now = ({ now, books }) => {
+export const Now = () => {
+    const { now, books } = useContent();
     const fixture = useArsenalFixture(now.nextFixture);
     const currentBook = books?.find((b) => b.currentlyReading);
     const bookCoverSrc = currentBook

@@ -3,6 +3,9 @@ import { m } from 'framer-motion';
 import { getBookColor } from '../utils/colorHash';
 import { toImageFilename } from '../utils/bookFilename';
 import { useIsMobile, useViewportWidth } from '../hooks/useResponsive';
+import { ImageLightbox } from '../components/ImageLightbox';
+import { useContent } from '../context/ContentContext';
+import { Helmet } from 'react-helmet-async';
 
 const ShelfView = ({ books }) => {
     const isMobile = useIsMobile();
@@ -62,13 +65,12 @@ const ShelfView = ({ books }) => {
                             const isCurrentlyReading = book.currentlyReading;
 
                             return (
-                                <a
+                                <ImageLightbox
                                     key={index}
-                                    href={`https://www.goodreads.com/search?q=${encodeURIComponent(title + " " + author)}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label={`${title} by ${author} on Goodreads`}
-                                    style={{ textDecoration: 'none', display: 'block', flexShrink: 0, position: 'relative' }}
+                                    src={primarySrc}
+                                    alt={`${title} by ${author}`}
+                                    externalLink={`https://www.goodreads.com/search?q=${encodeURIComponent(title + " " + author)}`}
+                                    style={{ display: 'block', flexShrink: 0, position: 'relative' }}
                                 >
                                     {isCurrentlyReading && (
                                         <span style={{
@@ -179,7 +181,7 @@ const ShelfView = ({ books }) => {
                                             </span>
                                         </div>
                                     </m.div>
-                                </a>
+                                </ImageLightbox>
                             );
                         })}
                     </div>
@@ -227,13 +229,17 @@ const CardView = ({ books }) => {
                 const { bgColor, textColor } = getBookColor(title, index);
                 const rotation = index % 2 === 0 ? (index % 3 === 0 ? 3 : -2) : (index % 4 === 0 ? -4 : 2);
 
+                const primarySrc = `${import.meta.env.BASE_URL}images/covers/${toImageFilename(title)}.webp`;
+
                 return (
-                    <m.a
+                    <ImageLightbox
                         key={index}
-                        href={`https://www.goodreads.com/search?q=${encodeURIComponent(title + " " + author)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${title} by ${author} on Goodreads`}
+                        src={primarySrc}
+                        alt={`${title} by ${author}`}
+                        externalLink={`https://www.goodreads.com/search?q=${encodeURIComponent(title + " " + author)}`}
+                        style={{ display: 'block' }}
+                    >
+                    <m.div
                         initial={{ opacity: 0, scale: 0.9, rotate: 0 }}
                         whileInView={{ opacity: 1, scale: 1, rotate: rotation }}
                         whileHover={{ scale: 1.05, rotate: 0, zIndex: 10, cursor: 'none' }}
@@ -274,15 +280,17 @@ const CardView = ({ books }) => {
                                 {author}
                             </span>
                         </div>
-                    </m.a>
+                    </m.div>
+                    </ImageLightbox>
                 );
             })}
         </div>
     );
 };
 
-export const Library = ({ data }) => {
+export const Library = () => {
     const [view, setView] = useState('shelf');
+    const { books: data } = useContent();
     const books = [...(data || [])].sort((a, b) => (b.currentlyReading ? 1 : 0) - (a.currentlyReading ? 1 : 0));
 
     const isShelf = view === 'shelf';
@@ -308,9 +316,14 @@ export const Library = ({ data }) => {
             overflowX: 'hidden',
             transition: 'background-color 0.4s ease'
         }}>
-            <title>Library — Owen Howe</title>
-            <meta name="description" content="Owen Howe's reading list — a mix of fiction, non-fiction, sci-fi, and history spanning continents and centuries." />
-            <link rel="canonical" href="https://howe.app/library" />
+            <Helmet>
+                <title>Library — Owen Howe</title>
+                <meta name="description" content="Owen Howe's reading list — a mix of fiction, non-fiction, sci-fi, and history spanning continents and centuries." />
+                <link rel="canonical" href="https://howe.app/library" />
+                <meta property="og:title" content="Library — Owen Howe" />
+                <meta property="og:description" content="Owen Howe's reading list — a mix of fiction, non-fiction, sci-fi, and history spanning continents and centuries." />
+                <meta property="og:url" content="https://howe.app/library" />
+            </Helmet>
             {/* Page Header */}
             <div className="container" style={{ padding: '4rem 2rem', marginBottom: '4rem', textAlign: 'center' }}>
                 <h1 className="serif-text" style={{

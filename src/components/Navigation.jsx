@@ -3,6 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { m, AnimatePresence, useSpring } from 'framer-motion';
 import { Sun, Moon } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import { MagneticElement } from './MagneticElement';
 
 const links = [
     { name: 'Home', path: '/' },
@@ -92,31 +93,35 @@ export const Navigation = () => {
                                 position: 'relative'
                             })}
                         >
-                            <m.span whileHover={{ y: -2 }} style={{ display: 'inline-block' }}>
-                                {link.name}
-                            </m.span>
+                            <MagneticElement scaleOnHover={1.1}>
+                                <m.span style={{ display: 'inline-block' }}>
+                                    {link.name}
+                                </m.span>
+                            </MagneticElement>
                         </NavLink>
                     ))}
                 </div>
 
                 {/* Dark Mode Toggle — always visible, far right */}
-                <button
-                    onClick={toggleTheme}
-                    aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-                    className="theme-toggle"
-                    style={{
-                        background: 'none',
-                        border: 'none',
-                        cursor: 'none',
-                        padding: '0.5rem',
-                        marginLeft: '1.5rem',
-                        color: 'var(--text-primary)',
-                        display: 'flex',
-                        alignItems: 'center'
-                    }}
-                >
-                    {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
-                </button>
+                <MagneticElement scaleOnHover={1.2}>
+                    <button
+                        onClick={toggleTheme}
+                        aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+                        className="theme-toggle"
+                        style={{
+                            background: 'none',
+                            border: 'none',
+                            cursor: 'none',
+                            padding: '0.5rem',
+                            marginLeft: '1.5rem',
+                            color: 'var(--text-primary)',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+                    </button>
+                </MagneticElement>
 
                 {/* Hamburger Button (mobile only) */}
                 <button

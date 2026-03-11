@@ -2,8 +2,10 @@ import { HeroBento } from '../components/HeroBento';
 import { MoodBoard } from '../components/MoodBoard';
 import { useIsMobile } from '../hooks/useResponsive';
 import { Helmet } from 'react-helmet-async';
+import { useContent } from '../context/ContentContext';
 
-export const Home = ({ data }) => {
+export const Home = () => {
+    const { personal, consulting } = useContent();
     const isMobile = useIsMobile();
 
     return (
@@ -14,7 +16,7 @@ export const Home = ({ data }) => {
                 <link rel="canonical" href="https://howe.app/" />
             </Helmet>
             {/* The Get To Know Me Intro */}
-            <HeroBento data={data.personal} />
+            <HeroBento data={personal} />
 
             {/* The V4 Organic Mood Board Parallax */}
             <MoodBoard />
@@ -32,8 +34,8 @@ export const Home = ({ data }) => {
                         </p>
                     </>
                 )}
-                <a href={data.consulting.url} target="_blank" rel="noopener noreferrer" className="pill-tag bg-mustard sycamore-link">
-                    {isMobile ? `${data.consulting.name} ↗` : `Visit ${data.consulting.name} ↗`}
+                <a href={consulting.url} target="_blank" rel="noopener noreferrer" className="pill-tag bg-mustard sycamore-link">
+                    {isMobile ? `${consulting.name} ↗` : `Visit ${consulting.name} ↗`}
                 </a>
             </div>
         </div >

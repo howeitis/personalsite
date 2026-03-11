@@ -1,4 +1,6 @@
 import { m } from 'framer-motion';
+import { ImageLightbox } from '../components/ImageLightbox';
+import { Helmet } from 'react-helmet-async';
 
 const IMAGES = [
     { src: "images/art.webp", alt: "Portrait Art", tag: "Art", bg: "var(--mustard)", width: 600, height: 400, description: "Fauvism—because you can never have too much color." },
@@ -19,9 +21,14 @@ export const Interests = () => {
 
     return (
         <div style={{ padding: '2rem 0', paddingBottom: '2rem' }}>
-            <title>Interests — Owen Howe</title>
-            <meta name="description" content="Soccer, cars, food, music, tech, travel, and more — a look at what Owen Howe is into beyond the 9-to-5." />
-            <link rel="canonical" href="https://howe.app/interests" />
+            <Helmet>
+                <title>Interests — Owen Howe</title>
+                <meta name="description" content="Soccer, cars, food, music, tech, travel, and more — a look at what Owen Howe is into beyond the 9-to-5." />
+                <link rel="canonical" href="https://howe.app/interests" />
+                <meta property="og:title" content="Interests — Owen Howe" />
+                <meta property="og:description" content="Soccer, cars, food, music, tech, travel, and more — a look at what Owen Howe is into beyond the 9-to-5." />
+                <meta property="og:url" content="https://howe.app/interests" />
+            </Helmet>
 
             {/* Collage Header */}
             <div className="bento-card" style={{ padding: '4rem', backgroundColor: 'var(--bg-color)', borderBottom: '1px solid var(--text-primary)', marginBottom: '4rem' }}>
@@ -43,8 +50,13 @@ export const Interests = () => {
                 {IMAGES.map((img, index) => {
                     const textColor = (img.bg === 'var(--br-green)' || img.bg === 'var(--terracotta)') ? 'white' : 'var(--text-primary)';
                     return (
-                        <m.div
+                        <ImageLightbox
                             key={index}
+                            src={img.src}
+                            alt={img.alt}
+                            style={{ breakInside: 'avoid', marginBottom: '2rem', display: 'inline-block', width: '100%' }}
+                        >
+                        <m.div
                             initial={{ opacity: 0, y: 30, rotate: 0 }}
                             whileInView={{ opacity: 1, y: 0, rotate: index % 2 === 0 ? 1 : -1 }}
                             whileHover={{ scale: 1.02, rotate: index % 2 === 0 ? -1 : 1, zIndex: 10 }}
@@ -52,14 +64,11 @@ export const Interests = () => {
                             transition={{ type: "spring", stiffness: 300, damping: 20 }}
                             className="bento-card"
                             style={{
-                                breakInside: 'avoid',
-                                marginBottom: '2rem',
                                 position: 'relative',
                                 padding: '1rem',
                                 backgroundColor: img.bg,
-                                display: 'inline-block', // Crucial for column breaks
-                                width: '100%',
-                                zIndex: 1
+                                zIndex: 1,
+                                height: '100%'
                             }}
                         >
                             <img
@@ -86,6 +95,7 @@ export const Interests = () => {
                                 )}
                             </div>
                         </m.div>
+                        </ImageLightbox>
                     );
                 })}
             </div>

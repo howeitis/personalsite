@@ -7,7 +7,7 @@ import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
 import { ScrollToTop } from './components/ScrollToTop';
 import { ErrorBoundary } from './components/ErrorBoundary';
-import contentData from './data/content.json';
+import { ContentProvider } from './context/ContentContext';
 
 // Pages
 import { Home } from './pages/Home';
@@ -41,11 +41,11 @@ function AnimatedRoutes() {
         exit="exit"
       >
         <Routes location={location}>
-          <Route path="/" element={<Home data={contentData} />} />
-          <Route path="/resume" element={<Resume data={contentData.experience} consulting={contentData.consulting} />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/resume" element={<Resume />} />
           <Route path="/interests" element={<Interests />} />
-          <Route path="/library" element={<Library data={contentData.books} />} />
-          <Route path="/now" element={<Now now={contentData.now} books={contentData.books} />} />
+          <Route path="/library" element={<Library />} />
+          <Route path="/now" element={<Now />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </m.div>
@@ -58,8 +58,9 @@ function App() {
     <HelmetProvider>
       <LazyMotion features={domAnimation}>
         <ThemeProvider>
-          <Router basename={import.meta.env.BASE_URL}>
-            <ScrollToTop />
+          <ContentProvider>
+            <Router basename={import.meta.env.BASE_URL}>
+              <ScrollToTop />
             <div className="app-container" style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
               <a href="#main-content" className="skip-link">Skip to content</a>
               <CustomCursor />
@@ -74,8 +75,9 @@ function App() {
               <Footer />
             </div>
           </Router>
-        </ThemeProvider>
-      </LazyMotion>
+        </ContentProvider>
+      </ThemeProvider>
+    </LazyMotion>
     </HelmetProvider>
   );
 }
