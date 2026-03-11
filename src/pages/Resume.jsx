@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { Download, ExternalLink } from 'lucide-react';
 import { ExperienceBento } from '../components/ExperienceBento';
 
 export const Resume = ({ data, consulting }) => {
@@ -8,6 +8,19 @@ export const Resume = ({ data, consulting }) => {
             <title>Resume — Owen Howe</title>
             <meta name="description" content="Career journey and professional experience of Owen Howe — Talent Acquisition leader at The New York Times, with a background spanning tech, media, and executive search." />
             <link rel="canonical" href="https://howe.app/resume" />
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '1rem' }}>
+                <motion.a
+                    href="/resume.pdf"
+                    download
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ type: 'spring', delay: 0.1 }}
+                    className="pill-tag"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}
+                >
+                    Download PDF <Download size={16} />
+                </motion.a>
+            </div>
             <div className="bento-grid">
                 <ExperienceBento data={data} />
 
