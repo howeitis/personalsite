@@ -20,9 +20,9 @@ export const Resume = () => {
                         "@context": "https://schema.org",
                         "@graph": data.map(job => ({
                             "@type": "OrganizationRole",
-                            "roleName": job.role,
-                            "startDate": job.period.split(' – ')[0],
-                            "endDate": job.period.includes('Present') ? undefined : job.period.split(' – ')[1],
+                            "roleName": job.title,
+                            "startDate": job.period.split(' - ')[0],
+                            "endDate": job.period.includes('Present') ? undefined : job.period.split(' - ')[1],
                             "member": {
                                 "@type": "Organization",
                                 "name": job.company

@@ -22,13 +22,12 @@ export const Home = () => {
                         "jobTitle": personal.title,
                         "worksFor": {
                             "@type": "Organization",
-                            "name": personal.organization
+                            "name": "The New York Times"
                         },
                         "url": "https://howe.app/",
                         "sameAs": [
-                            personal.socials.linkedin,
-                            personal.socials.github,
-                            personal.socials.twitter
+                            "https://www.linkedin.com/in/owen-howe-wm2016/",
+                            "https://github.com/howeitis"
                         ]
                     })}
                 </script>
