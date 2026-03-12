@@ -4,10 +4,10 @@ export const FollowingCard = ({ text }) => (
         <img
             src="/images/now/dcrow.png"
             alt="D.C. rowhome"
-            width={140}
-            height={140}
+            width={240}
+            height={240}
             loading="lazy"
-            style={{ width: '140px', height: 'auto', borderRadius: '8px', objectFit: 'cover', flexShrink: 0 }}
+            style={{ width: 'clamp(140px, 20vw, 240px)', height: 'auto', borderRadius: '8px', objectFit: 'cover', flexShrink: 0 }}
         />
     </div>
 );
