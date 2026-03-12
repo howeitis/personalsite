@@ -1,11 +1,13 @@
-import { useRef } from 'react';
-import { m, useMotionValue, useTransform, useSpring, useReducedMotion } from 'framer-motion';
-import { CopyEmailLink } from './CopyEmailLink';
+import { useRef, useState, useCallback } from 'react';
+import { m, useMotionValue, useTransform, useSpring, useReducedMotion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { useIsMobile } from '../hooks/useResponsive';
 
 export const HeroBento = ({ data }) => {
     const cardRef = useRef(null);
     const isMobile = useIsMobile();
+    const navigate = useNavigate();
+    const [isLaunching, setIsLaunching] = useState(false);
     const prefersReduced = useReducedMotion();
     const shouldAnimate = !isMobile && !prefersReduced;
 
@@ -187,30 +189,83 @@ export const HeroBento = ({ data }) => {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ type: "spring", delay: 0.5, bounce: 0.5 }}
-                    style={{ marginTop: '1.5rem' }}
+                    style={{ marginTop: '1.5rem', position: 'relative' }}
                 >
-                    <CopyEmailLink
-                        email={data.email}
-                        toastBg="var(--mustard)"
-                        toastColor="var(--text-primary)"
+                    <m.button
+                        onClick={() => {
+                            setIsLaunching(true);
+                            setTimeout(() => navigate('/now'), 700);
+                        }}
+                        animate={isLaunching ? {
+                            scale: [1, 1.15, 0.9],
+                            y: [0, 5, -600],
+                            rotate: [0, -3, 5],
+                            opacity: [1, 1, 0],
+                        } : {}}
+                        transition={isLaunching ? {
+                            duration: 0.7,
+                            ease: [0.36, 0.07, 0.19, 0.97],
+                            times: [0, 0.3, 1],
+                        } : { duration: 0.15 }}
+                        whileHover={!isLaunching ? { x: -2, y: -2, boxShadow: '6px 6px 0px 0px rgba(0,0,0,0.5)' } : undefined}
                         style={{
                             display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
                             padding: '1rem 2rem',
                             backgroundColor: 'var(--terracotta)',
                             color: 'white',
                             fontSize: '1.25rem',
                             fontWeight: 'bold',
+                            fontFamily: 'inherit',
                             borderRadius: 'var(--border-radius-pill)',
                             border: 'var(--border-thick)',
                             boxShadow: '4px 4px 0px 0px rgba(0,0,0,0.5)',
                             cursor: 'none',
-                            textDecoration: 'none'
+                            textDecoration: 'none',
                         }}
-                        whileHover={{ x: -2, y: -2, boxShadow: '6px 6px 0px 0px rgba(0,0,0,0.5)' }}
-                        transition={{ duration: 0.15 }}
                     >
-                        Say Hello ↗
-                    </CopyEmailLink>
+                        Life, Lately
+                        <m.span
+                            animate={isLaunching ? { rotate: [0, 360], scale: [1, 1.3, 1] } : {}}
+                            transition={{ duration: 0.4 }}
+                            style={{ display: 'inline-block' }}
+                        >
+                            →
+                        </m.span>
+                    </m.button>
+
+                    {/* Particle burst on launch */}
+                    <AnimatePresence>
+                        {isLaunching && (
+                            <>
+                                {[...Array(8)].map((_, i) => (
+                                    <m.span
+                                        key={i}
+                                        initial={{ opacity: 1, scale: 0, x: 0, y: 0 }}
+                                        animate={{
+                                            opacity: 0,
+                                            scale: [0, 1.5, 0],
+                                            x: Math.cos((i * Math.PI) / 4) * 80,
+                                            y: Math.sin((i * Math.PI) / 4) * 80,
+                                        }}
+                                        exit={{ opacity: 0 }}
+                                        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
+                                        style={{
+                                            position: 'absolute',
+                                            left: '50%',
+                                            top: '50%',
+                                            width: '8px',
+                                            height: '8px',
+                                            borderRadius: '50%',
+                                            backgroundColor: i % 2 === 0 ? 'var(--mustard)' : 'var(--terracotta)',
+                                            pointerEvents: 'none',
+                                        }}
+                                    />
+                                ))}
+                            </>
+                        )}
+                    </AnimatePresence>
                 </m.div>
             </div>
 
