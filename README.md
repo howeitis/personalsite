@@ -107,7 +107,7 @@ const booksPerShelf = isMobile
     : 6;
 ```
 
-Mobile shelves use `justify-content: space-evenly` with zero padding for full-bleed layout. Desktop uses `justify-content: center` with `2rem` padding. Book sizing uses `clamp()` for fluid scaling.
+Mobile shelves use `justify-content: space-evenly` with zero padding for full-bleed layout. Desktop uses `justify-content: center` with `2rem` padding. Book sizing uses `clamp()` for fluid scaling. Clicking a book opens a full-screen React `createPortal` modal (`ImageLightbox`) overlay. The `CustomCursor` explicitly renders at `z-index: 99999` to ensure it floats above this portal. Each book maps directly to its specific canonical `goodreads.com/book/show/...` URL rather than relying on a generic search fallback.
 
 ---
 
@@ -126,7 +126,8 @@ Edit the `personal` or `experience` objects in `content.json`. The homepage bent
 ### Update the Library
 1. Add `{ "title": "...", "author": "..." }` to the `books` array in `content.json`
 2. **Optional cover**: Save as `public/images/covers/{snake_case_title}.jpg`. If no cover exists, a textured vintage spine is generated as fallback.
-3. **Currently Reading**: Set `"currentlyReading": true` on a book to show a "Reading Now" badge in shelf view.
+3. **Explicit Goodreads URL**: Add the `"url"` field to the book object to ensure the Lightbox "View Details" button links directly to the canonical book page. If no URL is provided, the link will fall back to a title and author search query.
+4. **Currently Reading**: Set `"currentlyReading": true` on a book to show a "Reading Now" badge in shelf view.
 
 ### Update Consulting Info
 The Sycamore Creek card (homepage) and banner (resume) pull from `consulting` in `content.json` — fields: `name`, `tagline`, `url`.
