@@ -1,6 +1,7 @@
 import { useRef, useState, useCallback } from 'react';
 import { m, useMotionValue, useTransform, useSpring, useReducedMotion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { CopyEmailLink } from './CopyEmailLink';
 import { useIsMobile } from '../hooks/useResponsive';
 
 export const HeroBento = ({ data }) => {
@@ -67,16 +68,23 @@ export const HeroBento = ({ data }) => {
             }}
         >
             <div style={{ flex: 1, minWidth: '300px', zIndex: 1 }}>
-                {/* Playful greeting */}
+                {/* Playful greeting — copies email on click */}
                 <m.div
                     initial={{ opacity: 0, rotate: -5 }}
                     animate={{ opacity: 1, rotate: 0 }}
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
                     style={{ display: 'inline-block', marginBottom: '1.5rem' }}
                 >
-                    <span className="pill-tag bg-mustard" style={{ transform: 'rotate(-5deg)', color: 'var(--text-primary)' }}>
-                        👋 Hello!
-                    </span>
+                    <CopyEmailLink
+                        email={data.email}
+                        toastBg="var(--mustard)"
+                        toastColor="var(--text-primary)"
+                        style={{ cursor: 'none', textDecoration: 'none' }}
+                    >
+                        <span className="pill-tag bg-mustard" style={{ transform: 'rotate(-5deg)', color: 'var(--text-primary)' }}>
+                            👋🏾 Hello!
+                        </span>
+                    </CopyEmailLink>
                 </m.div>
 
                 {/* Name — typewriter reveal */}
@@ -180,7 +188,7 @@ export const HeroBento = ({ data }) => {
                     <p style={{ fontSize: '1.1rem', opacity: 0.85, maxWidth: '500px', marginBottom: '1rem' }}>
                         {data.about[1]}
                     </p>
-                    <span className="pill-tag bg-terracotta" style={{ color: 'white', display: 'inline-block' }}>
+                    <span className="pill-tag" style={{ backgroundColor: 'var(--lavender)', color: 'var(--text-primary)', display: 'inline-block', fontSize: '0.85rem', padding: '0.3rem 0.75rem' }}>
                         {data.about[2]}
                     </span>
                 </m.div>

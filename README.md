@@ -35,7 +35,7 @@ personal-website/
 ├── src/
 │   ├── components/
 │   │   ├── Navigation.jsx   # Sticky nav: hamburger (mobile) + inline links (desktop), auto-hides on scroll, dark mode toggle
-│   │   ├── HeroBento.jsx    # Homepage hero bento grid
+│   │   ├── HeroBento.jsx    # Homepage hero — "👋🏾 Hello!" pill copies email on click, "Life, Lately" CTA navigates to /now with launch animation
 │   │   ├── MoodBoard.jsx    # Parallax interest collage (desktop: typography + 4 images; mobile: images only)
 │   │   ├── ExperienceBento.jsx  # Resume career timeline with color-rotated cards
 │   │   ├── CustomCursor.jsx # Custom cursor (desktop only, useMotionValue for perf)
@@ -85,7 +85,7 @@ All responsive behavior uses a single breakpoint (`768px`) with two mechanisms:
 
 ### MoodBoard
 
-The moodboard is a parallax image collage using absolute positioning. Four images (soccer, flora, food, cars) float with Framer Motion `useTransform` parallax. On desktop, large "Soccer. Tech. Food. Flora." typography overlays the images with `mix-blend-mode: difference`.
+The moodboard is a parallax image collage using absolute positioning. Four images (soccer, flora, food, cars) float with Framer Motion `useTransform` parallax. On desktop, large typography overlays the images with `mix-blend-mode: difference`.
 
 **Desktop**: Positions via CSS classes (`.mb-fashion`, `.mb-flora`, `.mb-food`, `.mb-cars`) with `clamp()` widths.
 
