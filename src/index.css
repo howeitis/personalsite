@@ -297,7 +297,8 @@ a {
     gap: 1.25rem !important;
   }
 
-  .now-grid > .bento-card[data-span="2"] {
+  .now-grid > .bento-card[data-span="2"],
+  .now-grid > .bento-card[data-mobile-span="2"] {
     grid-column: span 2 !important;
   }
 }
@@ -342,11 +343,12 @@ a {
     grid-column: span 1 !important;
   }
 
-  .now-grid > .bento-card[data-span="2"] {
+  .now-grid > .bento-card[data-span="2"],
+  .now-grid > .bento-card[data-mobile-span="2"] {
     grid-column: span 2 !important;
   }
 
-  .now-grid > .bento-card[data-span="1"] {
+  .now-grid > .bento-card[data-span="1"]:not([data-mobile-span]) {
     padding: 1.25rem !important;
   }
 

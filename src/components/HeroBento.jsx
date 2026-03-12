@@ -77,7 +77,7 @@ export const HeroBento = ({ data }) => {
                     </span>
                 </m.div>
 
-                {/* Name — staggered character reveal */}
+                {/* Name — typewriter reveal */}
                 {prefersReduced ? (
                     <m.h1
                         className="serif-text"
@@ -92,18 +92,16 @@ export const HeroBento = ({ data }) => {
                     <h1
                         className="serif-text"
                         aria-label={nameText}
-                        style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', letterSpacing: '-0.03em', lineHeight: 0.9, marginBottom: '1rem', display: 'flex', flexWrap: 'wrap' }}
+                        style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', letterSpacing: '-0.03em', lineHeight: 0.9, marginBottom: '1rem', display: 'flex', flexWrap: 'wrap', alignItems: 'baseline' }}
                     >
                         {characters.map((char, i) => (
                             <m.span
                                 key={i}
-                                initial={{ opacity: 0, y: 40, rotate: -8 }}
-                                animate={{ opacity: 1, y: 0, rotate: 0 }}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
                                 transition={{
-                                    type: 'spring',
-                                    stiffness: 200,
-                                    damping: 15,
-                                    delay: 0.1 + i * 0.04
+                                    duration: 0.01,
+                                    delay: 0.3 + i * 0.07
                                 }}
                                 style={{ display: 'inline-block' }}
                                 aria-hidden="true"
@@ -111,6 +109,27 @@ export const HeroBento = ({ data }) => {
                                 {char === ' ' ? '\u00A0' : char}
                             </m.span>
                         ))}
+                        {/* Blinking cursor */}
+                        <m.span
+                            initial={{ opacity: 1 }}
+                            animate={{ opacity: [1, 1, 0, 0] }}
+                            transition={{
+                                duration: 0.8,
+                                repeat: 3,
+                                delay: 0.3 + characters.length * 0.07,
+                                ease: 'steps(1)'
+                            }}
+                            style={{
+                                display: 'inline-block',
+                                width: '0.08em',
+                                height: '0.85em',
+                                backgroundColor: 'currentColor',
+                                marginLeft: '0.05em',
+                                verticalAlign: 'middle',
+                                borderRadius: '2px'
+                            }}
+                            aria-hidden="true"
+                        />
                     </h1>
                 )}
 

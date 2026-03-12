@@ -14,6 +14,7 @@ import { EatingCard } from '../components/now/EatingCard';
 import { ReadingCard } from '../components/now/ReadingCard';
 import { WorkingOnCard } from '../components/now/WorkingOnCard';
 import { GrowingCard } from '../components/now/GrowingCard';
+import { FollowingCard } from '../components/now/FollowingCard';
 
 const getCompAbbr = (name = '') => {
     const n = name.toLowerCase();
@@ -91,7 +92,8 @@ export const Now = () => {
             content: <WatchingCard text={now.watching} fixture={fixture} formattedDate={formattedDate} formattedTime={formattedTime} compAbbr={compAbbr} />,
             bg: 'var(--sky-blue)',
             textColor: 'var(--text-primary)',
-            span: 1
+            span: 1,
+            mobileSpan: 2
         },
         {
             label: 'Eating',
@@ -105,7 +107,8 @@ export const Now = () => {
             content: <ReadingCard currentBook={currentBook} bookCoverSrc={bookCoverSrc} />,
             bg: 'var(--mustard)',
             textColor: 'var(--text-primary)',
-            span: 1
+            span: 1,
+            mobileSpan: 2
         },
         {
             label: 'Working On',
@@ -126,11 +129,12 @@ export const Now = () => {
             content: <GrowingCard />,
             bg: 'var(--br-green)',
             textColor: 'white',
-            span: 1
+            span: 1,
+            mobileSpan: 2
         },
         {
             label: 'Following',
-            content: now.following,
+            content: <FollowingCard text={now.following} />,
             bg: 'var(--lavender)',
             textColor: 'var(--text-primary)',
             span: 2
@@ -208,6 +212,7 @@ export const Now = () => {
                         viewport={{ once: true, margin: '-40px' }}
                         className="bento-card"
                         data-span={card.span}
+                        {...(card.mobileSpan && { 'data-mobile-span': card.mobileSpan })}
                         style={{
                             gridColumn: `span ${card.span}`,
                             ...(card.rowSpan && { gridRow: `span ${card.rowSpan}` }),
