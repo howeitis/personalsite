@@ -150,7 +150,7 @@ export const HeroBento = ({ data }) => {
                         marginBottom: '0.75rem'
                     }}
                 >
-                    {data.role}
+                    {isMobile ? data.role.replace('The New York Times', 'NYT') : data.role}
                 </m.p>
 
                 {/* Tagline */}

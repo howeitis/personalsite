@@ -2,7 +2,6 @@ import { m, useReducedMotion } from 'framer-motion';
 
 export const TypewriterHeading = ({ text, className = 'serif-text', style = {}, tag: Tag = 'h1' }) => {
     const prefersReduced = useReducedMotion();
-    const characters = text.split('');
 
     if (prefersReduced) {
         return (
@@ -18,27 +17,53 @@ export const TypewriterHeading = ({ text, className = 'serif-text', style = {}, 
         );
     }
 
+    // Split into words to prevent mid-word line breaks
+    const words = text.split(' ');
+    let charIndex = 0;
+
     return (
         <Tag
             className={className}
             aria-label={text}
             style={{ ...style, display: 'flex', flexWrap: 'wrap', alignItems: 'baseline' }}
         >
-            {characters.map((char, i) => (
-                <m.span
-                    key={i}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{
-                        duration: 0.01,
-                        delay: 0.3 + i * 0.07
-                    }}
-                    style={{ display: 'inline-block' }}
-                    aria-hidden="true"
-                >
-                    {char === ' ' ? '\u00A0' : char}
-                </m.span>
-            ))}
+            {words.map((word, wi) => {
+                const startIndex = charIndex;
+                charIndex += word.length + 1; // +1 for the space
+                return (
+                    <span key={wi} style={{ display: 'inline-flex', whiteSpace: 'nowrap' }}>
+                        {word.split('').map((char, ci) => (
+                            <m.span
+                                key={ci}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{
+                                    duration: 0.01,
+                                    delay: 0.3 + (startIndex + ci) * 0.07
+                                }}
+                                style={{ display: 'inline-block' }}
+                                aria-hidden="true"
+                            >
+                                {char}
+                            </m.span>
+                        ))}
+                        {wi < words.length - 1 && (
+                            <m.span
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{
+                                    duration: 0.01,
+                                    delay: 0.3 + (startIndex + word.length) * 0.07
+                                }}
+                                style={{ display: 'inline-block' }}
+                                aria-hidden="true"
+                            >
+                                {'\u00A0'}
+                            </m.span>
+                        )}
+                    </span>
+                );
+            })}
             {/* Blinking cursor */}
             <m.span
                 initial={{ opacity: 1 }}
@@ -46,7 +71,7 @@ export const TypewriterHeading = ({ text, className = 'serif-text', style = {}, 
                 transition={{
                     duration: 0.8,
                     repeat: 3,
-                    delay: 0.3 + characters.length * 0.07,
+                    delay: 0.3 + text.length * 0.07,
                     ease: 'steps(1)'
                 }}
                 style={{
