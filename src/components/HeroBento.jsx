@@ -82,7 +82,7 @@ export const HeroBento = ({ data }) => {
                         style={{ cursor: 'none', textDecoration: 'none' }}
                     >
                         <span className="pill-tag bg-mustard" style={{ transform: 'rotate(-5deg)', color: 'var(--text-primary)' }}>
-                            👋🏾 Hello!
+                            👋🏾 Say Hello
                         </span>
                     </CopyEmailLink>
                 </m.div>

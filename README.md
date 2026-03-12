@@ -205,6 +205,63 @@ curl "https://api.football-data.org/v4/teams/57/matches?status=SCHEDULED&limit=1
 
 ---
 
+### Dark Mode Toggle Has Visible Lag
+
+**Symptoms**: When clicking the dark/light mode toggle, colors don't switch simultaneously — the background may update before card borders, or text colors lag behind backgrounds, creating a visual "ripple" effect rather than an instant switch.
+
+**Root cause**: The theme is toggled by setting `data-theme="dark"` on `<html>` (in `ThemeContext.jsx`), which updates all CSS custom properties (`--bg-color`, `--text-primary`, etc.) at once. However, **CSS `transition` rules** on multiple elements animate these changes over different durations, creating an unsynchronized cascade:
+
+| Element | Transition | File |
+|---|---|---|
+| `.bento-card` | `background-color 0.3s, color 0.3s, border-color 0.3s` (plus `transform 0.2s, box-shadow 0.2s` for hover) | `index.css:200` |
+| `body, nav, footer` | `background-color 0.3s, color 0.3s, border-color 0.3s` | `index.css:428` |
+| Inline styles | **No transition** — e.g., cards in `Now.jsx`, `HeroBento.jsx` set `backgroundColor` via JS | Various |
+
+The result: elements with CSS transitions animate smoothly over 300ms, while elements with inline styles snap instantly, creating visible lag between different parts of the page.
+
+**Fix options (3 approaches, ordered by recommendation):**
+
+#### Option A: Disable transitions during toggle (Recommended — ~1 hour)
+Add a temporary `no-transition` class to `<html>` during the toggle, force a reflow, then remove it. All colors snap instantly with zero lag.
+
+```jsx
+// ThemeContext.jsx — updated toggleTheme
+const toggleTheme = () => {
+    document.documentElement.classList.add('no-transition');
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+    // Force reflow so the new theme paints before transitions re-enable
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            document.documentElement.classList.remove('no-transition');
+        });
+    });
+};
+```
+
+```css
+/* index.css */
+.no-transition,
+.no-transition *,
+.no-transition *::before,
+.no-transition *::after {
+    transition: none !important;
+}
+```
+
+**Lift**: ~1 hour. Two small edits (one in `ThemeContext.jsx`, one CSS rule in `index.css`). No risk of breaking existing animations since the class is added/removed within a single frame cycle.
+
+#### Option B: Use `color-scheme` CSS + `View Transition API` (~3–4 hours)
+Use the browser-native View Transition API (`document.startViewTransition()`) to orchestrate a smooth cross-fade between the two themes as a single visual snapshot. This gives the slickest result but only works in Chromium browsers (Chrome, Edge) — Firefox and Safari would need a fallback.
+
+**Lift**: 3–4 hours. Requires a polyfill strategy for non-Chromium browsers, testing across browsers, and potentially a fallback to Option A.
+
+#### Option C: Unify all inline style colors into CSS classes (~6–8 hours)
+Refactor all inline `backgroundColor` / `color` assignments in JSX to use CSS classes that inherit `transition` behavior. Every component that sets colors via `style={{...}}` would need to be updated (Now.jsx, HeroBento.jsx, ExperienceBento.jsx, MoodBoard.jsx, etc.).
+
+**Lift**: 6–8 hours. High touch-count refactor across many files. While architecturally cleaner, it's the most labor-intensive option and doesn't meaningfully improve UX beyond Option A.
+
+---
+
 ## Roadmap
 
 | Phase | Focus | Status |

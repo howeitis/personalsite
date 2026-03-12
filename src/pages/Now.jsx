@@ -1,4 +1,5 @@
 import { m } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { useArsenalFixture } from '../hooks/useArsenalFixture';
 import { toImageFilename } from '../utils/bookFilename';
 import { Helmet } from 'react-helmet-async';
@@ -109,14 +110,16 @@ export const Now = () => {
             bg: 'var(--mustard)',
             textColor: 'var(--text-primary)',
             span: 1,
-            mobileSpan: 2
+            mobileSpan: 2,
+            link: '/library'
         },
         {
             label: 'Working On',
             content: <WorkingOnCard />,
             bg: 'var(--mustard)',
             textColor: 'var(--text-primary)',
-            span: 2
+            span: 2,
+            link: '/resume'
         },
         {
             label: 'Playing',
@@ -223,18 +226,39 @@ export const Now = () => {
                             gap: '0.5rem'
                         }}
                     >
-                        <span
-                            style={{
-                                fontSize: 'var(--text-sm)',
-                                fontWeight: 700,
-                                letterSpacing: '0.12em',
-                                textTransform: 'uppercase',
-                                opacity: 0.8,
-                                color: card.textColor
-                            }}
-                        >
-                            {card.label}
-                        </span>
+                        {card.link ? (
+                            <Link
+                                to={card.link}
+                                style={{
+                                    fontSize: 'var(--text-sm)',
+                                    fontWeight: 700,
+                                    letterSpacing: '0.12em',
+                                    textTransform: 'uppercase',
+                                    opacity: 0.8,
+                                    color: card.textColor,
+                                    textDecoration: 'none',
+                                    cursor: 'none',
+                                    borderBottom: `1.5px solid ${card.textColor}`,
+                                    paddingBottom: '1px',
+                                    alignSelf: 'flex-start'
+                                }}
+                            >
+                                {card.label} ↗
+                            </Link>
+                        ) : (
+                            <span
+                                style={{
+                                    fontSize: 'var(--text-sm)',
+                                    fontWeight: 700,
+                                    letterSpacing: '0.12em',
+                                    textTransform: 'uppercase',
+                                    opacity: 0.8,
+                                    color: card.textColor
+                                }}
+                            >
+                                {card.label}
+                            </span>
+                        )}
                         {typeof card.content === 'string'
                             ? <p style={{ fontSize: 'var(--text-lg)', lineHeight: 1.5, color: card.textColor }}>{card.content}</p>
                             : card.content
