@@ -2,7 +2,7 @@ export const FollowingCard = ({ text }) => (
     <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
         <p style={{ fontSize: 'var(--text-lg)', lineHeight: 1.5, flex: 1 }}>{text}</p>
         <img
-            src="images/now/dcrow.png"
+            src="/images/now/dcrow.png"
             alt="D.C. rowhome"
             width={140}
             height={140}

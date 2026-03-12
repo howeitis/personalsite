@@ -17,7 +17,10 @@
       "Bash(npm run build:*)",
       "WebSearch",
       "WebFetch(domain:vite-react-ssg.netlify.app)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(wc -l /c/Users/omhhe/.gemini/antigravity/workspace/personal-website/src/**/*.jsx)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(node -e \"const d = require\\(''./src/data/now.json''\\); console.log\\(JSON.stringify\\({following: d.following, watching: d.watching}, null, 2\\)\\)\")"
     ]
   }
 }

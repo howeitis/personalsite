@@ -53,7 +53,7 @@ function AnimatedRoutes() {
   }, [currentIndex]);
 
   return (
-    <AnimatePresence mode="wait" initial={false} custom={direction}>
+    <AnimatePresence mode="wait" custom={direction}>
       <m.div
         key={location.pathname}
         custom={direction}
