@@ -207,6 +207,7 @@ export const Now = () => {
                         whileInView="visible"
                         viewport={{ once: true, margin: '-40px' }}
                         className="bento-card"
+                        data-span={card.span}
                         style={{
                             gridColumn: `span ${card.span}`,
                             ...(card.rowSpan && { gridRow: `span ${card.rowSpan}` }),

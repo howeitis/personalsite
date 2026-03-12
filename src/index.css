@@ -289,6 +289,20 @@ a {
 }
 
 /* ----------------------------- */
+/* Tablet Responsiveness */
+/* ----------------------------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .now-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.25rem !important;
+  }
+
+  .now-grid > .bento-card[data-span="2"] {
+    grid-column: span 2 !important;
+  }
+}
+
+/* ----------------------------- */
 /* Mobile Responsiveness Overrides */
 /* ----------------------------- */
 @media (max-width: 768px) {
@@ -317,13 +331,23 @@ a {
     gap: 1.5rem;
   }
 
-  /* /now page bento grid — single column on mobile */
+  /* /now page bento grid — 2-column on mobile, preserving rhythm */
   .now-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+    grid-auto-flow: dense !important;
   }
 
   .now-grid > .bento-card {
     grid-column: span 1 !important;
+  }
+
+  .now-grid > .bento-card[data-span="2"] {
+    grid-column: span 2 !important;
+  }
+
+  .now-grid > .bento-card[data-span="1"] {
+    padding: 1.25rem !important;
   }
 
   /* Explicitly override Javascript/Inline Grid spans — scoped to grid children only */

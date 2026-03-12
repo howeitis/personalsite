@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, m, LazyMotion, domAnimation } from 'framer-motion';
 import { HelmetProvider } from 'react-helmet-async';
@@ -17,24 +18,45 @@ import { Library } from './pages/Library';
 import { Now } from './pages/Now';
 import { NotFound } from './pages/NotFound';
 
+const ROUTE_ORDER = { '/': 0, '/now': 1, '/interests': 2, '/library': 3, '/resume': 4 };
+const isReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 const pageVariants = {
-  initial: { opacity: 0, y: 30, rotate: -0.6 },
+  initial: (direction) => ({
+    opacity: 0,
+    x: isReducedMotion ? 0 : direction * 60,
+    rotate: isReducedMotion ? 0 : direction * -0.4,
+  }),
   animate: {
-    opacity: 1, y: 0, rotate: 0,
-    transition: { type: 'spring', stiffness: 260, damping: 24 }
+    opacity: 1, x: 0, rotate: 0,
+    transition: {
+      type: 'spring', stiffness: 260, damping: 24,
+      opacity: { duration: 0.2 }
+    }
   },
-  exit: {
-    opacity: 0, y: -20, scale: 0.98,
+  exit: (direction) => ({
+    opacity: 0,
+    x: isReducedMotion ? 0 : direction * -40,
+    scale: 0.98,
     transition: { duration: 0.15, ease: 'easeIn' }
-  }
+  })
 };
 
 function AnimatedRoutes() {
   const location = useLocation();
+  const currentIndex = ROUTE_ORDER[location.pathname] ?? 0;
+  const prevIndex = useRef(currentIndex);
+  const direction = currentIndex >= prevIndex.current ? 1 : -1;
+
+  useEffect(() => {
+    prevIndex.current = currentIndex;
+  }, [currentIndex]);
+
   return (
-    <AnimatePresence mode="wait" initial={false}>
+    <AnimatePresence mode="wait" initial={false} custom={direction}>
       <m.div
         key={location.pathname}
+        custom={direction}
         variants={pageVariants}
         initial="initial"
         animate="animate"
