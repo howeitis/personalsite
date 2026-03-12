@@ -5,7 +5,7 @@ export const ThinkingAboutCard = ({ text }) => (
             src="images/now/ring.webp"
             alt=""
             loading="lazy"
-            style={{ width: '100%', borderRadius: '8px', objectFit: 'cover', maxHeight: '160px', flexShrink: 0 }}
+            style={{ width: '100%', borderRadius: '8px', objectFit: 'contain', flexShrink: 0 }}
         />
     </div>
 );
