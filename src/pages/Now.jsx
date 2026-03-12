@@ -15,6 +15,7 @@ import { ReadingCard } from '../components/now/ReadingCard';
 import { WorkingOnCard } from '../components/now/WorkingOnCard';
 import { GrowingCard } from '../components/now/GrowingCard';
 import { FollowingCard } from '../components/now/FollowingCard';
+import { TypewriterHeading } from '../components/TypewriterHeading';
 
 const getCompAbbr = (name = '') => {
     const n = name.toLowerCase();
@@ -172,12 +173,10 @@ export const Now = () => {
                     marginBottom: '2.5rem'
                 }}
             >
-                <h1
-                    className="serif-text"
+                <TypewriterHeading
+                    text="Right Now."
                     style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', color: 'var(--text-primary)', marginBottom: '1rem', lineHeight: 1 }}
-                >
-                    Right Now.
-                </h1>
+                />
                 <p style={{ color: 'var(--text-primary)', fontSize: 'var(--text-xl)', maxWidth: '600px', fontWeight: 500 }}>
                     The current starting lineup.
                 </p>

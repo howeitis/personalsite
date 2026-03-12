@@ -1,6 +1,7 @@
 import { m } from 'framer-motion';
 import { ImageLightbox } from '../components/ImageLightbox';
 import { Helmet } from 'react-helmet-async';
+import { TypewriterHeading } from '../components/TypewriterHeading';
 
 const IMAGES = [
     { src: "images/art.webp", alt: "Portrait Art", tag: "Art", bg: "var(--mustard)", width: 600, height: 400, description: "Fauvism—because you can never have too much color." },
@@ -45,9 +46,10 @@ export const Interests = () => {
 
             {/* Collage Header */}
             <div className="bento-card" style={{ padding: '4rem', backgroundColor: 'var(--bg-color)', borderBottom: '1px solid var(--text-primary)', marginBottom: '4rem' }}>
-                <h1 className="serif-text" style={{ fontSize: 'clamp(3rem, 6vw, 5rem)', color: 'var(--text-primary)', marginBottom: '1rem', lineHeight: 1 }}>
-                    The Full Picture.
-                </h1>
+                <TypewriterHeading
+                    text="The Full Picture."
+                    style={{ fontSize: 'clamp(3rem, 6vw, 5rem)', color: 'var(--text-primary)', marginBottom: '1rem', lineHeight: 1 }}
+                />
                 <p style={{ color: 'var(--text-primary)', fontSize: '1.25rem', maxWidth: '600px', fontWeight: 500 }}>
                     Take a look at what I'm into.
                 </p>

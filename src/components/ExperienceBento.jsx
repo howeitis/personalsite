@@ -6,7 +6,25 @@ export const ExperienceBento = ({ data }) => {
     return (
         <>
             <div className="bento-card" style={{ gridColumn: 'span 12', padding: '1.5rem 2.5rem', backgroundColor: 'var(--lavender)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-                <h2 className="serif-text" style={{ fontSize: '2rem', margin: 0 }}>Career Journey</h2>
+                <h2 className="serif-text" aria-label="Career Journey" style={{ fontSize: '2rem', margin: 0, display: 'inline-flex', flexWrap: 'wrap' }}>
+                    {'Career Journey'.split('').map((char, i) => (
+                        <m.span
+                            key={i}
+                            initial={{ opacity: 0, scale: 1.8, y: -10 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{
+                                type: 'spring',
+                                stiffness: 300,
+                                damping: 15,
+                                delay: 0.15 + i * 0.04
+                            }}
+                            style={{ display: 'inline-block', transformOrigin: 'center bottom' }}
+                            aria-hidden="true"
+                        >
+                            {char === ' ' ? '\u00A0' : char}
+                        </m.span>
+                    ))}
+                </h2>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
                     <CopyEmailLink
                         email="owen@howe.app"

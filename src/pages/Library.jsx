@@ -357,14 +357,33 @@ export const Library = () => {
             </Helmet>
             {/* Page Header */}
             <div className="container" style={{ padding: '4rem 2rem', marginBottom: '4rem', textAlign: 'center' }}>
-                <h1 className="serif-text" style={{
+                <h1 className="serif-text" aria-label="The Library." style={{
                     fontSize: 'clamp(3rem, 8vw, 6rem)',
                     color: isShelf ? (isDark ? 'var(--text-primary)' : '#4a3018') : 'var(--text-primary)',
                     marginBottom: '1rem',
                     lineHeight: 1,
-                    textShadow: isShelf ? (isDark ? '0px 2px 4px rgba(0,0,0,0.5)' : '0px 2px 4px rgba(0,0,0,0.1)') : 'none'
+                    textShadow: isShelf ? (isDark ? '0px 2px 4px rgba(0,0,0,0.5)' : '0px 2px 4px rgba(0,0,0,0.1)') : 'none',
+                    display: 'inline-flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center'
                 }}>
-                    The Library.
+                    {'The Library.'.split('').map((char, i) => (
+                        <m.span
+                            key={i}
+                            initial={{ opacity: 0, y: 40, rotateX: -90 }}
+                            animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                            transition={{
+                                type: 'spring',
+                                stiffness: 200,
+                                damping: 18,
+                                delay: 0.2 + i * 0.05
+                            }}
+                            style={{ display: 'inline-block', transformOrigin: 'bottom center' }}
+                            aria-hidden="true"
+                        >
+                            {char === ' ' ? '\u00A0' : char}
+                        </m.span>
+                    ))}
                 </h1>
                 <p style={{
                     color: isShelf ? (isDark ? 'var(--text-secondary)' : '#6e5033') : 'var(--text-secondary)',
