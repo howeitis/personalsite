@@ -49,7 +49,7 @@ export const ExperienceBento = ({ data }) => {
                         LinkedIn
                     </m.a>
                     <m.a
-                        href="/resume.pdf"
+                        href="/resume updated.pdf"
                         download
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}

@@ -3,7 +3,7 @@ export const TravelingCard = ({ current, next }) => (
         <div>
             <div style={{ fontSize: 'var(--text-sm)', opacity: 0.75, marginBottom: '0.15rem' }}>Currently</div>
             <div style={{ fontSize: 'var(--text-xl)', fontWeight: 700 }}>{current}</div>
-            <div style={{ fontSize: 'var(--text-sm)', opacity: 0.75, marginTop: '0.75rem', marginBottom: '0.15rem' }}>Next up</div>
+            <div style={{ fontSize: 'var(--text-sm)', opacity: 0.75, marginTop: '0.75rem', marginBottom: '0.15rem' }}>Most Recent</div>
             <div style={{ fontSize: 'var(--text-xl)', fontWeight: 700 }}>{next} ✈</div>
         </div>
         <img
