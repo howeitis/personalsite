@@ -159,6 +159,39 @@ h4,
   white-space: nowrap;
 }
 
+/* EPL Manager home card */
+.epl-home-card {
+  max-width: 600px;
+  margin: 4rem auto 0 calc(50% - 200px);
+  text-align: center;
+  padding: 2rem;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.epl-logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.epl-link {
+  border: var(--border-thick);
+  cursor: none;
+  color: white;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+}
+
 .nav-mobile-drawer {
   position: fixed;
   left: 0;
@@ -386,6 +419,25 @@ a {
   }
 
   .sycamore-link {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.75rem;
+  }
+
+  /* EPL Manager mobile */
+  .epl-home-card {
+    max-width: 220px !important;
+    width: auto !important;
+    margin: -11rem 1rem 0 auto !important;
+    padding: 1.25rem 1.25rem !important;
+    gap: 0.75rem;
+  }
+
+  .epl-logo {
+    width: 60px;
+    margin-bottom: 0;
+  }
+
+  .epl-link {
     font-size: 0.75rem;
     padding: 0.4rem 0.75rem;
   }

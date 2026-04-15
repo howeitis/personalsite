@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import { useContent } from '../context/ContentContext';
 
 export const Home = () => {
-    const { personal, consulting } = useContent();
+    const { personal } = useContent();
     const isMobile = useIsMobile();
 
     return (
@@ -38,7 +38,8 @@ export const Home = () => {
             {/* The V4 Organic Mood Board Parallax */}
             <MoodBoard />
 
-            <div 
+            {/* Sycamore Creek card — commented out, may revert
+            <div
                 className="bento-card sycamore-home-card"
                 style={{ backgroundImage: `linear-gradient(rgba(17, 75, 47, 0.85), rgba(17, 75, 47, 0.95)), url("${import.meta.env.BASE_URL}images/sycamore_bg.webp")` }}
             >
@@ -53,6 +54,27 @@ export const Home = () => {
                 )}
                 <a href={consulting.url} target="_blank" rel="noopener noreferrer" className="pill-tag bg-mustard sycamore-link">
                     {isMobile ? `${consulting.name} ↗` : `Visit ${consulting.name} ↗`}
+                </a>
+            </div>
+            */}
+
+            <div
+                className="bento-card epl-home-card"
+                style={{ backgroundImage: `linear-gradient(rgba(10, 15, 30, 0.80), rgba(10, 15, 30, 0.92)), url("${import.meta.env.BASE_URL}images/epl_manager_hero.webp")` }}
+            >
+                <a href="https://eplmanager.vercel.app" target="_blank" rel="noopener noreferrer">
+                    <img className="epl-logo" src="images/epl_manager_logo.webp" alt="EPL Manager" width={100} height={100} loading="lazy" />
+                </a>
+                {!isMobile && (
+                    <>
+                        <h2 className="serif-text" style={{ fontSize: '1.5rem', color: 'var(--text-on-overlay)', marginBottom: '0.25rem' }}>Think you can manage the Prem?</h2>
+                        <p style={{ color: 'var(--text-on-overlay)', fontSize: '0.9rem', marginBottom: '1rem', opacity: 0.9 }}>
+                            A retro football manager sim — built for fun.
+                        </p>
+                    </>
+                )}
+                <a href="https://eplmanager.vercel.app" target="_blank" rel="noopener noreferrer" className="pill-tag bg-green epl-link">
+                    {isMobile ? 'EPL Manager ↗' : 'Play EPL Manager ↗'}
                 </a>
             </div>
         </div >
