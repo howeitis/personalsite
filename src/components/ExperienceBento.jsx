@@ -97,7 +97,7 @@ export const ExperienceBento = ({ data }) => {
                                 <p style={{ fontWeight: 600, color: textColor || 'var(--terracotta)' }}>{job.title}</p>
                                 {job.secondTitle && <p style={{ fontWeight: 600, color: textColor || 'var(--terracotta)', opacity: 0.8 }}>{job.secondTitle}</p>}
                             </div>
-                            <div style={{ textAlign: 'right' }}>
+                            <div className="job-meta-right">
                                 <span className="pill-tag" style={{ border: '2px solid var(--separator-color)', background: 'transparent', marginBottom: '0.5rem' }}>{job.period}</span>
                                 <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{job.location}</p>
                             </div>
@@ -107,7 +107,7 @@ export const ExperienceBento = ({ data }) => {
                             {/* Only show top 3 highlights to keep the bento box clean, or all if we have space */}
                             {(isWide ? job.highlights.slice(0, 4) : job.highlights.slice(0, 2)).map((highlight, idx) => (
                                 <li key={idx} style={{ position: 'relative', paddingLeft: '1.5rem', fontSize: '0.95rem', color: textColor || 'inherit' }}>
-                                    <span style={{ position: 'absolute', left: 0, top: '10px', width: '8px', height: '8px', backgroundColor: 'var(--mustard)', borderRadius: '2px', transform: 'rotate(45deg)' }}></span>
+                                    <span style={{ position: 'absolute', left: 0, top: '10px', width: '8px', height: '8px', backgroundColor: bgColor === 'var(--mustard)' ? 'var(--terracotta)' : 'var(--mustard)', borderRadius: '2px', transform: 'rotate(45deg)' }}></span>
                                     {highlight}
                                 </li>
                             ))}

@@ -308,6 +308,11 @@ a {
 /* ----------------------------- */
 /* Mobile Responsiveness Overrides */
 /* ----------------------------- */
+/* Job card period/location — right-aligned by default, left-aligned when wrapped to own row */
+.job-meta-right {
+  text-align: right;
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 0 1rem;
@@ -352,6 +357,11 @@ a {
 
   .now-grid > .bento-card[data-span="1"]:not([data-mobile-span]) {
     padding: 1.25rem !important;
+  }
+
+  /* Left-align period/location when it wraps to its own row on mobile */
+  .job-meta-right {
+    text-align: left;
   }
 
   /* Explicitly override Javascript/Inline Grid spans — scoped to grid children only */
