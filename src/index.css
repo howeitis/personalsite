@@ -423,23 +423,28 @@ a {
     padding: 0.4rem 0.75rem;
   }
 
+  /* Hero card — hide tagline on mobile for a more compact card */
+  .hero-about-text {
+    display: none;
+  }
+
   /* EPL Manager mobile */
   .epl-home-card {
-    max-width: 220px !important;
+    max-width: 440px !important;
     width: auto !important;
-    margin: -11rem 1rem 0 auto !important;
-    padding: 1.25rem 1.25rem !important;
-    gap: 0.75rem;
+    margin: -11rem auto 0 auto !important;
+    padding: 2.5rem 2.5rem !important;
+    gap: 1.5rem;
   }
 
   .epl-logo {
-    width: 60px;
+    width: 120px;
     margin-bottom: 0;
   }
 
   .epl-link {
-    font-size: 0.75rem;
-    padding: 0.4rem 0.75rem;
+    font-size: 0.9rem;
+    padding: 0.6rem 1.25rem;
   }
 
   /* Shrink giant editorial headers slightly */
