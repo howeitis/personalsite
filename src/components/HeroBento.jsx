@@ -185,7 +185,7 @@ export const HeroBento = ({ data }) => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                    <p style={{ fontSize: '1.1rem', opacity: 0.85, maxWidth: '500px', marginBottom: '1rem' }}>
+                    <p className="hero-about-text" style={{ fontSize: '1.1rem', opacity: 0.85, maxWidth: '500px', marginBottom: '1rem' }}>
                         {data.about[1]}
                     </p>
                     <span className="pill-tag" style={{ backgroundColor: 'var(--lavender)', color: 'var(--text-primary)', display: 'inline-block', fontSize: '0.85rem', padding: '0.3rem 0.75rem' }}>
