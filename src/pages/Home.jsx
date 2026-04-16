@@ -65,16 +65,14 @@ export const Home = () => {
                 <a href="https://eplmanager.vercel.app" target="_blank" rel="noopener noreferrer">
                     <img className="epl-logo" src="images/epl_manager_logo.webp" alt="EPL Manager" width={100} height={100} loading="lazy" />
                 </a>
+                <h2 className="serif-text" style={{ fontSize: '1.5rem', color: 'var(--text-on-overlay)', marginBottom: '0.25rem' }}>Think you can manage the Prem?</h2>
                 {!isMobile && (
-                    <>
-                        <h2 className="serif-text" style={{ fontSize: '1.5rem', color: 'var(--text-on-overlay)', marginBottom: '0.25rem' }}>Think you can manage the Prem?</h2>
-                        <p style={{ color: 'var(--text-on-overlay)', fontSize: '0.9rem', marginBottom: '1rem', opacity: 0.9 }}>
-                            A retro football manager sim — built for fun.
-                        </p>
-                    </>
+                    <p style={{ color: 'var(--text-on-overlay)', fontSize: '0.9rem', marginBottom: '1rem', opacity: 0.9 }}>
+                        A retro football manager sim — built for fun.
+                    </p>
                 )}
-                <a href="https://eplmanager.vercel.app" target="_blank" rel="noopener noreferrer" className="pill-tag bg-green epl-link">
-                    {isMobile ? 'EPL Manager ↗' : 'Play EPL Manager ↗'}
+                <a href="https://eplmanager.vercel.app" target="_blank" rel="noopener noreferrer" className="pill-tag bg-green epl-link" style={{ color: 'white' }}>
+                    Play EPL Manager ↗
                 </a>
             </div>
         </div >
